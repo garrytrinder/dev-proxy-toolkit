@@ -1,0 +1,75 @@
+{
+  "Config": {
+    "prefix": "config-empty",
+    "body": [
+      "{",
+      "\t\"\\$schema\": \"https://raw.githubusercontent.com/microsoft/dev-proxy/main/schemas/v1.0/rc.schema.json\",",
+      "\t\"plugins\": [",
+      "\t\t$1",
+      "\t],",
+      "\t\"urlsToWatch\": [$2],",
+      "\t\"rate\": 50,",
+      "\t\"labelMode\": \"text\",",
+      "\t\"logLevel\": \"info\"",
+      "}"
+    ],
+    "description": "Empty Dev Proxy configuration"
+  },
+  "Errors": {
+    "prefix": "config-errors",
+    "body": [
+      "{",
+      "\t\"\\$schema\": \"https://raw.githubusercontent.com/microsoft/dev-proxy/main/schemas/v1.0/genericrandomerrorplugin.schema.json\",",
+      "\t\"responses\": [",
+      "\t\t$1",
+      "\t]",
+      "}"
+    ],
+    "description": "Empty Dev Proxy errors file"
+  },
+  "GenericRandomErrorPlugin": {
+    "prefix": "plugin-generic-random-error",
+    "body": [
+      "{",
+      "\t\"name\": \"GenericRandomErrorPlugin\",",
+      "\t\"enabled\": true,",
+      "\t\"pluginPath\": \"~appFolder/plugins/dev-proxy-plugins.dll\",",
+      "\t\"configSection\": \"genericRandomErrorPlugin\"",
+      "}"
+    ]
+  },
+  "GenericRandomErrorPluginConfig": {
+    "prefix": "plugin-generic-random-error-config",
+    "body": [
+      "\"genericRandomErrorPlugin\": {",
+      "\t\"errorsFile\": \"errors.json\"",
+      "},"
+    ],
+    "description": "Empty Dev Proxy GenericRandomErrorPluginConfig config section"
+  },
+  "Response": {
+    "prefix": "response",
+    "body": [
+      "{",
+      "\t\"statusCode\": ${1:400},",
+      "\t\"body\": {",
+      "\t\t$2",
+      "\t},",
+      "\t\"headers\": [",
+      "\t\t$3",
+      "\t]",
+      "}"
+    ],
+    "description": "Empty Dev Proxy response"
+  },
+  "ResponseHeader": {
+    "prefix": "response-header",
+    "body": [
+      "{",
+      "\t\"name\": \"$1\",",
+      "\t\"value\": \"$2\"",
+      "}"
+    ],
+    "description": "Empty Dev Proxy response header"
+  }
+}
