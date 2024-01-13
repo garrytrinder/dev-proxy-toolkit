@@ -1,22 +1,20 @@
 {
   "Config": {
-    "prefix": "config-empty",
+    "prefix": "devproxy-config-file",
     "body": [
       "{",
       "\t\"\\$schema\": \"https://raw.githubusercontent.com/microsoft/dev-proxy/main/schemas/v1.0/rc.schema.json\",",
-      "\t\"plugins\": [",
-      "\t\t$1",
-      "\t],",
+      "\t\"plugins\": [$1],",
       "\t\"urlsToWatch\": [$2],",
       "\t\"rate\": 50,",
       "\t\"labelMode\": \"text\",",
       "\t\"logLevel\": \"info\"",
       "}"
     ],
-    "description": "Empty Dev Proxy configuration"
+    "description": "Dev Proxy config file"
   },
   "Errors": {
-    "prefix": "config-errors",
+    "prefix": "devproxy-errors-file",
     "body": [
       "{",
       "\t\"\\$schema\": \"https://raw.githubusercontent.com/microsoft/dev-proxy/main/schemas/v1.0/genericrandomerrorplugin.schema.json\",",
@@ -25,10 +23,94 @@
       "\t]",
       "}"
     ],
-    "description": "Empty Dev Proxy errors file"
+    "description": "Dev Proxy errors file"
+  },
+  "CachingGuidancePlugin": {
+    "prefix": "devproxy-plugin-caching-guidance",
+    "body": [
+      "{",
+      "\t\"name\": \"CachingGuidancePlugin\",",
+      "\t\"enabled\": true,",
+      "\t\"pluginPath\": \"~appFolder/plugins/dev-proxy-plugins.dll\",",
+      "\t\"configSection\": \"cachingGuidance\"",
+      "}"
+    ],
+    "description": "CachingGuidancePlugin instance"
+  },
+  "CachingGuidancePluginConfig": {
+    "prefix": "devproxy-plugin-caching-guidance-config",
+    "body": [
+      "\"cachingGuidance\": {",
+      "\t\"cacheThresholdSeconds\": 5",
+      "},"
+    ],
+    "description": "CachingGuidancePlugin config section"
+  },
+  "CrudApiPlugin": {
+    "prefix": "devproxy-plugin-crud-api",
+    "body": [
+      "{",
+      "\t\"name\": \"CrudApiPlugin\",",
+      "\t\"enabled\": true,",
+      "\t\"pluginPath\": \"~appFolder/plugins/dev-proxy-plugins.dll\",",
+      "\t\"configSection\": \"customersApi\"",
+      "}"
+    ],
+    "description": "CrudApiPlugin instance"
+  },
+  "CrudApiPluginConfig": {
+    "prefix": "devproxy-plugin-crud-api-config",
+    "body": [
+      "\"customersApi\": {",
+      "\t\"apiFile\": \"customers-api.json\"",
+      "},"
+    ],
+    "description": "CrudApiPlugin config section"
+  },
+  "DevToolsPlugin": {
+    "prefix": "devproxy-plugin-dev-tools",
+    "body": [
+      "{",
+      "\t\"name\": \"DevToolsPlugin\",",
+      "\t\"enabled\": true,",
+      "\t\"pluginPath\": \"~appFolder/plugins/dev-proxy-plugins.dll\",",
+      "\t\"configSection\": \"devTools\"",
+      "}"
+    ],
+    "description": "DevToolsPlugin instance"
+  },
+  "DevToolsPluginConfig": {
+    "prefix": "devproxy-plugin-dev-tools-config",
+    "body": [
+      "\"devTools\": {",
+      "\t\"preferredBrowser\": \"Edge\"",
+      "},"
+    ],
+    "description": "DevToolsPlugin config section"
+  },
+  "ExecutionSummaryPlugin": {
+    "prefix": "devproxy-plugin-execution-summary",
+    "body": [
+      "{",
+      "\t\"name\": \"ExecutionSummaryPlugin\",",
+      "\t\"enabled\": true,",
+      "\t\"pluginPath\": \"~appFolder/plugins/dev-proxy-plugins.dll\",",
+      "\t\"configSection\": \"executionSummaryPlugin\"",
+      "}"
+    ],
+    "description": "ExecutionSummaryPlugin instance"
+  },
+  "ExecutionSummaryPluginConfig": {
+    "prefix": "devproxy-plugin-execution-summary-config",
+    "body": [
+      "\"executionSummaryPlugin\": {",
+      "\t\"groupBy\": \"url\"",
+      "},"
+    ],
+    "description": "ExecutionSummaryPlugin config section"
   },
   "GenericRandomErrorPlugin": {
-    "prefix": "plugin-generic-random-error",
+    "prefix": "devproxy-plugin-generic-random-error",
     "body": [
       "{",
       "\t\"name\": \"GenericRandomErrorPlugin\",",
@@ -36,19 +118,326 @@
       "\t\"pluginPath\": \"~appFolder/plugins/dev-proxy-plugins.dll\",",
       "\t\"configSection\": \"genericRandomErrorPlugin\"",
       "}"
-    ]
+    ],
+    "description": "GenericRandomErrorPlugin instance"
   },
   "GenericRandomErrorPluginConfig": {
-    "prefix": "plugin-generic-random-error-config",
+    "prefix": "devproxy-plugin-generic-random-error-config",
     "body": [
       "\"genericRandomErrorPlugin\": {",
       "\t\"errorsFile\": \"errors.json\"",
       "},"
     ],
-    "description": "Empty Dev Proxy GenericRandomErrorPluginConfig config section"
+    "description": "GenericRandomErrorPlugin config section"
+  },
+  "LatencyPlugin": {
+    "prefix": "devproxy-plugin-latency",
+    "body": [
+      "{",
+      "\t\"name\": \"LatencyPlugin\",",
+      "\t\"enabled\": true,",
+      "\t\"pluginPath\": \"~appFolder/plugins/dev-proxy-plugins.dll\",",
+      "\t\"configSection\": \"executionSummaryPlugin\"",
+      "}"
+    ],
+    "description": "LatencyPlugin instance"
+  },
+  "LatencyPluginConfig": {
+    "prefix": "devproxy-plugin-latency-config",
+    "body": [
+      "\"LatencyPlugin\": {",
+      "\t\"minMs\": 200",
+      "\t\"maxMs\": 10000",
+      "},"
+    ],
+    "description": "LatencyPlugin config section"
+  },
+  "MockGeneratorPlugin": {
+    "prefix": "devproxy-plugin-mock-generator",
+    "body": [
+      "{",
+      "\t\"name\": \"MockGeneratorPlugin\",",
+      "\t\"enabled\": true,",
+      "\t\"pluginPath\": \"~appFolder/plugins/dev-proxy-plugins.dll\",",
+      "}"
+    ],
+    "description": "MockGeneratorPlugin instance"
+  },
+  "MockResponsePlugin": {
+    "prefix": "devproxy-plugin-mock-response",
+    "body": [
+      "{",
+      "\t\"name\": \"MockResponsePlugin\",",
+      "\t\"enabled\": true,",
+      "\t\"pluginPath\": \"~appFolder/plugins/dev-proxy-plugins.dll\",",
+      "\t\"configSection\": \"mocksPlugin\"",
+      "}"
+    ],
+    "description": "MockResponsePlugin instance"
+  },
+  "MockResponsePluginConfig": {
+    "prefix": "devproxy-plugin-mock-response-config",
+    "body": [
+      "\"mocksPlugin\": {",
+      "\t\"mocksFile\": \"mocks.json\"",
+      "},"
+    ],
+    "description": "MockResponsePlugin config section"
+  },
+  "ODataPagingGuidancePlugin": {
+    "prefix": "devproxy-plugin-odata-paging-guidance",
+    "body": [
+      "{",
+      "\t\"name\": \"MockGeneratorPlugin\",",
+      "\t\"enabled\": true,",
+      "\t\"pluginPath\": \"~appFolder/plugins/dev-proxy-plugins.dll\",",
+      "}"
+    ],
+    "description": "ODataPagingGuidancePlugin instance"
+  },
+  "OpenApiDocGeneratorPlugin": {
+    "prefix": "devproxy-plugin-open-api-doc-generator",
+    "body": [
+      "{",
+      "\t\"name\": \"OpenApiDocGeneratorPlugin\",",
+      "\t\"enabled\": true,",
+      "\t\"pluginPath\": \"~appFolder/plugins/dev-proxy-plugins.dll\",",
+      "}"
+    ],
+    "description": "OpenApiDocGeneratorPlugin instance"
+  },
+  "RateLimitingPlugin": {
+    "prefix": "devproxy-plugin-rate-limiting",
+    "body": [
+      "{",
+      "\t\"name\": \"RateLimitingPlugin\",",
+      "\t\"enabled\": true,",
+      "\t\"pluginPath\": \"~appFolder/plugins/dev-proxy-plugins.dll\",",
+      "\t\"configSection\": \"rateLimiting\"",
+      "}"
+    ],
+    "description": "MockResponsePlugin instance"
+  },
+  "RateLimitingPluginConfig": {
+    "prefix": "devproxy-plugin-rate-limiting-config",
+    "body": [
+      "\"mocksPlugin\": {",
+      "\t\"costPerRequest\": 2",
+      "\t\"rateLimit\": 120",
+      "\t\"retryAfterSeconds\": 5",
+      "},"
+    ],
+    "description": "RateLimitingPlugin config section"
+  },
+  "RetryAfterPlugin": {
+    "prefix": "devproxy-plugin-retry-after",
+    "body": [
+      "{",
+      "\t\"name\": \"RetryAfterPlugin\",",
+      "\t\"enabled\": true,",
+      "\t\"pluginPath\": \"~appFolder/plugins/dev-proxy-plugins.dll\",",
+      "}"
+    ],
+    "description": "RetryAfterPlugin instance"
+  },
+  "GraphBetaSupportGuidancePlugin": {
+    "prefix": "devproxy-plugin-graph-beta-support-guidance",
+    "body": [
+      "{",
+      "\t\"name\": \"GraphBetaSupportGuidancePlugin\",",
+      "\t\"enabled\": true,",
+      "\t\"pluginPath\": \"~appFolder/plugins/dev-proxy-plugins.dll\",",
+      "\t\"urlsToWatch\": [",
+      "\t\t\"https://graph.microsoft.com/beta/*\",",
+      "\t\t\"https://graph.microsoft.us/beta/*\",",
+      "\t\t\"https://dod-graph.microsoft.us/beta/*\",",
+      "\t\t\"https://microsoftgraph.chinacloudapi.cn/beta/*\"",
+      "\t]",
+      "}"
+    ],
+    "description": "GraphBetaSupportGuidancePlugin instance"
+  },
+  "GraphClientRequestIdGuidancePlugin": {
+    "prefix": "devproxy-plugin-graph-client-request-id-guidance",
+    "body": [
+      "{",
+      "\t\"name\": \"GraphClientRequestIdGuidancePlugin\",",
+      "\t\"enabled\": true,",
+      "\t\"pluginPath\": \"~appFolder/plugins/dev-proxy-plugins.dll\",",
+      "\t\"urlsToWatch\": [",
+      "\t\t\"https://graph.microsoft.com/v1.0/*\",",
+      "\t\t\"https://graph.microsoft.com/beta/*\",",
+      "\t\t\"https://graph.microsoft.us/v1.0/*\",",
+      "\t\t\"https://graph.microsoft.us/beta/*\",",
+      "\t\t\"https://dod-graph.microsoft.us/v1.0/*\",",
+      "\t\t\"https://dod-graph.microsoft.us/beta/*\",",
+      "\t\t\"https://microsoftgraph.chinacloudapi.cn/v1.0/*\"",
+      "\t\t\"https://microsoftgraph.chinacloudapi.cn/beta/*\"",
+      "\t]",
+      "}"
+    ],
+    "description": "GraphClientRequestIdGuidancePlugin instance"
+  },
+  "GraphMockResponsePlugin": {
+    "prefix": "devproxy-plugin-graph-mock-response",
+    "body": [
+      "{",
+      "\t\"name\": \"GraphMockResponsePlugin\",",
+      "\t\"enabled\": true,",
+      "\t\"pluginPath\": \"~appFolder/plugins/dev-proxy-plugins.dll\",",
+      "\t\"configSection\": \"mocksPlugin\"",
+      "\t\"urlsToWatch\": [",
+      "\t\t\"https://graph.microsoft.com/v1.0/*\",",
+      "\t\t\"https://graph.microsoft.com/beta/*\",",
+      "\t\t\"https://graph.microsoft.us/v1.0/*\",",
+      "\t\t\"https://graph.microsoft.us/beta/*\",",
+      "\t\t\"https://dod-graph.microsoft.us/v1.0/*\",",
+      "\t\t\"https://dod-graph.microsoft.us/beta/*\",",
+      "\t\t\"https://microsoftgraph.chinacloudapi.cn/v1.0/*\"",
+      "\t\t\"https://microsoftgraph.chinacloudapi.cn/beta/*\"",
+      "\t]",
+      "}"
+    ],
+    "description": "GraphMockResponsePlugin instance"
+  },
+  "GraphRandomErrorPlugin": {
+    "prefix": "devproxy-plugin-graph-random-error",
+    "body": [
+      "{",
+      "\t\"name\": \"GraphRandomErrorPlugin\",",
+      "\t\"enabled\": true,",
+      "\t\"pluginPath\": \"~appFolder/plugins/dev-proxy-plugins.dll\",",
+      "\t\"configSection\": \"graphRandomErrorPlugin\"",
+      "\t\"urlsToWatch\": [",
+      "\t\t\"https://graph.microsoft.com/v1.0/*\",",
+      "\t\t\"https://graph.microsoft.com/beta/*\",",
+      "\t\t\"https://graph.microsoft.us/v1.0/*\",",
+      "\t\t\"https://graph.microsoft.us/beta/*\",",
+      "\t\t\"https://dod-graph.microsoft.us/v1.0/*\",",
+      "\t\t\"https://dod-graph.microsoft.us/beta/*\",",
+      "\t\t\"https://microsoftgraph.chinacloudapi.cn/v1.0/*\"",
+      "\t\t\"https://microsoftgraph.chinacloudapi.cn/beta/*\"",
+      "\t]",
+      "}"
+    ],
+    "description": "GraphRandomErrorPlugin instance"
+  },
+  "GraphRandomErrorPluginConfig": {
+    "prefix": "devproxy-plugin-graph-random-error-config",
+    "body": [
+      "\"graphRandomErrorPlugin\": {",
+      "\t\"allowedErrors\": [ 429, 500, 502, 503, 504, 507 ]",
+      "},"
+    ],
+    "description": "GraphRandomErrorPlugin config section"
+  },
+  "GraphSdkGuidancePlugin": {
+    "prefix": "devproxy-plugin-graph-sdk-guidance",
+    "body": [
+      "{",
+      "\t\"name\": \"GraphSdkGuidancePlugin\",",
+      "\t\"enabled\": true,",
+      "\t\"pluginPath\": \"~appFolder/plugins/dev-proxy-plugins.dll\",",
+      "\t\"urlsToWatch\": [",
+      "\t\t\"https://graph.microsoft.com/v1.0/*\",",
+      "\t\t\"https://graph.microsoft.com/beta/*\",",
+      "\t\t\"https://graph.microsoft.us/v1.0/*\",",
+      "\t\t\"https://graph.microsoft.us/beta/*\",",
+      "\t\t\"https://dod-graph.microsoft.us/v1.0/*\",",
+      "\t\t\"https://dod-graph.microsoft.us/beta/*\",",
+      "\t\t\"https://microsoftgraph.chinacloudapi.cn/v1.0/*\"",
+      "\t\t\"https://microsoftgraph.chinacloudapi.cn/beta/*\"",
+      "\t]",
+      "}"
+    ],
+    "description": "GraphSdkGuidancePlugin instance"
+  },
+  "GraphSelectGuidancePlugin": {
+    "prefix": "devproxy-plugin-graph-select-guidance",
+    "body": [
+      "{",
+      "\t\"name\": \"GraphSdkGuidancePlugin\",",
+      "\t\"enabled\": true,",
+      "\t\"pluginPath\": \"~appFolder/plugins/dev-proxy-plugins.dll\",",
+      "\t\"urlsToWatch\": [",
+      "\t\t\"https://graph.microsoft.com/v1.0/*\",",
+      "\t\t\"https://graph.microsoft.com/beta/*\",",
+      "\t\t\"https://graph.microsoft.us/v1.0/*\",",
+      "\t\t\"https://graph.microsoft.us/beta/*\",",
+      "\t\t\"https://dod-graph.microsoft.us/v1.0/*\",",
+      "\t\t\"https://dod-graph.microsoft.us/beta/*\",",
+      "\t\t\"https://microsoftgraph.chinacloudapi.cn/v1.0/*\"",
+      "\t\t\"https://microsoftgraph.chinacloudapi.cn/beta/*\"",
+      "\t]",
+      "}"
+    ],
+    "description": "GraphSdkGuidancePlugin instance"
+  },
+  "MinimalPermissionsGuidancePlugin": {
+    "prefix": "devproxy-plugin-graph-minimal-permissions-guidance",
+    "body": [
+      "{",
+      "\t\"name\": \"GraphSdkGuidancePlugin\",",
+      "\t\"enabled\": true,",
+      "\t\"pluginPath\": \"~appFolder/plugins/dev-proxy-plugins.dll\"",
+      "\t\"configSection\": \"minimalPermissionsGuidancePlugin\"",
+      "}"
+    ],
+    "description": "MinimalPermissionsGuidancePlugin instance"
+  },
+  "MinimalPermissionsGuidancePluginConfig": {
+    "prefix": "devproxy-plugin-graph-minimal-permissions-guidance-config",
+    "body": [
+      "\"minimalPermissionsGuidancePlugin\": {",
+      "\t\"filePath\": \"permissions-summary.json\"",
+      "},"
+    ],
+    "description": "MinimalPermissionsGuidancePlugin config section"
+  },
+  "MinimalPermissionsPlugin": {
+    "prefix": "devproxy-plugin-graph-minimal-permissions",
+    "body": [
+      "{",
+      "\t\"name\": \"GraphSdkGuidancePlugin\",",
+      "\t\"enabled\": true,",
+      "\t\"pluginPath\": \"~appFolder/plugins/dev-proxy-plugins.dll\"",
+      "\t\"configSection\": \"MinimalPermissionsPlugin\"",
+      "}"
+    ],
+    "description": "MinimalPermissionsPlugin instance"
+  },
+  "MinimalPermissionsPluginConfig": {
+    "prefix": "devproxy-plugin-graph-minimal-permissions-config",
+    "body": [
+      "\"MinimalPermissionsPlugin\": {",
+      "\t\"type\": \"delegated\"",
+      "},"
+    ],
+    "description": "MinimalPermissionsPlugin config section"
+  },
+  "ODSPSearchGuidancePlugin": {
+    "prefix": "devproxy-plugin-graph-odsp-search-guidance",
+    "body": [
+      "{",
+      "\t\"name\": \"ODSPSearchGuidancePlugin\",",
+      "\t\"enabled\": true,",
+      "\t\"pluginPath\": \"~appFolder/plugins/dev-proxy-plugins.dll\",",
+      "\t\"urlsToWatch\": [",
+      "\t\t\"https://graph.microsoft.com/v1.0/*\",",
+      "\t\t\"https://graph.microsoft.com/beta/*\",",
+      "\t\t\"https://graph.microsoft.us/v1.0/*\",",
+      "\t\t\"https://graph.microsoft.us/beta/*\",",
+      "\t\t\"https://dod-graph.microsoft.us/v1.0/*\",",
+      "\t\t\"https://dod-graph.microsoft.us/beta/*\",",
+      "\t\t\"https://microsoftgraph.chinacloudapi.cn/v1.0/*\"",
+      "\t\t\"https://microsoftgraph.chinacloudapi.cn/beta/*\"",
+      "\t]",
+      "}"
+    ],
+    "description": "ODSPSearchGuidancePlugin instance"
   },
   "Response": {
-    "prefix": "response",
+    "prefix": "devproxy-response",
     "body": [
       "{",
       "\t\"statusCode\": ${1:400},",
@@ -63,7 +452,7 @@
     "description": "Empty Dev Proxy response"
   },
   "ResponseHeader": {
-    "prefix": "response-header",
+    "prefix": "devproxy-response-header",
     "body": [
       "{",
       "\t\"name\": \"$1\",",
