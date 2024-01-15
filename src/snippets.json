@@ -130,116 +130,6 @@
     ],
     "description": "GenericRandomErrorPlugin config section"
   },
-  "LatencyPlugin": {
-    "prefix": "devproxy-plugin-latency",
-    "body": [
-      "{",
-      "\t\"name\": \"LatencyPlugin\",",
-      "\t\"enabled\": true,",
-      "\t\"pluginPath\": \"~appFolder/plugins/dev-proxy-plugins.dll\",",
-      "\t\"configSection\": \"executionSummaryPlugin\"",
-      "}"
-    ],
-    "description": "LatencyPlugin instance"
-  },
-  "LatencyPluginConfig": {
-    "prefix": "devproxy-plugin-latency-config",
-    "body": [
-      "\"LatencyPlugin\": {",
-      "\t\"minMs\": 200",
-      "\t\"maxMs\": 10000",
-      "},"
-    ],
-    "description": "LatencyPlugin config section"
-  },
-  "MockGeneratorPlugin": {
-    "prefix": "devproxy-plugin-mock-generator",
-    "body": [
-      "{",
-      "\t\"name\": \"MockGeneratorPlugin\",",
-      "\t\"enabled\": true,",
-      "\t\"pluginPath\": \"~appFolder/plugins/dev-proxy-plugins.dll\",",
-      "}"
-    ],
-    "description": "MockGeneratorPlugin instance"
-  },
-  "MockResponsePlugin": {
-    "prefix": "devproxy-plugin-mock-response",
-    "body": [
-      "{",
-      "\t\"name\": \"MockResponsePlugin\",",
-      "\t\"enabled\": true,",
-      "\t\"pluginPath\": \"~appFolder/plugins/dev-proxy-plugins.dll\",",
-      "\t\"configSection\": \"mocksPlugin\"",
-      "}"
-    ],
-    "description": "MockResponsePlugin instance"
-  },
-  "MockResponsePluginConfig": {
-    "prefix": "devproxy-plugin-mock-response-config",
-    "body": [
-      "\"mocksPlugin\": {",
-      "\t\"mocksFile\": \"mocks.json\"",
-      "},"
-    ],
-    "description": "MockResponsePlugin config section"
-  },
-  "ODataPagingGuidancePlugin": {
-    "prefix": "devproxy-plugin-odata-paging-guidance",
-    "body": [
-      "{",
-      "\t\"name\": \"MockGeneratorPlugin\",",
-      "\t\"enabled\": true,",
-      "\t\"pluginPath\": \"~appFolder/plugins/dev-proxy-plugins.dll\",",
-      "}"
-    ],
-    "description": "ODataPagingGuidancePlugin instance"
-  },
-  "OpenApiDocGeneratorPlugin": {
-    "prefix": "devproxy-plugin-open-api-doc-generator",
-    "body": [
-      "{",
-      "\t\"name\": \"OpenApiDocGeneratorPlugin\",",
-      "\t\"enabled\": true,",
-      "\t\"pluginPath\": \"~appFolder/plugins/dev-proxy-plugins.dll\",",
-      "}"
-    ],
-    "description": "OpenApiDocGeneratorPlugin instance"
-  },
-  "RateLimitingPlugin": {
-    "prefix": "devproxy-plugin-rate-limiting",
-    "body": [
-      "{",
-      "\t\"name\": \"RateLimitingPlugin\",",
-      "\t\"enabled\": true,",
-      "\t\"pluginPath\": \"~appFolder/plugins/dev-proxy-plugins.dll\",",
-      "\t\"configSection\": \"rateLimiting\"",
-      "}"
-    ],
-    "description": "MockResponsePlugin instance"
-  },
-  "RateLimitingPluginConfig": {
-    "prefix": "devproxy-plugin-rate-limiting-config",
-    "body": [
-      "\"mocksPlugin\": {",
-      "\t\"costPerRequest\": 2",
-      "\t\"rateLimit\": 120",
-      "\t\"retryAfterSeconds\": 5",
-      "},"
-    ],
-    "description": "RateLimitingPlugin config section"
-  },
-  "RetryAfterPlugin": {
-    "prefix": "devproxy-plugin-retry-after",
-    "body": [
-      "{",
-      "\t\"name\": \"RetryAfterPlugin\",",
-      "\t\"enabled\": true,",
-      "\t\"pluginPath\": \"~appFolder/plugins/dev-proxy-plugins.dll\",",
-      "}"
-    ],
-    "description": "RetryAfterPlugin instance"
-  },
   "GraphBetaSupportGuidancePlugin": {
     "prefix": "devproxy-plugin-graph-beta-support-guidance",
     "body": [
@@ -373,6 +263,28 @@
     ],
     "description": "GraphSdkGuidancePlugin instance"
   },
+  "LatencyPlugin": {
+    "prefix": "devproxy-plugin-latency",
+    "body": [
+      "{",
+      "\t\"name\": \"LatencyPlugin\",",
+      "\t\"enabled\": true,",
+      "\t\"pluginPath\": \"~appFolder/plugins/dev-proxy-plugins.dll\",",
+      "\t\"configSection\": \"executionSummaryPlugin\"",
+      "}"
+    ],
+    "description": "LatencyPlugin instance"
+  },
+  "LatencyPluginConfig": {
+    "prefix": "devproxy-plugin-latency-config",
+    "body": [
+      "\"LatencyPlugin\": {",
+      "\t\"minMs\": 200",
+      "\t\"maxMs\": 10000",
+      "},"
+    ],
+    "description": "LatencyPlugin config section"
+  },
   "MinimalPermissionsGuidancePlugin": {
     "prefix": "devproxy-plugin-graph-minimal-permissions-guidance",
     "body": [
@@ -415,6 +327,49 @@
     ],
     "description": "MinimalPermissionsPlugin config section"
   },
+  "MockGeneratorPlugin": {
+    "prefix": "devproxy-plugin-mock-generator",
+    "body": [
+      "{",
+      "\t\"name\": \"MockGeneratorPlugin\",",
+      "\t\"enabled\": true,",
+      "\t\"pluginPath\": \"~appFolder/plugins/dev-proxy-plugins.dll\",",
+      "}"
+    ],
+    "description": "MockGeneratorPlugin instance"
+  },
+  "MockResponsePlugin": {
+    "prefix": "devproxy-plugin-mock-response",
+    "body": [
+      "{",
+      "\t\"name\": \"MockResponsePlugin\",",
+      "\t\"enabled\": true,",
+      "\t\"pluginPath\": \"~appFolder/plugins/dev-proxy-plugins.dll\",",
+      "\t\"configSection\": \"mocksPlugin\"",
+      "}"
+    ],
+    "description": "MockResponsePlugin instance"
+  },
+  "MockResponsePluginConfig": {
+    "prefix": "devproxy-plugin-mock-response-config",
+    "body": [
+      "\"mocksPlugin\": {",
+      "\t\"mocksFile\": \"mocks.json\"",
+      "},"
+    ],
+    "description": "MockResponsePlugin config section"
+  },  
+  "ODataPagingGuidancePlugin": {
+    "prefix": "devproxy-plugin-odata-paging-guidance",
+    "body": [
+      "{",
+      "\t\"name\": \"MockGeneratorPlugin\",",
+      "\t\"enabled\": true,",
+      "\t\"pluginPath\": \"~appFolder/plugins/dev-proxy-plugins.dll\",",
+      "}"
+    ],
+    "description": "ODataPagingGuidancePlugin instance"
+  },
   "ODSPSearchGuidancePlugin": {
     "prefix": "devproxy-plugin-graph-odsp-search-guidance",
     "body": [
@@ -435,6 +390,62 @@
       "}"
     ],
     "description": "ODSPSearchGuidancePlugin instance"
+  },
+  "OpenApiDocGeneratorPlugin": {
+    "prefix": "devproxy-plugin-open-api-doc-generator",
+    "body": [
+      "{",
+      "\t\"name\": \"OpenApiDocGeneratorPlugin\",",
+      "\t\"enabled\": true,",
+      "\t\"pluginPath\": \"~appFolder/plugins/dev-proxy-plugins.dll\",",
+      "}"
+    ],
+    "description": "OpenApiDocGeneratorPlugin instance"
+  },
+  "OpenAPIDocGeneratorPlugin": {
+    "prefix": "devproxy-plugin-open-api-doc-generator",
+    "body": [
+      "{",
+      "\t\"name\": \"OpenAPIDocGeneratorPlugin\",",
+      "\t\"enabled\": true,",
+      "\t\"pluginPath\": \"~appFolder/plugins/dev-proxy-plugins.dll\",",
+      "}"
+    ],
+    "description": "OpenAPIDocGeneratorPlugin instance"
+  },
+  "RateLimitingPlugin": {
+    "prefix": "devproxy-plugin-rate-limiting",
+    "body": [
+      "{",
+      "\t\"name\": \"RateLimitingPlugin\",",
+      "\t\"enabled\": true,",
+      "\t\"pluginPath\": \"~appFolder/plugins/dev-proxy-plugins.dll\",",
+      "\t\"configSection\": \"rateLimiting\"",
+      "}"
+    ],
+    "description": "MockResponsePlugin instance"
+  },
+  "RateLimitingPluginConfig": {
+    "prefix": "devproxy-plugin-rate-limiting-config",
+    "body": [
+      "\"mocksPlugin\": {",
+      "\t\"costPerRequest\": 2",
+      "\t\"rateLimit\": 120",
+      "\t\"retryAfterSeconds\": 5",
+      "},"
+    ],
+    "description": "RateLimitingPlugin config section"
+  },
+  "RetryAfterPlugin": {
+    "prefix": "devproxy-plugin-retry-after",
+    "body": [
+      "{",
+      "\t\"name\": \"RetryAfterPlugin\",",
+      "\t\"enabled\": true,",
+      "\t\"pluginPath\": \"~appFolder/plugins/dev-proxy-plugins.dll\",",
+      "}"
+    ],
+    "description": "RetryAfterPlugin instance"
   },
   "Response": {
     "prefix": "devproxy-response",
