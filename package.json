@@ -13,6 +13,10 @@
   "activationEvents": [
     "onLanguage:json"
   ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/garrytrinder/dev-proxy-vsc-ext.git"
+  },
   "main": "./dist/extension.js",
   "contributes": {
     "snippets": [
