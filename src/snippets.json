@@ -175,7 +175,7 @@
       "\t\"name\": \"GraphMockResponsePlugin\",",
       "\t\"enabled\": true,",
       "\t\"pluginPath\": \"~appFolder/plugins/dev-proxy-plugins.dll\",",
-      "\t\"configSection\": \"mocksPlugin\"",
+      "\t\"configSection\": \"mocksPlugin\",",
       "\t\"urlsToWatch\": [",
       "\t\t\"https://graph.microsoft.com/v1.0/*\",",
       "\t\t\"https://graph.microsoft.com/beta/*\",",
@@ -197,7 +197,7 @@
       "\t\"name\": \"GraphRandomErrorPlugin\",",
       "\t\"enabled\": true,",
       "\t\"pluginPath\": \"~appFolder/plugins/dev-proxy-plugins.dll\",",
-      "\t\"configSection\": \"graphRandomErrorPlugin\"",
+      "\t\"configSection\": \"graphRandomErrorPlugin\",",
       "\t\"urlsToWatch\": [",
       "\t\t\"https://graph.microsoft.com/v1.0/*\",",
       "\t\t\"https://graph.microsoft.com/beta/*\",",
@@ -270,7 +270,7 @@
       "\t\"name\": \"LatencyPlugin\",",
       "\t\"enabled\": true,",
       "\t\"pluginPath\": \"~appFolder/plugins/dev-proxy-plugins.dll\",",
-      "\t\"configSection\": \"executionSummaryPlugin\"",
+      "\t\"configSection\": \"latencyPlugin\"",
       "}"
     ],
     "description": "LatencyPlugin instance"
@@ -278,8 +278,8 @@
   "LatencyPluginConfig": {
     "prefix": "devproxy-plugin-latency-config",
     "body": [
-      "\"LatencyPlugin\": {",
-      "\t\"minMs\": 200",
+      "\"latencyPlugin\": {",
+      "\t\"minMs\": 200,",
       "\t\"maxMs\": 10000",
       "},"
     ],
@@ -289,9 +289,9 @@
     "prefix": "devproxy-plugin-graph-minimal-permissions-guidance",
     "body": [
       "{",
-      "\t\"name\": \"GraphSdkGuidancePlugin\",",
+      "\t\"name\": \"MinimalPermissionsGuidancePlugin\",",
       "\t\"enabled\": true,",
-      "\t\"pluginPath\": \"~appFolder/plugins/dev-proxy-plugins.dll\"",
+      "\t\"pluginPath\": \"~appFolder/plugins/dev-proxy-plugins.dll\",",
       "\t\"configSection\": \"minimalPermissionsGuidancePlugin\"",
       "}"
     ],
@@ -312,8 +312,8 @@
       "{",
       "\t\"name\": \"GraphSdkGuidancePlugin\",",
       "\t\"enabled\": true,",
-      "\t\"pluginPath\": \"~appFolder/plugins/dev-proxy-plugins.dll\"",
-      "\t\"configSection\": \"MinimalPermissionsPlugin\"",
+      "\t\"pluginPath\": \"~appFolder/plugins/dev-proxy-plugins.dll\",",
+      "\t\"configSection\": \"minimalPermissionsPlugin\"",
       "}"
     ],
     "description": "MinimalPermissionsPlugin instance"
@@ -321,7 +321,7 @@
   "MinimalPermissionsPluginConfig": {
     "prefix": "devproxy-plugin-graph-minimal-permissions-config",
     "body": [
-      "\"MinimalPermissionsPlugin\": {",
+      "\"minimalPermissionsPlugin\": {",
       "\t\"type\": \"delegated\"",
       "},"
     ],
@@ -333,7 +333,7 @@
       "{",
       "\t\"name\": \"MockGeneratorPlugin\",",
       "\t\"enabled\": true,",
-      "\t\"pluginPath\": \"~appFolder/plugins/dev-proxy-plugins.dll\",",
+      "\t\"pluginPath\": \"~appFolder/plugins/dev-proxy-plugins.dll\"",
       "}"
     ],
     "description": "MockGeneratorPlugin instance"
@@ -417,9 +417,9 @@
   "RateLimitingPluginConfig": {
     "prefix": "devproxy-plugin-rate-limiting-config",
     "body": [
-      "\"mocksPlugin\": {",
-      "\t\"costPerRequest\": 2",
-      "\t\"rateLimit\": 120",
+      "\"rateLimiting\": {",
+      "\t\"costPerRequest\": 2,",
+      "\t\"rateLimit\": 120,",
       "\t\"retryAfterSeconds\": 5",
       "},"
     ],
