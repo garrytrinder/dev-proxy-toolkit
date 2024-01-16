@@ -161,7 +161,7 @@
       "\t\t\"https://graph.microsoft.us/beta/*\",",
       "\t\t\"https://dod-graph.microsoft.us/v1.0/*\",",
       "\t\t\"https://dod-graph.microsoft.us/beta/*\",",
-      "\t\t\"https://microsoftgraph.chinacloudapi.cn/v1.0/*\"",
+      "\t\t\"https://microsoftgraph.chinacloudapi.cn/v1.0/*\",",
       "\t\t\"https://microsoftgraph.chinacloudapi.cn/beta/*\"",
       "\t]",
       "}"
@@ -183,7 +183,7 @@
       "\t\t\"https://graph.microsoft.us/beta/*\",",
       "\t\t\"https://dod-graph.microsoft.us/v1.0/*\",",
       "\t\t\"https://dod-graph.microsoft.us/beta/*\",",
-      "\t\t\"https://microsoftgraph.chinacloudapi.cn/v1.0/*\"",
+      "\t\t\"https://microsoftgraph.chinacloudapi.cn/v1.0/*\",",
       "\t\t\"https://microsoftgraph.chinacloudapi.cn/beta/*\"",
       "\t]",
       "}"
@@ -205,7 +205,7 @@
       "\t\t\"https://graph.microsoft.us/beta/*\",",
       "\t\t\"https://dod-graph.microsoft.us/v1.0/*\",",
       "\t\t\"https://dod-graph.microsoft.us/beta/*\",",
-      "\t\t\"https://microsoftgraph.chinacloudapi.cn/v1.0/*\"",
+      "\t\t\"https://microsoftgraph.chinacloudapi.cn/v1.0/*\",",
       "\t\t\"https://microsoftgraph.chinacloudapi.cn/beta/*\"",
       "\t]",
       "}"
@@ -235,7 +235,7 @@
       "\t\t\"https://graph.microsoft.us/beta/*\",",
       "\t\t\"https://dod-graph.microsoft.us/v1.0/*\",",
       "\t\t\"https://dod-graph.microsoft.us/beta/*\",",
-      "\t\t\"https://microsoftgraph.chinacloudapi.cn/v1.0/*\"",
+      "\t\t\"https://microsoftgraph.chinacloudapi.cn/v1.0/*\",",
       "\t\t\"https://microsoftgraph.chinacloudapi.cn/beta/*\"",
       "\t]",
       "}"
@@ -256,7 +256,7 @@
       "\t\t\"https://graph.microsoft.us/beta/*\",",
       "\t\t\"https://dod-graph.microsoft.us/v1.0/*\",",
       "\t\t\"https://dod-graph.microsoft.us/beta/*\",",
-      "\t\t\"https://microsoftgraph.chinacloudapi.cn/v1.0/*\"",
+      "\t\t\"https://microsoftgraph.chinacloudapi.cn/v1.0/*\",",
       "\t\t\"https://microsoftgraph.chinacloudapi.cn/beta/*\"",
       "\t]",
       "}"
@@ -365,7 +365,7 @@
       "{",
       "\t\"name\": \"MockGeneratorPlugin\",",
       "\t\"enabled\": true,",
-      "\t\"pluginPath\": \"~appFolder/plugins/dev-proxy-plugins.dll\",",
+      "\t\"pluginPath\": \"~appFolder/plugins/dev-proxy-plugins.dll\"",
       "}"
     ],
     "description": "ODataPagingGuidancePlugin instance"
@@ -384,7 +384,7 @@
       "\t\t\"https://graph.microsoft.us/beta/*\",",
       "\t\t\"https://dod-graph.microsoft.us/v1.0/*\",",
       "\t\t\"https://dod-graph.microsoft.us/beta/*\",",
-      "\t\t\"https://microsoftgraph.chinacloudapi.cn/v1.0/*\"",
+      "\t\t\"https://microsoftgraph.chinacloudapi.cn/v1.0/*\",",
       "\t\t\"https://microsoftgraph.chinacloudapi.cn/beta/*\"",
       "\t]",
       "}"
@@ -397,7 +397,7 @@
       "{",
       "\t\"name\": \"OpenAPIDocGeneratorPlugin\",",
       "\t\"enabled\": true,",
-      "\t\"pluginPath\": \"~appFolder/plugins/dev-proxy-plugins.dll\",",
+      "\t\"pluginPath\": \"~appFolder/plugins/dev-proxy-plugins.dll\"",
       "}"
     ],
     "description": "OpenAPIDocGeneratorPlugin instance"
@@ -431,7 +431,7 @@
       "{",
       "\t\"name\": \"RetryAfterPlugin\",",
       "\t\"enabled\": true,",
-      "\t\"pluginPath\": \"~appFolder/plugins/dev-proxy-plugins.dll\",",
+      "\t\"pluginPath\": \"~appFolder/plugins/dev-proxy-plugins.dll\"",
       "}"
     ],
     "description": "RetryAfterPlugin instance"
