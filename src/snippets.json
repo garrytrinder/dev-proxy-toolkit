@@ -1,6 +1,6 @@
 {
   "Config": {
-    "prefix": "devproxy-config-file",
+    "prefix": "devproxy-config",
     "body": [
       "{",
       "\t\"\\$schema\": \"https://raw.githubusercontent.com/microsoft/dev-proxy/main/schemas/v1.0/rc.schema.json\",",
@@ -14,7 +14,7 @@
     "description": "Dev Proxy config file"
   },
   "Errors": {
-    "prefix": "devproxy-errors-file",
+    "prefix": "devproxy-errors",
     "body": [
       "{",
       "\t\"\\$schema\": \"https://raw.githubusercontent.com/microsoft/dev-proxy/main/schemas/v1.0/genericrandomerrorplugin.schema.json\",",
