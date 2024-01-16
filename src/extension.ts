@@ -8,7 +8,6 @@ export const activate = (context: vscode.ExtensionContext) => {
 
   context.subscriptions.push(
     vscode.workspace.onDidOpenTextDocument(document => {
-      collection.clear();
       updateDiagnostics(document, collection);
     })
   );
