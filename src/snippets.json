@@ -391,17 +391,6 @@
     ],
     "description": "ODSPSearchGuidancePlugin instance"
   },
-  "OpenApiDocGeneratorPlugin": {
-    "prefix": "devproxy-plugin-open-api-doc-generator",
-    "body": [
-      "{",
-      "\t\"name\": \"OpenApiDocGeneratorPlugin\",",
-      "\t\"enabled\": true,",
-      "\t\"pluginPath\": \"~appFolder/plugins/dev-proxy-plugins.dll\",",
-      "}"
-    ],
-    "description": "OpenApiDocGeneratorPlugin instance"
-  },
   "OpenAPIDocGeneratorPlugin": {
     "prefix": "devproxy-plugin-open-api-doc-generator",
     "body": [

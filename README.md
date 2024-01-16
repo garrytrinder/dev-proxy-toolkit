@@ -41,7 +41,6 @@ The Dev Proxy extension makes it easy to create and update configuration files.
 | `devproxy-plugin-odata-paging-guidance` | ODataPagingGuidancePlugin instance |
 | `devproxy-plugin-graph-odsp-search-guidance` | ODSPSearchGuidancePlugin instance |
 | `devproxy-plugin-open-api-doc-generator` | OpenApiDocGeneratorPlugin instance |
-| `devproxy-plugin-open-api-doc-generator` | OpenAPIDocGeneratorPlugin instance |
 | `devproxy-plugin-rate-limiting` | MockResponsePlugin instance |
 | `devproxy-plugin-rate-limiting-config` | RateLimitingPlugin config section |
 | `devproxy-plugin-retry-after` | RetryAfterPlugin instance |
