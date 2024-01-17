@@ -1,6 +1,11 @@
 export type PluginSnippets = {
     [key: string]: {
         instance: string;
-        config: string | null;
+        config?: PluginConfig;
     };
+};
+
+export type PluginConfig = {
+    name: string;
+    required: boolean;
 };

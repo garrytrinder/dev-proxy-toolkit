@@ -107,7 +107,7 @@ const updateDiagnostics = (
       const pluginName = (pluginNameNode?.value as parse.LiteralNode)
         .value as string;
       const pluginSnippet = pluginSnippets[pluginName];
-      const requiresConfig = pluginSnippet.config !== null;
+      const requiresConfig = pluginSnippet.config ? pluginSnippet.config.required : false;
 
       if (requiresConfig) {
         // check to see if the plugin has a config section
@@ -140,7 +140,7 @@ const updateDiagnostics = (
             diagnostics.push(
               new vscode.Diagnostic(
                 getRangeFromASTNode(configSectionNode.value),
-                `${configSectionName} config section is missing. Use '${pluginSnippet.config}' snippet to create one.`,
+                `${configSectionName} config section is missing. Use '${pluginSnippet.config?.name}' snippet to create one.`,
                 vscode.DiagnosticSeverity.Error
               )
             );

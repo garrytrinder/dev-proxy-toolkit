@@ -3,87 +3,110 @@ import { PluginSnippets } from "./types";
 export const pluginSnippets: PluginSnippets = {
     CachingGuidancePlugin: {
         instance: "devproxy-plugin-caching-guidance",
-        config: "devproxy-plugin-caching-guidance-config"
+        config: {
+            name: "devproxy-plugin-caching-guidance-config",
+            required: true
+        }
     },
     CrudApiPlugin: {
         instance: "devproxy-plugin-crud-api",
-        config: "devproxy-plugin-crud-api-config"
+        config: {
+            name: "devproxy-plugin-crud-api-config",
+            required: true
+        },
     },
     DevToolsPlugin: {
         instance: "devproxy-plugin-dev-tools",
-        config: "devproxy-plugin-dev-tools-config"
+        config: {
+            name: "devproxy-plugin-dev-tools-config",
+            required: true
+        },
     },
     ExecutionSummaryPlugin: {
         instance: "devproxy-plugin-execution-summary",
-        config: "devproxy-plugin-execution-summary-config"
+        config: {
+            name: "devproxy-plugin-execution-summary-config",
+            required: true
+        }
     },
     GenericRandomErrorPlugin: {
         instance: "devproxy-plugin-generic-random-error",
-        config: "devproxy-plugin-generic-random-error-config"
+        config: {
+            name: "devproxy-plugin-generic-random-error-config",
+            required: true
+        }
     },
     GraphBetaSupportGuidancePlugin: {
-        instance: "devproxy-plugin-graph-beta-support-guidance",
-        config: null
+        instance: "devproxy-plugin-graph-beta-support-guidance"
     },
     GraphClientRequestIdGuidancePlugin: {
-        instance: "devproxy-plugin-graph-client-request-id-guidance",
-        config: null
+        instance: "devproxy-plugin-graph-client-request-id-guidance"
     },
     GraphMockResponsePlugin: {
-        instance: "devproxy-plugin-graph-mock-response",
-        config: null
+        instance: "devproxy-plugin-graph-mock-response"
     },
     GraphRandomErrorPlugin: {
         instance: "devproxy-plugin-graph-random-error",
-        config: "devproxy-plugin-graph-random-error-config"
+        config: {
+            name: "devproxy-plugin-graph-random-error-config",
+            required: true
+        }
     },
     GraphSdkGuidancePlugin: {
         instance: "devproxy-plugin-graph-sdk-guidance",
-        config: null
     },
     GraphSelectGuidancePlugin: {
         instance: "devproxy-plugin-graph-select-guidance",
-        config: null
     },
     LatencyPlugin: {
         instance: "devproxy-plugin-latency",
-        config: "devproxy-plugin-latency-config"
+        config: {
+            name: "devproxy-plugin-latency-config",
+            required: true
+        }
     },
     MinimalPermissionsGuidancePlugin:
     {
         instance: "devproxy-plugin-minimal-permissions-guidance",
-        config: "devproxy-plugin-minimal-permissions-guidance-config"
+        config: {
+            name: "devproxy-plugin-minimal-permissions-guidance-config",
+            required: false
+        }
     },
     MinimalPermissionsPlugin: {
         instance: "devproxy-plugin-minimal-permissions",
-        config: "devproxy-plugin-minimal-permissions-config"
+        config: {
+            name: "devproxy-plugin-minimal-permissions-config",
+            required: true
+        }
     },
     MockGeneratorPlugin: {
-        instance: "devproxy-plugin-mock-generator",
-        config: null
+        instance: "devproxy-plugin-mock-generator"
     },
     MockResponsePlugin: {
         instance: "devproxy-plugin-mock-response",
-        config: "devproxy-plugin-mock-response-config"
+        config: {
+            name: "devproxy-plugin-mock-response-config",
+            required: true
+        }
     },
     ODataPagingGuidancePlugin: {
-        instance: "devproxy-plugin-odata-paging-guidance",
-        config: null
+        instance: "devproxy-plugin-odata-paging-guidance"
     },
     ODSPSearchGuidancePlugin: {
-        instance: "devproxy-plugin-odsp-search-guidance",
-        config: null
+        instance: "devproxy-plugin-odsp-search-guidance"
     },
     OpenAPIDocGeneratorPlugin: {
-        instance: "devproxy-plugin-openapi-doc-generator",
-        config: null
+        instance: "devproxy-plugin-openapi-doc-generator"
     },
     RateLimitingPlugin: {
         instance: "devproxy-plugin-rate-limiting",
-        config: "devproxy-plugin-rate-limiting-config"
+        config: {
+            name: "devproxy-plugin-rate-limiting-config",
+            required: true
+        }
     },
     RetryAfterPlugin: {
-        instance: "devproxy-plugin-retry-after",
-        config: null
+        instance: "devproxy-plugin-retry-after"
     }
 };
