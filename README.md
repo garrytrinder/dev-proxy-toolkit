@@ -11,17 +11,20 @@ The Dev Proxy extension makes it easy to create and update configuration files.
 | Prefix | Description |
 | ------ | ----------- |
 | `devproxy-config` | Dev Proxy config file |
+| `devproxy-config-schema` | Dev Proxy config schema |
 | `devproxy-errors` | Dev Proxy errors file |
 | `devproxy-plugin-caching-guidance` | CachingGuidancePlugin instance |
 | `devproxy-plugin-caching-guidance-config` | CachingGuidancePlugin config section |
 | `devproxy-plugin-crud-api` | CrudApiPlugin instance |
 | `devproxy-plugin-crud-api-config` | CrudApiPlugin config section |
+| `devproxy-plugin-crud-api-schema` | CrudApiPlugin schema |
 | `devproxy-plugin-dev-tools` | DevToolsPlugin instance |
 | `devproxy-plugin-dev-tools-config` | DevToolsPlugin config section |
 | `devproxy-plugin-execution-summary` | ExecutionSummaryPlugin instance |
 | `devproxy-plugin-execution-summary-config` | ExecutionSummaryPlugin config section |
 | `devproxy-plugin-generic-random-error` | GenericRandomErrorPlugin instance |
 | `devproxy-plugin-generic-random-error-config` | GenericRandomErrorPlugin config section |
+| `devproxy-plugin-generic-random-error-schema` | GenericRandomErrorPlugin schema |
 | `devproxy-plugin-graph-beta-support-guidance` | GraphBetaSupportGuidancePlugin instance |
 | `devproxy-plugin-graph-client-request-id-guidance` | GraphClientRequestIdGuidancePlugin instance |
 | `devproxy-plugin-graph-mock-response` | GraphMockResponsePlugin instance |
@@ -38,11 +41,13 @@ The Dev Proxy extension makes it easy to create and update configuration files.
 | `devproxy-plugin-mock-generator` | MockGeneratorPlugin instance |
 | `devproxy-plugin-mock-response` | MockResponsePlugin instance |
 | `devproxy-plugin-mock-response-config` | MockResponsePlugin config section |
+| `devproxy-plugin-mock-response-schema` | MockResponsePlugin schema |
 | `devproxy-plugin-odata-paging-guidance` | ODataPagingGuidancePlugin instance |
 | `devproxy-plugin-graph-odsp-search-guidance` | ODSPSearchGuidancePlugin instance |
-| `devproxy-plugin-open-api-doc-generator` | OpenApiDocGeneratorPlugin instance |
+| `devproxy-plugin-open-api-doc-generator` | OpenAPIDocGeneratorPlugin instance |
 | `devproxy-plugin-rate-limiting` | MockResponsePlugin instance |
 | `devproxy-plugin-rate-limiting-config` | RateLimitingPlugin config section |
+| `devproxy-plugin-rate-limiting-schema` | RateLimitingPlugin schema |
 | `devproxy-plugin-retry-after` | RetryAfterPlugin instance |
 | `devproxy-response` | Empty Dev Proxy response |
 | `devproxy-response-header` | Empty Dev Proxy response header |
@@ -53,4 +58,4 @@ The following diagnostic checks are performed:
 
 - Check for empty `urlsToWatch`.
 - Check for missing `configSection` property in plugin instance for plugins that require configuration.
-- Check for missing `configSection` when defined in plugin instance
+- Check for missing `configSection` when defined in plugin instance.
