@@ -2,7 +2,7 @@
   "name": "dev-proxy-vsc-ext",
   "displayName": "Dev Proxy",
   "description": "Dev Proxy is a command line tool that helps you simulate behaviors and errors of cloud APIs.",
-  "version": "0.0.5",
+  "version": "0.0.6",
   "publisher": "garrytrinder",
   "engines": {
     "vscode": "^1.85.0"
