@@ -13,6 +13,13 @@
     ],
     "description": "Dev Proxy config file"
   },
+  "ConfigSchema": {
+    "prefix": "devproxy-config-schema",
+    "body": [
+      "\"\\$schema\": \"https://raw.githubusercontent.com/microsoft/dev-proxy/main/schemas/v1.0/rc.schema.json\","
+    ],
+    "description": "Dev Proxy config schema"
+  },
   "Errors": {
     "prefix": "devproxy-errors",
     "body": [
@@ -66,6 +73,13 @@
       "},"
     ],
     "description": "CrudApiPlugin config section"
+  },
+  "CrudApiPluginSchema": {
+    "prefix": "devproxy-plugin-crud-api-schema",
+    "body": [
+      "\"\\$schema\": \"https://raw.githubusercontent.com/microsoft/dev-proxy/main/schemas/v1.0/crudapiplugin.schema.json\","
+    ],
+    "description": "CrudApiPlugin schema"
   },
   "DevToolsPlugin": {
     "prefix": "devproxy-plugin-dev-tools",
@@ -129,6 +143,14 @@
       "},"
     ],
     "description": "GenericRandomErrorPlugin config section"
+  },
+  "GenericRandomErrorPluginSchema": {
+    "prefix": "devproxy-plugin-generic-random-error-schema",
+    "body": [
+      "\"\\$schema\": \"https://raw.githubusercontent.com/microsoft/dev-proxy/main/schemas/v1.0/genericrandomerrorplugin.schema.json\","
+      
+    ],
+    "description": "GenericRandomErrorPlugin schema"
   },
   "GraphBetaSupportGuidancePlugin": {
     "prefix": "devproxy-plugin-graph-beta-support-guidance",
@@ -358,7 +380,14 @@
       "},"
     ],
     "description": "MockResponsePlugin config section"
-  },  
+  },
+  "MockResponsePluginSchema": {
+    "prefix": "devproxy-plugin-mock-response-schema",
+    "body": [
+      "\"\\$schema\": \"https://raw.githubusercontent.com/microsoft/dev-proxy/main/schemas/v1.0/mockresponseplugin.schema.json\","      
+    ],
+    "description": "MockResponsePlugin schema"
+  },
   "ODataPagingGuidancePlugin": {
     "prefix": "devproxy-plugin-odata-paging-guidance",
     "body": [
@@ -424,6 +453,13 @@
       "},"
     ],
     "description": "RateLimitingPlugin config section"
+  },
+  "RateLimitingPluginSchema": {
+    "prefix": "devproxy-plugin-rate-limiting-schema",
+    "body": [
+      "\"\\$schema\": \"https://raw.githubusercontent.com/microsoft/dev-proxy/main/schemas/v1.0/ratelimitingplugin.schema.json\","
+    ],
+    "description": "RateLimitingPlugin schema"
   },
   "RetryAfterPlugin": {
     "prefix": "devproxy-plugin-retry-after",
