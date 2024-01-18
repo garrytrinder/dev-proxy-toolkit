@@ -14,6 +14,10 @@ The Dev Proxy extension makes it easy to create and update configuration files.
 | `devproxy-config-file-schema` | Dev Proxy config file schema |
 | `devproxy-mocks-file` | Dev Proxy mocks file |
 | `devproxy-mocks-file-schema` | Dev Proxy mocks file schema |
+| `devproxy-mock` | Dev Proxy mock |
+| `devproxy-request` | Dev Proxy request |
+| `devproxy-response` | Dev Proxy response |
+| `devproxy-response-header` | Dev Proxy response header |
 | `devproxy-plugin-caching-guidance` | CachingGuidancePlugin instance |
 | `devproxy-plugin-caching-guidance-config` | CachingGuidancePlugin config section |
 | `devproxy-plugin-crud-api` | CrudApiPlugin instance |
@@ -53,8 +57,6 @@ The Dev Proxy extension makes it easy to create and update configuration files.
 | `devproxy-plugin-rate-limiting-file` | Dev Proxy rate limiting file |
 | `devproxy-plugin-rate-limiting-file-schema` | Dev Proxy rate limiting file schema |
 | `devproxy-plugin-retry-after` | RetryAfterPlugin instance |
-| `devproxy-response` | Dev Proxy response |
-| `devproxy-response-header` | Dev Proxy response header |
 
 ### Diagnostics
 

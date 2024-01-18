@@ -34,6 +34,51 @@
     ],
     "description": "Dev Proxy mocks file schema"  
   },
+  "Mock": {
+    "prefix": "devproxy-mock",
+    "body": [
+      "\r",
+      "\t{",
+      "\t\t\"request\": {",
+      "\t\t\t\"url\": \"$1\"",
+      "\t\t},",      
+      "\t\t\"response\": {$2}",
+      "\t}\r"
+    ],
+    "description": "Dev Proxy mock"
+  },
+  "Request": {
+    "prefix": "devproxy-request",
+    "body": [
+      "\t\"request\": {",
+      "\t\t\"url\": \"$1\"",
+      "\t},",      
+      "\t\"response\": {$2}",
+      "}"
+    ],
+    "description": "Dev Proxy request"
+  },
+  "Response": {
+    "prefix": "devproxy-response",
+    "body": [
+      "\r",
+      "\t\"statusCode\": ${1:400},",
+      "\t\"body\": {$2},",
+      "\t\"headers\": [$3]\r"
+    ],
+    "description": "Dev Proxy response"
+  },
+  "ResponseHeader": {
+    "prefix": "devproxy-response-header",
+    "body": [
+      "\r",
+      "{",
+      "\t\"name\": \"$1\",",
+      "\t\"value\": \"$2\"",
+      "}\r"
+    ],
+    "description": "Dev Proxy response header"
+  },
   "CachingGuidancePlugin": {
     "prefix": "devproxy-plugin-caching-guidance",
     "body": [
@@ -506,26 +551,5 @@
       "}"
     ],
     "description": "RetryAfterPlugin instance"
-  },
-  "Response": {
-    "prefix": "devproxy-response",
-    "body": [
-      "{",
-      "\t\"statusCode\": ${1:400},",
-      "\t\"body\": {$2},",
-      "\t\"headers\": [$3]",
-      "}"
-    ],
-    "description": "Dev Proxy response"
-  },
-  "ResponseHeader": {
-    "prefix": "devproxy-response-header",
-    "body": [
-      "{",
-      "\t\"name\": \"$1\",",
-      "\t\"value\": \"$2\"",
-      "}"
-    ],
-    "description": "Dev Proxy response header"
   }
 }
