@@ -512,8 +512,8 @@
     "body": [
       "{",
       "\t\"statusCode\": ${1:400},",
-      "\t\"body\": { $2 },",
-      "\t\"headers\": [ $3 ]",
+      "\t\"body\": {$2},",
+      "\t\"headers\": [$3]",
       "}"
     ],
     "description": "Dev Proxy response"
