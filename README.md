@@ -24,6 +24,7 @@ The Dev Proxy extension makes it easy to create and update configuration files.
 | `devproxy-plugin-crud-api-config` | CrudApiPlugin config section |
 | `devproxy-plugin-crud-api-file` | CrudApiPlugin API file |
 | `devproxy-plugin-crud-api-file-schema` | CrudApiPlugin API file schema |
+| `devproxy-plugin-crud-api-action` | CrudApiPlugin action |
 | `devproxy-plugin-dev-tools` | DevToolsPlugin instance |
 | `devproxy-plugin-dev-tools-config` | DevToolsPlugin config section |
 | `devproxy-plugin-execution-summary` | ExecutionSummaryPlugin instance |

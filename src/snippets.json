@@ -140,6 +140,19 @@
     ],
     "description": "CrudApiPlugin API file schema"
   },
+  "CrudApiPluginAction": {
+    "prefix": "devproxy-plugin-crud-api-action",
+    "body": [
+      "\r",
+      "\t{",
+      "\t\t\"action\": \"$1\",",
+      "\t\t\"method\": \"$2\",",
+      "\t\t\"query\": \"$3\",",
+      "\t\t\"url\": \"$4\"",
+      "\t}\r"
+    ],
+    "description": "CrudApiPlugin action"
+  },
   "DevToolsPlugin": {
     "prefix": "devproxy-plugin-dev-tools",
     "body": [
