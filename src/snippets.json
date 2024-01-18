@@ -5,10 +5,7 @@
       "{",
       "\t\"\\$schema\": \"https://raw.githubusercontent.com/microsoft/dev-proxy/main/schemas/v1.0/rc.schema.json\",",
       "\t\"plugins\": [$1],",
-      "\t\"urlsToWatch\": [$2],",
-      "\t\"rate\": 50,",
-      "\t\"labelMode\": \"text\",",
-      "\t\"logLevel\": \"info\"",
+      "\t\"urlsToWatch\": [$2]",
       "}"
     ],
     "description": "Dev Proxy config file"
