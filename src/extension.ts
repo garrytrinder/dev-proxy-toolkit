@@ -14,6 +14,10 @@ export const activate = (context: vscode.ExtensionContext) => {
 
   context.subscriptions.push(
     vscode.workspace.onDidChangeTextDocument(event => {
+      if (event.document.getText() === "") {
+        collection.delete(event.document.uri);
+        return;
+      };
       updateDiagnostics(event.document, collection);
     })
   );
