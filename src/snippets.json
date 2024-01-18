@@ -420,16 +420,16 @@
     ],
     "description": "ODSPSearchGuidancePlugin instance"
   },
-  "OpenAPIDocGeneratorPlugin": {
-    "prefix": "devproxy-plugin-open-api-doc-generator",
+  "OpenApiSpecGeneratorPlugin": {
+    "prefix": "devproxy-plugin-open-api-spec-generator",
     "body": [
       "{",
-      "\t\"name\": \"OpenAPIDocGeneratorPlugin\",",
+      "\t\"name\": \"OpenApiSpecGeneratorPlugin\",",
       "\t\"enabled\": true,",
       "\t\"pluginPath\": \"~appFolder/plugins/dev-proxy-plugins.dll\"",
       "}"
     ],
-    "description": "OpenAPIDocGeneratorPlugin instance"
+    "description": "OpenApiSpecGeneratorPlugin instance"
   },
   "RateLimitingPlugin": {
     "prefix": "devproxy-plugin-rate-limiting",
