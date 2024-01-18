@@ -158,9 +158,9 @@ const updateDiagnostics = (
         }
       }
     });
-
-    collection.set(document.uri, diagnostics);
   }
+
+  collection.set(document.uri, diagnostics);
 };
 
 export const deactivate = () => { };
