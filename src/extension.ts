@@ -106,6 +106,12 @@ const updateDiagnostics = (
       );
       const pluginName = (pluginNameNode?.value as parse.LiteralNode)
         .value as string;
+      const enabledNode = getASTNode(
+        pluginNode.children,
+        'Identifier',
+        'enabled'
+      );
+      const isEnabled = (enabledNode?.value as parse.LiteralNode).value as boolean;
       const pluginSnippet = pluginSnippets[pluginName];
       const requiresConfig = pluginSnippet.config ? pluginSnippet.config.required : false;
 
@@ -141,7 +147,7 @@ const updateDiagnostics = (
               new vscode.Diagnostic(
                 getRangeFromASTNode(configSectionNode.value),
                 `${configSectionName} config section is missing. Use '${pluginSnippet.config?.name}' snippet to create one.`,
-                vscode.DiagnosticSeverity.Error
+                isEnabled ? vscode.DiagnosticSeverity.Error : vscode.DiagnosticSeverity.Warning
               )
             );
           }
