@@ -1,6 +1,6 @@
 {
-  "Config": {
-    "prefix": "devproxy-config",
+  "ConfigFile": {
+    "prefix": "devproxy-config-file",
     "body": [
       "{",
       "\t\"\\$schema\": \"https://raw.githubusercontent.com/microsoft/dev-proxy/main/schemas/v1.0/rc.schema.json\",",
@@ -10,24 +10,29 @@
     ],
     "description": "Dev Proxy config file"
   },
-  "ConfigSchema": {
-    "prefix": "devproxy-config-schema",
+  "ConfigFileSchema": {
+    "prefix": "devproxy-config-file-schema",
     "body": [
       "\"\\$schema\": \"https://raw.githubusercontent.com/microsoft/dev-proxy/main/schemas/v1.0/rc.schema.json\","
     ],
-    "description": "Dev Proxy config schema"
+    "description": "Dev Proxy config file schema"
   },
-  "Errors": {
-    "prefix": "devproxy-errors",
+  "MocksFile": {
+    "prefix": "devproxy-mocks-file",
     "body": [
       "{",
-      "\t\"\\$schema\": \"https://raw.githubusercontent.com/microsoft/dev-proxy/main/schemas/v1.0/genericrandomerrorplugin.schema.json\",",
-      "\t\"responses\": [",
-      "\t\t$1",
-      "\t]",
+      "\t\"\\$schema\": \"https://raw.githubusercontent.com/microsoft/dev-proxy/main/schemas/v1.0/mockresponseplugin.schema.json\",",
+      "\t\"mocks\": [$1]",
       "}"
     ],
-    "description": "Dev Proxy errors file"
+    "description": "Dev Proxy mocks file"
+  },
+  "MocksFileSchema": {
+    "prefix": "devproxy-mocks-file-schema",
+    "body": [
+      "\"\\$schema\": \"https://raw.githubusercontent.com/microsoft/dev-proxy/main/schemas/v1.0/mockresponseplugin.schema.json\","
+    ],
+    "description": "Dev Proxy mocks file schema"  
   },
   "CachingGuidancePlugin": {
     "prefix": "devproxy-plugin-caching-guidance",
@@ -71,12 +76,24 @@
     ],
     "description": "CrudApiPlugin config section"
   },
-  "CrudApiPluginSchema": {
-    "prefix": "devproxy-plugin-crud-api-schema",
+  "CrudApiPluginApiFile": {
+    "prefix": "devproxy-plugin-crud-api-file",
+    "body": [
+      "{",
+      "\t\"\\$schema\": \"https://raw.githubusercontent.com/microsoft/dev-proxy/main/schemas/v1.0/crudapiplugin.schema.json\",",
+      "\t\"actions\": [$1],",
+      "\t\"baseUrl\": \"$2\",",
+      "\t\"dataFile\": \"$3\"",
+      "}"
+    ],
+    "description": "CrudApiPlugin API file"
+  },
+  "CrudApiPluginFileSchema": {
+    "prefix": "devproxy-plugin-crud-api-file-schema",
     "body": [
       "\"\\$schema\": \"https://raw.githubusercontent.com/microsoft/dev-proxy/main/schemas/v1.0/crudapiplugin.schema.json\","
     ],
-    "description": "CrudApiPlugin schema"
+    "description": "CrudApiPlugin API file schema"
   },
   "DevToolsPlugin": {
     "prefix": "devproxy-plugin-dev-tools",
@@ -141,13 +158,22 @@
     ],
     "description": "GenericRandomErrorPlugin config section"
   },
-  "GenericRandomErrorPluginSchema": {
-    "prefix": "devproxy-plugin-generic-random-error-schema",
+  "GenericRandomErrorPluginFile": {
+    "prefix": "devproxy-plugin-generic-random-error-file",
+    "body": [
+      "{",
+      "\t\"\\$schema\": \"https://raw.githubusercontent.com/microsoft/dev-proxy/main/schemas/v1.0/genericrandomerrorplugin.schema.json\",",
+      "\t\"responses\": [$1]",
+      "}"
+    ],
+    "description": "GenericRandomErrorPlugin errors file"
+  },
+  "GenericRandomErrorPluginFileSchema": {
+    "prefix": "devproxy-plugin-generic-random-error-file-schema",
     "body": [
       "\"\\$schema\": \"https://raw.githubusercontent.com/microsoft/dev-proxy/main/schemas/v1.0/genericrandomerrorplugin.schema.json\","
-      
     ],
-    "description": "GenericRandomErrorPlugin schema"
+    "description": "GenericRandomErrorPlugin errors file schema"
   },
   "GraphBetaSupportGuidancePlugin": {
     "prefix": "devproxy-plugin-graph-beta-support-guidance",
@@ -378,7 +404,7 @@
     ],
     "description": "MockResponsePlugin config section"
   },
-  "MockResponsePluginSchema": {
+  "MockResponsePluginFileSchema": {
     "prefix": "devproxy-plugin-mock-response-schema",
     "body": [
       "\"\\$schema\": \"https://raw.githubusercontent.com/microsoft/dev-proxy/main/schemas/v1.0/mockresponseplugin.schema.json\","      
@@ -451,12 +477,24 @@
     ],
     "description": "RateLimitingPlugin config section"
   },
-  "RateLimitingPluginSchema": {
-    "prefix": "devproxy-plugin-rate-limiting-schema",
+  "RateLimitingFile": {
+    "prefix": "devproxy-plugin-rate-limiting-file",
     "body": [
-      "\"\\$schema\": \"https://raw.githubusercontent.com/microsoft/dev-proxy/main/schemas/v1.0/ratelimitingplugin.schema.json\","
+      "{",
+      "\t\"\\$schema\": \"https://raw.githubusercontent.com/microsoft/dev-proxy/main/schemas/v1.0/ratelimitingplugin.schema.json\",",
+      "\t\"body\": {$1},",
+      "\t\"headers\": [$2],",
+      "\t\"statusCode\": 429$3",
+      "}"
     ],
-    "description": "RateLimitingPlugin schema"
+    "description": "Dev Proxy rate limiting file"
+  },
+  "RateLimitingFileSchema": {
+    "prefix": "devproxy-plugin-rate-limiting-file-schema",
+    "body": [
+      "\"\\$schema\": \"https://raw.githubusercontent.com/microsoft/dev-proxy/main/schemas/v1.0/crudapiplugin.schema.json\","
+    ],
+    "description": "Dev Proxy rate limiting file schema"
   },
   "RetryAfterPlugin": {
     "prefix": "devproxy-plugin-retry-after",
@@ -474,15 +512,11 @@
     "body": [
       "{",
       "\t\"statusCode\": ${1:400},",
-      "\t\"body\": {",
-      "\t\t$2",
-      "\t},",
-      "\t\"headers\": [",
-      "\t\t$3",
-      "\t]",
+      "\t\"body\": { $2 },",
+      "\t\"headers\": [ $3 ]",
       "}"
     ],
-    "description": "Empty Dev Proxy response"
+    "description": "Dev Proxy response"
   },
   "ResponseHeader": {
     "prefix": "devproxy-response-header",
@@ -492,6 +526,6 @@
       "\t\"value\": \"$2\"",
       "}"
     ],
-    "description": "Empty Dev Proxy response header"
+    "description": "Dev Proxy response header"
   }
 }

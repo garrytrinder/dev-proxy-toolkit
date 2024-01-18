@@ -10,21 +10,24 @@ The Dev Proxy extension makes it easy to create and update configuration files.
 
 | Prefix | Description |
 | ------ | ----------- |
-| `devproxy-config` | Dev Proxy config file |
-| `devproxy-config-schema` | Dev Proxy config schema |
-| `devproxy-errors` | Dev Proxy errors file |
+| `devproxy-config-file` | Dev Proxy config file |
+| `devproxy-config-file-schema` | Dev Proxy config file schema |
+| `devproxy-mocks-file` | Dev Proxy mocks file |
+| `devproxy-mocks-file-schema` | Dev Proxy mocks file schema |
 | `devproxy-plugin-caching-guidance` | CachingGuidancePlugin instance |
 | `devproxy-plugin-caching-guidance-config` | CachingGuidancePlugin config section |
 | `devproxy-plugin-crud-api` | CrudApiPlugin instance |
 | `devproxy-plugin-crud-api-config` | CrudApiPlugin config section |
-| `devproxy-plugin-crud-api-schema` | CrudApiPlugin schema |
+| `devproxy-plugin-crud-api-file` | CrudApiPlugin API file |
+| `devproxy-plugin-crud-api-file-schema` | CrudApiPlugin API file schema |
 | `devproxy-plugin-dev-tools` | DevToolsPlugin instance |
 | `devproxy-plugin-dev-tools-config` | DevToolsPlugin config section |
 | `devproxy-plugin-execution-summary` | ExecutionSummaryPlugin instance |
 | `devproxy-plugin-execution-summary-config` | ExecutionSummaryPlugin config section |
 | `devproxy-plugin-generic-random-error` | GenericRandomErrorPlugin instance |
 | `devproxy-plugin-generic-random-error-config` | GenericRandomErrorPlugin config section |
-| `devproxy-plugin-generic-random-error-schema` | GenericRandomErrorPlugin schema |
+| `devproxy-plugin-generic-random-error-file` | GenericRandomErrorPlugin errors file |
+| `devproxy-plugin-generic-random-error-file-schema` | GenericRandomErrorPlugin errors file schema |
 | `devproxy-plugin-graph-beta-support-guidance` | GraphBetaSupportGuidancePlugin instance |
 | `devproxy-plugin-graph-client-request-id-guidance` | GraphClientRequestIdGuidancePlugin instance |
 | `devproxy-plugin-graph-mock-response` | GraphMockResponsePlugin instance |
@@ -47,10 +50,11 @@ The Dev Proxy extension makes it easy to create and update configuration files.
 | `devproxy-plugin-open-api-spec-generator` | OpenApiSpecGeneratorPlugin instance |
 | `devproxy-plugin-rate-limiting` | MockResponsePlugin instance |
 | `devproxy-plugin-rate-limiting-config` | RateLimitingPlugin config section |
-| `devproxy-plugin-rate-limiting-schema` | RateLimitingPlugin schema |
+| `devproxy-plugin-rate-limiting-file` | Dev Proxy rate limiting file |
+| `devproxy-plugin-rate-limiting-file-schema` | Dev Proxy rate limiting file schema |
 | `devproxy-plugin-retry-after` | RetryAfterPlugin instance |
-| `devproxy-response` | Empty Dev Proxy response |
-| `devproxy-response-header` | Empty Dev Proxy response header |
+| `devproxy-response` | Dev Proxy response |
+| `devproxy-response-header` | Dev Proxy response header |
 
 ### Diagnostics
 
