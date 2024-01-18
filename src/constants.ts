@@ -5,7 +5,7 @@ export const pluginSnippets: PluginSnippets = {
         instance: "devproxy-plugin-caching-guidance",
         config: {
             name: "devproxy-plugin-caching-guidance-config",
-            required: true
+            required: false
         }
     },
     CrudApiPlugin: {
@@ -19,14 +19,14 @@ export const pluginSnippets: PluginSnippets = {
         instance: "devproxy-plugin-dev-tools",
         config: {
             name: "devproxy-plugin-dev-tools-config",
-            required: true
+            required: false
         },
     },
     ExecutionSummaryPlugin: {
         instance: "devproxy-plugin-execution-summary",
         config: {
             name: "devproxy-plugin-execution-summary-config",
-            required: true
+            required: false
         }
     },
     GenericRandomErrorPlugin: {
@@ -49,7 +49,7 @@ export const pluginSnippets: PluginSnippets = {
         instance: "devproxy-plugin-graph-random-error",
         config: {
             name: "devproxy-plugin-graph-random-error-config",
-            required: true
+            required: false
         }
     },
     GraphSdkGuidancePlugin: {
@@ -62,7 +62,7 @@ export const pluginSnippets: PluginSnippets = {
         instance: "devproxy-plugin-latency",
         config: {
             name: "devproxy-plugin-latency-config",
-            required: true
+            required: false
         }
     },
     MinimalPermissionsGuidancePlugin:
@@ -77,7 +77,7 @@ export const pluginSnippets: PluginSnippets = {
         instance: "devproxy-plugin-minimal-permissions",
         config: {
             name: "devproxy-plugin-minimal-permissions-config",
-            required: true
+            required: false
         }
     },
     MockGeneratorPlugin: {
