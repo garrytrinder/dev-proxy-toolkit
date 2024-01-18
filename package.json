@@ -1,7 +1,7 @@
 {
-  "name": "dev-proxy-vsc-ext",
-  "displayName": "Dev Proxy",
-  "description": "Dev Proxy is a command line tool that helps you simulate behaviors and errors of cloud APIs.",
+  "name": "dev-proxy-toolkit",
+  "displayName": "Dev Proxy Toolkit",
+  "description": "Dev Proxy is a command line tool that helps you simulate behaviors and errors of cloud APIs. The Dev Proxy Toolkit extension for Visual Studio Code makes it easy to create and update configuration files.",
   "version": "0.0.7",
   "publisher": "garrytrinder",
   "engines": {
@@ -16,7 +16,7 @@
   ],
   "repository": {
     "type": "git",
-    "url": "https://github.com/garrytrinder/dev-proxy-vsc-ext.git"
+    "url": "https://github.com/garrytrinder/dev-proxy-toolkit.git"
   },
   "main": "./dist/extension.js",
   "contributes": {
@@ -30,7 +30,7 @@
   "preview": true,
   "pricing": "Free",
   "icon": "dist/icon.png",
-  "homepage": "https://github.com/garrytrinder/dev-proxy-vsc-ext/blob/main/README.md",
+  "homepage": "https://github.com/garrytrinder/dev-proxy-toolkit/blob/main/README.md",
   "scripts": {
     "vscode:prepublish": "npm run package",
     "compile": "webpack",
