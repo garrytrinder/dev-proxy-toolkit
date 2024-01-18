@@ -2,7 +2,7 @@
   "name": "dev-proxy-toolkit",
   "displayName": "Dev Proxy Toolkit",
   "description": "Dev Proxy is a command line tool that helps you simulate behaviors and errors of cloud APIs. The Dev Proxy Toolkit extension for Visual Studio Code makes it easy to create and update configuration files.",
-  "version": "0.0.7",
+  "version": "0.1.0",
   "publisher": "garrytrinder",
   "engines": {
     "vscode": "^1.85.0"
