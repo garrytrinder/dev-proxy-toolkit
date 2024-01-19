@@ -1,7 +1,7 @@
 import * as vscode from 'vscode';
 import parse from 'json-to-ast';
-import { pluginSnippets } from './constants';
-import { getASTNode, getRangeFromASTNode } from './helpers';
+import {pluginSnippets} from './constants';
+import {getASTNode, getRangeFromASTNode} from './helpers';
 
 export const activate = (context: vscode.ExtensionContext) => {
   const collection = vscode.languages.createDiagnosticCollection('Dev Proxy');
@@ -14,10 +14,10 @@ export const activate = (context: vscode.ExtensionContext) => {
 
   context.subscriptions.push(
     vscode.workspace.onDidChangeTextDocument(event => {
-      if (event.document.getText() === "") {
+      if (event.document.getText() === '') {
         collection.delete(event.document.uri);
         return;
-      };
+      }
       updateDiagnostics(event.document, collection);
     })
   );
@@ -115,9 +115,12 @@ const updateDiagnostics = (
         'Identifier',
         'enabled'
       );
-      const isEnabled = (enabledNode?.value as parse.LiteralNode).value as boolean;
+      const isEnabled = (enabledNode?.value as parse.LiteralNode)
+        .value as boolean;
       const pluginSnippet = pluginSnippets[pluginName];
-      const requiresConfig = pluginSnippet.config ? pluginSnippet.config.required : false;
+      const requiresConfig = pluginSnippet.config
+        ? pluginSnippet.config.required
+        : false;
 
       if (requiresConfig) {
         // check to see if the plugin has a config section
@@ -132,7 +135,9 @@ const updateDiagnostics = (
             new vscode.Diagnostic(
               getRangeFromASTNode(pluginNode),
               `${pluginName} requires a config section.`,
-              vscode.DiagnosticSeverity.Error
+              isEnabled
+                ? vscode.DiagnosticSeverity.Error
+                : vscode.DiagnosticSeverity.Warning
             )
           );
         } else {
@@ -151,7 +156,9 @@ const updateDiagnostics = (
               new vscode.Diagnostic(
                 getRangeFromASTNode(configSectionNode.value),
                 `${configSectionName} config section is missing. Use '${pluginSnippet.config?.name}' snippet to create one.`,
-                isEnabled ? vscode.DiagnosticSeverity.Error : vscode.DiagnosticSeverity.Warning
+                isEnabled
+                  ? vscode.DiagnosticSeverity.Error
+                  : vscode.DiagnosticSeverity.Warning
               )
             );
           }
@@ -163,4 +170,4 @@ const updateDiagnostics = (
   collection.set(document.uri, diagnostics);
 };
 
-export const deactivate = () => { };
+export const deactivate = () => {};
