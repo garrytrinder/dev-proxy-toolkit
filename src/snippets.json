@@ -366,7 +366,7 @@
     "prefix": "devproxy-plugin-graph-select-guidance",
     "body": [
       "{",
-      "\t\"name\": \"GraphSdkGuidancePlugin\",",
+      "\t\"name\": \"GraphSelectGuidancePlugin\",",
       "\t\"enabled\": true,",
       "\t\"pluginPath\": \"~appFolder/plugins/dev-proxy-plugins.dll\",",
       "\t\"urlsToWatch\": [",
@@ -430,7 +430,7 @@
     "prefix": "devproxy-plugin-graph-minimal-permissions",
     "body": [
       "{",
-      "\t\"name\": \"GraphSdkGuidancePlugin\",",
+      "\t\"name\": \"MinimalPermissionsPlugin\",",
       "\t\"enabled\": true,",
       "\t\"pluginPath\": \"~appFolder/plugins/dev-proxy-plugins.dll\",",
       "\t\"configSection\": \"minimalPermissionsPlugin\"",
@@ -490,7 +490,7 @@
     "prefix": "devproxy-plugin-odata-paging-guidance",
     "body": [
       "{",
-      "\t\"name\": \"MockGeneratorPlugin\",",
+      "\t\"name\": \"ODataPagingGuidancePlugin\",",
       "\t\"enabled\": true,",
       "\t\"pluginPath\": \"~appFolder/plugins/dev-proxy-plugins.dll\"",
       "}"
