@@ -4,8 +4,12 @@
     "body": [
       "{",
       "\t\"\\$schema\": \"https://raw.githubusercontent.com/microsoft/dev-proxy/main/schemas/v1.0/rc.schema.json\",",
-      "\t\"plugins\": [$1],",
-      "\t\"urlsToWatch\": [$2]",
+      "\t\"plugins\": [",
+      "\t\t$1",
+      "\t],",
+      "\t\"urlsToWatch\": [",
+      "\t\t$2",
+      "\t]",
       "}"
     ],
     "description": "Dev Proxy config file"
@@ -53,10 +57,13 @@
   "Request": {
     "prefix": "devproxy-request",
     "body": [
+      "{",
       "\t\"request\": {",
       "\t\t\"url\": \"$1\"",
       "\t},",
-      "\t\"response\": {$2}",
+      "\t\"response\": {",
+      "\t\t$2",
+      "\t}",
       "}"
     ],
     "description": "Dev Proxy request"
@@ -64,21 +71,25 @@
   "Response": {
     "prefix": "devproxy-response",
     "body": [
-      "\r",
+      "{",
       "\t\"statusCode\": ${1:400},",
-      "\t\"body\": {$2},",
-      "\t\"headers\": [$3]\r"
+      "\t\"body\": {",
+      "\t\t$2",
+      "\t},",
+      "\t\"headers\": [",
+      "\t\t$3",
+      "\t]",
+      "}"
     ],
     "description": "Dev Proxy response"
   },
   "ResponseHeader": {
     "prefix": "devproxy-response-header",
     "body": [
-      "\r",
       "{",
       "\t\"name\": \"$1\",",
       "\t\"value\": \"$2\"",
-      "}\r"
+      "}"
     ],
     "description": "Dev Proxy response header"
   },
@@ -129,7 +140,9 @@
     "body": [
       "{",
       "\t\"\\$schema\": \"https://raw.githubusercontent.com/microsoft/dev-proxy/main/schemas/v1.0/crudapiplugin.schema.json\",",
-      "\t\"actions\": [$1],",
+      "\t\"actions\": [",
+      "\t\t$1",
+      "\t],",
       "\t\"baseUrl\": \"$2\",",
       "\t\"dataFile\": \"$3\"",
       "}"
@@ -146,13 +159,12 @@
   "CrudApiPluginAction": {
     "prefix": "devproxy-plugin-crud-api-action",
     "body": [
-      "\r",
-      "\t{",
-      "\t\t\"action\": \"$1\",",
-      "\t\t\"method\": \"$2\",",
-      "\t\t\"query\": \"$3\",",
-      "\t\t\"url\": \"$4\"",
-      "\t}\r"
+      "{",
+      "\t\"action\": \"$1\",",
+      "\t\"method\": \"$2\",",
+      "\t\"query\": \"$3\",",
+      "\t\"url\": \"$4\"",
+      "}"
     ],
     "description": "CrudApiPlugin action"
   },
@@ -224,7 +236,9 @@
     "body": [
       "{",
       "\t\"\\$schema\": \"https://raw.githubusercontent.com/microsoft/dev-proxy/main/schemas/v1.0/genericrandomerrorplugin.schema.json\",",
-      "\t\"responses\": [$1]",
+      "\t\"responses\": [",
+      "\t\t$1",
+      "\t]",
       "}"
     ],
     "description": "GenericRandomErrorPlugin errors file"
@@ -543,9 +557,13 @@
     "body": [
       "{",
       "\t\"\\$schema\": \"https://raw.githubusercontent.com/microsoft/dev-proxy/main/schemas/v1.0/ratelimitingplugin.schema.json\",",
-      "\t\"body\": {$1},",
-      "\t\"headers\": [$2],",
-      "\t\"statusCode\": 429$3",
+      "\t\"body\": {",
+      "\t\t$1",
+      "\t},",
+      "\t\"headers\": [",
+      "\t\t$2",
+      "\t],",
+      "\t\"statusCode\": ${3:429}",
       "}"
     ],
     "description": "Dev Proxy rate limiting file"
