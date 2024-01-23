@@ -21,6 +21,12 @@ export const activate = (context: vscode.ExtensionContext) => {
       updateDiagnostics(event.document, collection);
     })
   );
+
+  context.subscriptions.push(
+    vscode.workspace.onDidCloseTextDocument(document => {
+      collection.delete(document.uri);
+    })
+  ); 
 };
 
 const updateDiagnostics = (
