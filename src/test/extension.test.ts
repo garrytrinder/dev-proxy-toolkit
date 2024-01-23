@@ -5,8 +5,9 @@ import configPluginConfigRequired from './examples/config-plugin-config-required
 import configPluginConfigRequiredDisabled from './examples/config-plugin-config-required-disabled.json';
 import configPluginConfigMissing from './examples/config-plugin-config-missing.json';
 import configPluginConfigMissingDisabled from './examples/config-plugin-config-missing.json';
-import { isConfigFile } from '../helpers';
+import {isConfigFile} from '../helpers';
 import * as path from 'path';
+import {createCodeLensForPluginNodes} from '../codelens';
 
 suite('Extension Test Suite', () => {
   test('should activate when JSON file is opened', async () => {
@@ -119,73 +120,86 @@ suite('Extension Test Suite', () => {
 });
 
 suite('isConfigFile', () => {
-
   test('should return true if file is named devproxyrc.json', async () => {
-    const fileName = "devproxyrc.json";
+    const fileName = 'devproxyrc.json';
     const filePath = path.resolve(__dirname, 'examples', fileName);
     const document = await vscode.workspace.openTextDocument(filePath);
     await sleep(1000);
-    
+
     const expected = true;
     const actual = isConfigFile(document);
     assert.strictEqual(actual, expected);
   });
 
   test('should return true if file contains $schema property value that contains dev-proxy and ends with rc.schema.json', async () => {
-    const fileName = "config-schema.json";
+    const fileName = 'config-schema.json';
     const filePath = path.resolve(__dirname, 'examples', fileName);
     const document = await vscode.workspace.openTextDocument(filePath);
     await sleep(1000);
-    
+
     const expected = true;
     const actual = isConfigFile(document);
     assert.strictEqual(actual, expected);
   });
 
   test('should return false if file contains $schema property value that does not contain dev-proxy or end with rc.schema.json', async () => {
-    const fileName = "config-incorrect-schema.json";
+    const fileName = 'config-incorrect-schema.json';
     const filePath = path.resolve(__dirname, 'examples', fileName);
     const document = await vscode.workspace.openTextDocument(filePath);
     await sleep(1000);
-    
+
     const expected = false;
     const actual = isConfigFile(document);
     assert.strictEqual(actual, expected);
   });
 
   test('should return true if file contains plugins array', async () => {
-    const fileName = "config-plugins.json";
+    const fileName = 'config-plugins.json';
     const filePath = path.resolve(__dirname, 'examples', fileName);
     const document = await vscode.workspace.openTextDocument(filePath);
     await sleep(1000);
-    
+
     const expected = true;
     const actual = isConfigFile(document);
     assert.strictEqual(actual, expected);
   });
 
   test('should return false if file does not contain plugins array', async () => {
-    const fileName = "foo.json";
+    const fileName = 'foo.json';
     const filePath = path.resolve(__dirname, 'examples', fileName);
     const document = await vscode.workspace.openTextDocument(filePath);
     await sleep(1000);
-    
+
     const expected = false;
     const actual = isConfigFile(document);
     assert.strictEqual(actual, expected);
   });
 
   test('should return false if file contains $schema property value that does not contain dev-proxy or end with rc.schema.json but contains plugins array', async () => {
-    const fileName = "config-incorrect-schema-with-plugins.json";
+    const fileName = 'config-incorrect-schema-with-plugins.json';
     const filePath = path.resolve(__dirname, 'examples', fileName);
     const document = await vscode.workspace.openTextDocument(filePath);
     await sleep(1000);
-    
+
     const expected = false;
     const actual = isConfigFile(document);
     assert.strictEqual(actual, expected);
   });
+});
 
+suite('Plugins Code Lens', () => {
+  test('should show code lens for each plugin', async () => {
+    const fileName = 'config-plugins-codelens.json';
+    const filePath = path.resolve(__dirname, 'examples', fileName);
+    const document = await vscode.workspace.openTextDocument(filePath);
+    await sleep(1000);
+
+    const codeLens = createCodeLensForPluginNodes(document);
+
+    const expected = 2;
+    const actual = codeLens.length;
+    assert.strictEqual(actual, expected);
+  });
 });
 
 function sleep(ms: number): Promise<void> {

@@ -1,7 +1,8 @@
 import * as vscode from 'vscode';
 import parse from 'json-to-ast';
-import { pluginSnippets } from './constants';
-import { getASTNode, getRangeFromASTNode, isConfigFile } from './helpers';
+import {pluginDocs, pluginSnippets} from './constants';
+import {getASTNode, getRangeFromASTNode, isConfigFile} from './helpers';
+import {pluginLensProvider} from './codelens';
 
 export const activate = (context: vscode.ExtensionContext) => {
   const collection = vscode.languages.createDiagnosticCollection('Dev Proxy');
@@ -26,7 +27,21 @@ export const activate = (context: vscode.ExtensionContext) => {
     vscode.workspace.onDidCloseTextDocument(document => {
       collection.delete(document.uri);
     })
-  ); 
+  );
+
+  context.subscriptions.push(
+    vscode.languages.registerCodeLensProvider('json', pluginLensProvider)
+  );
+
+  context.subscriptions.push(
+    vscode.commands.registerCommand(
+      'dev-proxy-toolkit.openPluginDoc',
+      pluginName => {
+        const target = vscode.Uri.parse(pluginDocs[pluginName].url);
+        vscode.env.openExternal(target);
+      }
+    )
+  );
 };
 
 const updateDiagnostics = (
@@ -46,7 +61,7 @@ const updateDiagnostics = (
     documentNode.children,
     'Identifier',
     'urlsToWatch'
-  );  
+  );
   if (
     urlsToWatchNode &&
     (urlsToWatchNode.value as parse.ArrayNode).children.length === 0
@@ -153,4 +168,4 @@ const updateDiagnostics = (
   collection.set(document.uri, diagnostics);
 };
 
-export const deactivate = () => { };
+export const deactivate = () => {};

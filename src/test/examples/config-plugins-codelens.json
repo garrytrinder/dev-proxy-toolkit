@@ -1,0 +1,16 @@
+{
+  "$schema": "https://raw.githubusercontent.com/microsoft/dev-proxy/main/schemas/v1.0/rc.schema.json",
+  "plugins": [
+    {
+      "name": "CachingGuidancePlugin",
+      "enabled": true,
+      "pluginPath": "~appFolder/plugins/dev-proxy-plugins.dll",
+      "configSection": "cachingGuidance"
+    },
+    {
+      "name": "DevToolsPlugin",
+      "enabled": true,
+      "pluginPath": "~appFolder/plugins/dev-proxy-plugins.dll"
+    }
+  ]
+}
