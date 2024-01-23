@@ -22,7 +22,9 @@
     "body": [
       "{",
       "\t\"\\$schema\": \"https://raw.githubusercontent.com/microsoft/dev-proxy/main/schemas/v1.0/mockresponseplugin.schema.json\",",
-      "\t\"mocks\": [$1]",
+      "\t\"mocks\": [",
+      "\t\t$1",
+      "\t]",
       "}"
     ],
     "description": "Dev Proxy mocks file"
@@ -32,18 +34,19 @@
     "body": [
       "\"\\$schema\": \"https://raw.githubusercontent.com/microsoft/dev-proxy/main/schemas/v1.0/mockresponseplugin.schema.json\","
     ],
-    "description": "Dev Proxy mocks file schema"  
+    "description": "Dev Proxy mocks file schema"
   },
   "Mock": {
     "prefix": "devproxy-mock",
     "body": [
-      "\r",
-      "\t{",
-      "\t\t\"request\": {",
-      "\t\t\t\"url\": \"$1\"",
-      "\t\t},",      
-      "\t\t\"response\": {$2}",
-      "\t}\r"
+      "{",
+      "\t\"request\": {",
+      "\t\t\"url\": \"$1\"",
+      "\t},",
+      "\t\"response\": {",
+      "\t\t$2",
+      "\t}",
+      "}"
     ],
     "description": "Dev Proxy mock"
   },
@@ -52,7 +55,7 @@
     "body": [
       "\t\"request\": {",
       "\t\t\"url\": \"$1\"",
-      "\t},",      
+      "\t},",
       "\t\"response\": {$2}",
       "}"
     ],
@@ -465,7 +468,7 @@
   "MockResponsePluginFileSchema": {
     "prefix": "devproxy-plugin-mock-response-schema",
     "body": [
-      "\"\\$schema\": \"https://raw.githubusercontent.com/microsoft/dev-proxy/main/schemas/v1.0/mockresponseplugin.schema.json\","      
+      "\"\\$schema\": \"https://raw.githubusercontent.com/microsoft/dev-proxy/main/schemas/v1.0/mockresponseplugin.schema.json\","
     ],
     "description": "MockResponsePlugin schema"
   },
