@@ -25,3 +25,37 @@ export const getRangeFromASTNode = (
     new vscode.Position(endLine - 1, endColumn)
   );
 };
+
+export const isConfigFile = (document: vscode.TextDocument) => {
+  let isConfigFile = false;
+
+  const documentNode = parse(document.getText()) as parse.ObjectNode;
+
+  // we know that its a config file if
+  // 1. the file name is devproxy.config.json
+  if (document.fileName.endsWith('devproxyrc.json')) {
+    isConfigFile = true;
+  }
+
+  // 2. the file contains a $schema property that contains dev-proxy and ends with rc.schema.json
+  const schemaNode = getASTNode(documentNode.children, 'Identifier', '$schema');
+  if (schemaNode) {
+    const schema = (schemaNode?.value as parse.LiteralNode).value as string;
+    if (schema.includes('dev-proxy') && schema.endsWith('rc.schema.json')) {
+      isConfigFile = true;
+    }
+  }
+
+  // 3. the file contains plugins array, as $schema is optional
+  const pluginsNode = getASTNode(
+    documentNode.children,
+    'Identifier',
+    'plugins'
+  );
+
+  if (pluginsNode && pluginsNode.value.type === 'Array') {
+    isConfigFile = true;
+  }
+
+  return isConfigFile;
+};

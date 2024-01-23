@@ -1,7 +1,7 @@
 import * as vscode from 'vscode';
 import parse from 'json-to-ast';
-import {pluginSnippets} from './constants';
-import {getASTNode, getRangeFromASTNode} from './helpers';
+import { pluginSnippets } from './constants';
+import { getASTNode, getRangeFromASTNode, isConfigFile } from './helpers';
 
 export const activate = (context: vscode.ExtensionContext) => {
   const collection = vscode.languages.createDiagnosticCollection('Dev Proxy');
@@ -29,46 +29,18 @@ const updateDiagnostics = (
 ): void => {
   let diagnostics: vscode.Diagnostic[] = [];
 
-  // we need to ensure that we are looking at a config file before we start
-  const fileContents = parse(document.getText()) as parse.ObjectNode;
-  let isConfigFile = false;
+  const documentNode = parse(document.getText()) as parse.ObjectNode;
 
-  // we know that its a config file if
-  // 1. the file name is devproxy.config.json
-  if (document.fileName.endsWith('devproxyrc.json')) {
-    isConfigFile = true;
-  }
-
-  // 2. the file contains a $schema property with the value of https://raw.githubusercontent.com/microsoft/dev-proxy/main/schemas/v1.0/rc.schema.json
-  const schemaNode = getASTNode(fileContents.children, 'Identifier', '$schema');
-  if (schemaNode) {
-    const schema = (schemaNode?.value as parse.LiteralNode).value as string;
-    if (schema.includes('dev-proxy') && schema.endsWith('rc.schema.json')) {
-      isConfigFile = true;
-    }
-  }
-
-  // 3. the file contains the following properties: urlsToWatch and plugins, as $schema is optional
-  const pluginsNode = getASTNode(
-    fileContents.children,
-    'Identifier',
-    'plugins'
-  );
-  const urlsToWatchNode = getASTNode(
-    fileContents.children,
-    'Identifier',
-    'urlsToWatch'
-  );
-  if (pluginsNode && urlsToWatchNode) {
-    isConfigFile = true;
-  }
-
-  // if its not a config file, we don't need to do anything
-  if (!isConfigFile) {
+  if (!isConfigFile(document)) {
     return;
   }
 
   // check if urlsToWatch is empty
+  const urlsToWatchNode = getASTNode(
+    documentNode.children,
+    'Identifier',
+    'urlsToWatch'
+  );  
   if (
     urlsToWatchNode &&
     (urlsToWatchNode.value as parse.ArrayNode).children.length === 0
@@ -83,6 +55,11 @@ const updateDiagnostics = (
   }
 
   // check validity of plugins
+  const pluginsNode = getASTNode(
+    documentNode.children,
+    'Identifier',
+    'plugins'
+  );
   if (
     pluginsNode &&
     (pluginsNode.value as parse.ArrayNode).children.length !== 0
@@ -146,7 +123,7 @@ const updateDiagnostics = (
             configSectionNode.value as parse.LiteralNode
           ).value as string;
           const configSection = getASTNode(
-            fileContents.children,
+            documentNode.children,
             'Identifier',
             configSectionName
           );
@@ -170,4 +147,4 @@ const updateDiagnostics = (
   collection.set(document.uri, diagnostics);
 };
 
-export const deactivate = () => {};
+export const deactivate = () => { };
