@@ -1,121 +1,105 @@
 import * as assert from 'assert';
 import * as vscode from 'vscode';
-import configUrlsToWatchRequired from './examples/config-urls-to-watch-required.json';
-import configPluginConfigRequired from './examples/config-plugin-config-required.json';
-import configPluginConfigRequiredDisabled from './examples/config-plugin-config-required-disabled.json';
-import configPluginConfigMissing from './examples/config-plugin-config-missing.json';
-import configPluginConfigMissingDisabled from './examples/config-plugin-config-missing.json';
-import {isConfigFile} from '../helpers';
+import * as fs from 'fs';
+import {
+  getASTNode,
+  getStartPositionFromASTNode,
+  isConfigFile,
+  sleep,
+} from '../helpers';
 import * as path from 'path';
+import parse from 'json-to-ast';
 import {createCodeLensForPluginNodes} from '../codelens';
 
 suite('Extension Test Suite', () => {
-  test('should activate when JSON file is opened', async () => {
-    assert.strictEqual(
-      vscode.extensions.getExtension('garrytrinder.dev-proxy-toolkit')
-        ?.isActive,
-      false
-    );
+  test('should activate when untitled JSON file is opened', async () => {
+    const extensionId = 'garrytrinder.dev-proxy-toolkit';
     await vscode.workspace.openTextDocument({
       language: 'json',
       content: '',
     });
     await sleep(1000);
-    assert.strictEqual(
-      vscode.extensions.getExtension('garrytrinder.dev-proxy-toolkit')
-        ?.isActive,
-      true
-    );
+
+    const expected = true;
+    const actual = vscode.extensions.getExtension(extensionId)?.isActive;
+    assert.strictEqual(actual, expected);
   });
 
-  test('should show error when no urlsToWatch found', async () => {
+  test('should activate when JSON file is opened from disk', async () => {
+    const extensionId = 'garrytrinder.dev-proxy-toolkit';
+    const fileName = 'foo.json';
+    const filePath = path.resolve(__dirname, 'examples', fileName);
+    await vscode.workspace.openTextDocument(filePath);
+    await sleep(1000);
+
+    const expected = true;
+    const actual = vscode.extensions.getExtension(extensionId)?.isActive;
+    assert.strictEqual(actual, expected);
+  });
+});
+
+suite('urlsToWatch', () => {
+  test('should show error when opening document with no urlsToWatch found', async () => {
+    const fileName = 'config-urls-to-watch-required.json';
+    const filePath = path.resolve(__dirname, 'examples', fileName);
+    const document = await vscode.workspace.openTextDocument(filePath);
+    const diagnostics = vscode.languages.getDiagnostics(document.uri);
+
+    const expected = {
+      message: 'Add at least one url to watch.',
+      severity: vscode.DiagnosticSeverity.Error,
+    };
+    const actual = {
+      message: diagnostics[0]?.message,
+      severity: diagnostics[0]?.severity,
+    };
+    assert.deepStrictEqual(actual, expected);
+  });
+
+  test('should show error when document changes and has no urlsToWatch found', async () => {
+    const fileName = 'config-urls-to-watch-required.json';
+    const filePath = path.resolve(__dirname, 'examples', fileName);
+    const fileContents = fs.readFileSync(filePath, 'utf8');
     const document = await vscode.workspace.openTextDocument({
       language: 'json',
-      content: JSON.stringify(configUrlsToWatchRequired, null, 2),
+      content: fileContents,
     });
     await sleep(1000);
     const diagnostics = vscode.languages.getDiagnostics(document.uri);
-    assert.strictEqual(diagnostics?.length, 1);
-    assert.strictEqual(
-      diagnostics?.[0].message,
-      'Add at least one url to watch.'
-    );
-    assert.strictEqual(
-      diagnostics?.[0].severity,
-      vscode.DiagnosticSeverity.Error
-    );
+
+    const expected = {
+      message: 'Add at least one url to watch.',
+      severity: vscode.DiagnosticSeverity.Error,
+    };
+    const actual = {
+      message: diagnostics[0]?.message,
+      severity: diagnostics[0]?.severity,
+    };
+    assert.deepStrictEqual(actual, expected);
   });
 
-  test('should show error when plugin requires config section', async () => {
-    const document = await vscode.workspace.openTextDocument({
-      language: 'json',
-      content: JSON.stringify(configPluginConfigRequired, null, 2),
-    });
+  test('should have no error after adding a urlToWatch', async () => {
+    const fileName = 'config-urls-to-watch-required.json';
+    const filePath = path.resolve(__dirname, 'examples', fileName);
+    const document = await vscode.workspace.openTextDocument(filePath);
     await sleep(1000);
+    const documentNode = parse(document.getText()) as parse.ObjectNode;
+    const urlsToWatchNode = getASTNode(
+      documentNode.children,
+      'Identifier',
+      'urlsToWatch'
+    );
+    const position = getStartPositionFromASTNode(
+      urlsToWatchNode?.value as parse.ArrayNode
+    );
+    const edit = new vscode.WorkspaceEdit();
+    edit.insert(document.uri, position, '"https://example.com"');
+    await vscode.workspace.applyEdit(edit);
     const diagnostics = vscode.languages.getDiagnostics(document.uri);
-    assert.strictEqual(diagnostics?.length, 1);
-    assert.strictEqual(
-      diagnostics?.[0].message,
-      'GenericRandomErrorPlugin requires a config section.'
-    );
-    assert.strictEqual(
-      diagnostics?.[0].severity,
-      vscode.DiagnosticSeverity.Error
-    );
-  });
 
-  test('should show warning when disabled plugin requires config section', async () => {
-    const document = await vscode.workspace.openTextDocument({
-      language: 'json',
-      content: JSON.stringify(configPluginConfigRequiredDisabled, null, 2),
-    });
-    await sleep(1000);
-    const diagnostics = vscode.languages.getDiagnostics(document.uri);
-    assert.strictEqual(diagnostics?.length, 1);
-    assert.strictEqual(
-      diagnostics?.[0].message,
-      'GenericRandomErrorPlugin requires a config section.'
-    );
-    assert.strictEqual(
-      diagnostics?.[0].severity,
-      vscode.DiagnosticSeverity.Warning
-    );
-  });
-
-  test('should show error when plugin config section is not defined', async () => {
-    const document = await vscode.workspace.openTextDocument({
-      language: 'json',
-      content: JSON.stringify(configPluginConfigMissing, null, 2),
-    });
-    await sleep(1000);
-    const diagnostics = vscode.languages.getDiagnostics(document.uri);
-    assert.strictEqual(diagnostics?.length, 1);
-    assert.strictEqual(
-      diagnostics?.[0].message,
-      "genericRandomErrorPlugin config section is missing. Use 'devproxy-plugin-generic-random-error-config' snippet to create one."
-    );
-    assert.strictEqual(
-      diagnostics?.[0].severity,
-      vscode.DiagnosticSeverity.Error
-    );
-  });
-
-  test('should show warning when disabled plugin config section is not defined', async () => {
-    const document = await vscode.workspace.openTextDocument({
-      language: 'json',
-      content: JSON.stringify(configPluginConfigMissingDisabled, null, 2),
-    });
-    await sleep(1000);
-    const diagnostics = vscode.languages.getDiagnostics(document.uri);
-    assert.strictEqual(diagnostics?.length, 1);
-    assert.strictEqual(
-      diagnostics?.[0].message,
-      "genericRandomErrorPlugin config section is missing. Use 'devproxy-plugin-generic-random-error-config' snippet to create one."
-    );
-    assert.strictEqual(
-      diagnostics?.[0].severity,
-      vscode.DiagnosticSeverity.Error
-    );
+    const expected = 0;
+    const actual = diagnostics.length;
+    assert.strictEqual(actual, expected);
   });
 });
 
@@ -187,13 +171,86 @@ suite('isConfigFile', () => {
   });
 });
 
-suite('Plugins Code Lens', () => {
+suite('plugins', () => {
+  test('should show error when plugin requires config section', async () => {
+    const fileName = 'config-plugin-config-required.json';
+    const filePath = path.resolve(__dirname, 'examples', fileName);
+    const document = await vscode.workspace.openTextDocument(filePath);
+    await sleep(1000);
+    const diagnostics = vscode.languages.getDiagnostics(document.uri);
+
+    const expected = {
+      message: 'GenericRandomErrorPlugin requires a config section.',
+      severity: vscode.DiagnosticSeverity.Error,
+    };
+    const actual = {
+      message: diagnostics[0]?.message,
+      severity: diagnostics[0]?.severity,
+    };
+    assert.deepStrictEqual(actual, expected);
+  });
+
+  test('should show warning when disabled plugin requires config section', async () => {
+    const fileName = 'config-plugin-config-required-disabled.json';
+    const filePath = path.resolve(__dirname, 'examples', fileName);
+    const document = await vscode.workspace.openTextDocument(filePath);
+    await sleep(1000);
+    const diagnostics = vscode.languages.getDiagnostics(document.uri);
+
+    const expected = {
+      message: 'GenericRandomErrorPlugin requires a config section.',
+      severity: vscode.DiagnosticSeverity.Warning,
+    };
+    const actual = {
+      message: diagnostics[0]?.message,
+      severity: diagnostics[0]?.severity,
+    };
+    assert.deepStrictEqual(actual, expected);
+  });
+
+  test('should show error when plugin config section is not defined', async () => {
+    const fileName = 'config-plugin-config-missing.json';
+    const filePath = path.resolve(__dirname, 'examples', fileName);
+    const document = await vscode.workspace.openTextDocument(filePath);
+    await sleep(1000);
+    const diagnostics = vscode.languages.getDiagnostics(document.uri);
+
+    const expected = {
+      message:
+        "genericRandomErrorPlugin config section is missing. Use 'devproxy-plugin-generic-random-error-config' snippet to create one.",
+      severity: vscode.DiagnosticSeverity.Error,
+    };
+    const actual = {
+      message: diagnostics[0]?.message,
+      severity: diagnostics[0]?.severity,
+    };
+    assert.deepStrictEqual(actual, expected);
+  });
+
+  test('should show warning when disabled plugin config section is not defined', async () => {
+    const fileName = 'config-plugin-config-missing-disabled.json';
+    const filePath = path.resolve(__dirname, 'examples', fileName);
+    const document = await vscode.workspace.openTextDocument(filePath);
+    await sleep(1000);
+    const diagnostics = vscode.languages.getDiagnostics(document.uri);
+
+    const expected = {
+      message:
+        "genericRandomErrorPlugin config section is missing. Use 'devproxy-plugin-generic-random-error-config' snippet to create one.",
+      severity: vscode.DiagnosticSeverity.Warning,
+    };
+    const actual = {
+      message: diagnostics[0]?.message,
+      severity: diagnostics[0]?.severity,
+    };
+    assert.deepStrictEqual(actual, expected);
+  });
+
   test('should show code lens for each plugin', async () => {
     const fileName = 'config-plugins-codelens.json';
     const filePath = path.resolve(__dirname, 'examples', fileName);
     const document = await vscode.workspace.openTextDocument(filePath);
     await sleep(1000);
-
     const codeLens = createCodeLensForPluginNodes(document);
 
     const expected = 2;
@@ -201,9 +258,3 @@ suite('Plugins Code Lens', () => {
     assert.strictEqual(actual, expected);
   });
 });
-
-function sleep(ms: number): Promise<void> {
-  return new Promise(resolve => {
-    setTimeout(resolve, ms);
-  });
-}
