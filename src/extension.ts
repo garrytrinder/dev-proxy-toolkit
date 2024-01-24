@@ -9,13 +9,16 @@ export const activate = (context: vscode.ExtensionContext) => {
 
   context.subscriptions.push(
     vscode.workspace.onDidOpenTextDocument(document => {
+      if (!isConfigFile(document)) {
+        return;
+      }
       updateDiagnostics(document, collection);
     })
   );
 
   context.subscriptions.push(
     vscode.workspace.onDidChangeTextDocument(event => {
-      if (event.document.getText() === '') {
+      if (!isConfigFile(event.document)) {
         collection.delete(event.document.uri);
         return;
       }
@@ -48,10 +51,6 @@ const updateDiagnostics = (
   let diagnostics: vscode.Diagnostic[] = [];
 
   const documentNode = parse(document.getText()) as parse.ObjectNode;
-
-  if (!isConfigFile(document)) {
-    return;
-  }
 
   // check if urlsToWatch is empty
   const urlsToWatchNode = getASTNode(
