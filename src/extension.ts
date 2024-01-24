@@ -24,13 +24,10 @@ export const activate = (context: vscode.ExtensionContext) => {
   );
 
   context.subscriptions.push(
-    vscode.workspace.onDidCloseTextDocument(document => {
-      collection.delete(document.uri);
-    })
-  );
-
-  context.subscriptions.push(
-    vscode.languages.registerCodeLensProvider('json', pluginLensProvider)
+    vscode.languages.registerCodeLensProvider(
+      {scheme: 'file', language: 'json'},
+      pluginLensProvider
+    )
   );
 
   context.subscriptions.push(
