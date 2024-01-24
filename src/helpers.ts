@@ -26,6 +26,19 @@ export const getRangeFromASTNode = (
   );
 };
 
+export const getStartPositionFromASTNode = (
+  node:
+    | parse.PropertyNode
+    | parse.LiteralNode
+    | parse.ObjectNode
+    | parse.ValueNode
+) => {
+  const startLine = node?.loc?.start.line || 0;
+  const startColumn = node?.loc?.start.column || 0;
+
+  return new vscode.Position(startLine - 1, startColumn);
+};
+
 export const isConfigFile = (document: vscode.TextDocument) => {
   let isConfigFile = false;
 
