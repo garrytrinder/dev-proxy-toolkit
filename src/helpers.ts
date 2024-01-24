@@ -1,5 +1,5 @@
-import * as vscode from "vscode";
-import parse from "json-to-ast";
+import * as vscode from 'vscode';
+import parse from 'json-to-ast';
 
 export const getASTNode = (
   children: parse.PropertyNode[],
@@ -7,12 +7,16 @@ export const getASTNode = (
   keyValue: string
 ) => {
   return children.find(
-    (child) => child.key.type === type && child.key.value === keyValue
+    child => child.key.type === type && child.key.value === keyValue
   );
 };
 
 export const getRangeFromASTNode = (
-  node: parse.PropertyNode | parse.LiteralNode | parse.ObjectNode | parse.ValueNode
+  node:
+    | parse.PropertyNode
+    | parse.LiteralNode
+    | parse.ObjectNode
+    | parse.ValueNode
 ) => {
   const startLine = node?.loc?.start.line || 0;
   const endLine = node?.loc?.end.line || 0;
