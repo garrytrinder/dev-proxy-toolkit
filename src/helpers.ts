@@ -72,3 +72,9 @@ export const isConfigFile = (document: vscode.TextDocument) => {
 
   return isConfigFile;
 };
+
+export const sleep = (ms: number): Promise<void> => {
+  return new Promise(resolve => {
+    setTimeout(resolve, ms);
+  });
+};
