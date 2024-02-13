@@ -21,5 +21,4 @@ export const registerDocumentListeners = (context: vscode.ExtensionContext, coll
             updateDiagnostics(event.document, collection);
         })
     );
-}
-
+};
