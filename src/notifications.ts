@@ -16,6 +16,21 @@ export const handleStartNotification = (devProxyInstall: DevProxyInstall) => {
             };
         };
     };
+
+    if (!devProxyInstall.isLatest) {
+        return () => {
+            const message = `New Dev Proxy version ${devProxyInstall.latestVersion} is available.`;
+            return {
+                message,
+                show: async () => {
+                    const result = await vscode.window.showInformationMessage(message, 'Upgrade');
+                    if (result === 'Upgrade') {
+                        await vscode.commands.executeCommand('dev-proxy-toolkit.upgrade');
+                    };
+                }
+            };
+        };
+    };
 };
 
 export const processNotification = (notification: (() => { message: string; show: () => Promise<void>; }) | undefined) => {

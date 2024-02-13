@@ -18,7 +18,7 @@ suite('urlsToWatch', () => {
     const fileName = 'config-urls-to-watch-required.json';
     const filePath = path.resolve(__dirname, 'examples', fileName);
     const document = await vscode.workspace.openTextDocument(filePath);
-        const diagnostics = vscode.languages.getDiagnostics(document.uri);
+    const diagnostics = vscode.languages.getDiagnostics(document.uri);
 
     const expected = {
       message: 'Add at least one url to watch.',
@@ -241,7 +241,9 @@ suite('notifications', () => {
       version: '',
       platform: 'darwin',
       isInstalled: false,
+      latestVersion: '0.14.1',
       isBeta: false,
+      isLatest: false
     };
     const notification = handleStartNotification(devProxyInstall);
 
@@ -256,7 +258,9 @@ suite('notifications', () => {
       version: '',
       platform: 'win32',
       isInstalled: false,
+      latestVersion: '0.14.1',
       isBeta: false,
+      isLatest: false
     };
     const notification = handleStartNotification(devProxyInstall);
 
@@ -268,10 +272,12 @@ suite('notifications', () => {
   test('should not show install notification when devproxy is installed on mac', async () => {
     const devProxyInstall: DevProxyInstall = {
       filePath: 'somepath/devproxy',
-      version: '0.1.0',
+      version: '0.14.1',
       platform: 'darwin',
       isInstalled: true,
+      latestVersion: '0.14.1',
       isBeta: false,
+      isLatest: true
     };
     const notification = handleStartNotification(devProxyInstall);
 
@@ -285,7 +291,9 @@ suite('notifications', () => {
       version: '0.1.0',
       platform: 'win32',
       isInstalled: true,
+      latestVersion: '0.14.1',
       isBeta: false,
+      isLatest: true
     };
     const notification = handleStartNotification(devProxyInstall);
 
@@ -297,15 +305,34 @@ suite('notifications', () => {
   test('should not show install notification when running in unsupported operating system', async () => {
     const devProxyInstall: DevProxyInstall = {
       filePath: 'somepath/devproxy',
-      version: '0.1.0',
+      version: '0.14.1',
       platform: 'linux',
       isInstalled: true,
+      latestVersion: '0.14.1',
       isBeta: false,
+      isLatest: true
     };
     const notification = handleStartNotification(devProxyInstall);
 
     const expected = true;
     const actual = notification === undefined;
+    assert.strictEqual(actual, expected);
+  });
+
+  test('should show upgrade notification when devproxy is not latest version', async () => {
+    const devProxyInstall: DevProxyInstall = {
+      filePath: 'somepath/devproxy',
+      version: '0.1.0',
+      platform: 'win32',
+      isInstalled: true,
+      latestVersion: '0.14.1',
+      isBeta: false,
+      isLatest: false
+    };
+    const notification = handleStartNotification(devProxyInstall);
+
+    const expected = 'New Dev Proxy version 0.14.1 is available.';
+    const actual = notification !== undefined && notification().message;
     assert.strictEqual(actual, expected);
   });
 });
