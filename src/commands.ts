@@ -17,4 +17,10 @@ export const registerCommands = (context: vscode.ExtensionContext) => {
             }
         )
     );
+
+    context.subscriptions.push(
+        vscode.commands.registerCommand('dev-proxy-toolkit.upgrade', async () => {
+            const url = 'https://aka.ms/devproxy/upgrade';
+            vscode.env.openExternal(vscode.Uri.parse(url));
+        }));
 };

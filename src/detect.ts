@@ -1,5 +1,5 @@
 import { exec } from 'child_process';
-import { DevProxyInstall } from './types';
+import { DevProxyInstall, Release } from './types';
 import os from 'os';
 
 const getExecutablePath = async (filename: string): Promise<string> => {
@@ -61,12 +61,22 @@ export const detectDevProxyInstall = async (): Promise<DevProxyInstall> => {
     const isInstalled = filePath !== '';
     const isBeta = version.includes('beta');
     const platform = os.platform();
+    const latestVersion = await getLatestVersion();
+    const isLatest = latestVersion === version;
 
     return {
         filePath,
         version,
         isInstalled,
         isBeta,
-        platform
+        platform,
+        latestVersion,
+        isLatest
     };
+};
+
+export const getLatestVersion = async (): Promise<string> => {
+    const request = await fetch('https://api.github.com/repos/microsoft/dev-proxy/releases');
+    const release = await request.json() as Release;
+    return release.tag_name.replace('v', '');
 };
