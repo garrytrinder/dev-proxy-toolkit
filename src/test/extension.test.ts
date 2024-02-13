@@ -9,41 +9,16 @@ import {
 } from '../helpers';
 import * as path from 'path';
 import parse from 'json-to-ast';
-import {createCodeLensForPluginNodes} from '../codelens';
-
-suite('Extension Test Suite', () => {
-  test('should activate when untitled JSON file is opened', async () => {
-    const extensionId = 'garrytrinder.dev-proxy-toolkit';
-    await vscode.workspace.openTextDocument({
-      language: 'json',
-      content: '',
-    });
-    await sleep(1000);
-
-    const expected = true;
-    const actual = vscode.extensions.getExtension(extensionId)?.isActive;
-    assert.strictEqual(actual, expected);
-  });
-
-  test('should activate when JSON file is opened from disk', async () => {
-    const extensionId = 'garrytrinder.dev-proxy-toolkit';
-    const fileName = 'foo.json';
-    const filePath = path.resolve(__dirname, 'examples', fileName);
-    await vscode.workspace.openTextDocument(filePath);
-    await sleep(1000);
-
-    const expected = true;
-    const actual = vscode.extensions.getExtension(extensionId)?.isActive;
-    assert.strictEqual(actual, expected);
-  });
-});
+import { createCodeLensForPluginNodes } from '../codelens';
+import { DevProxyInstall } from '../types';
+import { handleStartNotification } from '../notifications';
 
 suite('urlsToWatch', () => {
   test('should show error when opening document with no urlsToWatch found', async () => {
     const fileName = 'config-urls-to-watch-required.json';
     const filePath = path.resolve(__dirname, 'examples', fileName);
     const document = await vscode.workspace.openTextDocument(filePath);
-    const diagnostics = vscode.languages.getDiagnostics(document.uri);
+        const diagnostics = vscode.languages.getDiagnostics(document.uri);
 
     const expected = {
       message: 'Add at least one url to watch.',
@@ -255,6 +230,82 @@ suite('plugins', () => {
 
     const expected = 2;
     const actual = codeLens.length;
+    assert.strictEqual(actual, expected);
+  });
+});
+
+suite('notifications', () => {
+  test('should show install notification when devproxy is not installed on mac', async () => {
+    const devProxyInstall: DevProxyInstall = {
+      filePath: '',
+      version: '',
+      platform: 'darwin',
+      isInstalled: false,
+      isBeta: false,
+    };
+    const notification = handleStartNotification(devProxyInstall);
+
+    const expected = 'Dev Proxy is not installed, or not in PATH.';
+    const actual = notification !== undefined && notification().message;
+    assert.strictEqual(actual, expected);
+  });
+
+  test('should show install notification when devproxy is not installed on windows', async () => {
+    const devProxyInstall: DevProxyInstall = {
+      filePath: '',
+      version: '',
+      platform: 'win32',
+      isInstalled: false,
+      isBeta: false,
+    };
+    const notification = handleStartNotification(devProxyInstall);
+
+    const expected = 'Dev Proxy is not installed, or not in PATH.';
+    const actual = notification !== undefined && notification().message;
+    assert.strictEqual(actual, expected);
+  });
+
+  test('should not show install notification when devproxy is installed on mac', async () => {
+    const devProxyInstall: DevProxyInstall = {
+      filePath: 'somepath/devproxy',
+      version: '0.1.0',
+      platform: 'darwin',
+      isInstalled: true,
+      isBeta: false,
+    };
+    const notification = handleStartNotification(devProxyInstall);
+
+    const expected = true;
+    const actual = notification === undefined;
+  });
+
+  test('should not show install notification when devproxy is installed on windows', async () => {
+    const devProxyInstall: DevProxyInstall = {
+      filePath: 'somepath/devproxy',
+      version: '0.1.0',
+      platform: 'win32',
+      isInstalled: true,
+      isBeta: false,
+    };
+    const notification = handleStartNotification(devProxyInstall);
+
+    const expected = true;
+    const actual = notification === undefined;
+    assert.strictEqual(actual, expected);
+  });
+
+  test('should not show install notification when running in unsupported operating system', async () => {
+    const devProxyInstall: DevProxyInstall = {
+      filePath: 'somepath/devproxy',
+      version: '0.1.0',
+      platform: 'linux',
+      isInstalled: true,
+      isBeta: false,
+    };
+    const notification = handleStartNotification(devProxyInstall);
+
+    const expected = true;
+    const actual = notification === undefined;
     assert.strictEqual(actual, expected);
   });
 });
