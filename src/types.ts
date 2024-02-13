@@ -16,3 +16,11 @@ export type PluginSnippets = {
     config?: PluginConfig;
   };
 };
+
+export type DevProxyInstall = {
+  filePath: string;
+  version: string;
+  isInstalled: boolean;
+  isBeta: boolean;
+  platform: NodeJS.Platform;
+};

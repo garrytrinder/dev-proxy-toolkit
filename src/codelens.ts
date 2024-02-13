@@ -1,6 +1,15 @@
 import * as vscode from 'vscode';
-import {isConfigFile, getASTNode, getRangeFromASTNode} from './helpers';
+import { isConfigFile, getASTNode, getRangeFromASTNode } from './helpers';
 import parse from 'json-to-ast';
+
+export const registerCodeLens = (context: vscode.ExtensionContext) => {
+  context.subscriptions.push(
+    vscode.languages.registerCodeLensProvider(
+      { scheme: 'file', language: 'json' },
+      pluginLensProvider
+    )
+  );
+};
 
 export const pluginLensProvider: vscode.CodeLensProvider = {
   provideCodeLenses(

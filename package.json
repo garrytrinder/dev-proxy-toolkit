@@ -12,7 +12,7 @@
     "Testing"
   ],
   "activationEvents": [
-    "onLanguage:json"
+    "onStartupFinished"
   ],
   "repository": {
     "type": "git",
