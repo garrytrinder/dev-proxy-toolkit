@@ -1,4 +1,4 @@
-import {PluginDocs, PluginSnippets} from './types';
+import { DevProxyInstall, PluginDocs, PluginSnippets } from './types';
 
 export const pluginSnippets: PluginSnippets = {
   CachingGuidancePlugin: {
@@ -196,3 +196,13 @@ export const pluginDocs: PluginDocs = {
     url: 'https://learn.microsoft.com/microsoft-cloud/dev/dev-proxy/technical-reference/retryafterplugin',
   }
 };
+
+export const testDevProxyInstall: DevProxyInstall = {
+  filePath: 'somepath/devproxy',
+  isBeta: false,
+  isInstalled: true,
+  isLatest: true,
+  latestVersion: '0.14.1',
+  platform: 'win32',
+  version: '0.14.1'
+}; 

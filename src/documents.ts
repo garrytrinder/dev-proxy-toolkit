@@ -8,7 +8,7 @@ export const registerDocumentListeners = (context: vscode.ExtensionContext, coll
             if (!isConfigFile(document)) {
                 return;
             }
-            updateDiagnostics(document, collection);
+            updateDiagnostics(context, document, collection);
         })
     );
 
@@ -18,7 +18,7 @@ export const registerDocumentListeners = (context: vscode.ExtensionContext, coll
                 collection.delete(event.document.uri);
                 return;
             }
-            updateDiagnostics(event.document, collection);
+            updateDiagnostics(context, event.document, collection);
         })
     );
 };
