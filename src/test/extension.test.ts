@@ -10,11 +10,38 @@ import {
 import * as path from 'path';
 import parse from 'json-to-ast';
 import { createCodeLensForPluginNodes } from '../codelens';
-import { DevProxyInstall } from '../types';
 import { handleStartNotification } from '../notifications';
 import { handleStatusBarUpdate } from '../statusbar';
+import { testDevProxyInstall } from '../constants';
+
+suite('extension', () => {
+
+  suiteSetup(async () => {
+    do {
+      await sleep(1000);
+    } while (!vscode.extensions.getExtension('garrytrinder.dev-proxy-toolkit')?.isActive);
+  });
+
+  test('should activate', async () => {
+    const expected = true;
+    const actual = vscode.extensions.getExtension('garrytrinder.dev-proxy-toolkit')?.isActive;
+    assert.strictEqual(actual, expected);
+  });
+});
 
 suite('urlsToWatch', () => {
+
+  suiteSetup(async () => {
+    const context = await vscode.extensions.getExtension('garrytrinder.dev-proxy-toolkit')?.activate() as vscode.ExtensionContext;
+    await context.globalState.update('devProxyInstall', testDevProxyInstall);
+  });
+
+  teardown(async () => {
+    await vscode.commands.executeCommand('workbench.action.closeActiveEditor');
+    const context = await vscode.extensions.getExtension('garrytrinder.dev-proxy-toolkit')?.activate() as vscode.ExtensionContext;
+    await context.globalState.update('devProxyInstall', testDevProxyInstall);
+  });
+
   test('should show error when opening document with no urlsToWatch found', async () => {
     const fileName = 'config-urls-to-watch-required.json';
     const filePath = path.resolve(__dirname, 'examples', fileName);
@@ -77,9 +104,20 @@ suite('urlsToWatch', () => {
     const actual = diagnostics.length;
     assert.strictEqual(actual, expected);
   });
+
 });
 
 suite('isConfigFile', () => {
+
+  setup(async () => {
+    const context = await vscode.extensions.getExtension('garrytrinder.dev-proxy-toolkit')?.activate() as vscode.ExtensionContext;
+    await context.globalState.update('devProxyInstall', testDevProxyInstall);
+  });
+
+  teardown(async () => {
+    await vscode.commands.executeCommand('workbench.action.closeActiveEditor');
+  });
+
   test('should return true if file is named devproxyrc.json', async () => {
     const fileName = 'devproxyrc.json';
     const filePath = path.resolve(__dirname, 'examples', fileName);
@@ -148,6 +186,16 @@ suite('isConfigFile', () => {
 });
 
 suite('plugins', () => {
+
+  suiteSetup(async () => {
+    const context = await vscode.extensions.getExtension('garrytrinder.dev-proxy-toolkit')?.activate() as vscode.ExtensionContext;
+    await context.globalState.update('devProxyInstall', testDevProxyInstall);
+  });
+
+  teardown(async () => {
+    await vscode.commands.executeCommand('workbench.action.closeActiveEditor');
+  });
+
   test('should show error when plugin requires config section', async () => {
     const fileName = 'config-plugin-config-required.json';
     const filePath = path.resolve(__dirname, 'examples', fileName);
@@ -236,8 +284,20 @@ suite('plugins', () => {
 });
 
 suite('notifications', () => {
+
+  suiteSetup(async () => {
+    const context = await vscode.extensions.getExtension('garrytrinder.dev-proxy-toolkit')?.activate() as vscode.ExtensionContext;
+    await context.globalState.update('devProxyInstall', testDevProxyInstall);
+  });
+
+  teardown(async () => {
+    const context = await vscode.extensions.getExtension('garrytrinder.dev-proxy-toolkit')?.activate() as vscode.ExtensionContext;
+    await context.globalState.update('devProxyInstall', testDevProxyInstall);
+  });
+
   test('should show install notification when devproxy is not installed on mac', async () => {
-    const devProxyInstall: DevProxyInstall = {
+    const context = await vscode.extensions.getExtension('garrytrinder.dev-proxy-toolkit')?.activate() as vscode.ExtensionContext;
+    await context.globalState.update('devProxyInstall', {
       filePath: '',
       version: '',
       platform: 'darwin',
@@ -245,8 +305,9 @@ suite('notifications', () => {
       latestVersion: '0.14.1',
       isBeta: false,
       isLatest: false
-    };
-    const notification = handleStartNotification(devProxyInstall);
+    });
+
+    const notification = handleStartNotification(context);
 
     const expected = 'Dev Proxy is not installed, or not in PATH.';
     const actual = notification !== undefined && notification().message;
@@ -254,7 +315,8 @@ suite('notifications', () => {
   });
 
   test('should show install notification when devproxy is not installed on windows', async () => {
-    const devProxyInstall: DevProxyInstall = {
+    const context = await vscode.extensions.getExtension('garrytrinder.dev-proxy-toolkit')?.activate() as vscode.ExtensionContext;
+    await context.globalState.update('devProxyInstall', {
       filePath: '',
       version: '',
       platform: 'win32',
@@ -262,8 +324,9 @@ suite('notifications', () => {
       latestVersion: '0.14.1',
       isBeta: false,
       isLatest: false
-    };
-    const notification = handleStartNotification(devProxyInstall);
+    });
+
+    const notification = handleStartNotification(context);
 
     const expected = 'Dev Proxy is not installed, or not in PATH.';
     const actual = notification !== undefined && notification().message;
@@ -271,7 +334,8 @@ suite('notifications', () => {
   });
 
   test('should not show install notification when devproxy is installed on mac', async () => {
-    const devProxyInstall: DevProxyInstall = {
+    const context = await vscode.extensions.getExtension('garrytrinder.dev-proxy-toolkit')?.activate() as vscode.ExtensionContext;
+    await context.globalState.update('devProxyInstall', {
       filePath: 'somepath/devproxy',
       version: '0.14.1',
       platform: 'darwin',
@@ -279,15 +343,18 @@ suite('notifications', () => {
       latestVersion: '0.14.1',
       isBeta: false,
       isLatest: true
-    };
-    const notification = handleStartNotification(devProxyInstall);
+    });
+
+    const notification = handleStartNotification(context);
 
     const expected = true;
     const actual = notification === undefined;
+    assert.strictEqual(actual, expected);
   });
 
   test('should not show install notification when devproxy is installed on windows', async () => {
-    const devProxyInstall: DevProxyInstall = {
+    const context = await vscode.extensions.getExtension('garrytrinder.dev-proxy-toolkit')?.activate() as vscode.ExtensionContext;
+    await context.globalState.update('devProxyInstall', {
       filePath: 'somepath/devproxy',
       version: '0.1.0',
       platform: 'win32',
@@ -295,8 +362,9 @@ suite('notifications', () => {
       latestVersion: '0.14.1',
       isBeta: false,
       isLatest: true
-    };
-    const notification = handleStartNotification(devProxyInstall);
+    });
+
+    const notification = handleStartNotification(context);
 
     const expected = true;
     const actual = notification === undefined;
@@ -304,7 +372,8 @@ suite('notifications', () => {
   });
 
   test('should not show install notification when running in unsupported operating system', async () => {
-    const devProxyInstall: DevProxyInstall = {
+    const context = await vscode.extensions.getExtension('garrytrinder.dev-proxy-toolkit')?.activate() as vscode.ExtensionContext;
+    await context.globalState.update('devProxyInstall', {
       filePath: 'somepath/devproxy',
       version: '0.14.1',
       platform: 'linux',
@@ -312,8 +381,9 @@ suite('notifications', () => {
       latestVersion: '0.14.1',
       isBeta: false,
       isLatest: true
-    };
-    const notification = handleStartNotification(devProxyInstall);
+    });
+
+    const notification = handleStartNotification(context);
 
     const expected = true;
     const actual = notification === undefined;
@@ -321,7 +391,8 @@ suite('notifications', () => {
   });
 
   test('should show upgrade notification when devproxy is not latest version', async () => {
-    const devProxyInstall: DevProxyInstall = {
+    const context = await vscode.extensions.getExtension('garrytrinder.dev-proxy-toolkit')?.activate() as vscode.ExtensionContext;
+    await context.globalState.update('devProxyInstall', {
       filePath: 'somepath/devproxy',
       version: '0.1.0',
       platform: 'win32',
@@ -329,8 +400,9 @@ suite('notifications', () => {
       latestVersion: '0.14.1',
       isBeta: false,
       isLatest: false
-    };
-    const notification = handleStartNotification(devProxyInstall);
+    });
+
+    const notification = handleStartNotification(context);
 
     const expected = 'New Dev Proxy version 0.14.1 is available.';
     const actual = notification !== undefined && notification().message;
@@ -339,8 +411,20 @@ suite('notifications', () => {
 });
 
 suite('statusbar', () => {
+
+  suiteSetup(async () => {
+    const context = await vscode.extensions.getExtension('garrytrinder.dev-proxy-toolkit')?.activate() as vscode.ExtensionContext;
+    await context.globalState.update('devProxyInstall', testDevProxyInstall);
+  });
+
+  teardown(async () => {
+    const context = await vscode.extensions.getExtension('garrytrinder.dev-proxy-toolkit')?.activate() as vscode.ExtensionContext;
+    await context.globalState.update('devProxyInstall', testDevProxyInstall);
+  });
+
   test('should show error statusbar when devproxy is not installed', async () => {
-    const devProxyInstall: DevProxyInstall = {
+    const context = await vscode.extensions.getExtension('garrytrinder.dev-proxy-toolkit')?.activate() as vscode.ExtensionContext;
+    await context.globalState.update('devProxyInstall', {
       filePath: '',
       version: '',
       platform: 'darwin',
@@ -348,12 +432,12 @@ suite('statusbar', () => {
       latestVersion: '0.14.1',
       isBeta: false,
       isLatest: false
-    };
+    });
     const statusBar = vscode.window.createStatusBarItem(
       vscode.StatusBarAlignment.Right,
       100
     );
-    const updatedStatusBar = handleStatusBarUpdate(statusBar, devProxyInstall);
+    const updatedStatusBar = handleStatusBarUpdate(context, statusBar);
 
     const expected = '$(error) Dev Proxy';
     const actual = updatedStatusBar.text;
@@ -361,7 +445,8 @@ suite('statusbar', () => {
   });
 
   test('should show warning statusbar when devproxy is not latest version', async () => {
-    const devProxyInstall: DevProxyInstall = {
+    const context = await vscode.extensions.getExtension('garrytrinder.dev-proxy-toolkit')?.activate() as vscode.ExtensionContext;
+    await context.globalState.update('devProxyInstall', {
       filePath: 'somepath/devproxy',
       version: '0.1.0',
       platform: 'win32',
@@ -369,12 +454,12 @@ suite('statusbar', () => {
       latestVersion: '0.14.1',
       isBeta: false,
       isLatest: false
-    };
+    });
     const statusBar = vscode.window.createStatusBarItem(
       vscode.StatusBarAlignment.Right,
       100
     );
-    const updatedStatusBar = handleStatusBarUpdate(statusBar, devProxyInstall);
+    const updatedStatusBar = handleStatusBarUpdate(context, statusBar);
 
     const expected = '$(warning) Dev Proxy 0.1.0';
     const actual = updatedStatusBar.text;
@@ -382,7 +467,8 @@ suite('statusbar', () => {
   });
 
   test('should show success statusbar when devproxy is installed and latest version', async () => {
-    const devProxyInstall: DevProxyInstall = {
+    const context = await vscode.extensions.getExtension('garrytrinder.dev-proxy-toolkit')?.activate() as vscode.ExtensionContext;
+    await context.globalState.update('devProxyInstall', {
       filePath: 'somepath/devproxy',
       version: '0.14.1',
       platform: 'win32',
@@ -390,15 +476,80 @@ suite('statusbar', () => {
       latestVersion: '0.14.1',
       isBeta: false,
       isLatest: true
-    };
+    });
     const statusBar = vscode.window.createStatusBarItem(
       vscode.StatusBarAlignment.Right,
       100
     );
-    const updatedStatusBar = handleStatusBarUpdate(statusBar, devProxyInstall);
+    const updatedStatusBar = handleStatusBarUpdate(context, statusBar);
 
     const expected = '$(check) Dev Proxy 0.14.1';
     const actual = updatedStatusBar.text;
     assert.strictEqual(actual, expected);
   });
+});
+
+suite('schema', () => {
+
+  setup(async () => {
+    const context = await vscode.extensions.getExtension('garrytrinder.dev-proxy-toolkit')?.activate() as vscode.ExtensionContext;
+    await context.globalState.update('devProxyInstall', testDevProxyInstall);
+  });
+
+  teardown(async () => {
+    await vscode.commands.executeCommand('workbench.action.closeActiveEditor');
+  });
+
+  test('should show warning when $schema property does not match installed version', async () => {
+    const context = await vscode.extensions.getExtension('garrytrinder.dev-proxy-toolkit')?.activate() as vscode.ExtensionContext;
+    await context.globalState.update('devProxyInstall', {
+      filePath: 'somepath/devproxy',
+      version: '0.1.0',
+      platform: 'win32',
+      isInstalled: true,
+      latestVersion: '0.14.1',
+      isBeta: false,
+      isLatest: false
+    });
+
+    const fileName = 'config-schema-mismatch.json';
+    const filePath = path.resolve(__dirname, 'examples', fileName);
+    const document = await vscode.workspace.openTextDocument(filePath);
+    await sleep(1000);
+    const diagnostics = vscode.languages.getDiagnostics(document.uri);
+
+    const expected = {
+      message: 'Schema version is not compatible with the installed version of Dev Proxy. Expected v0.1.0.',
+      severity: vscode.DiagnosticSeverity.Warning,
+    };
+    const actual = {
+      message: diagnostics[0]?.message,
+      severity: diagnostics[0]?.severity,
+    };
+    assert.deepStrictEqual(actual, expected);
+  });
+
+  test('should not show warning when $schema property matches installed version', async () => {
+    const context = await vscode.extensions.getExtension('garrytrinder.dev-proxy-toolkit')?.activate() as vscode.ExtensionContext;
+    await context.globalState.update('devProxyInstall', {
+      filePath: 'somepath/devproxy',
+      version: '0.14.1',
+      platform: 'win32',
+      isInstalled: true,
+      latestVersion: '0.14.1',
+      isBeta: false,
+      isLatest: true
+    });
+
+    const fileName = 'config-schema-version.json';
+    const filePath = path.resolve(__dirname, 'examples', fileName);
+    const document = await vscode.workspace.openTextDocument(filePath);
+    await sleep(1000);
+    const diagnostics = vscode.languages.getDiagnostics(document.uri);
+
+    const expected = 0;
+    const actual = diagnostics.length;
+    assert.deepStrictEqual(actual, expected);
+  }); 
+
 });

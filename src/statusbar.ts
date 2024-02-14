@@ -9,11 +9,13 @@ export const createStatusBar = (context: vscode.ExtensionContext): vscode.Status
     return statusBar;
 };
 
-export const updateStatusBar = (statusBar: vscode.StatusBarItem, devProxyInstall: DevProxyInstall) => {
-    statusBar = handleStatusBarUpdate(statusBar, devProxyInstall);
+export const updateStatusBar = (context: vscode.ExtensionContext, statusBar: vscode.StatusBarItem) => {
+    statusBar = handleStatusBarUpdate(context, statusBar);
 };
 
-export const handleStatusBarUpdate = (statusBar: vscode.StatusBarItem, devProxyInstall: DevProxyInstall): vscode.StatusBarItem => {
+export const handleStatusBarUpdate = (context: vscode.ExtensionContext, statusBar: vscode.StatusBarItem): vscode.StatusBarItem => {
+    const devProxyInstall = context.globalState.get<DevProxyInstall>('devProxyInstall');
+    if (!devProxyInstall) { return statusBar; }
     if (devProxyInstall.isInstalled) {
         statusBar.backgroundColor = new vscode.ThemeColor('statusBar.background');
         statusBar.color = new vscode.ThemeColor('statusBar.foreground');
