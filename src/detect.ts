@@ -76,7 +76,7 @@ export const detectDevProxyInstall = async (): Promise<DevProxyInstall> => {
 };
 
 export const getLatestVersion = async (): Promise<string> => {
-    const request = await fetch('https://api.github.com/repos/microsoft/dev-proxy/releases');
+    const request = await fetch('https://api.github.com/repos/microsoft/dev-proxy/releases/latest');
     const release = await request.json() as Release;
     return release.tag_name.replace('v', '');
 };

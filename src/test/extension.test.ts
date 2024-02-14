@@ -12,6 +12,7 @@ import parse from 'json-to-ast';
 import { createCodeLensForPluginNodes } from '../codelens';
 import { DevProxyInstall } from '../types';
 import { handleStartNotification } from '../notifications';
+import { handleStatusBarUpdate } from '../statusbar';
 
 suite('urlsToWatch', () => {
   test('should show error when opening document with no urlsToWatch found', async () => {
@@ -333,6 +334,71 @@ suite('notifications', () => {
 
     const expected = 'New Dev Proxy version 0.14.1 is available.';
     const actual = notification !== undefined && notification().message;
+    assert.strictEqual(actual, expected);
+  });
+});
+
+suite('statusbar', () => {
+  test('should show error statusbar when devproxy is not installed', async () => {
+    const devProxyInstall: DevProxyInstall = {
+      filePath: '',
+      version: '',
+      platform: 'darwin',
+      isInstalled: false,
+      latestVersion: '0.14.1',
+      isBeta: false,
+      isLatest: false
+    };
+    const statusBar = vscode.window.createStatusBarItem(
+      vscode.StatusBarAlignment.Right,
+      100
+    );
+    const updatedStatusBar = handleStatusBarUpdate(statusBar, devProxyInstall);
+
+    const expected = '$(error) Dev Proxy';
+    const actual = updatedStatusBar.text;
+    assert.strictEqual(actual, expected);
+  });
+
+  test('should show warning statusbar when devproxy is not latest version', async () => {
+    const devProxyInstall: DevProxyInstall = {
+      filePath: 'somepath/devproxy',
+      version: '0.1.0',
+      platform: 'win32',
+      isInstalled: true,
+      latestVersion: '0.14.1',
+      isBeta: false,
+      isLatest: false
+    };
+    const statusBar = vscode.window.createStatusBarItem(
+      vscode.StatusBarAlignment.Right,
+      100
+    );
+    const updatedStatusBar = handleStatusBarUpdate(statusBar, devProxyInstall);
+
+    const expected = '$(warning) Dev Proxy 0.1.0';
+    const actual = updatedStatusBar.text;
+    assert.strictEqual(actual, expected);
+  });
+
+  test('should show success statusbar when devproxy is installed and latest version', async () => {
+    const devProxyInstall: DevProxyInstall = {
+      filePath: 'somepath/devproxy',
+      version: '0.14.1',
+      platform: 'win32',
+      isInstalled: true,
+      latestVersion: '0.14.1',
+      isBeta: false,
+      isLatest: true
+    };
+    const statusBar = vscode.window.createStatusBarItem(
+      vscode.StatusBarAlignment.Right,
+      100
+    );
+    const updatedStatusBar = handleStatusBarUpdate(statusBar, devProxyInstall);
+
+    const expected = '$(check) Dev Proxy 0.14.1';
+    const actual = updatedStatusBar.text;
     assert.strictEqual(actual, expected);
   });
 });
