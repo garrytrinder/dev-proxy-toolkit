@@ -25,6 +25,7 @@ export type DevProxyInstall = {
   platform: NodeJS.Platform;
   latestVersion: string;
   isLatest: boolean;
+  isRunning: boolean;
 };
 
 export type Release = {

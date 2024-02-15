@@ -63,6 +63,7 @@ export const detectDevProxyInstall = async (): Promise<DevProxyInstall> => {
     const platform = os.platform();
     const latestVersion = await getLatestVersion();
     const isLatest = latestVersion === version;
+    const isRunning = await isDevProxyRunning();
 
     return {
         filePath,
@@ -71,7 +72,8 @@ export const detectDevProxyInstall = async (): Promise<DevProxyInstall> => {
         isBeta,
         platform,
         latestVersion,
-        isLatest
+        isLatest,
+        isRunning
     };
 };
 
@@ -79,4 +81,18 @@ export const getLatestVersion = async (): Promise<string> => {
     const request = await fetch('https://api.github.com/repos/microsoft/dev-proxy/releases/latest');
     const release = await request.json() as Release;
     return release.tag_name.replace('v', '');
+};
+
+export const isDevProxyRunning = async (): Promise<boolean> => {
+    const platform = os.platform();
+
+    if (platform === 'win32') {
+        const processId = await executeCommand('pwsh.exe -c "(Get-Process devproxy -ErrorAction SilentlyContinue).Id"');
+        return processId.trim() !== '';
+    };
+    if (platform === 'darwin') {
+        const processId = await executeCommand('$SHELL -c "ps -ef | grep devproxy | grep -v grep | awk \'{print $2}\'"');
+        return processId.trim() !== '';
+    };
+    return false;
 };
