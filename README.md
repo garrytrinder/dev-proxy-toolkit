@@ -67,7 +67,7 @@ The following diagnostic checks are performed:
 - Check for missing `configSection` property in plugin instance for plugins that require configuration
 - Check for missing `configSection` when defined in plugin instance
 - Check that schema matches installed version of Dev Proxy
-- Quick action to update schema to correct version
+- Code action to update schema to correct version
 
 ### Dev Proxy detection
 
