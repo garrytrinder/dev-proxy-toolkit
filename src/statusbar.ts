@@ -1,5 +1,6 @@
 import * as vscode from 'vscode';
 import { DevProxyInstall } from './types';
+import { isDevProxyRunning } from './detect';
 
 export const createStatusBar = (context: vscode.ExtensionContext): vscode.StatusBarItem => {
     const statusBar = vscode.window.createStatusBarItem(vscode.StatusBarAlignment.Right, 100);
@@ -34,5 +35,18 @@ export const handleStatusBarUpdate = (context: vscode.ExtensionContext, statusBa
         statusBar.text = `$(warning) Dev Proxy ${devProxyInstall.version}`;
         statusBar.tooltip = `An update is available`;
     }
+    if (devProxyInstall.isRunning) {
+        statusBar.text = `$(radio-tower) Dev Proxy ${devProxyInstall.version}`;
+        statusBar.tooltip = 'Dev Proxy is active';
+        statusBar.backgroundColor = new vscode.ThemeColor('statusBarItem.prominentBackground');
+        statusBar.color = new vscode.ThemeColor('statusBarItem.prominentForeground');
+    }
     return statusBar;
 };
+
+export const statusBarLoop = async (context: vscode.ExtensionContext, statusBar: vscode.StatusBarItem) => {
+    const isRunning = await isDevProxyRunning();
+    const globalState = context.globalState.get<DevProxyInstall>('devProxyInstall');
+    await context.globalState.update('devProxyInstall', { ...globalState, isRunning });
+    updateStatusBar(context, statusBar);
+  };

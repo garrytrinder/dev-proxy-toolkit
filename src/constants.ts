@@ -204,5 +204,6 @@ export const testDevProxyInstall: DevProxyInstall = {
   isLatest: true,
   latestVersion: '0.14.1',
   platform: 'win32',
-  version: '0.14.1'
+  version: '0.14.1',
+  isRunning: false
 }; 

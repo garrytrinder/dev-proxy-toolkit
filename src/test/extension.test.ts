@@ -11,8 +11,10 @@ import * as path from 'path';
 import parse from 'json-to-ast';
 import { createCodeLensForPluginNodes } from '../codelens';
 import { handleStartNotification } from '../notifications';
-import { handleStatusBarUpdate } from '../statusbar';
+import { handleStatusBarUpdate, statusBarLoop } from '../statusbar';
 import { testDevProxyInstall } from '../constants';
+import * as sinon from 'sinon';
+import * as detect from '../detect';
 
 suite('extension', () => {
 
@@ -487,6 +489,22 @@ suite('statusbar', () => {
     const actual = updatedStatusBar.text;
     assert.strictEqual(actual, expected);
   });
+
+  test('should show radio tower icon when devproxy is running', async () => {
+    const stub = sinon.stub(detect, 'isDevProxyRunning').resolves(true);
+    const context = await vscode.extensions.getExtension('garrytrinder.dev-proxy-toolkit')?.activate() as vscode.ExtensionContext;
+    const statusBar = vscode.window.createStatusBarItem(
+      vscode.StatusBarAlignment.Right,
+      100
+    );
+    await statusBarLoop(context, statusBar);
+
+    const expected = '$(radio-tower) Dev Proxy 0.14.1';
+    const actual = statusBar.text;
+    stub.restore();
+    assert.strictEqual(actual, expected);
+  });
+
 });
 
 suite('schema', () => {
@@ -550,6 +568,6 @@ suite('schema', () => {
     const expected = 0;
     const actual = diagnostics.length;
     assert.deepStrictEqual(actual, expected);
-  }); 
+  });
 
 });
