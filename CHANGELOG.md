@@ -7,6 +7,17 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [0.2.0] - 2024-02-15
+
+### Added: 
+
+- Dev Proxy detection: Check if installed
+- Dev Proxy detection: Check if latest is installed
+- Dev Proxy detection: Check if running
+- Config diagnostic: Check that schema matches installed version of Dev Proxy
+- Config diagnostic: Quick action to update schema to correct version
+- CI: Add publish workflow 
+
 ## [0.1.0] - 2024-01-18
 
 ### Added
