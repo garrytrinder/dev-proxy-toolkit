@@ -63,6 +63,16 @@ The Dev Proxy Toolkit extension for Visual Studio Code makes it easy to create a
 
 The following diagnostic checks are performed:
 
-- Check for empty `urlsToWatch`.
-- Check for missing `configSection` property in plugin instance for plugins that require configuration.
-- Check for missing `configSection` when defined in plugin instance.
+- Check for empty `urlsToWatch`
+- Check for missing `configSection` property in plugin instance for plugins that require configuration
+- Check for missing `configSection` when defined in plugin instance
+- Check that schema matches installed version of Dev Proxy
+- Code action to update schema to correct version
+
+### Dev Proxy detection
+
+The following checks are performed:
+
+- Check if Dev Proxy is installed
+- Check if Dev Proxy is the latest version
+- Check if Dev Proxy is running

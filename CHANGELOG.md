@@ -7,6 +7,35 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [0.2.0] - 2024-02-15
+
+### Added: 
+
+- Dev Proxy detection: Check if installed
+- Dev Proxy detection: Check if latest is installed
+- Dev Proxy detection: Check if running
+- Config diagnostic: Check that schema matches installed version of Dev Proxy
+- Config diagnostic: Code action to update schema to correct version
+- CI: Add publish workflow 
+
+### Changed:
+
+- Snippet: `devproxy-plugin-graph-select-guidance` corrected `name` property to `GraphSelectGuidancePlugin`
+- Snippet: `devproxy-plugin-graph-minimal-permissions` corrected `name` property to `MinimalPermissionsPlugin`
+- Snippet: `devproxy-plugin-odata-paging-guidance` corrected `name` property to `ODataPagingGuidancePlugin`
+- Fixed indenting and removed extra whitespace on snippets
+- Updated snippets to use opened arrays over multiple lines for easier update
+from:
+```json
+"value": [ ]
+```
+to:
+```json
+"value": [
+
+]
+```
+
 ## [0.1.0] - 2024-01-18
 
 ### Added
