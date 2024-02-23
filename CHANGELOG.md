@@ -14,6 +14,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Dev Proxy detection: Check if installed
 - Dev Proxy detection: Check if latest is installed
 - Dev Proxy detection: Check if running
+- Plugins: Documentation Code Lens
 - Config diagnostic: Check that schema matches installed version of Dev Proxy
 - Config diagnostic: Code action to update schema to correct version
 - CI: Add publish workflow 
