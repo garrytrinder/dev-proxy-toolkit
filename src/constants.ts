@@ -95,7 +95,7 @@ export const pluginSnippets: PluginSnippets = {
   ODSPSearchGuidancePlugin: {
     instance: 'devproxy-plugin-odsp-search-guidance',
   },
-  OpenAPIDocGeneratorPlugin: {
+  OpenApiSpecGeneratorPlugin: {
     instance: 'devproxy-plugin-openapi-doc-generator',
   },
   RateLimitingPlugin: {
@@ -183,7 +183,7 @@ export const pluginDocs: PluginDocs = {
     name: 'ODSP Search Guidance Plugin',
     url: 'https://learn.microsoft.com/microsoft-cloud/dev/dev-proxy/technical-reference/odspsearchguidanceplugin',
   },
-  OpenAPISpecGeneratorPlugin: {
+  OpenApiSpecGeneratorPlugin: {
     name: 'Open API Spec Generator Plugin',
     url: 'https://learn.microsoft.com/microsoft-cloud/dev/dev-proxy/technical-reference/openapispecgeneratorplugin',
   },
