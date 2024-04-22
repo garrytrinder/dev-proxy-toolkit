@@ -4,7 +4,7 @@ import { isDevProxyRunning } from './detect';
 
 export const createStatusBar = (context: vscode.ExtensionContext): vscode.StatusBarItem => {
     const statusBar = vscode.window.createStatusBarItem(vscode.StatusBarAlignment.Right, 100);
-    statusBar.text = '$(sync~spin) Dev Proxy';
+    statusBar.text = '$(loading~spin) Dev Proxy';
     statusBar.show();
     context.subscriptions.push(statusBar);
     return statusBar;
