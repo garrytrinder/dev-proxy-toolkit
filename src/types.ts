@@ -18,14 +18,13 @@ export type PluginSnippets = {
 };
 
 export type DevProxyInstall = {
-  filePath: string;
-  version: string;
-  isInstalled: boolean;
   isBeta: boolean;
-  platform: NodeJS.Platform;
-  latestVersion: string;
-  isLatest: boolean;
+  isInstalled: boolean;
+  isOutdated: boolean;
   isRunning: boolean;
+  outdatedVersion: string;
+  platform: NodeJS.Platform;
+  version: string;
 };
 
 export type Release = {

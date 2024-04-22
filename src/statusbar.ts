@@ -17,19 +17,19 @@ export const updateStatusBar = (context: vscode.ExtensionContext, statusBar: vsc
 export const handleStatusBarUpdate = (context: vscode.ExtensionContext, statusBar: vscode.StatusBarItem): vscode.StatusBarItem => {
     const devProxyInstall = context.globalState.get<DevProxyInstall>('devProxyInstall');
     if (!devProxyInstall) { return statusBar; }
-    if (devProxyInstall.isInstalled) {
-        statusBar.backgroundColor = new vscode.ThemeColor('statusBar.background');
-        statusBar.color = new vscode.ThemeColor('statusBar.foreground');
-        statusBar.text = `$(check) Dev Proxy ${devProxyInstall.version}`;
-        statusBar.tooltip = `You have the latest version installed`;
-    }
     if (!devProxyInstall.isInstalled) {
         statusBar.backgroundColor = new vscode.ThemeColor('statusBarItem.errorBackground');
         statusBar.color = new vscode.ThemeColor('statusBarItem.errorForeground');
         statusBar.text = `$(error) Dev Proxy`;
         statusBar.tooltip = `Dev Proxy is not installed`;
     }
-    if (devProxyInstall.isInstalled && !devProxyInstall.isLatest) {
+    if (devProxyInstall.isInstalled && !devProxyInstall.isOutdated) {
+        statusBar.backgroundColor = new vscode.ThemeColor('statusBar.background');
+        statusBar.color = new vscode.ThemeColor('statusBar.foreground');
+        statusBar.text = `$(check) Dev Proxy ${devProxyInstall.version}`;
+        statusBar.tooltip = `You have the latest version installed`;
+    }
+    if (devProxyInstall.isInstalled && devProxyInstall.isOutdated) {
         statusBar.backgroundColor = new vscode.ThemeColor('statusBarItem.warningBackground');
         statusBar.color = new vscode.ThemeColor('statusBarItem.warningForeground');
         statusBar.text = `$(warning) Dev Proxy ${devProxyInstall.version}`;

@@ -31,10 +31,9 @@ export const handleStartNotification = (context: vscode.ExtensionContext) => {
             };
         };
     };
-
-    if (!devProxyInstall.isLatest) {
+    if (devProxyInstall.isOutdated) {
         return () => {
-            const message = `New Dev Proxy version ${devProxyInstall.latestVersion} is available.`;
+            const message = `New Dev Proxy version ${devProxyInstall.outdatedVersion} is available.`;
             return {
                 message,
                 show: async () => {
