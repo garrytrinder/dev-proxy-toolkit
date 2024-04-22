@@ -1,4 +1,4 @@
-import { DevProxyInstall, PluginDocs, PluginSnippets } from './types';
+import { PluginDocs, PluginSnippets } from './types';
 
 export const pluginSnippets: PluginSnippets = {
   CachingGuidancePlugin: {
@@ -81,6 +81,13 @@ export const pluginSnippets: PluginSnippets = {
   },
   MockGeneratorPlugin: {
     instance: 'devproxy-plugin-mock-generator',
+  },
+  MockRequestPlugin: {
+    instance: 'devproxy-plugin-mock-request',
+    config: {
+      name: 'devproxy-plugin-mock-request-config',
+      required: true,
+    },
   },
   MockResponsePlugin: {
     instance: 'devproxy-plugin-mock-response',
@@ -170,6 +177,10 @@ export const pluginDocs: PluginDocs = {
   MockGeneratorPlugin: {
     name: 'Mock Generator Plugin',
     url: 'https://learn.microsoft.com/microsoft-cloud/dev/dev-proxy/technical-reference/mockgeneratorplugin',
+  },
+  MockRequestPlugin: {
+    name: 'Mock Request Plugin',
+    url: 'https://learn.microsoft.com/microsoft-cloud/dev/dev-proxy/technical-reference/mockrequestplugin',
   },
   MockResponsePlugin: {
     name: 'Mock Response Plugin',

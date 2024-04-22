@@ -446,7 +446,7 @@
       "},"
     ],
     "description": "MinimalPermissionsPlugin config section"
-  },
+  },  
   "MockGeneratorPlugin": {
     "prefix": "devproxy-plugin-mock-generator",
     "body": [
@@ -457,6 +457,27 @@
       "}"
     ],
     "description": "MockGeneratorPlugin instance"
+  },
+  "MockRequestPlugin": {
+    "prefix": "devproxy-plugin-mock-request",
+    "body": [
+      "{",
+      "\t\"name\": \"MockRequestPlugin\",",
+      "\t\"enabled\": true,",
+      "\t\"pluginPath\": \"~appFolder/plugins/dev-proxy-plugins.dll\",",
+      "\t\"configSection\": \"mockRequestPlugin\"",
+      "}"
+    ],
+    "description": "MockResponsePlugin instance"
+  },
+  "MockRequestPluginConfig": {
+    "prefix": "devproxy-plugin-mock-request-config",
+    "body": [
+      "\"mockRequestPlugin\": {",
+      "\t\"mockFile\": \"mock-request.json\"",
+      "},"
+    ],
+    "description": "MockResponsePlugin config section"
   },
   "MockResponsePlugin": {
     "prefix": "devproxy-plugin-mock-response",
