@@ -102,7 +102,8 @@
       "\t\"pluginPath\": \"~appFolder/plugins/dev-proxy-plugins.dll\"",
       "\t\"configSection\": \"apiCenterOnboardingPlugin\"",
       "}"
-    ]
+    ],
+    "description": "ApiCenterOnboardingPlugin instance"
   },
   "ApiCenterOnboardingPluginConfig": {
     "prefix": "devproxy-plugin-api-center-onboarding-config",
@@ -114,7 +115,8 @@
       "\t\"workspaceName\": \"default\"",
       "\t\"serviceName\": true",
       "}"
-    ]
+    ],
+    "description": "ApiCenterOnboardingPlugin config section"
   },
   "CachingGuidancePlugin": {
     "prefix": "devproxy-plugin-caching-guidance",
@@ -469,7 +471,7 @@
       "},"
     ],
     "description": "MinimalPermissionsPlugin config section"
-  },  
+  },
   "MockGeneratorPlugin": {
     "prefix": "devproxy-plugin-mock-generator",
     "body": [
