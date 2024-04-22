@@ -1,6 +1,13 @@
 import { PluginDocs, PluginSnippets } from './types';
 
 export const pluginSnippets: PluginSnippets = {
+  ApiCenterOnboardingPlugin: {
+    instance: 'devproxy-plugin-api-center-onboarding',
+    config: {
+      name: 'devproxy-plugin-api-center-onboarding-config',
+      required: true,
+    }
+  },
   CachingGuidancePlugin: {
     instance: 'devproxy-plugin-caching-guidance',
     config: {
@@ -118,6 +125,10 @@ export const pluginSnippets: PluginSnippets = {
 };
 
 export const pluginDocs: PluginDocs = {
+  ApiCenterOnboardingPlugin: {
+    name: 'API Center Onboarding Plugin',
+    url: 'https://learn.microsoft.com/microsoft-cloud/dev/dev-proxy/technical-reference/apicenteronboardingplugin',
+  },
   CachingGuidancePlugin: {
     name: 'Caching Guidance Plugin',
     url: 'https://learn.microsoft.com/microsoft-cloud/dev/dev-proxy/technical-reference/cachingguidanceplugin',

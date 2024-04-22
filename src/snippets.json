@@ -93,6 +93,29 @@
     ],
     "description": "Dev Proxy response header"
   },
+  "ApiCenterOnboardingPlugin": {
+    "prefix": "devproxy-plugin-api-center-onboarding",
+    "body": [
+      "{",
+      "\t\"name\": \"ApiCenterOnboardingPlugin\",",
+      "\t\"enabled\": true,",
+      "\t\"pluginPath\": \"~appFolder/plugins/dev-proxy-plugins.dll\"",
+      "\t\"configSection\": \"apiCenterOnboardingPlugin\"",
+      "}"
+    ]
+  },
+  "ApiCenterOnboardingPluginConfig": {
+    "prefix": "devproxy-plugin-api-center-onboarding-config",
+    "body": [
+      "\"apiCenterOnboardingPlugin\": {",
+      "\t\"subscriptionId\": \"cdae2297-7aa6-4195-bbb1-dcd89153cc72\"",
+      "\t\"resourceGroupName\": \"resource-group-name\"",
+      "\t\"serviceName\": \"apic-instance\"",
+      "\t\"workspaceName\": \"default\"",
+      "\t\"serviceName\": true",
+      "}"
+    ]
+  },
   "CachingGuidancePlugin": {
     "prefix": "devproxy-plugin-caching-guidance",
     "body": [
