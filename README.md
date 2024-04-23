@@ -18,6 +18,10 @@ The Dev Proxy Toolkit extension for Visual Studio Code makes it easy to create a
 | `devproxy-request` | Dev Proxy request |
 | `devproxy-response` | Dev Proxy response |
 | `devproxy-response-header` | Dev Proxy response header |
+| `devproxy-plugin-api-center-onboarding` | ApiCenterOnboardingPlugin instance |
+| `devproxy-plugin-api-center-onboarding-config` | ApiCenterOnboardingPlugin config section |
+| `devproxy-plugin-api-center-production-version` | ApiCenterProductionVersionPlugin instance |
+| `devproxy-plugin-api-center-production-version-config` | ApiCenterProductionVersionPlugin config section |
 | `devproxy-plugin-caching-guidance` | CachingGuidancePlugin instance |
 | `devproxy-plugin-caching-guidance-config` | CachingGuidancePlugin config section |
 | `devproxy-plugin-crud-api` | CrudApiPlugin instance |
@@ -27,6 +31,8 @@ The Dev Proxy Toolkit extension for Visual Studio Code makes it easy to create a
 | `devproxy-plugin-crud-api-action` | CrudApiPlugin action |
 | `devproxy-plugin-dev-tools` | DevToolsPlugin instance |
 | `devproxy-plugin-dev-tools-config` | DevToolsPlugin config section |
+| `devproxy-plugin-entra-mock-response` | EntraMockResponsePlugin instance |
+| `devproxy-plugin-entra-mock-response-config` | EntraMockResponsePlugin config section |
 | `devproxy-plugin-execution-summary` | ExecutionSummaryPlugin instance |
 | `devproxy-plugin-execution-summary-config` | ExecutionSummaryPlugin config section |
 | `devproxy-plugin-generic-random-error` | GenericRandomErrorPlugin instance |
@@ -47,6 +53,8 @@ The Dev Proxy Toolkit extension for Visual Studio Code makes it easy to create a
 | `devproxy-plugin-graph-minimal-permissions` | MinimalPermissionsPlugin instance |
 | `devproxy-plugin-graph-minimal-permissions-config` | MinimalPermissionsPlugin config section |
 | `devproxy-plugin-mock-generator` | MockGeneratorPlugin instance |
+| `devproxy-plugin-mock-request` | MockResponsePlugin instance |
+| `devproxy-plugin-mock-request-config` | MockResponsePlugin config section |
 | `devproxy-plugin-mock-response` | MockResponsePlugin instance |
 | `devproxy-plugin-mock-response-config` | MockResponsePlugin config section |
 | `devproxy-plugin-mock-response-schema` | MockResponsePlugin schema |
