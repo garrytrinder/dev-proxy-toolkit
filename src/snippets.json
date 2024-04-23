@@ -214,6 +214,27 @@
     ],
     "description": "DevToolsPlugin config section"
   },
+  "EntraMockResponsePlugin": {
+    "prefix": "devproxy-plugin-entra-mock-response",
+    "body": [
+      "{",
+      "\t\"name\": \"EntraMockResponsePlugin\",",
+      "\t\"enabled\": true,",
+      "\t\"pluginPath\": \"~appFolder/plugins/dev-proxy-plugins.dll\",",
+      "\t\"configSection\": \"mocksPlugin\"",
+      "}"
+    ],
+    "description": "EntraMockResponsePlugin instance"
+  },
+  "EntraMockResponsePluginConfig": {
+    "prefix": "devproxy-plugin-entra-mock-response-config",
+    "body": [
+      "\"mocksPlugin\": {",
+      "\t\"mocksFile\": \"mocks.json\"",
+      "},"
+    ],
+    "description": "EntraMockResponsePlugin config section"
+  },
   "ExecutionSummaryPlugin": {
     "prefix": "devproxy-plugin-execution-summary",
     "body": [
