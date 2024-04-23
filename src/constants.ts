@@ -8,6 +8,13 @@ export const pluginSnippets: PluginSnippets = {
       required: true,
     }
   },
+  ApiCenterProductionVersionPlugin: {
+    instance: 'devproxy-plugin-api-center-production-version',
+    config: {
+      name: 'devproxy-plugin-api-center-production-version-config',
+      required: true,
+    },
+  },
   CachingGuidancePlugin: {
     instance: 'devproxy-plugin-caching-guidance',
     config: {
@@ -29,7 +36,7 @@ export const pluginSnippets: PluginSnippets = {
       required: false,
     },
   },
-  EntraMockResponsePlugin:{
+  EntraMockResponsePlugin: {
     instance: 'devproxy-plugin-entra-mock-response',
     config: {
       name: 'devproxy-plugin-entra-mock-response-config',
@@ -136,6 +143,10 @@ export const pluginDocs: PluginDocs = {
     name: 'API Center Onboarding Plugin',
     url: 'https://learn.microsoft.com/microsoft-cloud/dev/dev-proxy/technical-reference/apicenteronboardingplugin',
   },
+  ApiCenterProductionVersionPlugin: {
+    name: 'API Center Production Version Plugin',
+    url: 'https://learn.microsoft.com/microsoft-cloud/dev/dev-proxy/technical-reference/apicenterproductionversionplugin',
+  },
   CachingGuidancePlugin: {
     name: 'Caching Guidance Plugin',
     url: 'https://learn.microsoft.com/microsoft-cloud/dev/dev-proxy/technical-reference/cachingguidanceplugin',
@@ -148,7 +159,7 @@ export const pluginDocs: PluginDocs = {
     name: 'Dev Tools Plugin',
     url: 'https://learn.microsoft.com/microsoft-cloud/dev/dev-proxy/technical-reference/devtoolsplugin',
   },
-  EntraMockResponsePlugin:{
+  EntraMockResponsePlugin: {
     name: 'Entra Mock Response Plugin',
     url: 'https://learn.microsoft.com/microsoft-cloud/dev/dev-proxy/technical-reference/entramockresponseplugin',
   },
