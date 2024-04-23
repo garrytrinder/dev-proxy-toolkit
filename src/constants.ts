@@ -29,6 +29,13 @@ export const pluginSnippets: PluginSnippets = {
       required: false,
     },
   },
+  EntraMockResponsePlugin:{
+    instance: 'devproxy-plugin-entra-mock-response',
+    config: {
+      name: 'devproxy-plugin-entra-mock-response-config',
+      required: true,
+    },
+  },
   ExecutionSummaryPlugin: {
     instance: 'devproxy-plugin-execution-summary',
     config: {
@@ -140,6 +147,10 @@ export const pluginDocs: PluginDocs = {
   DevToolsPlugin: {
     name: 'Dev Tools Plugin',
     url: 'https://learn.microsoft.com/microsoft-cloud/dev/dev-proxy/technical-reference/devtoolsplugin',
+  },
+  EntraMockResponsePlugin:{
+    name: 'Entra Mock Response Plugin',
+    url: 'https://learn.microsoft.com/microsoft-cloud/dev/dev-proxy/technical-reference/entramockresponseplugin',
   },
   ExecutionSummaryPlugin: {
     name: 'Execution Summary Plugin',
