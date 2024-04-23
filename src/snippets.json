@@ -99,8 +99,8 @@
       "{",
       "\t\"name\": \"ApiCenterOnboardingPlugin\",",
       "\t\"enabled\": true,",
-      "\t\"pluginPath\": \"~appFolder/plugins/dev-proxy-plugins.dll\"",
-      "\t\"configSection\": \"apiCenterOnboardingPlugin\"",
+      "\t\"pluginPath\": \"~appFolder/plugins/dev-proxy-plugins.dll\",",
+      "\t\"configSection\": \"apiCenterOnboardingPlugin\",",
       "}"
     ],
     "description": "ApiCenterOnboardingPlugin instance"
@@ -109,14 +109,38 @@
     "prefix": "devproxy-plugin-api-center-onboarding-config",
     "body": [
       "\"apiCenterOnboardingPlugin\": {",
-      "\t\"subscriptionId\": \"cdae2297-7aa6-4195-bbb1-dcd89153cc72\"",
-      "\t\"resourceGroupName\": \"resource-group-name\"",
-      "\t\"serviceName\": \"apic-instance\"",
-      "\t\"workspaceName\": \"default\"",
+      "\t\"subscriptionId\": \"cdae2297-7aa6-4195-bbb1-dcd89153cc72\",",
+      "\t\"resourceGroupName\": \"resource-group-name\",",
+      "\t\"serviceName\": \"apic-instance\",",
+      "\t\"workspaceName\": \"default\",",
       "\t\"serviceName\": true",
       "}"
     ],
     "description": "ApiCenterOnboardingPlugin config section"
+  },
+  "ApiCenterProductionVersionPlugin": {
+    "prefix": "devproxy-plugin-api-center-production-version",
+    "body": [
+      "{",
+      "\t\"name\": \"ApiCenterProductionVersionPlugin\",",
+      "\t\"enabled\": true,",
+      "\t\"pluginPath\": \"~appFolder/plugins/dev-proxy-plugins.dll\",",
+      "\t\"configSection\": \"apiCenterProductionVersionPlugin\"",
+      "}"
+    ],
+    "description": "ApiCenterProductionVersionPlugin instance"
+  },
+  "ApiCenterProductionVersionPluginConfig": {
+    "prefix": "devproxy-plugin-api-center-production-version-config",
+    "body": [
+      "\"apiCenterProductionVersionPlugin\": {",
+      "\t\"subscriptionId\": \"cdae2297-7aa6-4195-bbb1-dcd89153cc72\",",
+      "\t\"resourceGroupName\": \"resource-group-name\",",
+      "\t\"serviceName\": \"apic-instance\",",
+      "\t\"workspaceName\": \"default\"",
+      "}"
+    ],
+    "description": "ApiCenterProductionVersionPlugin config section"
   },
   "CachingGuidancePlugin": {
     "prefix": "devproxy-plugin-caching-guidance",
