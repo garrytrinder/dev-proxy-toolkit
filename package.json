@@ -25,7 +25,18 @@
         "language": "json",
         "path": "./dist/snippets.json"
       }
-    ]
+    ],
+    "configuration": {
+      "title": "Dev Proxy Toolkit",
+      "properties": {
+        "devproxytoolkit.versionPreference": {
+          "type": "string",
+          "enum": ["stable", "beta"],
+          "default": "stable",
+          "description": "Select the preferred version to be used when installed side by side."
+        }
+      }
+    }
   },
   "preview": true,
   "pricing": "Free",
