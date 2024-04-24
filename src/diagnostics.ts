@@ -20,10 +20,11 @@ export const updateDiagnostics = (
   const schemaNode = getASTNode(documentNode.children, 'Identifier', '$schema');
   if (schemaNode) {
     const schemaValue = (schemaNode.value as parse.LiteralNode).value as string;
-    if (!schemaValue.includes(`${devProxyInstall.version}`)) {
+    const devProxyVersion = devProxyInstall.isBeta ? devProxyInstall.version.split('-')[0] : devProxyInstall.version;
+    if (!schemaValue.includes(`${devProxyVersion}`)) {
       const diagnostic = new vscode.Diagnostic(
         getRangeFromASTNode(schemaNode),
-        `Schema version is not compatible with the installed version of Dev Proxy. Expected v${devProxyInstall.version}.`,
+        `Schema version is not compatible with the installed version of Dev Proxy. Expected v${devProxyVersion}`,
         vscode.DiagnosticSeverity.Warning
       );
       diagnostic.code = 'invalidSchema';

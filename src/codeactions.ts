@@ -6,6 +6,7 @@ export const registerCodeActions = (context: vscode.ExtensionContext) => {
     if (!devProxyInstall) {
         return;
     }
+    const devProxyVersion = devProxyInstall.isBeta ? devProxyInstall.version.split('-')[0] : devProxyInstall.version;
     context.subscriptions.push(
         vscode.languages.registerCodeActionsProvider('json', {
             provideCodeActions: (document, range, context, token) => {
@@ -21,7 +22,7 @@ export const registerCodeActions = (context: vscode.ExtensionContext) => {
                             diagnostic.range.start,
                             diagnostic.range.end
                         ),
-                        `$schema": "https://raw.githubusercontent.com/microsoft/dev-proxy/main/schemas/v${devProxyInstall.version}/rc.schema.json",`
+                        `$schema": "https://raw.githubusercontent.com/microsoft/dev-proxy/main/schemas/v${devProxyVersion}/rc.schema.json",`
                     );
                     return [fix];
                 }
