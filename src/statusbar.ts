@@ -1,6 +1,7 @@
 import * as vscode from 'vscode';
 import { DevProxyInstall } from './types';
-import { isDevProxyRunning } from './detect';
+import { getDevProxyExe, isDevProxyRunning } from './detect';
+import { VersionPreference } from './enums';
 
 export const createStatusBar = (context: vscode.ExtensionContext): vscode.StatusBarItem => {
     const statusBar = vscode.window.createStatusBarItem(vscode.StatusBarAlignment.Right, 100);
@@ -44,9 +45,10 @@ export const handleStatusBarUpdate = (context: vscode.ExtensionContext, statusBa
     return statusBar;
 };
 
-export const statusBarLoop = async (context: vscode.ExtensionContext, statusBar: vscode.StatusBarItem) => {
-    const isRunning = await isDevProxyRunning();
+export const statusBarLoop = async (context: vscode.ExtensionContext, statusBar: vscode.StatusBarItem, versionPreference: VersionPreference) => {
+    const devProxyExe = getDevProxyExe(versionPreference);
+    const isRunning = await isDevProxyRunning(devProxyExe);
     const globalState = context.globalState.get<DevProxyInstall>('devProxyInstall');
     await context.globalState.update('devProxyInstall', { ...globalState, isRunning });
     updateStatusBar(context, statusBar);
-  };
+};

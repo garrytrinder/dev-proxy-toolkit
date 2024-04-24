@@ -15,6 +15,7 @@ import { handleStatusBarUpdate, statusBarLoop } from '../statusbar';
 import * as sinon from 'sinon';
 import * as detect from '../detect';
 import { DevProxyInstall } from '../types';
+import { VersionPreference } from '../enums';
 
 export const testDevProxyInstall: DevProxyInstall = {
   isBeta: false,
@@ -507,7 +508,7 @@ suite('statusbar', () => {
       vscode.StatusBarAlignment.Right,
       100
     );
-    await statusBarLoop(context, statusBar);
+    await statusBarLoop(context, statusBar, VersionPreference.Stable);
 
     const expected = '$(radio-tower) Dev Proxy 0.14.1';
     const actual = statusBar.text;
