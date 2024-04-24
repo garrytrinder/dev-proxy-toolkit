@@ -32,25 +32,6 @@ export const updateDiagnostics = (
     }
   }
 
-  // check if urlsToWatch is empty
-  const urlsToWatchNode = getASTNode(
-    documentNode.children,
-    'Identifier',
-    'urlsToWatch'
-  );
-  if (
-    urlsToWatchNode &&
-    (urlsToWatchNode.value as parse.ArrayNode).children.length === 0
-  ) {
-    diagnostics.push(
-      new vscode.Diagnostic(
-        getRangeFromASTNode(urlsToWatchNode),
-        'Add at least one url to watch.',
-        vscode.DiagnosticSeverity.Error
-      )
-    );
-  }
-
   // check validity of plugins
   const pluginsNode = getASTNode(
     documentNode.children,
