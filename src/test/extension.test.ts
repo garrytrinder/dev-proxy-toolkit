@@ -548,7 +548,7 @@ suite('schema', () => {
     const diagnostics = vscode.languages.getDiagnostics(document.uri);
 
     const expected = {
-      message: 'Schema version is not compatible with the installed version of Dev Proxy. Expected v0.1.0.',
+      message: 'Schema version is not compatible with the installed version of Dev Proxy. Expected v0.1.0',
       severity: vscode.DiagnosticSeverity.Warning,
     };
     const actual = {
