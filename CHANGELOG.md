@@ -5,7 +5,40 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
-## [Unreleased]
+## [0.3.0] - 2024-04-25
+
+### Added:
+
+- Config diagnostic: Schema check support for beta installations
+- Dev Proxy detection: Support for beta installations
+- Setting: Version Preference setting determines which version toolkit should use when installed side-by-side
+- Snippet: `devproxy-plugin-api-center-onboarding` - ApiCenterOnboardingPlugin instance
+- Snippet: `devproxy-plugin-api-center-onboarding-config` - ApiCenterOnboardingPlugin config section
+- Snippet: `devproxy-plugin-api-center-production-version` - ApiCenterProductionVersionPlugin instance
+- Snippet: `devproxy-plugin-api-center-production-version-config` - ApiCenterProductionVersionPlugin config section
+- Snippet: `devproxy-plugin-entra-mock-response` - EntraMockResponsePlugin instance
+- Snippet: `devproxy-plugin-entra-mock-response-config` - EntraMockResponsePlugin config section
+- Snippet: `devproxy-plugin-mock-request` - MockRequestPlugin instance
+- Snippet: `devproxy-plugin-mock-request-config` - MockRequestPlugin config section
+- Code Lens: `ApiCenterOnboardingPlugin`
+- Code Lens: `ApiCenterProductionVersionPlugin`
+- Code Lens: `EntraMockResponsePlugin`
+- Code Lens: `MockRequestPlugin`
+
+### Changed:
+
+- Snippets: All snippets that reference schemas updated to use `v0.17.1` schema
+- Status bar: Replaced sync icon with loading icon
+- Readme: Snippets table updated
+- Dev Proxy detection: Improved latest version check logic, uses `devproxy outdated -s` command
+
+### Fixed:
+
+- Fixed broken link on `OpenApiSpecGeneratorPlugin` code lens
+
+### Removed:
+
+- Config diagnostic: Check for empty `urlsToWatch`
 
 ## [0.2.0] - 2024-02-15
 

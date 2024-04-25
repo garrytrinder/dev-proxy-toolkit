@@ -1,10 +1,48 @@
 # Dev Proxy Toolkit
 
-[Dev Proxy](https://aka.ms/devproxy) is a command line tool that helps you simulate behaviors and errors of cloud APIs.
+[Dev Proxy](https://aka.ms/devproxy) is an API simulator that helps you effortlessly test your app beyond the happy path.
 
 The Dev Proxy Toolkit extension for Visual Studio Code makes it easy to create and update configuration files.
 
+> **IMPORTANT**
+>
+> Dev Proxy Toolkit is designed to be used with the latest version of Dev Proxy, v0.17.1. If you are using an earlier build some features may not work as intended.
+>
+
 ## Features
+
+The following sections describe the features that the extension contributes to Visual Studio Code when installed
+
+### Diagnostics
+
+- Check for missing `configSection` property in plugin instance for plugins that require configuration
+- Check for missing `configSection` when defined in plugin instance
+- Check that schema matches installed version of Dev Proxy
+
+### Code Actions
+
+- Update schema to match installed version of Dev Proxy
+
+### Code Lenses
+
+- Plugin documentation link
+
+### Notifications
+
+- Not installed
+- New version detection
+
+### Status Bar
+
+- Display installed Dev Proxy version
+- Display waring when Dev Proxy is not latest version
+- Display tick if Dev Proxy is latest version (check based on `newVersionNotification` config setting)
+- Display radio tower when Dev Proxy is running
+- Display error is Dev Proxy is not installed
+
+### Settings
+
+- `devproxytoolkit.versionPreference` - Determines the version to use when Dev Proxy and Dev Proxy Beta are installed side by side. Can be `stable` (default) or `beta`.
 
 ### Snippets
 
@@ -66,21 +104,3 @@ The Dev Proxy Toolkit extension for Visual Studio Code makes it easy to create a
 | `devproxy-plugin-rate-limiting-file` | Dev Proxy rate limiting file |
 | `devproxy-plugin-rate-limiting-file-schema` | Dev Proxy rate limiting file schema |
 | `devproxy-plugin-retry-after` | RetryAfterPlugin instance |
-
-### Diagnostics
-
-The following diagnostic checks are performed:
-
-- Check for empty `urlsToWatch`
-- Check for missing `configSection` property in plugin instance for plugins that require configuration
-- Check for missing `configSection` when defined in plugin instance
-- Check that schema matches installed version of Dev Proxy
-- Code action to update schema to correct version
-
-### Dev Proxy detection
-
-The following checks are performed:
-
-- Check if Dev Proxy is installed
-- Check if Dev Proxy is the latest version
-- Check if Dev Proxy is running
