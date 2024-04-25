@@ -28,6 +28,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Changed:
 
 - Snippets: All snippets that reference schemas updated to use `v0.17.1` schema
+- Snippets: Removed trailing comma from config section snippets
 - Status bar: Replaced sync icon with loading icon
 - Readme: Snippets table updated
 - Dev Proxy detection: Improved latest version check logic, uses `devproxy outdated -s` command
