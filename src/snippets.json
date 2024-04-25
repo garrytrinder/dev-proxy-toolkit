@@ -100,7 +100,7 @@
       "\t\"name\": \"ApiCenterOnboardingPlugin\",",
       "\t\"enabled\": true,",
       "\t\"pluginPath\": \"~appFolder/plugins/dev-proxy-plugins.dll\",",
-      "\t\"configSection\": \"apiCenterOnboardingPlugin\",",
+      "\t\"configSection\": \"apiCenterOnboardingPlugin\"",
       "}"
     ],
     "description": "ApiCenterOnboardingPlugin instance"
@@ -113,7 +113,7 @@
       "\t\"resourceGroupName\": \"resource-group-name\",",
       "\t\"serviceName\": \"apic-instance\",",
       "\t\"workspaceName\": \"default\",",
-      "\t\"serviceName\": true",
+      "\t\"createApicEntryForNewApis\": true",
       "}"
     ],
     "description": "ApiCenterOnboardingPlugin config section"
@@ -159,7 +159,7 @@
     "body": [
       "\"cachingGuidance\": {",
       "\t\"cacheThresholdSeconds\": 5",
-      "},"
+      "}"
     ],
     "description": "CachingGuidancePlugin config section"
   },
@@ -180,7 +180,7 @@
     "body": [
       "\"customersApi\": {",
       "\t\"apiFile\": \"customers-api.json\"",
-      "},"
+      "}"
     ],
     "description": "CrudApiPlugin config section"
   },
@@ -234,7 +234,7 @@
     "body": [
       "\"devTools\": {",
       "\t\"preferredBrowser\": \"Edge\"",
-      "},"
+      "}"
     ],
     "description": "DevToolsPlugin config section"
   },
@@ -255,7 +255,7 @@
     "body": [
       "\"mocksPlugin\": {",
       "\t\"mocksFile\": \"mocks.json\"",
-      "},"
+      "}"
     ],
     "description": "EntraMockResponsePlugin config section"
   },
@@ -276,7 +276,7 @@
     "body": [
       "\"executionSummaryPlugin\": {",
       "\t\"groupBy\": \"url\"",
-      "},"
+      "}"
     ],
     "description": "ExecutionSummaryPlugin config section"
   },
@@ -297,7 +297,7 @@
     "body": [
       "\"genericRandomErrorPlugin\": {",
       "\t\"errorsFile\": \"errors.json\"",
-      "},"
+      "}"
     ],
     "description": "GenericRandomErrorPlugin config section"
   },
@@ -407,7 +407,7 @@
     "body": [
       "\"graphRandomErrorPlugin\": {",
       "\t\"allowedErrors\": [ 429, 500, 502, 503, 504, 507 ]",
-      "},"
+      "}"
     ],
     "description": "GraphRandomErrorPlugin config section"
   },
@@ -471,7 +471,7 @@
       "\"latencyPlugin\": {",
       "\t\"minMs\": 200,",
       "\t\"maxMs\": 10000",
-      "},"
+      "}"
     ],
     "description": "LatencyPlugin config section"
   },
@@ -492,7 +492,7 @@
     "body": [
       "\"minimalPermissionsGuidancePlugin\": {",
       "\t\"filePath\": \"permissions-summary.json\"",
-      "},"
+      "}"
     ],
     "description": "MinimalPermissionsGuidancePlugin config section"
   },
@@ -513,7 +513,7 @@
     "body": [
       "\"minimalPermissionsPlugin\": {",
       "\t\"type\": \"delegated\"",
-      "},"
+      "}"
     ],
     "description": "MinimalPermissionsPlugin config section"
   },
@@ -545,7 +545,7 @@
     "body": [
       "\"mockRequestPlugin\": {",
       "\t\"mockFile\": \"mock-request.json\"",
-      "},"
+      "}"
     ],
     "description": "MockResponsePlugin config section"
   },
@@ -566,7 +566,7 @@
     "body": [
       "\"mocksPlugin\": {",
       "\t\"mocksFile\": \"mocks.json\"",
-      "},"
+      "}"
     ],
     "description": "MockResponsePlugin config section"
   },
@@ -639,7 +639,7 @@
       "\t\"costPerRequest\": 2,",
       "\t\"rateLimit\": 120,",
       "\t\"retryAfterSeconds\": 5",
-      "},"
+      "}"
     ],
     "description": "RateLimitingPlugin config section"
   },
