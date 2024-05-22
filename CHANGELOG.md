@@ -5,6 +5,12 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [0.3.1] - 2024-05-22
+
+### Fixed
+
+- Fixed issue where `configSection` diagnostic check required `RateLimitingPlugin` to have a `configSection`
+
 ## [0.3.0] - 2024-04-25
 
 ### Added:
@@ -43,7 +49,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [0.2.0] - 2024-02-15
 
-### Added: 
+### Added
 
 - Dev Proxy detection: Check if installed
 - Dev Proxy detection: Check if latest is installed
@@ -51,9 +57,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Plugins: Documentation Code Lens
 - Config diagnostic: Check that schema matches installed version of Dev Proxy
 - Config diagnostic: Code action to update schema to correct version
-- CI: Add publish workflow 
+- CI: Add publish workflow
 
-### Changed:
+### Changed
 
 - Snippet: `devproxy-plugin-graph-select-guidance` corrected `name` property to `GraphSelectGuidancePlugin`
 - Snippet: `devproxy-plugin-graph-minimal-permissions` corrected `name` property to `MinimalPermissionsPlugin`

@@ -130,7 +130,7 @@ export const pluginSnippets: PluginSnippets = {
     instance: 'devproxy-plugin-rate-limiting',
     config: {
       name: 'devproxy-plugin-rate-limiting-config',
-      required: true,
+      required: false,
     },
   },
   RetryAfterPlugin: {
