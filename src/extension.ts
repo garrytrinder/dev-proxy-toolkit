@@ -20,7 +20,7 @@ export const activate = async (context: vscode.ExtensionContext): Promise<vscode
   registerDocumentListeners(context, collection);
   registerCodeActions(context);
   registerCodeLens(context);
-  registerCommands(context);
+  registerCommands(context, configuration);
 
   const notification = handleStartNotification(context);
   processNotification(notification);

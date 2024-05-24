@@ -1,8 +1,7 @@
-import * as vscode from 'vscode';
-import { exec } from 'child_process';
 import { DevProxyInstall } from './types';
 import os from 'os';
 import { VersionExeName, VersionPreference } from './enums';
+import { executeCommand } from './helpers';
 
 export const getVersion = async (devProxyExe: string) => {
     try {
@@ -13,19 +12,7 @@ export const getVersion = async (devProxyExe: string) => {
     }
 };
 
-export const executeCommand = async (cmd: string): Promise<string> => {
-    return new Promise((resolve, reject) => {
-        exec(cmd, (error, stdout, stderr) => {
-            if (error) {
-                reject(`exec error: ${error}`);
-            } else if (stderr) {
-                reject(`stderr: ${stderr}`);
-            } else {
-                resolve(stdout);
-            }
-        });
-    });
-};
+
 
 export const detectDevProxyInstall = async (versionPreference: VersionPreference): Promise<DevProxyInstall> => {
     const devProxyExe = getDevProxyExe(versionPreference);
