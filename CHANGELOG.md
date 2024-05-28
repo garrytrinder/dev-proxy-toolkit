@@ -10,6 +10,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Changed:
 
 - Notification: Support for installing Dev Proxy via package manager when not installed
+- Snippets: All snippets that reference schemas updated to use `v0.18.0` schema
 
 ## [0.3.1] - 2024-05-22
 
