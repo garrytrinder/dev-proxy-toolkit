@@ -676,5 +676,38 @@
       "}"
     ],
     "description": "RetryAfterPlugin instance"
+  },
+  "JsonReporter": {
+    "prefix": "devproxy-reporter-json",
+    "body": [
+      "{",
+      "\t\"name\": \"JsonReporter\",",
+      "\t\"enabled\": true,",
+      "\t\"pluginPath\": \"~appFolder/plugins/dev-proxy-plugins.dll\"",
+      "}"
+    ],
+    "description": "JsonReporter instance"
+  },
+  "MarkdownReporter": {
+    "prefix": "devproxy-reporter-markdown",
+    "body": [
+      "{",
+      "\t\"name\": \"MarkdownReporter\",",
+      "\t\"enabled\": true,",
+      "\t\"pluginPath\": \"~appFolder/plugins/dev-proxy-plugins.dll\"",
+      "}"
+    ],
+    "description": "MarkdownReporter instance"
+  },
+  "PlainTextReporter": {
+    "prefix": "devproxy-reporter-plain-text",
+    "body": [
+      "{",
+      "\t\"name\": \"PlainTextReporter\",",
+      "\t\"enabled\": true,",
+      "\t\"pluginPath\": \"~appFolder/plugins/dev-proxy-plugins.dll\"",
+      "}"
+    ],
+    "description": "PlainTextReporter instance"
   }
 }

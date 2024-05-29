@@ -136,6 +136,15 @@ export const pluginSnippets: PluginSnippets = {
   RetryAfterPlugin: {
     instance: 'devproxy-plugin-retry-after',
   },
+  JsonReporter: {
+    instance: 'devproxy-reporter-json',
+  },
+  MarkdownReporter: {
+    instance: 'devproxy-reporter-markdown'
+  },
+  PlainTextReporter: {
+    instance: 'devproxy-reporter-plain-text'
+  },
 };
 
 export const pluginDocs: PluginDocs = {
@@ -238,5 +247,17 @@ export const pluginDocs: PluginDocs = {
   RetryAfterPlugin: {
     name: 'Retry After Plugin',
     url: 'https://learn.microsoft.com/microsoft-cloud/dev/dev-proxy/technical-reference/retryafterplugin',
+  },
+  JsonReporter: {
+    name: 'JSON Reporter',
+    url: 'https://learn.microsoft.com/microsoft-cloud/dev/dev-proxy/technical-reference/jsonreporter',
+  },
+  MarkdownReporter: {
+    name: 'Markdown Reporter',
+    url: 'https://learn.microsoft.com/microsoft-cloud/dev/dev-proxy/technical-reference/markdownreporter',
+  },
+  PlainTextReporter: {
+    name: 'Plain Text Reporter',
+    url: 'https://learn.microsoft.com/microsoft-cloud/dev/dev-proxy/technical-reference/plaintextreporter',
   }
 };

@@ -104,3 +104,6 @@ The following sections describe the features that the extension contributes to V
 | `devproxy-plugin-rate-limiting-file` | Dev Proxy rate limiting file |
 | `devproxy-plugin-rate-limiting-file-schema` | Dev Proxy rate limiting file schema |
 | `devproxy-plugin-retry-after` | RetryAfterPlugin instance |
+| `devproxy-reporter-json` | JsonReporter instance |
+| `devproxy-reporter-markdown` | MarkdownReporter instance |
+| `devproxy-reporter-plain-text` | PlainTextReporter instance |

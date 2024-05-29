@@ -7,6 +7,15 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [0.4.0] - 2024-05-30
 
+### Added:
+
+- Snippet: `devproxy-reporter-json` - JsonReporter instance
+- Snippet: `devproxy-reporter-markdown` - MarkdownReporter instance
+- Snippet: `devproxy-reporter-plain-text` - PlainTextReporter instance
+- CodeLens: `JsonReporter`
+- CodeLens: `MarkdownReporter`
+- CodeLens: `PlainTextReporter`
+
 ### Changed:
 
 - Notification: Support for installing Dev Proxy via package manager when not installed
