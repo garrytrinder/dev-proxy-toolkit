@@ -56,6 +56,46 @@ export const updateDiagnostics = (
       );
     }
 
+    // check if we have any plugins that contain the name reporter in the plugins node
+    const reporterIndex = pluginNodes.findIndex((pluginNode: parse.ObjectNode) => {
+      const pluginNameNode = getASTNode(
+        pluginNode.children,
+        'Identifier',
+        'name'
+      );
+      const pluginName = (pluginNameNode?.value as parse.LiteralNode)
+        .value as string;
+      return pluginName.toLowerCase().includes('reporter');
+    });
+
+    if (reporterIndex !== -1) {
+      // check if we have any more plugins after the reporter plugin
+      const pluginsAfterReporter = pluginNodes.slice(reporterIndex + 1);
+      // if we do, add a warning to the reporter plugin stating that it should be the last plugin
+      if (pluginsAfterReporter.length > 0) {
+        // check if there are any plugins after the reporter plugin that are not reporters
+        const pluginAfterReporter = pluginsAfterReporter.find((pluginNode: parse.ObjectNode) => {
+          const pluginNameNode = getASTNode(
+            pluginNode.children,
+            'Identifier',
+            'name'
+          );
+          const pluginName = (pluginNameNode?.value as parse.LiteralNode)
+            .value as string;
+          return !pluginName.toLowerCase().includes('reporter');
+        });
+        // if there are, add a warning to the reporter plugin
+        if (pluginAfterReporter) {
+          const diagnostic = new vscode.Diagnostic(
+            getRangeFromASTNode(pluginNodes[reporterIndex]),
+            'Reporters should be placed after other plugins.',
+            vscode.DiagnosticSeverity.Warning
+          );
+          diagnostics.push(diagnostic);
+        }
+      }
+    }
+
     // does the plugin have a config section?
     pluginNodes.forEach((pluginNode: parse.ObjectNode) => {
       const pluginNameNode = getASTNode(
