@@ -15,6 +15,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - CodeLens: `JsonReporter`
 - CodeLens: `MarkdownReporter`
 - CodeLens: `PlainTextReporter`
+- Config diagnostic: Show warning if plugins follow a reporter in the plugins array
 
 ### Changed:
 

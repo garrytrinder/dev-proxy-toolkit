@@ -18,6 +18,7 @@ The following sections describe the features that the extension contributes to V
 - Check for missing `configSection` property in plugin instance for plugins that require configuration
 - Check for missing `configSection` when defined in plugin instance
 - Check that schema matches installed version of Dev Proxy
+- Check that reporters are placed after plugins
 
 ### Code Actions
 
