@@ -11,6 +11,14 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - Snippets: All snippets that reference schemas updated to use `v0.19.0` schema
 
+### Fixed:
+
+- Snippets: Removed `configSection` from `devproxy-plugin-graph-minimal-permissions-guidance`
+
+### Removed:
+
+- Snippets: `devproxy-plugin-graph-minimal-permissions-guidance-config`
+
 ## [0.4.0] - 2024-05-30
 
 ### Added:
