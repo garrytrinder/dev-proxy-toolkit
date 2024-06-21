@@ -93,6 +93,30 @@
     ],
     "description": "Dev Proxy response header"
   },
+  "ApiCenterMinimalPermissionsPlugin": {
+    "prefix": "devproxy-plugin-api-center-minimal-permissions",
+    "body": [
+      "{",
+      "\t\"name\": \"ApiCenterOnboardingPlugin\",",
+      "\t\"enabled\": true,",
+      "\t\"pluginPath\": \"~appFolder/plugins/dev-proxy-plugins.dll\",",
+      "\t\"configSection\": \"apiCenterMinimalPermissionsPlugin\"",
+      "}"
+    ],
+    "description": "ApiCenterMinimalPermissionsPlugin instance"
+  },
+  "ApiCenterMinimalPermissionsPluginConfig": {
+    "prefix": "devproxy-plugin-api-center-minimal-permissions-config",
+    "body": [
+      "\"apiCenterMinimalPermissionsPlugin\": {",
+      "\t\"subscriptionId\": \"cdae2297-7aa6-4195-bbb1-dcd89153cc72\",",
+      "\t\"resourceGroupName\": \"resource-group-name\",",
+      "\t\"serviceName\": \"apic-instance\",",
+      "\t\"workspaceName\": \"default\"",
+      "}"
+    ],
+    "description": "ApiCenterMinimalPermissionsPlugin config section"
+  },
   "ApiCenterOnboardingPlugin": {
     "prefix": "devproxy-plugin-api-center-onboarding",
     "body": [
