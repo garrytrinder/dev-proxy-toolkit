@@ -477,6 +477,27 @@
     ],
     "description": "GraphSdkGuidancePlugin instance"
   },
+  "HttpFileGeneratorPlugin": {
+    "prefix": "devproxy-plugin-http-file-generator",
+    "body": [
+      "{",
+      "\t\"name\": \"HttpFileGeneratorPlugin\",",
+      "\t\"enabled\": true,",
+      "\t\"pluginPath\": \"~appFolder/plugins/dev-proxy-plugins.dll\",",
+      "\t\"configSection\": \"latencyPlugin\"",
+      "}"
+    ],
+    "description": "HttpFileGeneratorPlugin instance"
+  },
+  "HttpFileGeneratorPluginConfig": {
+    "prefix": "devproxy-plugin-http-file-generator-config",
+    "body": [
+      "\"httpFileGeneratorPlugin\": {",
+      "\t\"includeOptionsRequests\": false",
+      "}"
+    ],
+    "description": "HttpFileGeneratorPlugin config section"
+  },
   "LatencyPlugin": {
     "prefix": "devproxy-plugin-latency",
     "body": [

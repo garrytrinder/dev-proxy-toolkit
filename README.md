@@ -87,6 +87,8 @@ The following sections describe the features that the extension contributes to V
 | `devproxy-plugin-graph-random-error-config` | GraphRandomErrorPlugin config section |
 | `devproxy-plugin-graph-sdk-guidance` | GraphSdkGuidancePlugin instance |
 | `devproxy-plugin-graph-select-guidance` | GraphSdkGuidancePlugin instance |
+| `devproxy-plugin-http-file-generator` | HttpFileGeneratorPlugin instance |
+| `devproxy-plugin-http-file-generator-config` | HttpFileGeneratorPlugin config section |
 | `devproxy-plugin-latency` | LatencyPlugin instance |
 | `devproxy-plugin-latency-config` | LatencyPlugin config section |
 | `devproxy-plugin-graph-minimal-permissions-guidance` | MinimalPermissionsGuidancePlugin instance |

@@ -86,6 +86,13 @@ export const pluginSnippets: PluginSnippets = {
   GraphSelectGuidancePlugin: {
     instance: 'devproxy-plugin-graph-select-guidance',
   },
+  HttpFileGeneratorPlugin: {
+    instance: 'devproxy-plugin-http-file-generator',
+    config: {
+      name: 'devproxy-plugin-http-file-generator-config',
+      required: false,
+    },
+  },
   LatencyPlugin: {
     instance: 'devproxy-plugin-latency',
     config: {
@@ -210,6 +217,10 @@ export const pluginDocs: PluginDocs = {
   GraphSelectGuidancePlugin: {
     name: 'Graph Select Guidance Plugin',
     url: 'https://learn.microsoft.com/microsoft-cloud/dev/dev-proxy/technical-reference/graphselectguidanceplugin',
+  },
+  HttpFileGeneratorPlugin: {
+    name: 'HTTP File Generator Plugin',
+    url: 'https://learn.microsoft.com/microsoft-cloud/dev/dev-proxy/technical-reference/httpfilegeneratorplugin',
   },
   LatencyPlugin: {
     name: 'Latency Plugin',
