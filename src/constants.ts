@@ -133,6 +133,9 @@ export const pluginSnippets: PluginSnippets = {
   ODSPSearchGuidancePlugin: {
     instance: 'devproxy-plugin-odsp-search-guidance',
   },
+  OpenAIMockResponsePlugin: {
+    instance: 'devproxy-plugin-openai-mock-response',
+  },
   OpenApiSpecGeneratorPlugin: {
     instance: 'devproxy-plugin-openapi-doc-generator',
   },
@@ -253,6 +256,10 @@ export const pluginDocs: PluginDocs = {
   ODSPSearchGuidancePlugin: {
     name: 'ODSP Search Guidance Plugin',
     url: 'https://learn.microsoft.com/microsoft-cloud/dev/dev-proxy/technical-reference/odspsearchguidanceplugin',
+  },
+  OpenAIMockResponsePlugin: {
+    name: 'OpenAI Mock Response Plugin',
+    url: 'https://learn.microsoft.com/microsoft-cloud/dev/dev-proxy/technical-reference/openaimockresponseplugin',
   },
   OpenApiSpecGeneratorPlugin: {
     name: 'Open API Spec Generator Plugin',

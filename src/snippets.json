@@ -644,6 +644,17 @@
     ],
     "description": "ODSPSearchGuidancePlugin instance"
   },
+  "OpenAIMockResponsePlugin": {
+    "prefix": "devproxy-plugin-openai-mock-response",
+    "body": [
+      "{",
+      "\t\"name\": \"OpenAIMockResponsePlugin\",",
+      "\t\"enabled\": true,",
+      "\t\"pluginPath\": \"~appFolder/plugins/dev-proxy-plugins.dll\"",
+      "}"
+    ],
+    "description": "OpenAIMockResponsePlugin instance"
+  },
   "OpenApiSpecGeneratorPlugin": {
     "prefix": "devproxy-plugin-open-api-spec-generator",
     "body": [
