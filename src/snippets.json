@@ -481,20 +481,10 @@
       "{",
       "\t\"name\": \"MinimalPermissionsGuidancePlugin\",",
       "\t\"enabled\": true,",
-      "\t\"pluginPath\": \"~appFolder/plugins/dev-proxy-plugins.dll\",",
-      "\t\"configSection\": \"minimalPermissionsGuidancePlugin\"",
+      "\t\"pluginPath\": \"~appFolder/plugins/dev-proxy-plugins.dll\"",
       "}"
     ],
     "description": "MinimalPermissionsGuidancePlugin instance"
-  },
-  "MinimalPermissionsGuidancePluginConfig": {
-    "prefix": "devproxy-plugin-graph-minimal-permissions-guidance-config",
-    "body": [
-      "\"minimalPermissionsGuidancePlugin\": {",
-      "\t\"filePath\": \"permissions-summary.json\"",
-      "}"
-    ],
-    "description": "MinimalPermissionsGuidancePlugin config section"
   },
   "MinimalPermissionsPlugin": {
     "prefix": "devproxy-plugin-graph-minimal-permissions",
