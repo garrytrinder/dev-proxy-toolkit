@@ -13,6 +13,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Snippets: `devproxy-plugin-api-center-minimal-permissions-config` - ApiCenterMinimalPermissionsPlugin config section
 - Snippets: `devproxy-plugin-http-file-generator` - HttpFileGeneratorPlugin instance
 - Snippets: `devproxy-plugin-http-file-generator-config` - HttpFileGeneratorPlugin config section
+- Snippets: `devproxy-plugin-openai-mock-response` - OpenAIMockResponsePlugin instance
 
 ### Changed:
 

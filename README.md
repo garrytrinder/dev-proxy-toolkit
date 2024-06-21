@@ -102,6 +102,7 @@ The following sections describe the features that the extension contributes to V
 | `devproxy-plugin-mock-response-schema` | MockResponsePlugin schema |
 | `devproxy-plugin-odata-paging-guidance` | ODataPagingGuidancePlugin instance |
 | `devproxy-plugin-graph-odsp-search-guidance` | ODSPSearchGuidancePlugin instance |
+| `devproxy-plugin-openai-mock-response` | OpenAIMockResponsePlugin instance |
 | `devproxy-plugin-open-api-spec-generator` | OpenApiSpecGeneratorPlugin instance |
 | `devproxy-plugin-rate-limiting` | MockResponsePlugin instance |
 | `devproxy-plugin-rate-limiting-config` | RateLimitingPlugin config section |
