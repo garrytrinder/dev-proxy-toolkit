@@ -57,6 +57,8 @@ The following sections describe the features that the extension contributes to V
 | `devproxy-request` | Dev Proxy request |
 | `devproxy-response` | Dev Proxy response |
 | `devproxy-response-header` | Dev Proxy response header |
+| `devproxy-plugin-api-center-minimal-permissions` | ApiCenterMinimalPermissionsPlugin instance |
+| `devproxy-plugin-api-center-minimal-permissions-config` | ApiCenterMinimalPermissionsPlugin config section |
 | `devproxy-plugin-api-center-onboarding` | ApiCenterOnboardingPlugin instance |
 | `devproxy-plugin-api-center-onboarding-config` | ApiCenterOnboardingPlugin config section |
 | `devproxy-plugin-api-center-production-version` | ApiCenterProductionVersionPlugin instance |
@@ -88,7 +90,6 @@ The following sections describe the features that the extension contributes to V
 | `devproxy-plugin-latency` | LatencyPlugin instance |
 | `devproxy-plugin-latency-config` | LatencyPlugin config section |
 | `devproxy-plugin-graph-minimal-permissions-guidance` | MinimalPermissionsGuidancePlugin instance |
-| `devproxy-plugin-graph-minimal-permissions-guidance-config` | MinimalPermissionsGuidancePlugin config section |
 | `devproxy-plugin-graph-minimal-permissions` | MinimalPermissionsPlugin instance |
 | `devproxy-plugin-graph-minimal-permissions-config` | MinimalPermissionsPlugin config section |
 | `devproxy-plugin-mock-generator` | MockGeneratorPlugin instance |

@@ -1,6 +1,13 @@
 import { PluginDocs, PluginSnippets } from './types';
 
 export const pluginSnippets: PluginSnippets = {
+  ApiCenterMinimalPermissionsPlugin: {
+    instance: 'devproxy-plugin-api-center-minimal-permissions',
+    config: {
+      name: 'devproxy-plugin-api-center-minimal-permissions-onboarding-config',
+      required: true,
+    }
+  },
   ApiCenterOnboardingPlugin: {
     instance: 'devproxy-plugin-api-center-onboarding',
     config: {
@@ -87,11 +94,7 @@ export const pluginSnippets: PluginSnippets = {
     },
   },
   MinimalPermissionsGuidancePlugin: {
-    instance: 'devproxy-plugin-minimal-permissions-guidance',
-    config: {
-      name: 'devproxy-plugin-minimal-permissions-guidance-config',
-      required: false,
-    },
+    instance: 'devproxy-plugin-minimal-permissions-guidance'
   },
   MinimalPermissionsPlugin: {
     instance: 'devproxy-plugin-minimal-permissions',
@@ -148,6 +151,10 @@ export const pluginSnippets: PluginSnippets = {
 };
 
 export const pluginDocs: PluginDocs = {
+  ApiCenterMinimalPermissionsPlugin: {
+    name: 'API Center Minimal Permissions Plugin',
+    url: 'https://learn.microsoft.com/microsoft-cloud/dev/dev-proxy/technical-reference/apicenterminimalpermissionsplugin',
+  },
   ApiCenterOnboardingPlugin: {
     name: 'API Center Onboarding Plugin',
     url: 'https://learn.microsoft.com/microsoft-cloud/dev/dev-proxy/technical-reference/apicenteronboardingplugin',

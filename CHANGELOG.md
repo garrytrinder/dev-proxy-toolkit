@@ -7,6 +7,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [0.5.0] - 2024-06-27
 
+### Added: 
+
+- Snippets: `devproxy-plugin-api-center-minimal-permissions` - ApiCenterMinimalPermissionsPlugin instance
+- Snippets: `devproxy-plugin-api-center-minimal-permissions-config` - ApiCenterMinimalPermissionsPlugin config section
+
 ### Changed:
 
 - Snippets: All snippets that reference schemas updated to use `v0.19.0` schema
