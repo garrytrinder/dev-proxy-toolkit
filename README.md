@@ -6,7 +6,7 @@ The Dev Proxy Toolkit extension for Visual Studio Code makes it easy to create a
 
 > **IMPORTANT**
 >
-> Dev Proxy Toolkit is designed to be used with the latest version of Dev Proxy, v0.17.1. If you are using an earlier build some features may not work as intended.
+> Dev Proxy Toolkit is designed to be used with the latest version of Dev Proxy, v0.19.0. If you are using an earlier build some features may not work as intended.
 >
 
 ## Features
