@@ -78,6 +78,20 @@ export const isConfigFile = (document: vscode.TextDocument) => {
   return isConfigFile;
 };
 
+export const isProxyFile = (document: vscode.TextDocument) => {
+  let isProxyFile = false;
+  const documentNode = parse(document.getText()) as parse.ObjectNode;
+
+  const schemaNode = getASTNode(documentNode.children, 'Identifier', '$schema');
+  if (schemaNode) {
+    const schema = (schemaNode?.value as parse.LiteralNode).value as string;
+    if (schema.includes('dev-proxy') && schema.endsWith('.schema.json')) {
+      isProxyFile = true;
+    }
+  }
+  return isProxyFile;
+};
+
 export const sleep = (ms: number): Promise<void> => {
   return new Promise(resolve => {
     setTimeout(resolve, ms);
@@ -86,14 +100,14 @@ export const sleep = (ms: number): Promise<void> => {
 
 export const executeCommand = async (cmd: string): Promise<string> => {
   return new Promise((resolve, reject) => {
-      exec(cmd, (error, stdout, stderr) => {
-          if (error) {
-              reject(`exec error: ${error}`);
-          } else if (stderr) {
-              reject(`stderr: ${stderr}`);
-          } else {
-              resolve(stdout);
-          }
-      });
+    exec(cmd, (error, stdout, stderr) => {
+      if (error) {
+        reject(`exec error: ${error}`);
+      } else if (stderr) {
+        reject(`stderr: ${stderr}`);
+      } else {
+        resolve(stdout);
+      }
+    });
   });
 };
