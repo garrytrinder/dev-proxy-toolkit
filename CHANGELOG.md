@@ -14,6 +14,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Snippets: `devproxy-plugin-http-file-generator` - HttpFileGeneratorPlugin instance
 - Snippets: `devproxy-plugin-http-file-generator-config` - HttpFileGeneratorPlugin config section
 - Snippets: `devproxy-plugin-openai-mock-response` - OpenAIMockResponsePlugin instance
+- CodeLens: `ApiCenterMinimalPermissionsPlugin`
+- CodeLens: `HttpFileGeneratorPlugin`
+- CodeLens: `OpenAIMockResponsePlugin`
 - File Diagnostic: Check that schema matches installed version of Dev Proxy expanded to all files
 
 ### Changed:
