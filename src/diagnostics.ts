@@ -4,7 +4,7 @@ import { pluginSnippets } from "./constants";
 import { getASTNode, getRangeFromASTNode } from "./helpers";
 import { DevProxyInstall } from './types';
 
-export const updateDiagnostics = (
+export const updateConfigDiagnostics = (
   context: vscode.ExtensionContext,
   document: vscode.TextDocument,
   collection: vscode.DiagnosticCollection,
@@ -17,20 +17,7 @@ export const updateDiagnostics = (
   const documentNode = parse(document.getText()) as parse.ObjectNode;
 
   // check if schema version is compatible
-  const schemaNode = getASTNode(documentNode.children, 'Identifier', '$schema');
-  if (schemaNode) {
-    const schemaValue = (schemaNode.value as parse.LiteralNode).value as string;
-    const devProxyVersion = devProxyInstall.isBeta ? devProxyInstall.version.split('-')[0] : devProxyInstall.version;
-    if (!schemaValue.includes(`${devProxyVersion}`)) {
-      const diagnostic = new vscode.Diagnostic(
-        getRangeFromASTNode(schemaNode),
-        `Schema version is not compatible with the installed version of Dev Proxy. Expected v${devProxyVersion}`,
-        vscode.DiagnosticSeverity.Warning
-      );
-      diagnostic.code = 'invalidSchema';
-      diagnostics.push(diagnostic);
-    }
-  }
+  checkSchemaCompatibility(documentNode, devProxyInstall, diagnostics);
 
   // check validity of plugins
   const pluginsNode = getASTNode(
@@ -163,4 +150,40 @@ export const updateDiagnostics = (
   }
 
   collection.set(document.uri, diagnostics);
+};
+
+export const updateDiagnostics = (
+  context: vscode.ExtensionContext,
+  document: vscode.TextDocument,
+  collection: vscode.DiagnosticCollection,
+): void => {
+  const devProxyInstall = context.globalState.get<DevProxyInstall>('devProxyInstall');
+  if (!devProxyInstall) {
+    return;
+  }
+
+  const diagnostics: vscode.Diagnostic[] = [];
+  const documentNode = parse(document.getText()) as parse.ObjectNode;
+
+  // check if schema version is compatible
+  checkSchemaCompatibility(documentNode, devProxyInstall, diagnostics);
+
+  collection.set(document.uri, diagnostics);
+};
+
+export const checkSchemaCompatibility = (documentNode: parse.ObjectNode, devProxyInstall: DevProxyInstall, diagnostics: vscode.Diagnostic[]) => {
+  const schemaNode = getASTNode(documentNode.children, 'Identifier', '$schema');
+  if (schemaNode) {
+    const schemaValue = (schemaNode.value as parse.LiteralNode).value as string;
+    const devProxyVersion = devProxyInstall.isBeta ? devProxyInstall.version.split('-')[0] : devProxyInstall.version;
+    if (!schemaValue.includes(`${devProxyVersion}`)) {
+      const diagnostic = new vscode.Diagnostic(
+        getRangeFromASTNode(schemaNode),
+        `Schema version is not compatible with the installed version of Dev Proxy. Expected v${devProxyVersion}`,
+        vscode.DiagnosticSeverity.Warning
+      );
+      diagnostic.code = 'invalidSchema';
+      diagnostics.push(diagnostic);
+    }
+  }
 };
