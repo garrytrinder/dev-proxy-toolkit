@@ -537,20 +537,10 @@
       "{",
       "\t\"name\": \"MinimalPermissionsPlugin\",",
       "\t\"enabled\": true,",
-      "\t\"pluginPath\": \"~appFolder/plugins/dev-proxy-plugins.dll\",",
-      "\t\"configSection\": \"minimalPermissionsPlugin\"",
+      "\t\"pluginPath\": \"~appFolder/plugins/dev-proxy-plugins.dll\"",
       "}"
     ],
     "description": "MinimalPermissionsPlugin instance"
-  },
-  "MinimalPermissionsPluginConfig": {
-    "prefix": "devproxy-plugin-graph-minimal-permissions-config",
-    "body": [
-      "\"minimalPermissionsPlugin\": {",
-      "\t\"type\": \"delegated\"",
-      "}"
-    ],
-    "description": "MinimalPermissionsPlugin config section"
   },
   "MockGeneratorPlugin": {
     "prefix": "devproxy-plugin-mock-generator",
