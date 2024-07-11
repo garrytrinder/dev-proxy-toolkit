@@ -269,7 +269,7 @@
       "\t\"name\": \"EntraMockResponsePlugin\",",
       "\t\"enabled\": true,",
       "\t\"pluginPath\": \"~appFolder/plugins/dev-proxy-plugins.dll\",",
-      "\t\"configSection\": \"mocksPlugin\"",
+      "\t\"configSection\": \"entraMockResponsePlugin\"",
       "}"
     ],
     "description": "EntraMockResponsePlugin instance"
@@ -277,7 +277,7 @@
   "EntraMockResponsePluginConfig": {
     "prefix": "devproxy-plugin-entra-mock-response-config",
     "body": [
-      "\"mocksPlugin\": {",
+      "\"entraMockResponsePlugin\": {",
       "\t\"mocksFile\": \"mocks.json\"",
       "}"
     ],
@@ -389,7 +389,7 @@
       "\t\"name\": \"GraphMockResponsePlugin\",",
       "\t\"enabled\": true,",
       "\t\"pluginPath\": \"~appFolder/plugins/dev-proxy-plugins.dll\",",
-      "\t\"configSection\": \"mocksPlugin\",",
+      "\t\"configSection\": \"graphMockResponsePlugin\",",
       "\t\"urlsToWatch\": [",
       "\t\t\"https://graph.microsoft.com/v1.0/*\",",
       "\t\t\"https://graph.microsoft.com/beta/*\",",
@@ -403,6 +403,15 @@
       "}"
     ],
     "description": "GraphMockResponsePlugin instance"
+  },
+  "GraphMockResponsePluginConfig": {
+    "prefix": "devproxy-plugin-graph-mock-response-config",
+    "body": [
+      "\"graphMockResponsePlugin\": {",
+      "\t\"mocksFile\": \"mocks.json\"",
+      "}"
+    ],
+    "description": "GraphMockResponsePlugin config section"
   },
   "GraphRandomErrorPlugin": {
     "prefix": "devproxy-plugin-graph-random-error",
@@ -581,7 +590,7 @@
       "\t\"name\": \"MockResponsePlugin\",",
       "\t\"enabled\": true,",
       "\t\"pluginPath\": \"~appFolder/plugins/dev-proxy-plugins.dll\",",
-      "\t\"configSection\": \"mocksPlugin\"",
+      "\t\"configSection\": \"mockResponsePlugin\"",
       "}"
     ],
     "description": "MockResponsePlugin instance"
@@ -589,7 +598,7 @@
   "MockResponsePluginConfig": {
     "prefix": "devproxy-plugin-mock-response-config",
     "body": [
-      "\"mocksPlugin\": {",
+      "\"mockResponsePlugin\": {",
       "\t\"mocksFile\": \"mocks.json\"",
       "}"
     ],

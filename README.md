@@ -83,6 +83,7 @@ The following sections describe the features that the extension contributes to V
 | `devproxy-plugin-graph-beta-support-guidance` | GraphBetaSupportGuidancePlugin instance |
 | `devproxy-plugin-graph-client-request-id-guidance` | GraphClientRequestIdGuidancePlugin instance |
 | `devproxy-plugin-graph-mock-response` | GraphMockResponsePlugin instance |
+| `devproxy-plugin-graph-mock-response-config` | GraphMockResponsePlugin config section |
 | `devproxy-plugin-graph-random-error` | GraphRandomErrorPlugin instance |
 | `devproxy-plugin-graph-random-error-config` | GraphRandomErrorPlugin config section |
 | `devproxy-plugin-graph-sdk-guidance` | GraphSdkGuidancePlugin instance |

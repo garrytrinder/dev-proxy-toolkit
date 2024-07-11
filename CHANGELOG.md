@@ -11,10 +11,15 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - Snippets: All snippets that reference schemas updated to use `v0.19.1` schema
 - Snippets: Removed `configSection` from `devproxy-plugin-graph-minimal-permissions`
+- Snippets: Updated `configSection` names to be unique
 
 ### Removed:
 
 - Snippets: `devproxy-plugin-graph-minimal-permissions-config`
+
+### Added:
+
+- Snippet: `devproxy-plugin-graph-mock-response-config` - GraphMockResponsePlugin config section
 
 ## [0.5.0] - 2024-06-27
 
