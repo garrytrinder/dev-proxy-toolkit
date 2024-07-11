@@ -93,7 +93,6 @@ The following sections describe the features that the extension contributes to V
 | `devproxy-plugin-latency-config` | LatencyPlugin config section |
 | `devproxy-plugin-graph-minimal-permissions-guidance` | MinimalPermissionsGuidancePlugin instance |
 | `devproxy-plugin-graph-minimal-permissions` | MinimalPermissionsPlugin instance |
-| `devproxy-plugin-graph-minimal-permissions-config` | MinimalPermissionsPlugin config section |
 | `devproxy-plugin-mock-generator` | MockGeneratorPlugin instance |
 | `devproxy-plugin-mock-request` | MockResponsePlugin instance |
 | `devproxy-plugin-mock-request-config` | MockResponsePlugin config section |
