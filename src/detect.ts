@@ -12,8 +12,6 @@ export const getVersion = async (devProxyExe: string) => {
     }
 };
 
-
-
 export const detectDevProxyInstall = async (versionPreference: VersionPreference): Promise<DevProxyInstall> => {
     const devProxyExe = getDevProxyExe(versionPreference);
     const version = await getVersion(devProxyExe);
