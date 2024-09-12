@@ -20,6 +20,72 @@
   },
   "main": "./dist/extension.js",
   "contributes": {
+    "commands": [
+      {
+        "command": "dev-proxy-toolkit.start",
+        "title": "Start",
+        "category": "Dev Proxy Toolkit",
+        "icon": "$(debug-start)",
+        "enablement": "!isDevProxyRunning"
+      },
+      {
+        "command": "dev-proxy-toolkit.stop",
+        "title": "Stop",
+        "category": "Dev Proxy Toolkit",
+        "icon": "$(debug-stop)",
+        "enablement": "isDevProxyRunning"
+      },
+      {
+        "command": "dev-proxy-toolkit.raise-mock",
+        "title": "Raise mock request",
+        "category": "Dev Proxy Toolkit",
+        "icon": "$(cloud-download)",
+        "enablement": "isDevProxyRunning"
+      },
+      {
+        "command": "dev-proxy-toolkit.record-start",
+        "title": "Start recording",
+        "category": "Dev Proxy Toolkit",
+        "icon": "$(circle-filled)",
+        "enablement": "isDevProxyRunning && !isDevProxyRecording"
+      },
+      {
+        "command": "dev-proxy-toolkit.record-stop",
+        "title": "Stop recording",
+        "category": "Dev Proxy Toolkit",
+        "icon": "$(circle-slash)",
+        "enablement": "isDevProxyRunning && isDevProxyRecording"
+      }
+    ],
+    "menus": {
+      "editor/title": [
+        {
+          "command": "dev-proxy-toolkit.start",
+          "group": "navigation@1",
+          "when": "!activeEditorIsDirty && isDevProxyConfigFile && !isDevProxyRunning"
+        },
+        {
+          "command": "dev-proxy-toolkit.stop",
+          "group": "navigation@2",
+          "when": "!activeEditorIsDirty && isDevProxyConfigFile && isDevProxyRunning"
+        },
+        {
+          "command": "dev-proxy-toolkit.raise-mock",
+          "group": "navigation@3",
+          "when": "!activeEditorIsDirty && isDevProxyConfigFile && isDevProxyRunning"
+        },
+        {
+          "command": "dev-proxy-toolkit.record-start",
+          "group": "navigation@4",
+          "when": "!activeEditorIsDirty && isDevProxyConfigFile && isDevProxyRunning && !isDevProxyRecording"
+        },
+        {
+          "command": "dev-proxy-toolkit.record-stop",
+          "group": "navigation@5",
+          "when": "!activeEditorIsDirty && isDevProxyConfigFile && isDevProxyRunning && isDevProxyRecording"
+        }
+      ]
+    },
     "snippets": [
       {
         "language": "json",
@@ -27,13 +93,35 @@
       }
     ],
     "configuration": {
-      "title": "Dev Proxy Toolkit",
       "properties": {
-        "devproxytoolkit.versionPreference": {
+        "dev-proxy-toolkit.version": {
           "type": "string",
-          "enum": ["stable", "beta"],
+          "enum": [
+            "stable",
+            "beta"
+          ],
           "default": "stable",
-          "description": "Select the preferred version to be used when installed side by side."
+          "description": "The preferred version to be used when installed side by side. (Requires a restart of extension to take effect)"
+        },
+        "dev-proxy-toolkit.newTerminal": {
+          "type": "boolean",
+          "default": true,
+          "description": "Create a new terminal session when starting Dev Proxy."
+        },
+        "dev-proxy-toolkit.showTerminal": {
+          "type": "boolean",
+          "default": true,
+          "description": "Show the terminal when starting Dev Proxy."
+        },
+        "dev-proxy-toolkit.closeTerminal": {
+          "type": "boolean",
+          "default": true,
+          "description": "Close the terminal when stopping Dev Proxy."
+        },
+        "dev-proxy-toolkit.apiPort": {
+          "type": "number",
+          "default": 8897,
+          "description": "The port number used to communicate with Dev Proxy API."
         }
       }
     }

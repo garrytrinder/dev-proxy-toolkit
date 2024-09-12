@@ -1,12 +1,13 @@
 import * as vscode from 'vscode';
 import { pluginDocs } from './constants';
 import { VersionPreference } from './enums';
-import { executeCommand } from './helpers';
+import { executeCommand, isConfigFile } from './helpers';
+import { config } from 'process';
 
 export const registerCommands = (context: vscode.ExtensionContext, configuration: vscode.WorkspaceConfiguration) => {
     context.subscriptions.push(
         vscode.commands.registerCommand('dev-proxy-toolkit.install', async (platform: NodeJS.Platform) => {
-            const versionPreference = configuration.get('versionPreference') as VersionPreference;
+            const versionPreference = configuration.get('version') as VersionPreference;
             const id = versionPreference === VersionPreference.Stable ? 'Microsoft.DevProxy' : 'Microsoft.DevProxy.Beta';
             const message = vscode.window.setStatusBarMessage('Installing Dev Proxy...');
 
@@ -70,5 +71,91 @@ export const registerCommands = (context: vscode.ExtensionContext, configuration
         vscode.commands.registerCommand('dev-proxy-toolkit.upgrade', async () => {
             const url = 'https://aka.ms/devproxy/upgrade';
             vscode.env.openExternal(vscode.Uri.parse(url));
+        }));
+
+    context.subscriptions.push(
+        vscode.commands.registerCommand('dev-proxy-toolkit.start', async () => {
+            const showTerminal = configuration.get('showTerminal') as boolean;
+            const newTerminal = configuration.get('newTerminal') as boolean;
+
+            let terminal: vscode.Terminal;
+
+            if (!newTerminal && vscode.window.activeTerminal) {
+                terminal = vscode.window.activeTerminal;
+            } else {
+                terminal = vscode.window.createTerminal('Dev Proxy');
+
+                showTerminal ? terminal.show() : terminal.hide();
+            }
+
+            vscode.window.activeTextEditor && isConfigFile(vscode.window.activeTextEditor.document)
+                ? terminal.sendText(`devproxy --config-file "${vscode.window.activeTextEditor.document.uri.fsPath}"`)
+                : terminal.sendText('devproxy');
+        }));
+
+    context.subscriptions.push(
+        vscode.commands.registerCommand('dev-proxy-toolkit.stop', async () => {
+            const apiPort = configuration.get('apiPort') as number;
+            await fetch(`http://localhost:${apiPort}/proxy/stopproxy`, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                }
+            });
+
+            const closeTerminal = configuration.get('closeTerminal') as boolean;
+            if (closeTerminal) {
+                vscode.window.terminals.forEach(terminal => {
+                    if (terminal.name === 'Dev Proxy') {
+                        terminal.dispose();
+                    }
+                });
+            }
+        }));
+
+    context.subscriptions.push(
+        vscode.commands.registerCommand('dev-proxy-toolkit.raise-mock', async () => {
+            const apiPort = configuration.get('apiPort') as number;
+            await fetch(`http://localhost:${apiPort}/proxy/raisemockrequest`, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                }
+            });
+            vscode.window.showInformationMessage('Mock request raised');
+        }));
+
+    context.subscriptions.push(
+        vscode.commands.registerCommand('dev-proxy-toolkit.record-start', async () => {
+            const apiPort = configuration.get('apiPort') as number;
+            try {
+                await fetch(`http://localhost:${apiPort}/proxy`, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({ recording: true })
+                });
+                vscode.commands.executeCommand('setContext', 'isDevProxyRecording', true);
+            } catch {
+                vscode.window.showErrorMessage('Failed to start recording');
+            }
+        }));
+
+    context.subscriptions.push(
+        vscode.commands.registerCommand('dev-proxy-toolkit.record-stop', async () => {
+            const apiPort = configuration.get('apiPort') as number;
+            try {
+                await fetch(`http://localhost:${apiPort}/proxy`, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({ recording: false })
+                });
+                vscode.commands.executeCommand('setContext', 'isDevProxyRecording', false);
+            } catch {
+                vscode.window.showErrorMessage('Failed to stop recording');
+            }
         }));
 };

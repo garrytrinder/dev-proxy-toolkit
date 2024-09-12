@@ -5,6 +5,30 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## Unreleased
+
+### Added:
+
+- Editor action: Start Dev Proxy
+- Editor action: Stop Dev Proxy
+- Editor action: Raise Mock Request
+- Editor action: Start Recording
+- Editor action: Stop Recording
+- Command: `dev-proxy-toolkit.start` - Starts Dev Proxy
+- Command: `dev-proxy-toolkit.stop` - Stops Dev Proxy
+- Command: `dev-proxy-toolkit.raise-mock` - Raises a mock request
+- Command: `dev-proxy-toolkit.record-start` - Starts recording Dev Proxy traffic
+- Command: `dev-proxy-toolkit.record-stop` - Stops recording Dev Proxy traffic
+- Setting: `dev-proxy-toolkit.newTerminal` - Determines if a new terminal should be created when starting Dev Proxy
+- Setting: `dev-proxy-toolkit.showTerminal` - Determines if the terminal should be shown when starting Dev Proxy
+- Setting: `dev-proxy-toolkit.closeTerminal` - Determines if the terminal should be closed when stopping Dev Proxy
+- Setting: `dev-proxy-toolkit.apiPort` - Port number used to communicate with Dev Proxy API
+- Diagnostics: Collection renamed to `dev-proxy-toolkit`
+
+### Changed:
+
+- Setting: `devproxytoolkit.versionPreference` renamed to `dev-proxy-toolkit.version`
+
 ## [0.8.0] - 2024-09-06
 
 ### Changed:

@@ -50,5 +50,6 @@ export const statusBarLoop = async (context: vscode.ExtensionContext, statusBar:
     const isRunning = await isDevProxyRunning(devProxyExe);
     const globalState = context.globalState.get<DevProxyInstall>('devProxyInstall');
     await context.globalState.update('devProxyInstall', { ...globalState, isRunning });
+    vscode.commands.executeCommand('setContext', 'isDevProxyRunning', isRunning);
     updateStatusBar(context, statusBar);
 };
