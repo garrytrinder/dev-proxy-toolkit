@@ -9,13 +9,13 @@ import { updateGlobalState } from './state';
 import { VersionPreference } from './enums';
 
 export const activate = async (context: vscode.ExtensionContext): Promise<vscode.ExtensionContext> => {
-  const configuration = vscode.workspace.getConfiguration('devproxytoolkit');
-  const versionPreference = configuration.get('versionPreference') as VersionPreference;
+  const configuration = vscode.workspace.getConfiguration('dev-proxy-toolkit');
+  const versionPreference = configuration.get('version') as VersionPreference;
 
   const statusBar = createStatusBar(context);
   await updateGlobalState(context, versionPreference);
 
-  const collection = vscode.languages.createDiagnosticCollection('Dev Proxy');
+  const collection = vscode.languages.createDiagnosticCollection('dev-proxy-toolkit');
 
   registerDocumentListeners(context, collection);
   registerCodeActions(context);

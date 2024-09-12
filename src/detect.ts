@@ -2,6 +2,7 @@ import { DevProxyInstall } from './types';
 import os from 'os';
 import { VersionExeName, VersionPreference } from './enums';
 import { executeCommand } from './helpers';
+import * as vscode from 'vscode';
 
 export const getVersion = async (devProxyExe: string) => {
     try {
@@ -12,8 +13,6 @@ export const getVersion = async (devProxyExe: string) => {
     }
 };
 
-
-
 export const detectDevProxyInstall = async (versionPreference: VersionPreference): Promise<DevProxyInstall> => {
     const devProxyExe = getDevProxyExe(versionPreference);
     const version = await getVersion(devProxyExe);
@@ -23,6 +22,7 @@ export const detectDevProxyInstall = async (versionPreference: VersionPreference
     const outdatedVersion = await getOutdatedVersion(devProxyExe);
     const isOutdated = isInstalled && outdatedVersion !== '';
     const isRunning = await isDevProxyRunning(devProxyExe);
+    vscode.commands.executeCommand('setContext', 'isDevProxyRunning', isRunning);
 
     return {
         version,

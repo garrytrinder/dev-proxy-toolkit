@@ -11,14 +11,7 @@ The Dev Proxy Toolkit extension for Visual Studio Code makes it easy to create a
 
 ## Features
 
-The following sections describe the features that the extension contributes to Visual Studio Code when installed
-
-### Diagnostics
-
-- Check for missing `configSection` property in plugin instance for plugins that require configuration
-- Check for missing `configSection` when defined in plugin instance
-- Check that schema matches installed version of Dev Proxy
-- Check that reporters are placed after plugins
+The following sections describe the features that the extension contributes to Visual Studio Code when installed.
 
 ### Code Actions
 
@@ -28,22 +21,43 @@ The following sections describe the features that the extension contributes to V
 
 - Plugin documentation link
 
+### Commands
+
+- `Dev Proxy: Start` - Only available when Dev Proxy is not running
+- `Dev Proxy: Stop` - Only available when Dev Proxy is running
+- `Dev Proxy: Raise mock request` - Only available when Dev Proxy is running
+- `Dev Proxy: Start recording` - Only available when Dev Proxy is running
+- `Dev Proxy: Stop recording`- Only available when Dev Proxy is recording
+
+### Diagnostics
+
+- Check for missing `configSection` property in plugin instance for plugins that require configuration
+- Check for missing `configSection` when defined in plugin instance
+- Check that schema matches installed version of Dev Proxy
+- Check that reporters are placed after plugins
+
+### Editor Actions
+
+Shown when the active document is a Dev Proxy configuration file
+
+- Start Dev Proxy
+- Stop Dev Proxy
+- Raise mock request
+- Start recording
+- Stop recording
+
 ### Notifications
 
 - Not installed
 - New version detection
 
-### Status Bar
-
-- Display installed Dev Proxy version
-- Display waring when Dev Proxy is not latest version
-- Display tick if Dev Proxy is latest version (check based on `newVersionNotification` config setting)
-- Display radio tower when Dev Proxy is running
-- Display error is Dev Proxy is not installed
-
 ### Settings
 
-- `devproxytoolkit.versionPreference` - Determines the version to use when Dev Proxy and Dev Proxy Beta are installed side by side. Can be `stable` (default) or `beta`.
+- `dev-proxy-toolkit.version` - Determines the version to use when Dev Proxy and Dev Proxy Beta are installed side by side. Can be `stable` (default) or `beta`.
+- `dev-proxy-toolkit.newTerminal` - Determines if Dev Proxy should be started in a new terminal. Can be `true` (default) or `false`.
+- `dev-proxy-toolkit.showTerminal` - Determines if the terminal should be shown when Dev Proxy is started. Can be `true` (default) or `false`.
+- `dev-proxy-toolkit.closeTerminal` - Determines if the terminal should be closed when Dev Proxy is stopped. Can be `true` (default) or `false`.
+- `dev-proxy-toolkit.apiPort` - Determines the port to use to communicate with Dev Proxy API. Default is `8897`.
 
 ### Snippets
 
@@ -112,3 +126,11 @@ The following sections describe the features that the extension contributes to V
 | `devproxy-reporter-json` | JsonReporter instance |
 | `devproxy-reporter-markdown` | MarkdownReporter instance |
 | `devproxy-reporter-plain-text` | PlainTextReporter instance |
+
+### Status Bar
+
+- Display installed Dev Proxy version
+- Display waring when Dev Proxy is not latest version
+- Display tick if Dev Proxy is latest version (check based on `newVersionNotification` config setting in Dev Proxy configuration file)
+- Display radio tower when Dev Proxy is running
+- Display error is Dev Proxy is not installed
