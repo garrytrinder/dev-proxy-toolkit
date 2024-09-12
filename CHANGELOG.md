@@ -29,6 +29,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - Setting: `devproxytoolkit.versionPreference` renamed to `dev-proxy-toolkit.version`
 
+### Fixed:
+
+- Code Lens: Fixed issue with documentation link shown for plugins with invalid names
+
 ## [0.8.0] - 2024-09-06
 
 ### Changed:

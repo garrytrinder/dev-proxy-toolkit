@@ -1,6 +1,7 @@
 import * as vscode from 'vscode';
 import { isConfigFile, getASTNode, getRangeFromASTNode } from './helpers';
 import parse from 'json-to-ast';
+import { pluginSnippets } from './constants';
 
 export const registerCodeLens = (context: vscode.ExtensionContext) => {
   context.subscriptions.push(
@@ -49,13 +50,17 @@ export const createCodeLensForPluginNodes = (document: vscode.TextDocument) => {
         const pluginName = (pluginNameNode?.value as parse.LiteralNode)
           .value as string;
 
-        codeLens.push(
-          new vscode.CodeLens(getRangeFromASTNode(pluginNameNode), {
-            title: `📄 ${pluginName}`,
-            command: 'dev-proxy-toolkit.openPluginDoc',
-            arguments: [pluginName],
-          })
-        );
+        const isValidName = pluginSnippets[pluginName];
+
+        if (isValidName) {
+          codeLens.push(
+            new vscode.CodeLens(getRangeFromASTNode(pluginNameNode), {
+              title: `📄 ${pluginName}`,
+              command: 'dev-proxy-toolkit.openPluginDoc',
+              arguments: [pluginName],
+            })
+          );
+        }
       });
     }
   }
