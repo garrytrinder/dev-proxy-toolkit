@@ -90,6 +90,10 @@
       {
         "language": "json",
         "path": "./dist/snippets.json"
+      },
+      {
+        "language": "jsonc",
+        "path": "./dist/snippets.json"
       }
     ],
     "configuration": {
