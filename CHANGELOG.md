@@ -24,6 +24,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Setting: `dev-proxy-toolkit.closeTerminal` - Determines if the terminal should be closed when stopping Dev Proxy
 - Setting: `dev-proxy-toolkit.apiPort` - Port number used to communicate with Dev Proxy API
 - Diagnostics: Collection renamed to `dev-proxy-toolkit`
+- Snippets: Support for JSONC (JSON with Comments) files
 
 ### Changed:
 
