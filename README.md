@@ -107,6 +107,7 @@ Shown when the active document is a Dev Proxy configuration file
 | `devproxy-plugin-latency` | LatencyPlugin instance |
 | `devproxy-plugin-latency-config` | LatencyPlugin config section |
 | `devproxy-plugin-graph-minimal-permissions-guidance` | MinimalPermissionsGuidancePlugin instance |
+| `devproxy-plugin-graph-minimal-permissions-guidance-config` | MinimalPermissionsGuidancePlugin config section |
 | `devproxy-plugin-graph-minimal-permissions` | MinimalPermissionsPlugin instance |
 | `devproxy-plugin-mock-generator` | MockGeneratorPlugin instance |
 | `devproxy-plugin-mock-request` | MockResponsePlugin instance |

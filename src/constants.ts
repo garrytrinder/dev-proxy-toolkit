@@ -101,7 +101,11 @@ export const pluginSnippets: PluginSnippets = {
     },
   },
   MinimalPermissionsGuidancePlugin: {
-    instance: 'devproxy-plugin-minimal-permissions-guidance'
+    instance: 'devproxy-plugin-minimal-permissions-guidance',
+    config: {
+      name: 'devproxy-plugin-minimal-permissions-guidance-config',
+      required: false
+    }
   },
   MinimalPermissionsPlugin: {
     instance: 'devproxy-plugin-minimal-permissions',

@@ -540,6 +540,20 @@
     ],
     "description": "MinimalPermissionsGuidancePlugin instance"
   },
+  "MinimalPermissionsGuidancePluginConfig": {
+    "prefix": "devproxy-plugin-graph-minimal-permissions-guidance-config",
+    "body": [
+      "\"minimalPermissionsGuidancePlugin\": {",
+      "\t\"permissionsToIgnore\": [",
+      "\t\t\"profile\",",
+      "\t\t\"openid\",",
+      "\t\t\"offline_access\",",
+      "\t\t\"email\"",
+      "\t]",
+      "}"
+    ],
+    "description": "MinimalPermissionsGuidancePlugin config section"
+  },
   "MinimalPermissionsPlugin": {
     "prefix": "devproxy-plugin-graph-minimal-permissions",
     "body": [
