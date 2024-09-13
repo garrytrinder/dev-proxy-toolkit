@@ -25,6 +25,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Setting: `dev-proxy-toolkit.apiPort` - Port number used to communicate with Dev Proxy API
 - Diagnostics: Collection renamed to `dev-proxy-toolkit`
 - Snippets: Support for JSONC (JSON with Comments) files
+- Snippets: `devproxy-plugin-graph-minimal-permissions-guidance-config` - MinimalPermissionsGuidancePlugin config section
 
 ### Changed:
 
