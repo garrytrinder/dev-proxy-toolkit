@@ -26,6 +26,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Diagnostics: Collection renamed to `dev-proxy-toolkit`
 - Snippets: Support for JSONC (JSON with Comments) files
 - Snippets: `devproxy-plugin-graph-minimal-permissions-guidance-config` - MinimalPermissionsGuidancePlugin config section
+- Snippets: `devproxy-error` - Dev Proxy error
 
 ### Changed:
 

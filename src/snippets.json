@@ -21,6 +21,20 @@
     ],
     "description": "Dev Proxy config file schema"
   },
+  "Error": {
+    "prefix": "devproxy-error",
+    "body": [
+      "{",
+      "\t\"request\": {",
+      "\t\t\"url\": \"$1\"",
+      "\t},",
+      "\t\"responses\": [",
+      "\t\t$2",
+      "\t]",
+      "}"
+    ],
+    "description": "Dev Proxy error"
+  },
   "MocksFile": {
     "prefix": "devproxy-mocks-file",
     "body": [
