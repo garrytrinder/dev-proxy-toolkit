@@ -34,6 +34,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Fixed:
 
 - Code Lens: Fixed issue with documentation link shown for plugins with invalid names
+- Snippets: `devproxy-plugin-generic-random-error-file` changed to match schema
 
 ## [0.8.0] - 2024-09-06
 
