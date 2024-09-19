@@ -65,6 +65,7 @@ Shown when the active document is a Dev Proxy configuration file
 | ------ | ----------- |
 | `devproxy-config-file` | Dev Proxy config file |
 | `devproxy-config-file-schema` | Dev Proxy config file schema |
+| `devproxy-error` | Dev Proxy error |
 | `devproxy-mocks-file` | Dev Proxy mocks file |
 | `devproxy-mocks-file-schema` | Dev Proxy mocks file schema |
 | `devproxy-mock` | Dev Proxy mock |
