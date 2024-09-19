@@ -72,6 +72,9 @@ Shown when the active document is a Dev Proxy configuration file
 | `devproxy-request` | Dev Proxy request |
 | `devproxy-response` | Dev Proxy response |
 | `devproxy-response-header` | Dev Proxy response header |
+| `devproxy-plugin-auth` | AuthPlugin instance |
+| `devproxy-plugin-auth-config-apikey` | AuthPlugin API Key config section |
+| `devproxy-plugin-auth-config-oauth2` | AuthPlugin OAuth2 config section |
 | `devproxy-plugin-api-center-minimal-permissions` | ApiCenterMinimalPermissionsPlugin instance |
 | `devproxy-plugin-api-center-minimal-permissions-config` | ApiCenterMinimalPermissionsPlugin config section |
 | `devproxy-plugin-api-center-onboarding` | ApiCenterOnboardingPlugin instance |

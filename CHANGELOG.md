@@ -27,6 +27,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Snippets: Support for JSONC (JSON with Comments) files
 - Snippets: `devproxy-plugin-graph-minimal-permissions-guidance-config` - MinimalPermissionsGuidancePlugin config section
 - Snippets: `devproxy-error` - Dev Proxy error
+- Snippets: `devproxy-auth-plugin` - AuthPlugin instance
+- Snippets: `devproxy-plugin-auth-config-apikey` - AuthPlugin API Key config section
+- Snippets: `devproxy-plugin-auth-config-oauth2` - AuthPlugin OAuth2 config section
 
 ### Changed:
 
