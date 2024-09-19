@@ -107,6 +107,72 @@
     ],
     "description": "Dev Proxy response header"
   },
+  "AuthPlugin": {
+    "prefix": "devproxy-plugin-auth",
+    "body": [
+      "{",
+      "\t\"name\": \"AuthPlugin\",",
+      "\t\"enabled\": true,",
+      "\t\"pluginPath\": \"~appFolder/plugins/dev-proxy-plugins.dll\",",
+      "\t\"configSection\": \"auth\"",
+      "}"
+    ],
+    "description": "AuthPlugin instance"
+  },
+  "AuthPluginAPIKeyConfig": {
+    "prefix": "devproxy-plugin-auth-config-apikey",
+    "body": [
+      "\"auth\": {",
+      "\t\"type\": \"apiKey\",",
+      "\t\"apiKey\": {",
+      "\t\t\"parameters\": [",
+      "\t\t\t{",
+      "\t\t\t\t\"in\": \"header\",",
+      "\t\t\t\t\"name\": \"x-api-key\"",
+      "\t\t\t},",
+      "\t\t\t{",
+      "\t\t\t\t\"in\": \"query\",",
+      "\t\t\t\t\"name\": \"code\"",
+      "\t\t\t}",
+      "\t\t],",
+      "\t\t\"allowedKeys\": [",
+      "\t\t\t\"1234\"",
+      "\t\t]",
+      "\t}",
+      "}"
+    ],
+    "description": "AuthPlugin API Key config section"
+  },
+  "AuthPluginOAuth2Config": {
+    "prefix": "devproxy-plugin-auth-config-oauth2",
+    "body": [
+      "\"auth\": {",
+      "\t\"type\": \"oauth2\",",
+      "\t\"oauth2\": {",
+      "\t\t\"metadataUrl\": \"https://login.microsoftonline.com/common/v2.0/.well-known/openid-configuration\",",
+      "\t\t\"allowedApplications\": [",
+      "\t\t\t\"00000000-0000-0000-0000-000000000000\"",
+      "\t\t],",
+      "\t\t\"allowedAudiences\": [",
+      "\t\t\t\"00000000-0000-0000-0000-000000000000\"",
+      "\t\t],",
+      "\t\t\"allowedPrincipals\": [",
+      "\t\t\t\"00000000-0000-0000-0000-000000000000\"",
+      "\t\t],",
+      "\t\t\"allowedTenants\": [",
+      "\t\t\t\"00000000-0000-0000-0000-000000000000\"",
+      "\t\t],",
+      "\t\t\"issuer\": \"https://login.microsoftonline.com/00000000-0000-0000-0000-000000000000/v2.0\",",
+      "\t\t\"scopes\": [",
+      "\t\t\t\"Posts.Read\"",
+      "\t\t],",
+      "\t\t\"validateLifetime\": true,",
+      "\t\t\"validateSigningKey\": true",
+      "\t}",
+      "}"
+    ],
+    "description": "AuthPlugin OAuth2 config section"
+  },
   "ApiCenterMinimalPermissionsPlugin": {
     "prefix": "devproxy-plugin-api-center-minimal-permissions",
     "body": [
