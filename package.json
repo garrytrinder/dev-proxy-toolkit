@@ -2,7 +2,7 @@
   "name": "dev-proxy-toolkit",
   "displayName": "Dev Proxy Toolkit",
   "description": "Makes it easy to create and update Dev Proxy configuration files.",
-  "version": "0.8.0",
+  "version": "0.9.0",
   "publisher": "garrytrinder",
   "engines": {
     "vscode": "^1.85.0"
@@ -130,7 +130,7 @@
       }
     }
   },
-  "preview": true,
+  "preview": false,
   "pricing": "Free",
   "icon": "dist/icon.png",
   "homepage": "https://github.com/garrytrinder/dev-proxy-toolkit/blob/main/README.md",
