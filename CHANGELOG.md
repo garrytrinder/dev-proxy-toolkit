@@ -34,11 +34,13 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Changed:
 
 - Setting: `devproxytoolkit.versionPreference` renamed to `dev-proxy-toolkit.version`
+- Workflow: Updated publish workflow to publish pre-release versions to marketplace
 
 ### Fixed:
 
 - Code Lens: Fixed issue with documentation link shown for plugins with invalid names
 - Snippets: `devproxy-plugin-generic-random-error-file` changed to match schema
+- Readme: Updated information block to use correct formatting
 
 ## [0.8.0] - 2024-09-06
 

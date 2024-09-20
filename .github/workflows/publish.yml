@@ -3,7 +3,7 @@ name: Publish
 on:
   release:
     types:
-    - created
+      - created
 
 jobs:
   publish:
@@ -24,7 +24,24 @@ jobs:
     - name: Install VSCE
       run: npm install -g vsce
 
+    - name: Update package version and version default in package.json
+      run: |
+        TAG_NAME=${{ github.ref_name }}
+        VERSION=${TAG_NAME#v}
+        if [[ "$TAG_NAME" == *"-beta"* ]]; then
+          jq --arg version "$VERSION" --arg default "beta" '.version = $version | .contributes.configuration.properties["dev-proxy-toolkit.version"].default = $default' package.json > package.tmp.json
+        else
+          jq --arg version "$VERSION" '.version = $version' package.json > package.tmp.json
+        fi
+        mv package.tmp.json package.json
+
     - name: Publish
       env:
         VSCE_PAT: ${{ secrets.VSCE_PAT }}
-      run: vsce publish
+      run: |
+        TAG_NAME=${{ github.ref_name }}
+        if [[ "$TAG_NAME" == *"-beta"* ]]; then
+          vsce publish --pre-release
+        else
+          vsce publish
+        fi
