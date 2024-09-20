@@ -130,7 +130,7 @@
       }
     }
   },
-  "preview": true,
+  "preview": false,
   "pricing": "Free",
   "icon": "dist/icon.png",
   "homepage": "https://github.com/garrytrinder/dev-proxy-toolkit/blob/main/README.md",
