@@ -4,9 +4,9 @@
 
 The Dev Proxy Toolkit extension for Visual Studio Code makes it easy to create and update configuration files.
 
-> **IMPORTANT**
+> [!IMPORTANT]
 >
-> Dev Proxy Toolkit is designed to be used with the latest version of Dev Proxy, 0.20.1. If you are using an earlier build some features may not work as intended.
+> Dev Proxy Toolkit is designed to be used with the latest version of Dev Proxy. If you are using an earlier build some features may not work as intended. You should update to the latest version.
 >
 
 ## Features
