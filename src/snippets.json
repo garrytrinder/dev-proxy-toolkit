@@ -439,7 +439,7 @@
       "\t\t\"https://graph.microsoft.us/beta/*\",",
       "\t\t\"https://dod-graph.microsoft.us/beta/*\",",
       "\t\t\"https://microsoftgraph.chinacloudapi.cn/beta/*\"",
-      "\t]",
+    "\t]",
       "}"
     ],
     "description": "GraphBetaSupportGuidancePlugin instance"
@@ -464,6 +464,51 @@
       "}"
     ],
     "description": "GraphClientRequestIdGuidancePlugin instance"
+  },
+  "GraphMinimalPermissionsGuidancePlugin": {
+    "prefix": "devproxy-plugin-graph-minimal-permissions-guidance",
+    "body": [
+      "{",
+      "\t\"name\": \"GraphMinimalPermissionsGuidancePlugin\",",
+      "\t\"enabled\": true,",
+      "\t\"pluginPath\": \"~appFolder/plugins/dev-proxy-plugins.dll\"",
+      "}"
+    ],
+    "description": "GraphMinimalPermissionsGuidancePlugin instance"
+  },
+  "GraphMinimalPermissionsGuidancePluginConfig": {
+    "prefix": "devproxy-plugin-graph-minimal-permissions-guidance-config",
+    "body": [
+      "\"graphMinimalPermissionsGuidancePlugin\": {",
+      "\t\"permissionsToIgnore\": [",
+      "\t\t\"profile\",",
+      "\t\t\"openid\",",
+      "\t\t\"offline_access\",",
+      "\t\t\"email\"",
+      "\t]",
+      "}"
+    ],
+    "description": "GraphMinimalPermissionsGuidancePlugin config section"
+  },
+  "GraphMinimalPermissionsPlugin": {
+    "prefix": "devproxy-plugin-graph-minimal-permissions",
+    "body": [
+      "{",
+      "\t\"name\": \"GraphMinimalPermissionsPlugin\",",
+      "\t\"enabled\": true,",
+      "\t\"pluginPath\": \"~appFolder/plugins/dev-proxy-plugins.dll\"",
+      "}"
+    ],
+    "description": "GraphMinimalPermissionsPlugin instance"
+  },
+  "GraphMinimalPermissionsPluginConfig": {
+    "prefix": "devproxy-plugin-graph-minimal-permissions-config",
+    "body": [
+      "\"graphMinimalPermissionsPlugin\": {",
+      "\t\"type\": \"delegated\"",
+      "}"
+    ],
+    "description": "GraphMinimalPermissionsPlugin config section"
   },
   "GraphMockResponsePlugin": {
     "prefix": "devproxy-plugin-graph-mock-response",
@@ -612,33 +657,8 @@
     ],
     "description": "LatencyPlugin config section"
   },
-  "MinimalPermissionsGuidancePlugin": {
-    "prefix": "devproxy-plugin-graph-minimal-permissions-guidance",
-    "body": [
-      "{",
-      "\t\"name\": \"MinimalPermissionsGuidancePlugin\",",
-      "\t\"enabled\": true,",
-      "\t\"pluginPath\": \"~appFolder/plugins/dev-proxy-plugins.dll\"",
-      "}"
-    ],
-    "description": "MinimalPermissionsGuidancePlugin instance"
-  },
-  "MinimalPermissionsGuidancePluginConfig": {
-    "prefix": "devproxy-plugin-graph-minimal-permissions-guidance-config",
-    "body": [
-      "\"minimalPermissionsGuidancePlugin\": {",
-      "\t\"permissionsToIgnore\": [",
-      "\t\t\"profile\",",
-      "\t\t\"openid\",",
-      "\t\t\"offline_access\",",
-      "\t\t\"email\"",
-      "\t]",
-      "}"
-    ],
-    "description": "MinimalPermissionsGuidancePlugin config section"
-  },
   "MinimalPermissionsPlugin": {
-    "prefix": "devproxy-plugin-graph-minimal-permissions",
+    "prefix": "devproxy-plugin-minimal-permissions",
     "body": [
       "{",
       "\t\"name\": \"MinimalPermissionsPlugin\",",
@@ -647,6 +667,15 @@
       "}"
     ],
     "description": "MinimalPermissionsPlugin instance"
+  },
+  "MinimalPermissionsPluginConfig": {
+    "prefix": "devproxy-plugin-minimal-permissions-config",
+    "body": [
+      "\"minimalPermissionsPlugin\": {",
+      "\t\"apiSpecsFolderPath\": \"./api-specs\"",
+      "}"
+    ],
+    "description": "MinimalPermissionsPlugin config section"
   },
   "MockGeneratorPlugin": {
     "prefix": "devproxy-plugin-mock-generator",

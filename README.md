@@ -100,6 +100,10 @@ Shown when the active document is a Dev Proxy configuration file
 | `devproxy-plugin-generic-random-error-file-schema` | GenericRandomErrorPlugin errors file schema |
 | `devproxy-plugin-graph-beta-support-guidance` | GraphBetaSupportGuidancePlugin instance |
 | `devproxy-plugin-graph-client-request-id-guidance` | GraphClientRequestIdGuidancePlugin instance |
+| `devproxy-plugin-graph-minimal-permissions-guidance` | GraphMinimalPermissionsGuidancePlugin instance |
+| `devproxy-plugin-graph-minimal-permissions-guidance-config` | GraphMinimalPermissionsGuidancePlugin config section |
+| `devproxy-plugin-graph-minimal-permissions` | GraphMinimalPermissionsPlugin instance |
+| `devproxy-plugin-graph-minimal-permissions-config` | GraphMinimalPermissionsPlugin config section |
 | `devproxy-plugin-graph-mock-response` | GraphMockResponsePlugin instance |
 | `devproxy-plugin-graph-mock-response-config` | GraphMockResponsePlugin config section |
 | `devproxy-plugin-graph-random-error` | GraphRandomErrorPlugin instance |
@@ -110,9 +114,8 @@ Shown when the active document is a Dev Proxy configuration file
 | `devproxy-plugin-http-file-generator-config` | HttpFileGeneratorPlugin config section |
 | `devproxy-plugin-latency` | LatencyPlugin instance |
 | `devproxy-plugin-latency-config` | LatencyPlugin config section |
-| `devproxy-plugin-graph-minimal-permissions-guidance` | MinimalPermissionsGuidancePlugin instance |
-| `devproxy-plugin-graph-minimal-permissions-guidance-config` | MinimalPermissionsGuidancePlugin config section |
-| `devproxy-plugin-graph-minimal-permissions` | MinimalPermissionsPlugin instance |
+| `devproxy-plugin-minimal-permissions` | MinimalPermissionsPlugin instance |
+| `devproxy-plugin-minimal-permissions-config` | MinimalPermissionsPlugin config section |
 | `devproxy-plugin-mock-generator` | MockGeneratorPlugin instance |
 | `devproxy-plugin-mock-request` | MockResponsePlugin instance |
 | `devproxy-plugin-mock-request-config` | MockResponsePlugin config section |

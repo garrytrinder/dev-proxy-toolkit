@@ -20,55 +20,69 @@ export const pluginSnippets: PluginSnippets = {
     config: {
       name: 'devproxy-plugin-api-center-production-version-config',
       required: true,
-    },
+    }
   },
   CachingGuidancePlugin: {
     instance: 'devproxy-plugin-caching-guidance',
     config: {
       name: 'devproxy-plugin-caching-guidance-config',
       required: false,
-    },
+    }
   },
   CrudApiPlugin: {
     instance: 'devproxy-plugin-crud-api',
     config: {
       name: 'devproxy-plugin-crud-api-config',
       required: true,
-    },
+    }
   },
   DevToolsPlugin: {
     instance: 'devproxy-plugin-dev-tools',
     config: {
       name: 'devproxy-plugin-dev-tools-config',
       required: false,
-    },
+    }
   },
   EntraMockResponsePlugin: {
     instance: 'devproxy-plugin-entra-mock-response',
     config: {
       name: 'devproxy-plugin-entra-mock-response-config',
       required: true,
-    },
+    }
   },
   ExecutionSummaryPlugin: {
     instance: 'devproxy-plugin-execution-summary',
     config: {
       name: 'devproxy-plugin-execution-summary-config',
       required: false,
-    },
+    }
   },
   GenericRandomErrorPlugin: {
     instance: 'devproxy-plugin-generic-random-error',
     config: {
       name: 'devproxy-plugin-generic-random-error-config',
       required: true,
-    },
+    }
   },
   GraphBetaSupportGuidancePlugin: {
     instance: 'devproxy-plugin-graph-beta-support-guidance',
   },
   GraphClientRequestIdGuidancePlugin: {
     instance: 'devproxy-plugin-graph-client-request-id-guidance',
+  },
+  GraphMinimalPermissionsPlugin: {
+    instance: 'devproxy-plugin-graph-minimal-permissions',
+    config: {
+      name: 'devproxy-plugin-graph-minimal-permissions-config',
+      required: false,
+    }
+  },
+  GraphMinimalPermissionsGuidancePlugin: {
+    instance: 'devproxy-plugin-graph-minimal-permissions-guidance',
+    config: {
+      name: 'devproxy-plugin-graph-minimal-permissions-guidance-config',
+      required: false
+    }
   },
   GraphMockResponsePlugin: {
     instance: 'devproxy-plugin-graph-mock-response',
@@ -78,7 +92,7 @@ export const pluginSnippets: PluginSnippets = {
     config: {
       name: 'devproxy-plugin-graph-random-error-config',
       required: false,
-    },
+    }
   },
   GraphSdkGuidancePlugin: {
     instance: 'devproxy-plugin-graph-sdk-guidance',
@@ -91,20 +105,13 @@ export const pluginSnippets: PluginSnippets = {
     config: {
       name: 'devproxy-plugin-http-file-generator-config',
       required: false,
-    },
+    }
   },
   LatencyPlugin: {
     instance: 'devproxy-plugin-latency',
     config: {
       name: 'devproxy-plugin-latency-config',
       required: false,
-    },
-  },
-  MinimalPermissionsGuidancePlugin: {
-    instance: 'devproxy-plugin-minimal-permissions-guidance',
-    config: {
-      name: 'devproxy-plugin-minimal-permissions-guidance-config',
-      required: false
     }
   },
   MinimalPermissionsPlugin: {
@@ -112,7 +119,7 @@ export const pluginSnippets: PluginSnippets = {
     config: {
       name: 'devproxy-plugin-minimal-permissions-config',
       required: false,
-    },
+    }
   },
   MockGeneratorPlugin: {
     instance: 'devproxy-plugin-mock-generator',
@@ -122,7 +129,7 @@ export const pluginSnippets: PluginSnippets = {
     config: {
       name: 'devproxy-plugin-mock-request-config',
       required: true,
-    },
+    }
   },
   MockResponsePlugin: {
     instance: 'devproxy-plugin-mock-response',
@@ -148,7 +155,7 @@ export const pluginSnippets: PluginSnippets = {
     config: {
       name: 'devproxy-plugin-rate-limiting-config',
       required: false,
-    },
+    }
   },
   RetryAfterPlugin: {
     instance: 'devproxy-plugin-retry-after',
@@ -209,6 +216,14 @@ export const pluginDocs: PluginDocs = {
     name: 'Graph Client Request ID Guidance Plugin',
     url: 'https://learn.microsoft.com/microsoft-cloud/dev/dev-proxy/technical-reference/graphclientrequestidguidanceplugin',
   },
+  GraphMinimalPermissionsPlugin: {
+    name: 'Graph Minimal Permissions Plugin',
+    url: 'https://learn.microsoft.com/microsoft-cloud/dev/dev-proxy/technical-reference/graphminimalpermissionsplugin',
+  },
+  GraphMinimalPermissionsGuidancePlugin: {
+    name: 'Graph Minimal Permissions Guidance Plugin',
+    url: 'https://learn.microsoft.com/microsoft-cloud/dev/dev-proxy/technical-reference/graphminimalpermissionsguidanceplugin',
+  },
   GraphMockResponsePlugin: {
     name: 'Graph Mock Response Plugin',
     url: 'https://learn.microsoft.com/microsoft-cloud/dev/dev-proxy/technical-reference/graphmockresponseplugin',
@@ -232,10 +247,6 @@ export const pluginDocs: PluginDocs = {
   LatencyPlugin: {
     name: 'Latency Plugin',
     url: 'https://learn.microsoft.com/microsoft-cloud/dev/dev-proxy/technical-reference/latencyplugin',
-  },
-  MinimalPermissionsGuidancePlugin: {
-    name: 'Minimal Permissions Guidance Plugin',
-    url: 'https://learn.microsoft.com/microsoft-cloud/dev/dev-proxy/technical-reference/minimalpermissionsguidanceplugin',
   },
   MinimalPermissionsPlugin: {
     name: 'Minimal Permissions Plugin',
