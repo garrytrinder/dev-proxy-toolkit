@@ -11,6 +11,13 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - Snippets: All snippets that reference schemas updated to use `v0.22.0` schema
 - Snippets: Added `logLevel`, `newVersionNotification`, `showSkipMessages` properties to `devproxy-config-file`
+- Snippets: Renamed `devproxy-plugin-minimal-permissions` to `devproxy-plugin-graph-minimal-permissions`
+- Snippets: Renamed `devproxy-plugin-minimal-permissions-guidance` to `devproxy-plugin-graph-minimal-permissions-guidance`
+
+### Added:
+
+- Snippets: `devproxy-plugin-minimal-permissions-guidance-config` - MinimalPermissionsGuidancePlugin config section
+- Snippets: `devproxy-plugin-minimal-permissions` - MinimalPermissionsPlugin instance
 
 ## [0.10.0] - 2024-10-01
 
