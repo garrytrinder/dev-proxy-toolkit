@@ -10,6 +10,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Changed:
 
 - Snippets: All snippets that reference schemas updated to use `v0.22.0` schema
+- Snippets: Added `logLevel`, `newVersionNotification`, `showSkipMessages` properties to `devproxy-config-file`
 
 ## [0.10.0] - 2024-10-01
 
