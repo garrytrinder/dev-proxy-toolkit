@@ -3,7 +3,7 @@
     "prefix": "devproxy-config-file",
     "body": [
       "{",
-      "\t\"\\$schema\": \"https://raw.githubusercontent.com/microsoft/dev-proxy/main/schemas/v0.20.1/rc.schema.json\",",
+      "\t\"\\$schema\": \"https://raw.githubusercontent.com/microsoft/dev-proxy/main/schemas/v0.22/rc.schema.json\",",
       "\t\"plugins\": [",
       "\t\t$1",
       "\t],",
@@ -17,7 +17,7 @@
   "ConfigFileSchema": {
     "prefix": "devproxy-config-file-schema",
     "body": [
-      "\"\\$schema\": \"https://raw.githubusercontent.com/microsoft/dev-proxy/main/schemas/v0.20.1/rc.schema.json\","
+      "\"\\$schema\": \"https://raw.githubusercontent.com/microsoft/dev-proxy/main/schemas/v0.22/rc.schema.json\","
     ],
     "description": "Dev Proxy config file schema"
   },
@@ -39,7 +39,7 @@
     "prefix": "devproxy-mocks-file",
     "body": [
       "{",
-      "\t\"\\$schema\": \"https://raw.githubusercontent.com/microsoft/dev-proxy/main/schemas/v0.20.1/mockresponseplugin.schema.json\",",
+      "\t\"\\$schema\": \"https://raw.githubusercontent.com/microsoft/dev-proxy/main/schemas/v0.22/mockresponseplugin.schema.json\",",
       "\t\"mocks\": [",
       "\t\t$1",
       "\t]",
@@ -50,7 +50,7 @@
   "MocksFileSchema": {
     "prefix": "devproxy-mocks-file-schema",
     "body": [
-      "\"\\$schema\": \"https://raw.githubusercontent.com/microsoft/dev-proxy/main/schemas/v0.20.1/mockresponseplugin.schema.json\","
+      "\"\\$schema\": \"https://raw.githubusercontent.com/microsoft/dev-proxy/main/schemas/v0.22/mockresponseplugin.schema.json\","
     ],
     "description": "Dev Proxy mocks file schema"
   },
@@ -292,7 +292,7 @@
     "prefix": "devproxy-plugin-crud-api-file",
     "body": [
       "{",
-      "\t\"\\$schema\": \"https://raw.githubusercontent.com/microsoft/dev-proxy/main/schemas/v0.20.1/crudapiplugin.schema.json\",",
+      "\t\"\\$schema\": \"https://raw.githubusercontent.com/microsoft/dev-proxy/main/schemas/v0.22/crudapiplugin.schema.json\",",
       "\t\"actions\": [",
       "\t\t$1",
       "\t],",
@@ -305,7 +305,7 @@
   "CrudApiPluginFileSchema": {
     "prefix": "devproxy-plugin-crud-api-file-schema",
     "body": [
-      "\"\\$schema\": \"https://raw.githubusercontent.com/microsoft/dev-proxy/main/schemas/v0.20.1/crudapiplugin.schema.json\","
+      "\"\\$schema\": \"https://raw.githubusercontent.com/microsoft/dev-proxy/main/schemas/v0.22/crudapiplugin.schema.json\","
     ],
     "description": "CrudApiPlugin API file schema"
   },
@@ -409,7 +409,7 @@
     "prefix": "devproxy-plugin-generic-random-error-file",
     "body": [
       "{",
-      "\t\"\\$schema\": \"https://raw.githubusercontent.com/microsoft/dev-proxy/main/schemas/v0.20.1/genericrandomerrorplugin.schema.json\",",
+      "\t\"\\$schema\": \"https://raw.githubusercontent.com/microsoft/dev-proxy/main/schemas/v0.22/genericrandomerrorplugin.schema.json\",",
       "\t\"errors\": [",
       "\t\t$1",
       "\t]",
@@ -420,7 +420,7 @@
   "GenericRandomErrorPluginFileSchema": {
     "prefix": "devproxy-plugin-generic-random-error-file-schema",
     "body": [
-      "\"\\$schema\": \"https://raw.githubusercontent.com/microsoft/dev-proxy/main/schemas/v0.20.1/genericrandomerrorplugin.schema.json\","
+      "\"\\$schema\": \"https://raw.githubusercontent.com/microsoft/dev-proxy/main/schemas/v0.22/genericrandomerrorplugin.schema.json\","
     ],
     "description": "GenericRandomErrorPlugin errors file schema"
   },
@@ -701,7 +701,7 @@
   "MockResponsePluginFileSchema": {
     "prefix": "devproxy-plugin-mock-response-schema",
     "body": [
-      "\"\\$schema\": \"https://raw.githubusercontent.com/microsoft/dev-proxy/main/schemas/v0.20.1/mockresponseplugin.schema.json\","
+      "\"\\$schema\": \"https://raw.githubusercontent.com/microsoft/dev-proxy/main/schemas/v0.22/mockresponseplugin.schema.json\","
     ],
     "description": "MockResponsePlugin schema"
   },
@@ -786,7 +786,7 @@
     "prefix": "devproxy-plugin-rate-limiting-file",
     "body": [
       "{",
-      "\t\"\\$schema\": \"https://raw.githubusercontent.com/microsoft/dev-proxy/main/schemas/v0.20.1/ratelimitingplugin.schema.json\",",
+      "\t\"\\$schema\": \"https://raw.githubusercontent.com/microsoft/dev-proxy/main/schemas/v0.22/ratelimitingplugin.schema.json\",",
       "\t\"body\": {",
       "\t\t$1",
       "\t},",
@@ -801,7 +801,7 @@
   "RateLimitingFileSchema": {
     "prefix": "devproxy-plugin-rate-limiting-file-schema",
     "body": [
-      "\"\\$schema\": \"https://raw.githubusercontent.com/microsoft/dev-proxy/main/schemas/v0.20.1/ratelimitingplugin.schema.json\","
+      "\"\\$schema\": \"https://raw.githubusercontent.com/microsoft/dev-proxy/main/schemas/v0.22/ratelimitingplugin.schema.json\","
     ],
     "description": "Dev Proxy rate limiting file schema"
   },
