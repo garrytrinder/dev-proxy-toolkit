@@ -10,6 +10,9 @@
       "\t\"urlsToWatch\": [",
       "\t\t$2",
       "\t]",
+      "\t\"logLevel\": \"information\"",
+      "\t\"newVersionNotification\": \"stable\"",
+      "\t\"showSkipMessages\": true",
       "}"
     ],
     "description": "Dev Proxy config file"
