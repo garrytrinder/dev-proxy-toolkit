@@ -5,7 +5,7 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
-## [0.11.0] - Unreleased
+## [0.11.1] - Unreleased
 
 ### Changed:
 
@@ -13,6 +13,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Snippets: Added `logLevel`, `newVersionNotification`, `showSkipMessages` properties to `devproxy-config-file`
 - Snippets: Renamed `devproxy-plugin-minimal-permissions` to `devproxy-plugin-graph-minimal-permissions`
 - Snippets: Renamed `devproxy-plugin-minimal-permissions-guidance` to `devproxy-plugin-graph-minimal-permissions-guidance`
+- Updated dependencies
 
 ### Added:
 
