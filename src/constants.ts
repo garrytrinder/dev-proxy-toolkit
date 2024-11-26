@@ -160,6 +160,13 @@ export const pluginSnippets: PluginSnippets = {
   RetryAfterPlugin: {
     instance: 'devproxy-plugin-retry-after',
   },
+  RewritePlugin: {
+    instance: 'devproxy-plugin-rewrite',
+    config: {
+      name: 'devproxy-plugin-rewrite-config',
+      required: true,
+    }
+  },
   JsonReporter: {
     instance: 'devproxy-reporter-json',
   },
@@ -287,6 +294,10 @@ export const pluginDocs: PluginDocs = {
   RetryAfterPlugin: {
     name: 'Retry After Plugin',
     url: 'https://learn.microsoft.com/microsoft-cloud/dev/dev-proxy/technical-reference/retryafterplugin',
+  },
+  RewritePlugin: {
+    name: 'Rewrite Plugin',
+    url: 'https://learn.microsoft.com/microsoft-cloud/dev/dev-proxy/technical-reference/rewriteplugin',
   },
   JsonReporter: {
     name: 'JSON Reporter',
