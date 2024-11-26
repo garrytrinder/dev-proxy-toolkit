@@ -848,6 +848,27 @@
     ],
     "description": "RetryAfterPlugin instance"
   },
+  "RewritePlugin": {
+    "prefix": "devproxy-plugin-rewrite",
+    "body": [
+      "{",
+      "\t\"name\": \"RewritePlugin\",",
+      "\t\"enabled\": true,",
+      "\t\"pluginPath\": \"~appFolder/plugins/dev-proxy-plugins.dll\",",
+      "\t\"configSection\": \"rewritePlugin\"",
+      "}"
+    ],
+    "description": "RewritePlugin instance"
+  },
+  "RewritePluginConfig":{
+    "prefix": "devproxy-plugin-rewrite-config",
+    "body": [
+      "\"rewritePlugin\": {",
+      "\t\"rewritesFile\": \"rewrites.json\"",
+      "}"
+    ],
+    "description": "RewritePlugin config section"
+  },
   "JsonReporter": {
     "prefix": "devproxy-reporter-json",
     "body": [

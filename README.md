@@ -131,6 +131,8 @@ Shown when the active document is a Dev Proxy configuration file
 | `devproxy-plugin-rate-limiting-file` | Dev Proxy rate limiting file |
 | `devproxy-plugin-rate-limiting-file-schema` | Dev Proxy rate limiting file schema |
 | `devproxy-plugin-retry-after` | RetryAfterPlugin instance |
+| `devproxy-plugin-rewrite` | RewritePlugin instance |
+| `devproxy-plugin-rewrite-config` | RewritePlugin config section |
 | `devproxy-reporter-json` | JsonReporter instance |
 | `devproxy-reporter-markdown` | MarkdownReporter instance |
 | `devproxy-reporter-plain-text` | PlainTextReporter instance |
