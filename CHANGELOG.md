@@ -12,6 +12,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Snippets: `devproxy-plugin-rewrite` - RewritePlugin instance
 - Snippets: `devproxy-plugin-rewrite-config` - RewritePlugin config section
 
+### Changed:
+
+- Snippets: All snippets that reference schemas updated to use `v0.23.0` schema
+
 ## [0.12.0] - 2024-10-31
 
 > **Note**: `0.11.x` pre-releases are not included in this changelog. They were used to test the new features and fixes before the final release.
