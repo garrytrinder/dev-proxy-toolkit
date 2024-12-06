@@ -791,6 +791,16 @@
     ],
     "description": "OpenApiSpecGeneratorPlugin instance"
   },
+  "OpenApiSpecGeneratorPluginConfig": {
+    "prefix": "devproxy-plugin-open-api-spec-generator-config",
+    "body": [
+      "\"openApiSpecGeneratorPlugin\": {",
+      "\t\"includeOptionsRequests\": false,",
+      "\t\"specVersion\": \"v3_0\"",
+      "}"
+    ],
+    "description": "OpenApiSpecGeneratorPlugin config section"
+  },
   "RateLimitingPlugin": {
     "prefix": "devproxy-plugin-rate-limiting",
     "body": [
