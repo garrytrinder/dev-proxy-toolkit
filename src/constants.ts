@@ -148,7 +148,11 @@ export const pluginSnippets: PluginSnippets = {
     instance: 'devproxy-plugin-openai-mock-response',
   },
   OpenApiSpecGeneratorPlugin: {
-    instance: 'devproxy-plugin-openapi-doc-generator',
+    instance: 'devproxy-plugin-open-api-spec-generator',
+    config: {
+      name: 'devproxy-plugin-open-api-spec-generator-config',
+      required: false
+    }
   },
   RateLimitingPlugin: {
     instance: 'devproxy-plugin-rate-limiting',

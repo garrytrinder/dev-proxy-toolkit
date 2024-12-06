@@ -9,6 +9,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [0.15.0] - Unreleased
 
+### Changed:
+
+- Snippets: `devproxy-plugin-open-api-spec-generator` - OpenApiSpecGeneratorPlugin config section
+
 ## [0.14.0] - 2024-11-27
 
 ### Added:

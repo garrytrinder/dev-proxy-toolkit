@@ -126,6 +126,7 @@ Shown when the active document is a Dev Proxy configuration file
 | `devproxy-plugin-graph-odsp-search-guidance` | ODSPSearchGuidancePlugin instance |
 | `devproxy-plugin-openai-mock-response` | OpenAIMockResponsePlugin instance |
 | `devproxy-plugin-open-api-spec-generator` | OpenApiSpecGeneratorPlugin instance |
+| `devproxy-plugin-open-api-spec-generator-config` | OpenApiSpecGeneratorPlugin config section |
 | `devproxy-plugin-rate-limiting` | MockResponsePlugin instance |
 | `devproxy-plugin-rate-limiting-config` | RateLimitingPlugin config section |
 | `devproxy-plugin-rate-limiting-file` | Dev Proxy rate limiting file |
