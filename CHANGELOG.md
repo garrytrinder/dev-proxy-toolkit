@@ -14,6 +14,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Snippets: `devproxy-plugin-open-api-spec-generator` - OpenApiSpecGeneratorPlugin config section
 - Snippets: All snippets that reference schemas updated to use `v0.24.0` schema
 
+### Fixed:
+
+- Snippets: Fix invalid Json in `devproxy-config-file`
+
 ## [0.14.0] - 2024-11-27
 
 ### Added:
