@@ -2,7 +2,7 @@ import * as vscode from 'vscode';
 import parse from "json-to-ast";
 import { pluginSnippets } from "./constants";
 import { getASTNode, getRangeFromASTNode } from "./helpers";
-import { DevProxyInstall } from './types';
+import { DevProxyInstall } from "./types";
 
 export const updateConfigFileDiagnostics = (
   context: vscode.ExtensionContext,
