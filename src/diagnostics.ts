@@ -198,6 +198,21 @@ const checkPluginConfiguration = (pluginNode: parse.ObjectNode, diagnostics: vsc
             : vscode.DiagnosticSeverity.Warning
         )
       );
+    } else if (pluginSnippet.config?.required === false) {
+      const pluginNameNode = getASTNode(
+        pluginNode.children,
+        'Identifier',
+        'name'
+      );
+      if (pluginNameNode) {
+        diagnostics.push(
+          new vscode.Diagnostic(
+            getRangeFromASTNode(pluginNameNode.value),
+            `${pluginName} can be configured with a configSection. Use '${pluginSnippet.config?.name}' snippet to create one.`,
+            vscode.DiagnosticSeverity.Information
+          )
+        );
+      }
     }
   } else {
     // if there is a config section defined on the plugin, we should have the config section defined in the document
