@@ -1,14 +1,10 @@
 import * as assert from 'assert';
 import * as vscode from 'vscode';
-import * as fs from 'fs';
 import {
-  getASTNode,
-  getStartPositionFromASTNode,
   isConfigFile,
   sleep,
 } from '../helpers';
 import * as path from 'path';
-import parse from 'json-to-ast';
 import { createCodeLensForPluginNodes } from '../codelens';
 import { handleStartNotification } from '../notifications';
 import { handleStatusBarUpdate, statusBarLoop } from '../statusbar';
@@ -25,7 +21,7 @@ export const testDevProxyInstall: DevProxyInstall = {
   outdatedVersion: '0.14.1',
   platform: 'win32',
   version: '0.14.1',
-}; 
+};
 
 suite('extension', () => {
 
@@ -142,9 +138,12 @@ suite('plugins', () => {
       message: 'GenericRandomErrorPlugin requires a config section.',
       severity: vscode.DiagnosticSeverity.Error,
     };
+    const diagnostic = diagnostics.find((diagnostic) => {
+      return diagnostic.message === expected.message;
+    });
     const actual = {
-      message: diagnostics[0]?.message,
-      severity: diagnostics[0]?.severity,
+      message: diagnostic?.message,
+      severity: diagnostic?.severity,
     };
     assert.deepStrictEqual(actual, expected);
   });
@@ -160,9 +159,12 @@ suite('plugins', () => {
       message: 'GenericRandomErrorPlugin requires a config section.',
       severity: vscode.DiagnosticSeverity.Warning,
     };
+    const diagnostic = diagnostics.find((diagnostic) => {
+      return diagnostic.message === expected.message;
+    });
     const actual = {
-      message: diagnostics[0]?.message,
-      severity: diagnostics[0]?.severity,
+      message: diagnostic?.message,
+      severity: diagnostic?.severity,
     };
     assert.deepStrictEqual(actual, expected);
   });
@@ -179,9 +181,12 @@ suite('plugins', () => {
         "genericRandomErrorPlugin config section is missing. Use 'devproxy-plugin-generic-random-error-config' snippet to create one.",
       severity: vscode.DiagnosticSeverity.Error,
     };
+    const diagnostic = diagnostics.find((diagnostic) => {
+      return diagnostic.message === expected.message;
+    });
     const actual = {
-      message: diagnostics[0]?.message,
-      severity: diagnostics[0]?.severity,
+      message: diagnostic?.message,
+      severity: diagnostic?.severity,
     };
     assert.deepStrictEqual(actual, expected);
   });
@@ -198,9 +203,12 @@ suite('plugins', () => {
         "genericRandomErrorPlugin config section is missing. Use 'devproxy-plugin-generic-random-error-config' snippet to create one.",
       severity: vscode.DiagnosticSeverity.Warning,
     };
+    const diagnostic = diagnostics.find((diagnostic) => {
+      return diagnostic.message === expected.message;
+    });
     const actual = {
-      message: diagnostics[0]?.message,
-      severity: diagnostics[0]?.severity,
+      message: diagnostic?.message,
+      severity: diagnostic?.severity,
     };
     assert.deepStrictEqual(actual, expected);
   });
@@ -489,7 +497,7 @@ suite('schema', () => {
       isRunning: false,
       platform: 'win32',
       outdatedVersion: '',
-      version: '0.14.1',
+      version: '0.24.0',
     } as DevProxyInstall);
 
     const fileName = 'config-schema-version.json';

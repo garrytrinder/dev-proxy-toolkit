@@ -1,12 +1,12 @@
 import * as vscode from 'vscode';
 import { isConfigFile, isProxyFile } from './helpers';
-import { updateConfigDiagnostics, updateDiagnostics } from './diagnostics';
+import { updateFileDiagnostics, updateConfigFileDiagnostics } from './diagnostics';
 
 export const registerDocumentListeners = (context: vscode.ExtensionContext, collection: vscode.DiagnosticCollection) => {
     context.subscriptions.push(
         vscode.workspace.onDidOpenTextDocument(document => {
             if (isProxyFile(document)) {
-                updateDiagnostics(context, document, collection);
+                updateFileDiagnostics(context, document, collection);
                 vscode.commands.executeCommand('setContext', 'isDevProxyConfigFile', false);
             }
             if (!isConfigFile(document)) {
@@ -14,25 +14,25 @@ export const registerDocumentListeners = (context: vscode.ExtensionContext, coll
                 return;
             } else {
                 vscode.commands.executeCommand('setContext', 'isDevProxyConfigFile', true);
-                updateConfigDiagnostics(context, document, collection);
+                updateConfigFileDiagnostics(context, document, collection);
             }
         })
     );
 
     context.subscriptions.push(
         vscode.workspace.onDidChangeTextDocument(event => {
-            if (!isConfigFile(event.document) || !isProxyFile(event.document)) {
+            if (!isConfigFile(event.document) && !isProxyFile(event.document)) {
                 collection.delete(event.document.uri);
                 vscode.commands.executeCommand('setContext', 'isDevProxyConfigFile', false);
                 return;
             }
             if (isConfigFile(event.document)) {
-                updateConfigDiagnostics(context, event.document, collection);
+                updateConfigFileDiagnostics(context, event.document, collection);
                 vscode.commands.executeCommand('setContext', 'isDevProxyConfigFile', true);
                 return;
             }
             if (isProxyFile(event.document)) {
-                updateDiagnostics(context, event.document, collection);
+                updateFileDiagnostics(context, event.document, collection);
                 vscode.commands.executeCommand('setContext', 'isDevProxyConfigFile', false);
             }
         })
