@@ -2,7 +2,7 @@ import * as vscode from 'vscode';
 import parse from "json-to-ast";
 import { pluginSnippets } from "./constants";
 import { getASTNode, getRangeFromASTNode } from "./helpers";
-import { DevProxyInstall } from "./types";
+import { DevProxyInstall, PluginConfig } from "./types";
 
 export const updateConfigFileDiagnostics = (
   context: vscode.ExtensionContext,
@@ -165,7 +165,7 @@ const checkAtLeastOneEnabledPlugin = (pluginNodes: parse.ObjectNode[], diagnosti
   }
 };
 
-const checkPluginConfiguration = (pluginNode: parse.ObjectNode, diagnostics: vscode.Diagnostic[], pluginName: string, isEnabled: boolean, documentNode: parse.ObjectNode, pluginSnippet: { instance: string; config?: import("/Users/garrytrinder/repos/dev-proxy-toolkit/src/types").PluginConfig; }) => {
+const checkPluginConfiguration = (pluginNode: parse.ObjectNode, diagnostics: vscode.Diagnostic[], pluginName: string, isEnabled: boolean, documentNode: parse.ObjectNode, pluginSnippet: { instance: string; config?: PluginConfig; }) => {
   const configSectionNode = getASTNode(
     pluginNode.children,
     'Identifier',
