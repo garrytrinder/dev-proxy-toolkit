@@ -35,6 +35,7 @@ The following sections describe the features that the extension contributes to V
 - Check for missing `configSection` when defined in plugin instance
 - Check that schema matches installed version of Dev Proxy
 - Check that reporters are placed after plugins
+- Check that at least one plugin is enabled
 
 ### Editor Actions
 
