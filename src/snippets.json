@@ -255,8 +255,7 @@
       "{",
       "\t\"name\": \"CachingGuidancePlugin\",",
       "\t\"enabled\": true,",
-      "\t\"pluginPath\": \"~appFolder/plugins/dev-proxy-plugins.dll\",",
-      "\t\"configSection\": \"cachingGuidance\"",
+      "\t\"pluginPath\": \"~appFolder/plugins/dev-proxy-plugins.dll\"",
       "}"
     ],
     "description": "CachingGuidancePlugin instance"
@@ -330,8 +329,7 @@
       "{",
       "\t\"name\": \"DevToolsPlugin\",",
       "\t\"enabled\": true,",
-      "\t\"pluginPath\": \"~appFolder/plugins/dev-proxy-plugins.dll\",",
-      "\t\"configSection\": \"devTools\"",
+      "\t\"pluginPath\": \"~appFolder/plugins/dev-proxy-plugins.dll\"",
       "}"
     ],
     "description": "DevToolsPlugin instance"
@@ -372,8 +370,7 @@
       "{",
       "\t\"name\": \"ExecutionSummaryPlugin\",",
       "\t\"enabled\": true,",
-      "\t\"pluginPath\": \"~appFolder/plugins/dev-proxy-plugins.dll\",",
-      "\t\"configSection\": \"executionSummaryPlugin\"",
+      "\t\"pluginPath\": \"~appFolder/plugins/dev-proxy-plugins.dll\"",
       "}"
     ],
     "description": "ExecutionSummaryPlugin instance"
@@ -547,8 +544,7 @@
       "{",
       "\t\"name\": \"GraphRandomErrorPlugin\",",
       "\t\"enabled\": true,",
-      "\t\"pluginPath\": \"~appFolder/plugins/dev-proxy-plugins.dll\",",
-      "\t\"configSection\": \"graphRandomErrorPlugin\",",
+      "\t\"pluginPath\": \"~appFolder/plugins/dev-proxy-plugins.dll\"",
       "\t\"urlsToWatch\": [",
       "\t\t\"https://graph.microsoft.com/v1.0/*\",",
       "\t\t\"https://graph.microsoft.com/beta/*\",",
@@ -620,8 +616,7 @@
       "{",
       "\t\"name\": \"HttpFileGeneratorPlugin\",",
       "\t\"enabled\": true,",
-      "\t\"pluginPath\": \"~appFolder/plugins/dev-proxy-plugins.dll\",",
-      "\t\"configSection\": \"latencyPlugin\"",
+      "\t\"pluginPath\": \"~appFolder/plugins/dev-proxy-plugins.dll\"",
       "}"
     ],
     "description": "HttpFileGeneratorPlugin instance"
@@ -807,8 +802,7 @@
       "{",
       "\t\"name\": \"RateLimitingPlugin\",",
       "\t\"enabled\": true,",
-      "\t\"pluginPath\": \"~appFolder/plugins/dev-proxy-plugins.dll\",",
-      "\t\"configSection\": \"rateLimiting\"",
+      "\t\"pluginPath\": \"~appFolder/plugins/dev-proxy-plugins.dll\"",
       "}"
     ],
     "description": "MockResponsePlugin instance"

@@ -19,6 +19,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Snippets: All snippets that reference schemas updated to use `v0.24.0` schema
 - Diagnostics: Refactored code to be more readable and maintainable
 - Diagnostics: Improved config section check
+- Snippets: Optional config sections removed from snippets
 
 ### Fixed:
 
