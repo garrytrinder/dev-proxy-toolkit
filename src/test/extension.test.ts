@@ -506,8 +506,10 @@ suite('schema', () => {
     await sleep(1000);
     const diagnostics = vscode.languages.getDiagnostics(document.uri);
 
-    const expected = 0;
-    const actual = diagnostics.length;
+    const expected = false;
+    const actual = diagnostics.some((diagnostic) => {
+      return diagnostic.severity === vscode.DiagnosticSeverity.Warning;
+    });
     assert.deepStrictEqual(actual, expected);
   });
 
