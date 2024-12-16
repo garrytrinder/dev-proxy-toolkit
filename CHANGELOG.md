@@ -13,6 +13,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - Diagnostics: Ensure at least one plugin is enabled
 - Diagnostics: Information added to pluginName value when plugin can be configured with a configSection
+- Diagnostics: Warning added to config sections not connected to a plugin
 
 ### Changed:
 

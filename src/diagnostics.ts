@@ -19,6 +19,7 @@ export const updateConfigFileDiagnostics = (
 
   checkSchemaCompatibility(documentNode, devProxyInstall, diagnostics);
   checkPlugins(pluginsNode, diagnostics, documentNode);
+  checkConfigSection(documentNode, diagnostics);
 
   collection.set(document.uri, diagnostics);
 };
@@ -39,6 +40,40 @@ export const updateFileDiagnostics = (
   checkSchemaCompatibility(documentNode, devProxyInstall, diagnostics);
 
   collection.set(document.uri, diagnostics);
+};
+
+const checkConfigSection = (documentNode: parse.ObjectNode, diagnostics: vscode.Diagnostic[]) => {
+  const objects = documentNode.children.filter((node) => node.type === 'Property' && (node as parse.PropertyNode).value.type === 'Object');
+
+  objects.forEach((object) => {
+    const objectNode = object as parse.PropertyNode;
+    const objectName = objectNode.key.value as string;
+    const pluginNodes = getPluginsNode(documentNode);
+
+    if (pluginNodes && pluginNodes.value.type === 'Array') {
+      const plugins = (pluginNodes.value as parse.ArrayNode).children as parse.ObjectNode[];
+      const matchFound = plugins.some((plugin) => {
+        const configSectionNode = getASTNode(
+          plugin.children,
+          'Identifier',
+          'configSection'
+        );
+        return configSectionNode && (configSectionNode.value as parse.LiteralNode).value === objectName;
+      });
+
+      if (matchFound) {
+        return;
+      }
+    }
+
+    const diagnostic = new vscode.Diagnostic(
+      getRangeFromASTNode(objectNode),
+      `Config section '${objectName}' does not correspond to any plugin. Remove it or add a plugin with a matching configSection.`,
+      vscode.DiagnosticSeverity.Warning
+    );
+    diagnostic.code = 'invalidConfigSection';
+    diagnostics.push(diagnostic);
+  });
 };
 
 const checkSchemaCompatibility = (documentNode: parse.ObjectNode, devProxyInstall: DevProxyInstall, diagnostics: vscode.Diagnostic[]) => {

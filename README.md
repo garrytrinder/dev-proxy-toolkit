@@ -37,6 +37,7 @@ The following sections describe the features that the extension contributes to V
 - Check that reporters are placed after plugins
 - Check that at least one plugin is enabled
 - Check that a plugin can be configured with a configSection
+- Check for configSections that are not used in plugins
 
 ### Editor Actions
 
