@@ -791,7 +791,8 @@
     "body": [
       "\"openApiSpecGeneratorPlugin\": {",
       "\t\"includeOptionsRequests\": false,",
-      "\t\"specVersion\": \"v3_0\"",
+      "\t\"specVersion\": \"v3_0\",",
+      "\t\"specFormat\": \"Json\"",
       "}"
     ],
     "description": "OpenApiSpecGeneratorPlugin config section"

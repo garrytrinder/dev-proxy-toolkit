@@ -22,6 +22,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Diagnostics: Refactored code to be more readable and maintainable
 - Diagnostics: Improved config section check
 - Snippets: Optional config sections removed from snippets
+- Snippets: `specFormat` property added to `devproxy-plugin-open-api-spec-generator-config`
 
 ### Fixed:
 
