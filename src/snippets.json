@@ -874,6 +874,17 @@
     ],
     "description": "RewritePlugin config section"
   },
+  "UrlDiscoveryPlugin": {
+    "prefix": "devproxy-plugin-url-discovery",
+    "body": [
+      "{",
+      "\t\"name\": \"UrlDiscoveryPlugin\",",
+      "\t\"enabled\": true,",
+      "\t\"pluginPath\": \"~appFolder/plugins/dev-proxy-plugins.dll\"",
+      "}"
+    ],
+    "description": "UrlDiscoveryPlugin instance"
+  },
   "JsonReporter": {
     "prefix": "devproxy-reporter-json",
     "body": [

@@ -171,6 +171,9 @@ export const pluginSnippets: PluginSnippets = {
       required: true,
     }
   },
+  UrlDiscoveryPlugin: {
+    instance: 'devproxy-plugin-url-discovery',
+  },
   JsonReporter: {
     instance: 'devproxy-reporter-json',
   },
@@ -302,6 +305,10 @@ export const pluginDocs: PluginDocs = {
   RewritePlugin: {
     name: 'Rewrite Plugin',
     url: 'https://learn.microsoft.com/microsoft-cloud/dev/dev-proxy/technical-reference/rewriteplugin',
+  },
+  UrlDiscoveryPlugin: {
+    name: 'UrlDiscovery Plugin',
+    url: 'https://learn.microsoft.com/microsoft-cloud/dev/dev-proxy/technical-reference/urldiscoveryplugin',
   },
   JsonReporter: {
     name: 'JSON Reporter',
