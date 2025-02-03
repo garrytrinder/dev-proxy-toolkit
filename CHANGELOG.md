@@ -7,13 +7,14 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 > **Note**: odd version numbers, for example, `0.13.0`, are not included in this changelog. They are used to test the new features and fixes before the final release.
 
-## [0.15.1] - Unreleased
+## [0.15.2] - Unreleased
 
 ### Added:
 
 - Diagnostics: Ensure at least one plugin is enabled
 - Diagnostics: Information added to pluginName value when plugin can be configured with a configSection
 - Diagnostics: Warning added to config sections not connected to a plugin
+- Snippets: `devproxy-plugin-url-discovery` - UrlDiscoveryPlugin instance
 
 ### Changed:
 

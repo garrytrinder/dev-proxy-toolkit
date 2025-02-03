@@ -137,6 +137,7 @@ Shown when the active document is a Dev Proxy configuration file
 | `devproxy-plugin-retry-after` | RetryAfterPlugin instance |
 | `devproxy-plugin-rewrite` | RewritePlugin instance |
 | `devproxy-plugin-rewrite-config` | RewritePlugin config section |
+| `devproxy-plugin-url-discovery` | UrlDiscoveryPlugin instance |
 | `devproxy-reporter-json` | JsonReporter instance |
 | `devproxy-reporter-markdown` | MarkdownReporter instance |
 | `devproxy-reporter-plain-text` | PlainTextReporter instance |
