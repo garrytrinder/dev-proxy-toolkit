@@ -8,7 +8,7 @@ const snippets = require('../src/snippets.json');
 //       "prefix": "devproxy-config",
 //       "body": [
 //         "{",
-//         "\t\"\\$schema\": \"https://raw.githubusercontent.com/microsoft/dev-proxy/main/schemas/v1.0/rc.schema.json\",",
+//         "\t\"\\$schema\": \"https://raw.githubusercontent.com/dotnet/dev-proxy/main/schemas/v1.0/rc.schema.json\",",
 //         "\t\"plugins\": [$1],",
 //         "\t\"urlsToWatch\": [$2],",
 //         "\t\"rate\": 50,",
