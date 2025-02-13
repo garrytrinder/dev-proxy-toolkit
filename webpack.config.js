@@ -48,8 +48,9 @@ const extensionConfig = {
   plugins: [
     new CopyPlugin({
       patterns: [
-        {from: 'src/snippets.json', to: '[name][ext]'},
-        {from: 'src/icon.png', to: '[name][ext]'},
+        { from: 'src/snippets.json', to: '[name][ext]' },
+        { from: 'src/icon.png', to: '[name][ext]' },
+        { from: 'LICENCE', to: '[name][ext]' },
       ],
     }),
   ],
