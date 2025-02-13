@@ -86,6 +86,10 @@ export const pluginSnippets: PluginSnippets = {
   },
   GraphMockResponsePlugin: {
     instance: 'devproxy-plugin-graph-mock-response',
+    config: {
+      name: 'devproxy-plugin-graph-mock-response-config',
+      required: true,
+    }
   },
   GraphRandomErrorPlugin: {
     instance: 'devproxy-plugin-graph-random-error',

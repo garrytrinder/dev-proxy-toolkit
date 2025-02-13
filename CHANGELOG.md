@@ -14,6 +14,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Snippets: Updated schema urls to reflect the move to dotnet organisation in Github
 - Code action: Updated update schema code action to reflect the move to dotnet organisation in Github
 
+### Fixed: 
+
+- Diagnostics: Fixed GraphMockResponsePlugin does not require a config section issue
+
 ## [0.16.0] - 2025-02-03
 
 ### Added:
