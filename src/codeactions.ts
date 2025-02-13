@@ -22,7 +22,7 @@ export const registerCodeActions = (context: vscode.ExtensionContext) => {
                             diagnostic.range.start,
                             diagnostic.range.end
                         ),
-                        `$schema": "https://raw.githubusercontent.com/microsoft/dev-proxy/main/schemas/v${devProxyVersion}/rc.schema.json",`
+                        `$schema": "https://raw.githubusercontent.com/dotnet/dev-proxy/main/schemas/v${devProxyVersion}/rc.schema.json",`
                     );
                     return [fix];
                 }

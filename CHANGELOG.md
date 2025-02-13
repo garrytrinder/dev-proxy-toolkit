@@ -7,6 +7,13 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 > **Note**: odd version numbers, for example, `0.13.0`, are not included in this changelog. They are used to test the new features and fixes before the final release.
 
+## [0.17.0] - Unreleased
+
+### Changed: 
+
+- Snippets: Updated schema urls to reflect the move to dotnet organisation in Github
+- Code action: Updated update schema code action to reflect the move to dotnet organisation in Github
+
 ## [0.16.0] - 2025-02-03
 
 ### Added:
