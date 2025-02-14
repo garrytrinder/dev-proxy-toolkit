@@ -12,6 +12,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Changed: 
 
 - Snippets: Updated schema urls to reflect the move to dotnet organisation in Github
+- Snippets: All snippets that reference schemas updated to use `v0.25.0` schema
 - Code action: Updated update schema code action to reflect the move to dotnet organisation in Github
 
 ### Fixed: 
