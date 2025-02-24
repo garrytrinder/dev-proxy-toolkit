@@ -15,6 +15,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Snippets: All snippets that reference schemas updated to use `v0.25.0` schema
 - Code action: Updated update schema code action to reflect the move to dotnet organisation in Github
 - Snippets: `rate` property added to `devproxy-plugin-generic-random-error-config` and `devproxy-plugin-graph-random-error-config`
+- Snippets: `$schema` property added to all config section snippets
 
 ### Fixed: 
 
