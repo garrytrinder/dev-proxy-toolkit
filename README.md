@@ -75,6 +75,7 @@ Shown when the active document is a Dev Proxy configuration file
 | `devproxy-request` | Dev Proxy request |
 | `devproxy-response` | Dev Proxy response |
 | `devproxy-response-header` | Dev Proxy response header |
+| `devproxy-rewrite` | Dev Proxy rewrite |
 | `devproxy-plugin-auth` | AuthPlugin instance |
 | `devproxy-plugin-auth-config-apikey` | AuthPlugin API Key config section |
 | `devproxy-plugin-auth-config-oauth2` | AuthPlugin OAuth2 config section |
@@ -136,6 +137,8 @@ Shown when the active document is a Dev Proxy configuration file
 | `devproxy-plugin-rate-limiting-file-schema` | Dev Proxy rate limiting file schema |
 | `devproxy-plugin-retry-after` | RetryAfterPlugin instance |
 | `devproxy-plugin-rewrite` | RewritePlugin instance |
+| `devproxy-plugin-rewrite-file` | RewritePlugin rewrites file |
+| `devproxy-plugin-rewrite-file-schema` | RewritePlugin rewrites file schema |
 | `devproxy-plugin-rewrite-config` | RewritePlugin config section |
 | `devproxy-plugin-url-discovery` | UrlDiscoveryPlugin instance |
 | `devproxy-reporter-json` | JsonReporter instance |

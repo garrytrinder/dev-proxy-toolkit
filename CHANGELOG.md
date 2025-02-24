@@ -9,6 +9,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [0.17.2] - Unreleased
 
+### Added:
+
+- Snippets: `devproxy-rewrite` - Dev Proxy rewrite
+- Snippets: `devproxy-plugin-rewrite-file` - RewritePlugin rewrites file
+- Snippets: `devproxy-plugin-rewrite-file-schema` - RewritePlugin rewrites file schema
+
 ### Changed: 
 
 - Snippets: Updated schema urls to reflect the move to dotnet organisation in Github
