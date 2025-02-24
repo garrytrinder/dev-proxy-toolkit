@@ -50,6 +50,10 @@ const checkConfigSection = (documentNode: parse.ObjectNode, diagnostics: vscode.
     const objectName = objectNode.key.value as string;
     const pluginNodes = getPluginsNode(documentNode);
 
+    if (objectName === 'languageModel') {
+      return;
+    }
+
     if (pluginNodes && pluginNodes.value.type === 'Array') {
       const plugins = (pluginNodes.value as parse.ArrayNode).children as parse.ObjectNode[];
       const matchFound = plugins.some((plugin) => {
