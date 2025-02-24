@@ -401,6 +401,7 @@
     "body": [
       "\"genericRandomErrorPlugin\": {",
       "\t\"errorsFile\": \"errors.json\"",
+      "\t\"rate\": 50",
       "}"
     ],
     "description": "GenericRandomErrorPlugin config section"
@@ -564,6 +565,7 @@
     "body": [
       "\"graphRandomErrorPlugin\": {",
       "\t\"allowedErrors\": [ 429, 500, 502, 503, 504, 507 ]",
+      "\t\"rate\": 50",
       "}"
     ],
     "description": "GraphRandomErrorPlugin config section"
