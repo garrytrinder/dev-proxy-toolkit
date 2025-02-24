@@ -110,6 +110,20 @@
     ],
     "description": "Dev Proxy response header"
   },
+  "Rewrite":{
+    "prefix": "devproxy-rewrite",
+    "body": [
+      "{",
+      "\t\"in\": {",
+      "\t\t\"url\": \"$1\"",
+      "\t},",
+      "\t\"out\": {",
+      "\t\t\"url\": \"$2\"",
+      "\t}",
+      "}"
+    ],
+    "description": "Dev Proxy rewrite"
+  },
   "AuthPlugin": {
     "prefix": "devproxy-plugin-auth",
     "body": [
@@ -889,6 +903,25 @@
     ],
     "description": "RewritePlugin instance"
   },
+  "RewritePluginFile":{
+    "prefix": "devproxy-plugin-rewrite-file",
+    "body": [
+      "{",
+      "\t\"\\$schema\": \"https://raw.githubusercontent.com/dotnet/dev-proxy/main/schemas/v0.25.0/rewriteplugin.rewritesfile.schema.json\",",
+      "\t\"rewrites\": [",
+      "\t\t$1",
+      "\t]",
+      "}"
+    ],
+    "description": "RewritePlugin rewrites file"
+  },
+  "RewritePluginFileSchema":{
+    "prefix": "devproxy-plugin-rewrite-file-schema",
+    "body": [
+      "\"\\$schema\": \"https://raw.githubusercontent.com/dotnet/dev-proxy/main/schemas/v0.25.0/rewriteplugin.rewritesfile.schema.json\","
+    ],
+    "description": "RewritePlugin rewrites file schema"
+  },
   "RewritePluginConfig":{
     "prefix": "devproxy-plugin-rewrite-config",
     "body": [
@@ -898,7 +931,7 @@
       "}"
     ],
     "description": "RewritePlugin config section"
-  },
+  },  
   "UrlDiscoveryPlugin": {
     "prefix": "devproxy-plugin-url-discovery",
     "body": [
