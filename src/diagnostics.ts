@@ -302,8 +302,16 @@ function checkForSummaryPluginWithoutReporter(pluginNodes: parse.ObjectNode[], d
     );
     const pluginName = (pluginNameNode?.value as parse.LiteralNode)
       .value as string;
-    return summaryPluginNames.includes(pluginName);
+    const enabledNode = getASTNode(
+      pluginNode.children,
+      'Identifier',
+      'enabled'
+    );
+    const isEnabled = (enabledNode?.value as parse.LiteralNode)
+      .value as boolean;
+    return summaryPluginNames.includes(pluginName) && isEnabled;
   });
+
   if (summaryPlugin) {
     const reporterPlugin = pluginNodes.find((pluginNode: parse.ObjectNode) => {
       const pluginNameNode = getASTNode(
@@ -313,8 +321,16 @@ function checkForSummaryPluginWithoutReporter(pluginNodes: parse.ObjectNode[], d
       );
       const pluginName = (pluginNameNode?.value as parse.LiteralNode)
         .value as string;
-      return pluginName.toLowerCase().includes('reporter');
+      const enabledNode = getASTNode(
+        pluginNode.children,
+        'Identifier',
+        'enabled'
+      );
+      const isEnabled = (enabledNode?.value as parse.LiteralNode)
+        .value as boolean;
+      return pluginName.toLowerCase().includes('reporter') && isEnabled;
     });
+
     if (!reporterPlugin) {
       diagnostics.push(
         new vscode.Diagnostic(
