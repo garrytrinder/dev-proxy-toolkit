@@ -106,6 +106,7 @@ const checkPlugins = (pluginsNode: parse.PropertyNode | undefined, diagnostics: 
     checkAtLeastOneEnabledPlugin(pluginNodes, diagnostics, pluginsNode);
     warnOnReporterPosition(pluginNodes, diagnostics);
     validatePluginConfigurations(pluginNodes, diagnostics, documentNode);
+    checkForSummaryPluginWithoutReporter(pluginNodes, diagnostics);
   }
 };
 
@@ -290,3 +291,38 @@ const getObjectNodeFromDocument = (document: vscode.TextDocument): parse.ObjectN
   return parse(document.getText()) as parse.ObjectNode;
 };
 
+function checkForSummaryPluginWithoutReporter(pluginNodes: parse.ObjectNode[], diagnostics: vscode.Diagnostic[]) {
+  const summaryPluginNames = ['ExecutionSummaryPlugin', 'UrlDiscoveryPlugin'];
+
+  const summaryPlugin = pluginNodes.find((pluginNode: parse.ObjectNode) => {
+    const pluginNameNode = getASTNode(
+      pluginNode.children,
+      'Identifier',
+      'name'
+    );
+    const pluginName = (pluginNameNode?.value as parse.LiteralNode)
+      .value as string;
+    return summaryPluginNames.includes(pluginName);
+  });
+  if (summaryPlugin) {
+    const reporterPlugin = pluginNodes.find((pluginNode: parse.ObjectNode) => {
+      const pluginNameNode = getASTNode(
+        pluginNode.children,
+        'Identifier',
+        'name'
+      );
+      const pluginName = (pluginNameNode?.value as parse.LiteralNode)
+        .value as string;
+      return pluginName.toLowerCase().includes('reporter');
+    });
+    if (!reporterPlugin) {
+      diagnostics.push(
+        new vscode.Diagnostic(
+          getRangeFromASTNode(summaryPlugin),
+          `Summary plugins should be used with a reporter plugin.`,
+          vscode.DiagnosticSeverity.Warning
+        )
+      );
+    }
+  }
+}

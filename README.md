@@ -38,6 +38,7 @@ The following sections describe the features that the extension contributes to V
 - Check that at least one plugin is enabled
 - Check that a plugin can be configured with a configSection
 - Check for configSections that are not used in plugins
+- Check for reporter plugin when a summary plugin is used
 
 ### Editor Actions
 
