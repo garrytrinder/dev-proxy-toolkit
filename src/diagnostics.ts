@@ -107,6 +107,7 @@ const checkPlugins = (pluginsNode: parse.PropertyNode | undefined, diagnostics: 
     warnOnReporterPosition(pluginNodes, diagnostics);
     validatePluginConfigurations(pluginNodes, diagnostics, documentNode);
     checkForSummaryPluginWithoutReporter(pluginNodes, diagnostics);
+    checkAPICOnboardingPluginAfterOpenApiSpecGeneratorPlugin(pluginNodes, diagnostics);
   }
 };
 
@@ -336,6 +337,49 @@ function checkForSummaryPluginWithoutReporter(pluginNodes: parse.ObjectNode[], d
         new vscode.Diagnostic(
           getRangeFromASTNode(summaryPlugin),
           `Summary plugins should be used with a reporter plugin.`,
+          vscode.DiagnosticSeverity.Warning
+        )
+      );
+    }
+  }
+}
+
+function checkAPICOnboardingPluginAfterOpenApiSpecGeneratorPlugin(pluginNodes: parse.ObjectNode[], diagnostics: vscode.Diagnostic[]) {
+  const openApiSpecGeneratorPluginIndex = pluginNodes.findIndex((pluginNode: parse.ObjectNode) => {
+    const pluginNameNode = getASTNode(
+      pluginNode.children,
+      'Identifier',
+      'name'
+    );
+    const pluginName = (pluginNameNode?.value as parse.LiteralNode)
+      .value as string;
+    const enabledNode = getASTNode(
+      pluginNode.children,
+      'Identifier',
+      'enabled'
+    );
+    const isEnabled = (enabledNode?.value as parse.LiteralNode)
+      .value as boolean;
+    return pluginName === 'OpenApiSpecGeneratorPlugin' && isEnabled;
+  }
+  );
+  if (openApiSpecGeneratorPluginIndex !== -1) {
+    const apiCenterOnboardingPluginIndex = pluginNodes.findIndex((pluginNode: parse.ObjectNode) => {
+      const pluginNameNode = getASTNode(
+        pluginNode.children,
+        'Identifier',
+        'name'
+      );
+      const pluginName = (pluginNameNode?.value as parse.LiteralNode)
+        .value as string;
+      return pluginName === 'ApiCenterOnboardingPlugin';
+    }
+    );
+    if (apiCenterOnboardingPluginIndex !== -1 && apiCenterOnboardingPluginIndex < openApiSpecGeneratorPluginIndex) {
+      diagnostics.push(
+        new vscode.Diagnostic(
+          getRangeFromASTNode(pluginNodes[openApiSpecGeneratorPluginIndex]),
+          'OpenApiSpecGeneratorPlugin should be placed before ApiCenterOnboardingPlugin.',
           vscode.DiagnosticSeverity.Warning
         )
       );

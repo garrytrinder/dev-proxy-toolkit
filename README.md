@@ -39,6 +39,7 @@ The following sections describe the features that the extension contributes to V
 - Check that a plugin can be configured with a configSection
 - Check for configSections that are not used in plugins
 - Check for reporter plugin when a summary plugin is used
+- Check that ApiCenterOnboardingPlugin is placed after OpenApiSpecGeneratorPlugin
 
 ### Editor Actions
 
