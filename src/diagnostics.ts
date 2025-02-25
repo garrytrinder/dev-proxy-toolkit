@@ -106,6 +106,7 @@ const checkPlugins = (pluginsNode: parse.PropertyNode | undefined, diagnostics: 
     checkAtLeastOneEnabledPlugin(pluginNodes, diagnostics, pluginsNode);
     warnOnReporterPosition(pluginNodes, diagnostics);
     validatePluginConfigurations(pluginNodes, diagnostics, documentNode);
+    checkForSummaryPluginWithoutReporter(pluginNodes, diagnostics);
   }
 };
 
@@ -290,3 +291,54 @@ const getObjectNodeFromDocument = (document: vscode.TextDocument): parse.ObjectN
   return parse(document.getText()) as parse.ObjectNode;
 };
 
+function checkForSummaryPluginWithoutReporter(pluginNodes: parse.ObjectNode[], diagnostics: vscode.Diagnostic[]) {
+  const summaryPluginNames = ['ExecutionSummaryPlugin', 'UrlDiscoveryPlugin'];
+
+  const summaryPlugin = pluginNodes.find((pluginNode: parse.ObjectNode) => {
+    const pluginNameNode = getASTNode(
+      pluginNode.children,
+      'Identifier',
+      'name'
+    );
+    const pluginName = (pluginNameNode?.value as parse.LiteralNode)
+      .value as string;
+    const enabledNode = getASTNode(
+      pluginNode.children,
+      'Identifier',
+      'enabled'
+    );
+    const isEnabled = (enabledNode?.value as parse.LiteralNode)
+      .value as boolean;
+    return summaryPluginNames.includes(pluginName) && isEnabled;
+  });
+
+  if (summaryPlugin) {
+    const reporterPlugin = pluginNodes.find((pluginNode: parse.ObjectNode) => {
+      const pluginNameNode = getASTNode(
+        pluginNode.children,
+        'Identifier',
+        'name'
+      );
+      const pluginName = (pluginNameNode?.value as parse.LiteralNode)
+        .value as string;
+      const enabledNode = getASTNode(
+        pluginNode.children,
+        'Identifier',
+        'enabled'
+      );
+      const isEnabled = (enabledNode?.value as parse.LiteralNode)
+        .value as boolean;
+      return pluginName.toLowerCase().includes('reporter') && isEnabled;
+    });
+
+    if (!reporterPlugin) {
+      diagnostics.push(
+        new vscode.Diagnostic(
+          getRangeFromASTNode(summaryPlugin),
+          `Summary plugins should be used with a reporter plugin.`,
+          vscode.DiagnosticSeverity.Warning
+        )
+      );
+    }
+  }
+}
