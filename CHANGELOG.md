@@ -15,6 +15,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Snippets: `devproxy-plugin-rewrite-file` - RewritePlugin rewrites file
 - Snippets: `devproxy-plugin-rewrite-file-schema` - RewritePlugin rewrites file schema
 - Diagnostics: Show warning if config contains a summary plugin without a reporter
+- Diagnostics: Show warning if OpenApiSpecGeneratorPlugin is placed after ApiCenterOnboardingPlugin
 
 ### Changed: 
 
