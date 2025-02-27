@@ -2,17 +2,16 @@ import * as vscode from 'vscode';
 import { pluginDocs } from './constants';
 import { VersionPreference } from './enums';
 import { executeCommand, isConfigFile } from './helpers';
-import { config } from 'process';
 
 export const registerCommands = (context: vscode.ExtensionContext, configuration: vscode.WorkspaceConfiguration) => {
     context.subscriptions.push(
         vscode.commands.registerCommand('dev-proxy-toolkit.install', async (platform: NodeJS.Platform) => {
             const versionPreference = configuration.get('version') as VersionPreference;
-            const id = versionPreference === VersionPreference.Stable ? 'Microsoft.DevProxy' : 'Microsoft.DevProxy.Beta';
             const message = vscode.window.setStatusBarMessage('Installing Dev Proxy...');
-
+            
             // we are on windows so we can use winget
             if (platform === 'win32') {
+                const id = versionPreference === VersionPreference.Stable ? 'Microsoft.DevProxy' : 'Microsoft.DevProxy.Beta';
                 // we first need to check if winget is installed, it is bundled with windows 11 but not windows 10
                 try {
                     await executeCommand('winget --version');
@@ -35,8 +34,9 @@ export const registerCommands = (context: vscode.ExtensionContext, configuration
 
             // we are on macos so we can use brew
             if (platform === 'darwin') {
+                const id = versionPreference === VersionPreference.Stable ? 'devproxy' : 'devproxy-beta';
                 try {
-                    await executeCommand('brew tap microsoft/dev-proxy');
+                    await executeCommand('brew tap dotnet/dev-proxy');
                     await executeCommand(`brew install ${id}`);
                     const result = await vscode.window.showInformationMessage('Dev Proxy installed.', 'Reload');
                     if (result === 'Reload') {
@@ -49,7 +49,7 @@ export const registerCommands = (context: vscode.ExtensionContext, configuration
 
             if (platform === 'linux') {
                 // we are on linux so we point the user to the documentation to install manually
-                const url = 'https://aka.ms/devproxy/start';
+                const url = 'https://aka.ms/devproxy/start/linux';
                 vscode.env.openExternal(vscode.Uri.parse(url));
             }
 
