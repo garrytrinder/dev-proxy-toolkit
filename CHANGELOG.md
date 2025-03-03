@@ -7,7 +7,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 > **Note**: odd version numbers, for example, `0.13.0`, are not included in this changelog. They are used to test the new features and fixes before the final release.
 
-## [0.18.2] - 2025-03-03
+## [0.18.3] - 2025-03-03
 
 ### Added:
 
@@ -32,6 +32,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Install: Fixed broken link for Linux
 - Install: Updated brew tap command to reference new tap location
 - Install: Fixed incorrect homebrew formulae name
+- Commands: Fixed issue with stop command not waiting to ensure Dev Proxy process has fully stopped before disposing of terminal
 
 ## [0.16.0] - 2025-02-03
 
