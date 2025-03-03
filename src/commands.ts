@@ -34,7 +34,7 @@ export const registerCommands = (context: vscode.ExtensionContext, configuration
 
             // we are on macos so we can use brew
             if (platform === 'darwin') {
-                const id = versionPreference === VersionPreference.Stable ? 'devproxy' : 'devproxy-beta';
+                const id = versionPreference === VersionPreference.Stable ? 'dev-proxy' : 'dev-proxy-beta';
                 try {
                     await executeCommand('brew tap dotnet/dev-proxy');
                     await executeCommand(`brew install ${id}`);
