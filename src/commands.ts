@@ -8,7 +8,7 @@ export const registerCommands = (context: vscode.ExtensionContext, configuration
         vscode.commands.registerCommand('dev-proxy-toolkit.install', async (platform: NodeJS.Platform) => {
             const versionPreference = configuration.get('version') as VersionPreference;
             const message = vscode.window.setStatusBarMessage('Installing Dev Proxy...');
-            
+
             // we are on windows so we can use winget
             if (platform === 'win32') {
                 const id = versionPreference === VersionPreference.Stable ? 'Microsoft.DevProxy' : 'Microsoft.DevProxy.Beta';
@@ -35,6 +35,14 @@ export const registerCommands = (context: vscode.ExtensionContext, configuration
             // we are on macos so we can use brew
             if (platform === 'darwin') {
                 const id = versionPreference === VersionPreference.Stable ? 'dev-proxy' : 'dev-proxy-beta';
+                // check if brew is installed
+                try {
+                    await executeCommand('brew --version');
+                } catch (error) {
+                    await vscode.window.showErrorMessage('Homebrew is not installed. Please install brew and try again.');
+                    return;
+                }
+
                 try {
                     await executeCommand('brew tap dotnet/dev-proxy');
                     await executeCommand(`brew install ${id}`);
@@ -105,6 +113,23 @@ export const registerCommands = (context: vscode.ExtensionContext, configuration
 
             const closeTerminal = configuration.get('closeTerminal') as boolean;
             if (closeTerminal) {
+                const checkProxyStatus = async () => {
+                    try {
+                        const response = await fetch(`http://localhost:${apiPort}/proxy`);
+                        return response.ok;
+                    } catch {
+                        return false;
+                    }
+                };
+
+                let isRunning = true;
+                while (isRunning) {
+                    isRunning = await checkProxyStatus();
+                    if (isRunning) {
+                        await new Promise(resolve => setTimeout(resolve, 1000));
+                    }
+                }
+
                 vscode.window.terminals.forEach(terminal => {
                     if (terminal.name === 'Dev Proxy') {
                         terminal.dispose();
