@@ -1,6 +1,6 @@
 import * as vscode from 'vscode';
 import parse from 'json-to-ast';
-import { exec } from 'child_process';
+import { exec, ExecOptions } from 'child_process';
 
 export const getASTNode = (
   children: parse.PropertyNode[],
@@ -98,9 +98,9 @@ export const sleep = (ms: number): Promise<void> => {
   });
 };
 
-export const executeCommand = async (cmd: string): Promise<string> => {
+export const executeCommand = async (cmd: string, options: ExecOptions = {}): Promise<string> => {
   return new Promise((resolve, reject) => {
-    exec(cmd, (error, stdout, stderr) => {
+    exec(cmd, options, (error, stdout, stderr) => {
       if (error) {
         reject(`exec error: ${error}`);
       } else if (stderr) {
