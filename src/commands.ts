@@ -195,4 +195,62 @@ export const registerCommands = (context: vscode.ExtensionContext, configuration
                 ? await executeCommand(`${VersionExeName.Stable} config open`)
                 : await executeCommand(`${VersionExeName.Beta} config open`);
         }));
+
+    context.subscriptions.push(
+        vscode.commands.registerCommand('dev-proxy-toolkit.config-new', async () => {
+            const versionPreference = configuration.get('version') as VersionPreference;
+            const exeName = versionPreference === VersionPreference.Stable ? VersionExeName.Stable : VersionExeName.Beta;
+
+            // ask the user for the filename that they want to use
+            const fileName = await vscode.window.showInputBox({
+                prompt: 'Enter the name of the new config file',
+                value: 'devproxyrc.json',
+                validateInput: (value: string) => {
+                    console.log(value);
+                    const errors: string[] = [];
+
+                    if (!value) {
+                        errors.push('The file name cannot be empty');
+                    }
+
+                    if (value.includes('/') || value.includes('\\') || value.includes(' ') || value.includes(':') || value.includes('*') || value.includes('?') || value.includes('"') || value.includes('<') || value.includes('>') || value.includes('|')) {
+                        errors.push('The file name cannot contain special characters');
+                    }
+
+                    if (!value.endsWith('.json') && !value.endsWith('.jsonc')) {
+                        errors.push('The file name must use .json or .jsonc extension');
+                    }
+
+                    return errors.length === 0 ? undefined : errors[0];
+                }
+            });
+
+            // check if file exists, if it does show an error message
+            // we do this after the user has entered the filename 
+            try {
+                const workspaceFolder = vscode.workspace.workspaceFolders?.[0].uri.fsPath;
+                console.log(workspaceFolder);
+                const { type } = await vscode.workspace.fs.stat(vscode.Uri.file(`${workspaceFolder}/${fileName}`));
+                if (type === vscode.FileType.File) {
+                    vscode.window.showErrorMessage('A file with that name already exists');
+                    return;
+                }
+            } catch { } // file does not exist, continue
+
+            try {
+                // show progress
+                await vscode.window.withProgress({
+                    location: vscode.ProgressLocation.Notification,
+                    title: 'Creating new config file...'
+                }, async () => {
+                    await executeCommand(`${exeName} config new ${fileName}`, { cwd: vscode.workspace.workspaceFolders?.[0].uri.fsPath });
+                });
+
+                const configUri = vscode.Uri.file(`${vscode.workspace.workspaceFolders?.[0].uri.fsPath}/${fileName}`);
+                const document = await vscode.workspace.openTextDocument(configUri);
+                await vscode.window.showTextDocument(document);
+            } catch (error) {
+                vscode.window.showErrorMessage('Failed to create new config file');
+            }
+        }));
 };

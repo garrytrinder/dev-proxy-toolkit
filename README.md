@@ -29,6 +29,7 @@ The following sections describe the features that the extension contributes to V
 - `Dev Proxy Toolkit: Start recording` - Only available when Dev Proxy is running
 - `Dev Proxy Toolkit: Stop recording`- Only available when Dev Proxy is recording
 - `Dev Proxy Toolkit: Open configuration file`- Only available when Dev Proxy is installed
+- `Dev Proxy Toolkit: Create configuration file`- Only available when Dev Proxy is installed
 
 ### Diagnostics
 

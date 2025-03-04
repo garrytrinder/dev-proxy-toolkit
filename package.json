@@ -62,6 +62,13 @@
         "category": "Dev Proxy Toolkit",
         "icon": "$(file-code)",
         "enablement": "isDevProxyInstalled"
+      },
+      {
+        "command": "dev-proxy-toolkit.config-new",
+        "title": "Create configuration file",
+        "category": "Dev Proxy Toolkit",
+        "icon": "$(file-code)",
+        "enablement": "isDevProxyInstalled"
       }
     ],
     "menus": {
