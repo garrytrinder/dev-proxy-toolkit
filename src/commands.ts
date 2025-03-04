@@ -122,13 +122,17 @@ export const registerCommands = (context: vscode.ExtensionContext, configuration
                     }
                 };
 
-                let isRunning = true;
-                while (isRunning) {
-                    isRunning = await checkProxyStatus();
-                    if (isRunning) {
-                        await new Promise(resolve => setTimeout(resolve, 1000));
+                const waitForProxyToStop = async () => {
+                    let isRunning = true;
+                    while (isRunning) {
+                        isRunning = await checkProxyStatus();
+                        if (isRunning) {
+                            await new Promise(resolve => setTimeout(resolve, 1000));
+                        }
                     }
-                }
+                };
+
+                await waitForProxyToStop();
 
                 vscode.window.terminals.forEach(terminal => {
                     if (terminal.name === 'Dev Proxy') {
