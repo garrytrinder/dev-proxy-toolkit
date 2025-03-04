@@ -9,7 +9,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [0.21.0] - Unreleased
 
-No changes yet.
+### Added:
+
+- Command: `dev-proxy-toolkit.config-new` - Create new configuration file
 
 ## [0.20.0] - 2025-04-01
 
