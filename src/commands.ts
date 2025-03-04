@@ -1,6 +1,6 @@
 import * as vscode from 'vscode';
 import { pluginDocs } from './constants';
-import { VersionPreference } from './enums';
+import { VersionExeName, VersionPreference } from './enums';
 import { executeCommand, isConfigFile } from './helpers';
 
 export const registerCommands = (context: vscode.ExtensionContext, configuration: vscode.WorkspaceConfiguration) => {
@@ -186,5 +186,13 @@ export const registerCommands = (context: vscode.ExtensionContext, configuration
             } catch {
                 vscode.window.showErrorMessage('Failed to stop recording');
             }
+        }));
+
+    context.subscriptions.push(
+        vscode.commands.registerCommand('dev-proxy-toolkit.config-open', async () => {
+            const versionPreference = configuration.get('version') as VersionPreference;
+            versionPreference === VersionPreference.Stable
+                ? await executeCommand(`${VersionExeName.Stable} config open`)
+                : await executeCommand(`${VersionExeName.Beta} config open`);
         }));
 };
