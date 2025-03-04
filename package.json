@@ -55,6 +55,13 @@
         "category": "Dev Proxy Toolkit",
         "icon": "$(circle-slash)",
         "enablement": "isDevProxyRunning && isDevProxyRecording"
+      },
+      {
+        "command": "dev-proxy-toolkit.config-open",
+        "title": "Open configuration file",
+        "category": "Dev Proxy Toolkit",
+        "icon": "$(file-code)",
+        "enablement": "isDevProxyInstalled"
       }
     ],
     "menus": {

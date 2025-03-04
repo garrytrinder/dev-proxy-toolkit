@@ -9,9 +9,13 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [0.19.0] - Unreleased
 
+### Added:
+
+- Command: `dev-proxy-toolkit.config-open` - Open configuration file
+
 ### Changed:
 
-- Commands: Refactored stop command logic
+- Command: Refactored stop command logic
 
 ## [0.18.3] - 2025-03-03
 

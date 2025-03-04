@@ -3,5 +3,7 @@ import { detectDevProxyInstall } from './detect';
 import { VersionPreference } from './enums';
 
 export const updateGlobalState = async (context: vscode.ExtensionContext, versionPreference: VersionPreference) => {
-    context.globalState.update('devProxyInstall', await detectDevProxyInstall(versionPreference));
+    const devProxyInstall = await detectDevProxyInstall(versionPreference);
+    vscode.commands.executeCommand('setContext', 'isDevProxyInstalled', devProxyInstall.isInstalled);
+    context.globalState.update('devProxyInstall', devProxyInstall);
 };
