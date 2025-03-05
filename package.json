@@ -62,6 +62,13 @@
         "category": "Dev Proxy Toolkit",
         "icon": "$(file-code)",
         "enablement": "isDevProxyInstalled"
+      },
+      {
+        "command": "dev-proxy-toolkit.config-get",
+        "title": "Download configuration file from Sample Solution Gallery",
+        "category": "Dev Proxy Toolkit",
+        "icon": "$(file-code)",
+        "enablement": "isDevProxyInstalled"
       }
     ],
     "menus": {

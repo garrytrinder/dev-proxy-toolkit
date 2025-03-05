@@ -2,6 +2,7 @@ import * as vscode from 'vscode';
 import { pluginDocs } from './constants';
 import { VersionExeName, VersionPreference } from './enums';
 import { executeCommand, isConfigFile } from './helpers';
+import { exec } from 'child_process';
 
 export const registerCommands = (context: vscode.ExtensionContext, configuration: vscode.WorkspaceConfiguration) => {
     context.subscriptions.push(
@@ -195,4 +196,100 @@ export const registerCommands = (context: vscode.ExtensionContext, configuration
                 ? await executeCommand(`${VersionExeName.Stable} config open`)
                 : await executeCommand(`${VersionExeName.Beta} config open`);
         }));
+
+    context.subscriptions.push(
+        vscode.commands.registerCommand('dev-proxy-toolkit.open-external-url',
+            url => vscode.env.openExternal(vscode.Uri.parse(url))));
+
+    context.subscriptions.push(
+        vscode.commands.registerCommand('dev-proxy-toolkit.config-download', async configId => {
+            await vscode.window.withProgress({
+                location: vscode.ProgressLocation.Notification,
+                title: 'Downloading configuration...'
+            }, async () => {
+                try {
+                    const versionPreference = configuration.get('version') as VersionPreference;
+                    versionPreference === VersionPreference.Stable
+                        ? await executeCommand(`${VersionExeName.Stable} config get ${configId}`)
+                        : await executeCommand(`${VersionExeName.Beta} config get ${configId}`);
+                } catch (error) {
+                    vscode.window.showErrorMessage('Failed to download configuration');
+                }
+            });
+            vscode.window.showInformationMessage('Configuration downloaded');
+        }));
+
+    context.subscriptions.push(
+        vscode.commands.registerCommand('dev-proxy-toolkit.config-get', async () => {
+            const quickPick = vscode.window.createQuickPick();
+            let items: Sample[] = [];
+            await vscode.window.withProgress({
+                location: vscode.ProgressLocation.Notification,
+                title: 'Getting list...'
+            }, async () => {
+                const payload = { sort: { field: "updateDateTime", "descending": true }, "filter": { "search": "", "productId": ["Dev Proxy"], "authorId": "", "categoryId": "", "featuredOnly": false, "metadata": [{ "key": "PRESET", "value": "Yes" }] } }
+
+                const request = await fetch('https://m365-galleries.azurewebsites.net/Samples/searchSamples', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify(payload)
+                });
+                items = (await request.json() as SampleResponse).items;
+            });
+
+            quickPick.title = 'Select a configuration';
+            quickPick.items = items.map(item => ({
+                label: item.metadata.find(m => m.key === 'SAMPLE ID')?.value || item.title,
+                detail: item.shortDescription,
+                buttons: [
+                    {
+                        iconPath: new vscode.ThemeIcon('link'),
+                        tooltip: 'Open in browser'
+                    }
+                ],
+                iconPath: new vscode.ThemeIcon('file-code')
+            }));
+
+            quickPick.show();
+
+            quickPick.onDidTriggerItemButton(async quickPickItem => {
+                const selectedItem = items.find(i => i.metadata.find(m => m.key === 'SAMPLE ID')?.value === quickPickItem.item.label);
+                await vscode.commands.executeCommand('dev-proxy-toolkit.open-external-url', selectedItem?.url);
+            });
+
+            quickPick.onDidChangeSelection(quickPickItems => {
+                if (quickPickItems.length === 1) {
+                    const selectedItem = items.find(i => i.metadata.find(m => m.key === 'SAMPLE ID')?.value === quickPickItems[0].label);
+                    if (!selectedItem) {
+                        return;
+                    }
+                    const configId = selectedItem.metadata.find(m => m.key === 'SAMPLE ID')?.value;
+                    if (!configId) {
+                        return;
+                    }
+                    vscode.commands.executeCommand('dev-proxy-toolkit.config-download', configId);
+                }
+                quickPick.hide();
+            });
+
+            quickPick.onDidHide(() => quickPick.dispose());
+        }));
+};
+
+type SampleResponse = {
+    items: Sample[]
+};
+
+type Sample = {
+    title: string;
+    shortDescription: string;
+    url: string;
+    metadata: KeyValuePair[]
+};
+
+type KeyValuePair = {
+    key: string;
+    value: string;
 };

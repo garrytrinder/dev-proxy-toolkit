@@ -16,6 +16,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Changed:
 
 - Command: Refactored stop command logic
+- Command: `dev-proxy-toolkit.config-get` - Download config from the Sample Solution Gallery
 
 ## [0.18.3] - 2025-03-03
 
