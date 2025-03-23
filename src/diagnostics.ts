@@ -181,7 +181,7 @@ const checkAtLeastOneEnabledPlugin = (pluginNodes: parse.ObjectNode[], diagnosti
       new vscode.Diagnostic(
         getRangeFromASTNode(pluginsNode),
         'Add at least one plugin',
-        vscode.DiagnosticSeverity.Error
+        vscode.DiagnosticSeverity.Warning
       )
     );
   } else {
@@ -199,7 +199,7 @@ const checkAtLeastOneEnabledPlugin = (pluginNodes: parse.ObjectNode[], diagnosti
         new vscode.Diagnostic(
           getRangeFromASTNode(pluginsNode),
           'At least one plugin must be enabled',
-          vscode.DiagnosticSeverity.Error
+          vscode.DiagnosticSeverity.Warning
         )
       );
     }

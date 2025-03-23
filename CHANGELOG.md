@@ -16,6 +16,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Changed:
 
 - Command: Refactored stop command logic
+- Diagnostics: Changed check to ensure at least one plugin from Error to Warning
 
 ## [0.18.3] - 2025-03-03
 
