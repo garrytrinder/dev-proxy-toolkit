@@ -12,6 +12,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Added:
 
 - Command: `dev-proxy-toolkit.config-open` - Open configuration file
+- Snippets: `devproxy-plugin-minimal-csom-permissions` - MinimalCsomPermissionsPlugin instance
+- Snippets: `devproxy-plugin-minimal-csom-permissions-config` - MinimalCsomPermissionsPlugin config section
 
 ### Changed:
 

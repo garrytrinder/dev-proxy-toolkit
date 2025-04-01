@@ -118,6 +118,13 @@ export const pluginSnippets: PluginSnippets = {
       required: false,
     }
   },
+  MinimalCsomPermissionsPlugin: {
+    instance: 'devproxy-plugin-minimal-csom-permissions',
+    config: {
+      name: 'devproxy-plugin-minimal-csom-permissions-config',
+      required: false,
+    }
+  },
   MinimalPermissionsPlugin: {
     instance: 'devproxy-plugin-minimal-permissions',
     config: {
@@ -265,6 +272,10 @@ export const pluginDocs: PluginDocs = {
   LatencyPlugin: {
     name: 'Latency Plugin',
     url: 'https://learn.microsoft.com/microsoft-cloud/dev/dev-proxy/technical-reference/latencyplugin',
+  },
+  MinimalCsomPermissionsPlugin: {
+    name: 'Minimal CSOM Permissions Plugin',
+    url: 'https://learn.microsoft.com/microsoft-cloud/dev/dev-proxy/technical-reference/minimalcsompermissionsplugin',
   },
   MinimalPermissionsPlugin: {
     name: 'Minimal Permissions Plugin',
