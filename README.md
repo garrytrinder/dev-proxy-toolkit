@@ -123,8 +123,8 @@ Shown when the active document is a Dev Proxy configuration file
 | `devproxy-plugin-latency-config` | LatencyPlugin config section |
 | `devproxy-plugin-minimal-csom-permissions` | MinimalCsomPermissionsPlugin instance |
 | `devproxy-plugin-minimal-csom-permissions-config` | MinimalCsomPermissionsPlugin config section |
-| `devproxy-plugin-minimal-permissions` | MinimalPermissionsPlugin instance |
-| `devproxy-plugin-minimal-permissions-config` | MinimalPermissionsPlugin config section |
+| `devproxy-plugin-minimal-permissions-guidance` | MinimalPermissionsGuidancePlugin instance |
+| `devproxy-plugin-minimal-permissions-guidance-config` | MinimalPermissionsGuidancePlugin config section |
 | `devproxy-plugin-mock-generator` | MockGeneratorPlugin instance |
 | `devproxy-plugin-mock-request` | MockResponsePlugin instance |
 | `devproxy-plugin-mock-request-config` | MockResponsePlugin config section |

@@ -21,6 +21,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Diagnostics: Changed check to ensure at least one plugin from Error to Warning
 - Command: `dev-proxy-toolkit.raise-mock` refactored to use new API endpoint
 - Snippets: Updated all snippets to use `v0.26.0` schema
+- Snippets: Renamed `devproxy-plugin-minimal-permissions` to `devproxy-plugin-minimal-permissions-guidance`
+- Snippets: Renamed `devproxy-plugin-minimal-permissions-config` to `devproxy-plugin-minimal-permissions-guidance-config`
 
 ## [0.18.3] - 2025-03-03
 
