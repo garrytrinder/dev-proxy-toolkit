@@ -145,7 +145,7 @@ export const registerCommands = (context: vscode.ExtensionContext, configuration
     context.subscriptions.push(
         vscode.commands.registerCommand('dev-proxy-toolkit.raise-mock', async () => {
             const apiPort = configuration.get('apiPort') as number;
-            await fetch(`http://localhost:${apiPort}/proxy/raisemockrequest`, {
+            await fetch(`http://localhost:${apiPort}/proxy/mockrequest`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'
