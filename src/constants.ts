@@ -125,11 +125,11 @@ export const pluginSnippets: PluginSnippets = {
       required: false,
     }
   },
-  MinimalPermissionsPlugin: {
-    instance: 'devproxy-plugin-minimal-permissions',
+  MinimalPermissionsGuidancePlugin: {
+    instance: 'devproxy-plugin-minimal-permissions-guidance',
     config: {
-      name: 'devproxy-plugin-minimal-permissions-config',
-      required: false,
+      name: 'devproxy-plugin-minimal-permissions-guidance-config',
+      required: true,
     }
   },
   MockGeneratorPlugin: {

@@ -706,26 +706,26 @@
     ],
     "description": "MinimalCsomPermissionsPlugin config section"
   },
-  "MinimalPermissionsPlugin": {
-    "prefix": "devproxy-plugin-minimal-permissions",
+  "MinimalPermissionsGuidancePlugin": {
+    "prefix": "devproxy-plugin-minimal-permissions-guidance",
     "body": [
       "{",
-      "\t\"name\": \"MinimalPermissionsPlugin\",",
+      "\t\"name\": \"MinimalPermissionsGuidancePlugin\",",
       "\t\"enabled\": true,",
       "\t\"pluginPath\": \"~appFolder/plugins/dev-proxy-plugins.dll\"",
       "}"
     ],
-    "description": "MinimalPermissionsPlugin instance"
+    "description": "MinimalPermissionsGuidancePlugin instance"
   },
-  "MinimalPermissionsPluginConfig": {
-    "prefix": "devproxy-plugin-minimal-permissions-config",
+  "MinimalPermissionsGuidancePluginConfig": {
+    "prefix": "devproxy-plugin-minimal-permissions-guidance-config",
     "body": [
-      "\"minimalPermissionsPlugin\": {",
-      "\t\"\\$schema\": \"https://raw.githubusercontent.com/dotnet/dev-proxy/main/schemas/v0.26.0/minimalpermissionsplugin.schema.json\",",
+      "\"MinimalPermissionsGuidancePlugin\": {",
+      "\t\"\\$schema\": \"https://raw.githubusercontent.com/dotnet/dev-proxy/main/schemas/v0.26.0/minimalpermissionsguidanceplugin.schema.json\",",
       "\t\"apiSpecsFolderPath\": \"./api-specs\"",
       "}"
     ],
-    "description": "MinimalPermissionsPlugin config section"
+    "description": "MinimalPermissionsGuidancePlugin config section"
   },
   "MockGeneratorPlugin": {
     "prefix": "devproxy-plugin-mock-generator",
