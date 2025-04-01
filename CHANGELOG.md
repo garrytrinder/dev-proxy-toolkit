@@ -19,6 +19,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - Command: Refactored stop command logic
 - Diagnostics: Changed check to ensure at least one plugin from Error to Warning
+- Command: `dev-proxy-toolkit.raise-mock` refactored to use new API endpoint
 - Snippets: Updated all snippets to use `v0.26.0` schema
 
 ## [0.18.3] - 2025-03-03
