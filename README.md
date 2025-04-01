@@ -121,6 +121,8 @@ Shown when the active document is a Dev Proxy configuration file
 | `devproxy-plugin-http-file-generator-config` | HttpFileGeneratorPlugin config section |
 | `devproxy-plugin-latency` | LatencyPlugin instance |
 | `devproxy-plugin-latency-config` | LatencyPlugin config section |
+| `devproxy-plugin-minimal-csom-permissions` | MinimalCsomPermissionsPlugin instance |
+| `devproxy-plugin-minimal-csom-permissions-config` | MinimalCsomPermissionsPlugin config section |
 | `devproxy-plugin-minimal-permissions` | MinimalPermissionsPlugin instance |
 | `devproxy-plugin-minimal-permissions-config` | MinimalPermissionsPlugin config section |
 | `devproxy-plugin-mock-generator` | MockGeneratorPlugin instance |

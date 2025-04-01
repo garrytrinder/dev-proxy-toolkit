@@ -685,6 +685,27 @@
     ],
     "description": "LatencyPlugin config section"
   },
+  "MinimalCsomPermissionsPlugin": {
+    "prefix": "devproxy-plugin-minimal-csom-permissions",
+    "body": [
+      "{",
+      "\t\"name\": \"MinimalCsomPermissionsPlugin\",",
+      "\t\"enabled\": true,",
+      "\t\"pluginPath\": \"~appFolder/plugins/dev-proxy-plugins.dll\"",
+      "}"
+    ],
+    "description": "MinimalCsomPermissionsPlugin instance"
+  },
+  "MinimalCsomPermissionsPluginConfig": {
+    "prefix": "devproxy-plugin-minimal-csom-permissions-config",
+    "body": [
+      "\"minimalCsomPermissionsPlugin\": {",
+      "\t\"\\$schema\": \"https://raw.githubusercontent.com/dotnet/dev-proxy/refs/heads/main/schemas/v0.26.0/minimalcsompermissionsplugin.schema.json\",",
+      "\t\"typesFilePath\": \"./api-specs\"",
+      "}"
+    ],
+    "description": "MinimalCsomPermissionsPlugin config section"
+  },
   "MinimalPermissionsPlugin": {
     "prefix": "devproxy-plugin-minimal-permissions",
     "body": [
