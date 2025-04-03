@@ -125,6 +125,13 @@ export const pluginSnippets: PluginSnippets = {
       required: false,
     }
   },
+  MinimalPermissionsPlugin: {
+    instance: 'devproxy-plugin-minimal-permissions-',
+    config: {
+      name: 'devproxy-plugin-minimal-permissions-config',
+      required: true,
+    }
+  },
   MinimalPermissionsGuidancePlugin: {
     instance: 'devproxy-plugin-minimal-permissions-guidance',
     config: {
@@ -280,6 +287,10 @@ export const pluginDocs: PluginDocs = {
   MinimalPermissionsPlugin: {
     name: 'Minimal Permissions Plugin',
     url: 'https://learn.microsoft.com/microsoft-cloud/dev/dev-proxy/technical-reference/minimalpermissionsplugin',
+  },
+  MinimalPermissionsGuidancePlugin: {
+    name: 'Minimal Permissions Guidance Plugin',
+    url: 'https://learn.microsoft.com/microsoft-cloud/dev/dev-proxy/technical-reference/minimalpermissionsguidanceplugin',
   },
   MockGeneratorPlugin: {
     name: 'Mock Generator Plugin',
