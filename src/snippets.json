@@ -706,13 +706,36 @@
     ],
     "description": "MinimalCsomPermissionsPlugin config section"
   },
+  "MinimalPermissionsPlugin": {
+    "prefix": "devproxy-plugin-minimal-permissions",
+    "body": [
+      "{",
+      "\t\"name\": \"MinimalPermissionsPlugin\",",
+      "\t\"enabled\": true,",
+      "\t\"pluginPath\": \"~appFolder/plugins/dev-proxy-plugins.dll\",",
+      "\t\"configSection\": \"minimalPermissionsPlugin\"",
+      "}"
+    ],
+    "description": "MinimalPermissionsPlugin instance"
+  },
+  "MinimalPermissionsPluginConfig": {
+    "prefix": "devproxy-plugin-minimal-permissions-config",
+    "body": [
+      "\"minimalPermissionsPlugin\": {",
+      "\t\"\\$schema\": \"https://raw.githubusercontent.com/dotnet/dev-proxy/main/schemas/v0.26.0/minimalpermissionsplugin.schema.json\",",
+      "\t\"apiSpecsFolderPath\": \"./api-specs\"",
+      "}"
+    ],
+    "description": "MinimalPermissionsPlugin config section"
+  },
   "MinimalPermissionsGuidancePlugin": {
     "prefix": "devproxy-plugin-minimal-permissions-guidance",
     "body": [
       "{",
       "\t\"name\": \"MinimalPermissionsGuidancePlugin\",",
       "\t\"enabled\": true,",
-      "\t\"pluginPath\": \"~appFolder/plugins/dev-proxy-plugins.dll\"",
+      "\t\"pluginPath\": \"~appFolder/plugins/dev-proxy-plugins.dll\",",
+      "\t\"configSection\": \"minimalPermissionsGuidancePlugin\"",
       "}"
     ],
     "description": "MinimalPermissionsGuidancePlugin instance"
@@ -720,7 +743,7 @@
   "MinimalPermissionsGuidancePluginConfig": {
     "prefix": "devproxy-plugin-minimal-permissions-guidance-config",
     "body": [
-      "\"MinimalPermissionsGuidancePlugin\": {",
+      "\"minimalPermissionsGuidancePlugin\": {",
       "\t\"\\$schema\": \"https://raw.githubusercontent.com/dotnet/dev-proxy/main/schemas/v0.26.0/minimalpermissionsguidanceplugin.schema.json\",",
       "\t\"apiSpecsFolderPath\": \"./api-specs\"",
       "}"
