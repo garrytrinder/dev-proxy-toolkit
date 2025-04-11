@@ -51,8 +51,8 @@ export const isDevProxyRunning = async (devProxyExe: string): Promise<boolean> =
         const processId = await executeCommand(`pwsh.exe -c "(Get-Process ${devProxyExe} -ErrorAction SilentlyContinue).Id"`);
         return processId.trim() !== '';
     };
-    if (platform === 'darwin') {
-        const processId = await executeCommand(`$SHELL -c "ps -ef | grep ${devProxyExe} | grep -v grep | awk \'{print $2}\'"`);
+    if (platform === 'darwin' || platform === 'linux') {
+        const processId = await executeCommand(`$SHELL -c "ps -ef | grep ${devProxyExe} | grep -v grep | awk '{print $2}'"`);
         return processId.trim() !== '';
     };
     return false;
