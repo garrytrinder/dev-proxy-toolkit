@@ -25,6 +25,7 @@ The following sections describe the features that the extension contributes to V
 
 - `Dev Proxy Toolkit: Start` - Only available when Dev Proxy is not running
 - `Dev Proxy Toolkit: Stop` - Only available when Dev Proxy is running
+- `Dev Proxy Toolkit: Restart` - Only available when Dev Proxy is running
 - `Dev Proxy Toolkit: Raise mock request` - Only available when Dev Proxy is running
 - `Dev Proxy Toolkit: Start recording` - Only available when Dev Proxy is running
 - `Dev Proxy Toolkit: Stop recording`- Only available when Dev Proxy is recording

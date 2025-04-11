@@ -2,6 +2,7 @@ import * as vscode from 'vscode';
 import { pluginDocs } from './constants';
 import { VersionExeName, VersionPreference } from './enums';
 import { executeCommand, isConfigFile } from './helpers';
+import { isDevProxyRunning } from './detect';
 
 export const registerCommands = (context: vscode.ExtensionContext, configuration: vscode.WorkspaceConfiguration) => {
     context.subscriptions.push(
@@ -104,6 +105,9 @@ export const registerCommands = (context: vscode.ExtensionContext, configuration
     context.subscriptions.push(
         vscode.commands.registerCommand('dev-proxy-toolkit.stop', async () => {
             const apiPort = configuration.get('apiPort') as number;
+            const versionPreference = configuration.get('version') as VersionPreference;
+            const exeName = versionPreference === VersionPreference.Stable ? VersionExeName.Stable : VersionExeName.Beta;
+
             await fetch(`http://localhost:${apiPort}/proxy/stopproxy`, {
                 method: 'POST',
                 headers: {
@@ -115,8 +119,7 @@ export const registerCommands = (context: vscode.ExtensionContext, configuration
             if (closeTerminal) {
                 const checkProxyStatus = async () => {
                     try {
-                        const response = await fetch(`http://localhost:${apiPort}/proxy`);
-                        return response.ok;
+                        return await isDevProxyRunning(exeName);
                     } catch {
                         return false;
                     }
@@ -139,6 +142,60 @@ export const registerCommands = (context: vscode.ExtensionContext, configuration
                         terminal.dispose();
                     }
                 });
+            }
+        }));
+
+    context.subscriptions.push(
+        vscode.commands.registerCommand('dev-proxy-toolkit.restart', async () => {
+            const apiPort = configuration.get('apiPort') as number;
+            const versionPreference = configuration.get('version') as VersionPreference;
+            const exeName = versionPreference === VersionPreference.Stable ? VersionExeName.Stable : VersionExeName.Beta;
+
+            try {
+                await fetch(`http://localhost:${apiPort}/proxy/stopproxy`, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    }
+                });
+
+                const checkProxyStatus = async () => {
+                    try {
+                        return await isDevProxyRunning(exeName);
+                    } catch {
+                        return false;
+                    }
+                };
+
+                const waitForProxyToStop = async () => {
+                    let isRunning = true;
+                    while (isRunning) {
+                        isRunning = await checkProxyStatus();
+                        if (isRunning) {
+                            await new Promise(resolve => setTimeout(resolve, 1000));
+                        }
+                    }
+                };
+
+                await waitForProxyToStop();
+
+                const showTerminal = configuration.get('showTerminal') as boolean;
+
+                let terminal: vscode.Terminal;
+
+                if (vscode.window.activeTerminal) {
+                    terminal = vscode.window.activeTerminal;
+                } else {
+                    terminal = vscode.window.createTerminal('Dev Proxy');
+
+                    showTerminal ? terminal.show() : terminal.hide();
+                }
+
+                vscode.window.activeTextEditor && isConfigFile(vscode.window.activeTextEditor.document)
+                    ? terminal.sendText(`devproxy --config-file "${vscode.window.activeTextEditor.document.uri.fsPath}"`)
+                    : terminal.sendText('devproxy');
+            } catch {
+                vscode.window.showErrorMessage('Failed to restart Dev Proxy');
             }
         }));
 

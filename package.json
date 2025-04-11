@@ -36,6 +36,13 @@
         "enablement": "isDevProxyRunning"
       },
       {
+        "command": "dev-proxy-toolkit.restart",
+        "title": "Restart",
+        "category": "Dev Proxy Toolkit",
+        "icon": "$(debug-restart)",
+        "enablement": "isDevProxyRunning"
+      },
+      {
         "command": "dev-proxy-toolkit.raise-mock",
         "title": "Raise mock request",
         "category": "Dev Proxy Toolkit",
@@ -82,6 +89,21 @@
           "command": "dev-proxy-toolkit.stop",
           "group": "navigation@2",
           "when": "!activeEditorIsDirty && isDevProxyConfigFile && isDevProxyRunning"
+        },
+        {
+          "command": "dev-proxy-toolkit.restart",
+          "group": "navigation@2",
+          "when": "!activeEditorIsDirty && isDevProxyConfigFile && isDevProxyRunning"
+        },
+        {
+          "command": "dev-proxy-toolkit.config-open",
+          "group": "navigation@3",
+          "when": "!activeEditorIsDirty && isDevProxyConfigFile && !isDevProxyRunning"
+        },
+        {
+          "command": "dev-proxy-toolkit.config-new",
+          "group": "navigation@3",
+          "when": "!activeEditorIsDirty && isDevProxyConfigFile && !isDevProxyRunning"
         },
         {
           "command": "dev-proxy-toolkit.raise-mock",

@@ -12,6 +12,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Added:
 
 - Command: `dev-proxy-toolkit.config-new` - Create new configuration file
+- Command: `dev-proxy-toolkit.restart` - Restart Dev Proxy
 
 ## [0.20.0] - 2025-04-01
 
