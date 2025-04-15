@@ -110,7 +110,7 @@
     ],
     "description": "Dev Proxy response header"
   },
-  "Rewrite":{
+  "Rewrite": {
     "prefix": "devproxy-rewrite",
     "body": [
       "{",
@@ -462,7 +462,7 @@
       "\t\t\"https://graph.microsoft.us/beta/*\",",
       "\t\t\"https://dod-graph.microsoft.us/beta/*\",",
       "\t\t\"https://microsoftgraph.chinacloudapi.cn/beta/*\"",
-    "\t]",
+      "\t]",
       "}"
     ],
     "description": "GraphBetaSupportGuidancePlugin instance"
@@ -947,7 +947,7 @@
     ],
     "description": "RewritePlugin instance"
   },
-  "RewritePluginFile":{
+  "RewritePluginFile": {
     "prefix": "devproxy-plugin-rewrite-file",
     "body": [
       "{",
@@ -959,14 +959,14 @@
     ],
     "description": "RewritePlugin rewrites file"
   },
-  "RewritePluginFileSchema":{
+  "RewritePluginFileSchema": {
     "prefix": "devproxy-plugin-rewrite-file-schema",
     "body": [
       "\"\\$schema\": \"https://raw.githubusercontent.com/dotnet/dev-proxy/main/schemas/v0.27.0/rewriteplugin.rewritesfile.schema.json\","
     ],
     "description": "RewritePlugin rewrites file schema"
   },
-  "RewritePluginConfig":{
+  "RewritePluginConfig": {
     "prefix": "devproxy-plugin-rewrite-config",
     "body": [
       "\"rewritePlugin\": {",
@@ -975,8 +975,29 @@
       "}"
     ],
     "description": "RewritePlugin config section"
-  },  
-   "UrlDiscoveryPlugin": {
+  },
+  "TypeSpecGeneratorPlugin": {
+    "prefix": "devproxy-plugin-typespec-generator",
+    "body": [
+      "{",
+      "\t\"name\": \"TypeSpecGeneratorPlugin\",",
+      "\t\"enabled\": true,",
+      "\t\"pluginPath\": \"~appFolder/plugins/dev-proxy-plugins.dll\"",
+      "}"
+    ],
+    "description": "TypeSpecGeneratorPlugin instance"
+  },
+  "TypeSpecGeneratorPluginConfig": {
+    "prefix": "devproxy-plugin-typespec-generator-config",
+    "body": [
+      "\"typeSpecGeneratorPlugin\": {",
+      "\t\"\\$schema\": \"https://raw.githubusercontent.com/dotnet/dev-proxy/main/schemas/v0.27.0/typespecgeneratorplugin.schema.json\",",
+      "\t\"ignoreResponseTypes\": false",
+      "}"
+    ],
+    "description": "TypeSpecGeneratorPlugin config section"
+  },
+  "UrlDiscoveryPlugin": {
     "prefix": "devproxy-plugin-url-discovery",
     "body": [
       "{",

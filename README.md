@@ -149,6 +149,8 @@ Shown when the active document is a Dev Proxy configuration file
 | `devproxy-plugin-rewrite-file` | RewritePlugin rewrites file |
 | `devproxy-plugin-rewrite-file-schema` | RewritePlugin rewrites file schema |
 | `devproxy-plugin-rewrite-config` | RewritePlugin config section |
+| `devproxy-plugin-typespec-generator` | TypeSpecGeneratorPlugin instance |
+| `devproxy-plugin-typespec-generator-config` | TypeSpecGeneratorPlugin config section |
 | `devproxy-plugin-url-discovery` | UrlDiscoveryPlugin instance |
 | `devproxy-reporter-json` | JsonReporter instance |
 | `devproxy-reporter-markdown` | MarkdownReporter instance |
