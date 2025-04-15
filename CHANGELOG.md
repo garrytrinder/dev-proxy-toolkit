@@ -13,6 +13,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - Command: `dev-proxy-toolkit.config-new` - Create new configuration file
 - Command: `dev-proxy-toolkit.restart` - Restart Dev Proxy
+- Snippets: `devproxy-plugin-typespec-generator` - TypeSpecGeneratorPlugin instance
+- Snippets: `devproxy-plugin-typespec-generator-config` - TypeSpecGeneratorPlugin config section
 
 ### Changed:
 
@@ -39,7 +41,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Added:
 
-- Snippets: `devproxy-rewrite` - Dev Proxy rewrite
+- Snippets: `devproxy-plugin-rewrite` - Dev Proxy rewrite
 - Snippets: `devproxy-plugin-rewrite-file` - RewritePlugin rewrites file
 - Snippets: `devproxy-plugin-rewrite-file-schema` - RewritePlugin rewrites file schema
 - Diagnostics: Show warning if config contains a summary plugin without a reporter

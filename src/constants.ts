@@ -189,6 +189,13 @@ export const pluginSnippets: PluginSnippets = {
       required: true,
     }
   },
+  TypeSpecGeneratorPlugin: {
+    instance: 'devproxy-plugin-typespec-generator',
+    config: {
+      name: 'devproxy-plugin-typespec-generator-config',
+      required: false,
+    }
+  },
   UrlDiscoveryPlugin: {
     instance: 'devproxy-plugin-url-discovery',
   },
@@ -331,6 +338,10 @@ export const pluginDocs: PluginDocs = {
   RewritePlugin: {
     name: 'Rewrite Plugin',
     url: 'https://learn.microsoft.com/microsoft-cloud/dev/dev-proxy/technical-reference/rewriteplugin',
+  },
+  TypeSpecGeneratorPlugin: {
+    name: 'TypeSpec Generator Plugin',
+    url: 'https://learn.microsoft.com/microsoft-cloud/dev/dev-proxy/technical-reference/typespecgeneratorplugin',
   },
   UrlDiscoveryPlugin: {
     name: 'UrlDiscovery Plugin',
