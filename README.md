@@ -55,6 +55,11 @@ Shown when the active document is a Dev Proxy configuration file
 - Start recording
 - Stop recording
 
+### MCP Server
+
+- Find Dev Proxy documentation
+- Get the installed Dev Proxy version
+
 ### Notifications
 
 - Not installed

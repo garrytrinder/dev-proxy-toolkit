@@ -1,4 +1,7 @@
 {
+  "enabledApiProposals": [
+    "mcpConfigurationProvider"
+  ],
   "name": "dev-proxy-toolkit",
   "displayName": "Dev Proxy Toolkit",
   "description": "Makes it easy to create and update Dev Proxy configuration files.",
@@ -119,6 +122,12 @@
         }
       ]
     },
+    "modelContextServerCollections": [
+      {
+        "id": "devproxymcp",
+        "label": "Dev Proxy"
+      }
+    ],
     "snippets": [
       {
         "language": "json",
@@ -189,6 +198,7 @@
     "@types/vscode": "^1.89.0",
     "@typescript-eslint/eslint-plugin": "^6.21.0",
     "@typescript-eslint/parser": "^6.21.0",
+    "@vscode/dts": "^0.4.1",
     "@vscode/test-cli": "^0.0.10",
     "@vscode/test-electron": "^2.4.1",
     "copy-webpack-plugin": "^12.0.2",
