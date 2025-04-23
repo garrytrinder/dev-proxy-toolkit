@@ -7,20 +7,23 @@ import { createStatusBar, statusBarLoop, updateStatusBar } from './statusbar';
 import { registerCodeActions } from './codeactions';
 import { updateGlobalState } from './state';
 import { VersionPreference } from './enums';
+import { registerMcpServer } from './mcp';
 
 export const activate = async (context: vscode.ExtensionContext): Promise<vscode.ExtensionContext> => {
+
   const configuration = vscode.workspace.getConfiguration('dev-proxy-toolkit');
   const versionPreference = configuration.get('version') as VersionPreference;
-
+  
   const statusBar = createStatusBar(context);
   await updateGlobalState(context, versionPreference);
-
+  
   const collection = vscode.languages.createDiagnosticCollection('dev-proxy-toolkit');
-
+  
   registerDocumentListeners(context, collection);
   registerCodeActions(context);
   registerCodeLens(context);
   registerCommands(context, configuration);
+  registerMcpServer(context);
 
   const notification = handleStartNotification(context);
   processNotification(notification);
