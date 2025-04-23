@@ -9,6 +9,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [0.25.0] - Unreleased
 
+### Added:
+
+- MCP Server: Dev Proxy
+
 ### Changed:
 
 - Snippets: Updated all snippets to use `v0.29.0` schema
@@ -44,6 +48,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Command: `dev-proxy-toolkit.restart` - Restart Dev Proxy
 - Snippets: `devproxy-plugin-typespec-generator` - TypeSpecGeneratorPlugin instance
 - Snippets: `devproxy-plugin-typespec-generator-config` - TypeSpecGeneratorPlugin config section
+- MCP Server: Dev Proxy
 
 ### Changed:
 

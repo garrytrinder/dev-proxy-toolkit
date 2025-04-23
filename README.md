@@ -55,6 +55,11 @@ Shown when the active document is a Dev Proxy configuration file
 - Start recording
 - Stop recording
 
+### MCP Server
+
+- Tool: Find Dev Proxy documentation
+- Tool: Get the installed Dev Proxy version
+
 ### Notifications
 
 - Not installed
@@ -70,8 +75,6 @@ Shown when the active document is a Dev Proxy configuration file
 
 ### Snippets
 
-| Prefix | Description |
-| ------ | ----------- |
 | Prefix | Description |
 | ------ | ----------- |
 | `devproxy-config-file` | Dev Proxy config file |

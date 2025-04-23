@@ -5,7 +5,7 @@
   "version": "0.25.0",
   "publisher": "garrytrinder",
   "engines": {
-    "vscode": "^1.89.0"
+    "vscode": "^1.101.0"
   },
   "categories": [
     "Snippets",
@@ -83,6 +83,12 @@
         "category": "Dev Proxy Toolkit",
         "icon": "$(debug-start)",
         "enablement": "!isDevProxyRunning"
+      }
+    ],
+    "mcpServerDefinitionProviders": [
+      {
+        "id": "devproxymcp",
+        "label": "Dev Proxy"
       }
     ],
     "menus": {
@@ -186,7 +192,7 @@
     "@types/mocha": "^10.0.9",
     "@types/node": "^20.11.17",
     "@types/sinon": "^17.0.3",
-    "@types/vscode": "^1.89.0",
+    "@types/vscode": "^1.101.0",
     "@typescript-eslint/eslint-plugin": "^6.21.0",
     "@typescript-eslint/parser": "^6.21.0",
     "@vscode/test-cli": "^0.0.10",
