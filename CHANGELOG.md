@@ -15,6 +15,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Command: `dev-proxy-toolkit.restart` - Restart Dev Proxy
 - Snippets: `devproxy-plugin-typespec-generator` - TypeSpecGeneratorPlugin instance
 - Snippets: `devproxy-plugin-typespec-generator-config` - TypeSpecGeneratorPlugin config section
+- MCP Server: Dev Proxy
 
 ### Changed:
 
