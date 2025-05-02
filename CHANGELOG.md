@@ -7,7 +7,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 > **Note**: odd version numbers, for example, `0.13.0`, are not included in this changelog. They are used to test the new features and fixes before the final release.
 
-## [0.22.0] - 2025-05-01
+## [0.22.1] - 2025-05-02
 
 ### Added:
 
@@ -19,6 +19,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Changed:
 
 - Snippets: Updated all snippets to use `v0.27.0` schema
+
+### Fixed:
+
+- Command: Using `dev-proxy-toolkit.start` would throw an error when active file is not a Dev Proxy config file
 
 ## [0.20.0] - 2025-04-01
 

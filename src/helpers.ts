@@ -47,6 +47,11 @@ export const getStartPositionFromASTNode = (
 export const isConfigFile = (document: vscode.TextDocument) => {
   let isConfigFile = false;
 
+  const fileName = document.fileName.toLowerCase();
+  if (!(fileName.endsWith('.json') || fileName.endsWith('.jsonc'))) {
+    return false;
+  }
+
   const documentNode = parse(document.getText()) as parse.ObjectNode;
 
   // we know that its a config file if
