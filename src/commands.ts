@@ -1,13 +1,15 @@
 import * as vscode from 'vscode';
 import { pluginDocs } from './constants';
-import { VersionExeName, VersionPreference } from './enums';
+import { VersionPreference } from './enums';
 import { executeCommand, isConfigFile } from './helpers';
-import { isDevProxyRunning } from './detect';
+import { isDevProxyRunning, getDevProxyExe } from './detect';
 
 export const registerCommands = (context: vscode.ExtensionContext, configuration: vscode.WorkspaceConfiguration) => {
+    const versionPreference = configuration.get('version') as VersionPreference;
+    const devProxyExe = getDevProxyExe(configuration.get('version') as VersionPreference);
+
     context.subscriptions.push(
         vscode.commands.registerCommand('dev-proxy-toolkit.install', async (platform: NodeJS.Platform) => {
-            const versionPreference = configuration.get('version') as VersionPreference;
             const message = vscode.window.setStatusBarMessage('Installing Dev Proxy...');
 
             // we are on windows so we can use winget
@@ -87,6 +89,7 @@ export const registerCommands = (context: vscode.ExtensionContext, configuration
             const showTerminal = configuration.get('showTerminal') as boolean;
             const newTerminal = configuration.get('newTerminal') as boolean;
 
+
             let terminal: vscode.Terminal;
 
             if (!newTerminal && vscode.window.activeTerminal) {
@@ -98,15 +101,13 @@ export const registerCommands = (context: vscode.ExtensionContext, configuration
             }
 
             vscode.window.activeTextEditor && isConfigFile(vscode.window.activeTextEditor.document)
-                ? terminal.sendText(`devproxy --config-file "${vscode.window.activeTextEditor.document.uri.fsPath}"`)
-                : terminal.sendText('devproxy');
+                ? terminal.sendText(`${devProxyExe} --config-file "${vscode.window.activeTextEditor.document.uri.fsPath}"`)
+                : terminal.sendText(devProxyExe);
         }));
 
     context.subscriptions.push(
         vscode.commands.registerCommand('dev-proxy-toolkit.stop', async () => {
             const apiPort = configuration.get('apiPort') as number;
-            const versionPreference = configuration.get('version') as VersionPreference;
-            const exeName = versionPreference === VersionPreference.Stable ? VersionExeName.Stable : VersionExeName.Beta;
 
             await fetch(`http://localhost:${apiPort}/proxy/stopproxy`, {
                 method: 'POST',
@@ -119,7 +120,7 @@ export const registerCommands = (context: vscode.ExtensionContext, configuration
             if (closeTerminal) {
                 const checkProxyStatus = async () => {
                     try {
-                        return await isDevProxyRunning(exeName);
+                        return await isDevProxyRunning(devProxyExe);
                     } catch {
                         return false;
                     }
@@ -148,8 +149,6 @@ export const registerCommands = (context: vscode.ExtensionContext, configuration
     context.subscriptions.push(
         vscode.commands.registerCommand('dev-proxy-toolkit.restart', async () => {
             const apiPort = configuration.get('apiPort') as number;
-            const versionPreference = configuration.get('version') as VersionPreference;
-            const exeName = versionPreference === VersionPreference.Stable ? VersionExeName.Stable : VersionExeName.Beta;
 
             try {
                 await fetch(`http://localhost:${apiPort}/proxy/stopproxy`, {
@@ -161,7 +160,7 @@ export const registerCommands = (context: vscode.ExtensionContext, configuration
 
                 const checkProxyStatus = async () => {
                     try {
-                        return await isDevProxyRunning(exeName);
+                        return await isDevProxyRunning(devProxyExe);
                     } catch {
                         return false;
                     }
@@ -192,8 +191,8 @@ export const registerCommands = (context: vscode.ExtensionContext, configuration
                 }
 
                 vscode.window.activeTextEditor && isConfigFile(vscode.window.activeTextEditor.document)
-                    ? terminal.sendText(`devproxy --config-file "${vscode.window.activeTextEditor.document.uri.fsPath}"`)
-                    : terminal.sendText('devproxy');
+                    ? terminal.sendText(`${devProxyExe} --config-file "${vscode.window.activeTextEditor.document.uri.fsPath}"`)
+                    : terminal.sendText(devProxyExe);
             } catch {
                 vscode.window.showErrorMessage('Failed to restart Dev Proxy');
             }
@@ -247,23 +246,17 @@ export const registerCommands = (context: vscode.ExtensionContext, configuration
 
     context.subscriptions.push(
         vscode.commands.registerCommand('dev-proxy-toolkit.config-open', async () => {
-            const versionPreference = configuration.get('version') as VersionPreference;
-            versionPreference === VersionPreference.Stable
-                ? await executeCommand(`${VersionExeName.Stable} config open`)
-                : await executeCommand(`${VersionExeName.Beta} config open`);
+            await executeCommand(`${devProxyExe} config open`);
         }));
 
     context.subscriptions.push(
         vscode.commands.registerCommand('dev-proxy-toolkit.config-new', async () => {
-            const versionPreference = configuration.get('version') as VersionPreference;
-            const exeName = versionPreference === VersionPreference.Stable ? VersionExeName.Stable : VersionExeName.Beta;
-
             // ask the user for the filename that they want to use
             const fileName = await vscode.window.showInputBox({
                 prompt: 'Enter the name of the new config file',
+                placeHolder: 'devproxyrc.json',
                 value: 'devproxyrc.json',
                 validateInput: (value: string) => {
-                    console.log(value);
                     const errors: string[] = [];
 
                     if (!value) {
@@ -286,7 +279,6 @@ export const registerCommands = (context: vscode.ExtensionContext, configuration
             // we do this after the user has entered the filename 
             try {
                 const workspaceFolder = vscode.workspace.workspaceFolders?.[0].uri.fsPath;
-                console.log(workspaceFolder);
                 const { type } = await vscode.workspace.fs.stat(vscode.Uri.file(`${workspaceFolder}/${fileName}`));
                 if (type === vscode.FileType.File) {
                     vscode.window.showErrorMessage('A file with that name already exists');
@@ -300,7 +292,7 @@ export const registerCommands = (context: vscode.ExtensionContext, configuration
                     location: vscode.ProgressLocation.Notification,
                     title: 'Creating new config file...'
                 }, async () => {
-                    await executeCommand(`${exeName} config new ${fileName}`, { cwd: vscode.workspace.workspaceFolders?.[0].uri.fsPath });
+                    await executeCommand(`${devProxyExe} config new ${fileName}`, { cwd: vscode.workspace.workspaceFolders?.[0].uri.fsPath });
                 });
 
                 const configUri = vscode.Uri.file(`${vscode.workspace.workspaceFolders?.[0].uri.fsPath}/${fileName}`);
