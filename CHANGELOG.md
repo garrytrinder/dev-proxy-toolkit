@@ -7,7 +7,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 > **Note**: odd version numbers, for example, `0.13.0`, are not included in this changelog. They are used to test the new features and fixes before the final release.
 
-## [0.23.1] - Unreleased
+## [0.23.2] - Unreleased
 
 ### Added:
 
@@ -16,6 +16,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Changed:
 
 - Snippets: Updated all snippets to use `v0.28.0` schema
+
+### Fixed:
+
+- Detection: Fixed issue with version not showing correctly when log level set lower than information
 
 ## [0.22.1] - 2025-05-02
 
