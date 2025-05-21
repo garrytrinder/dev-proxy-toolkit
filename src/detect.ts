@@ -7,7 +7,9 @@ import * as vscode from 'vscode';
 export const getVersion = async (devProxyExe: string) => {
     try {
         const version = await executeCommand(`${devProxyExe} --version`);
-        return version.trim();
+        const versionLines = version.trim().split('\n');
+        const lastLine = versionLines[versionLines.length - 1];
+        return lastLine.trim();
     } catch (error) {
         return "";
     }
