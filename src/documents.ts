@@ -49,4 +49,13 @@ export const registerDocumentListeners = (context: vscode.ExtensionContext, coll
                 vscode.commands.executeCommand('setContext', 'isDevProxyConfigFile', false);
         })
     );
+    
+    context.subscriptions.push(
+        vscode.workspace.onDidDeleteFiles(e => {
+            e.files.forEach(file => {
+                const uri = file;
+                collection.delete(uri);
+            });
+        })
+    );
 };
