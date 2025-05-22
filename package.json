@@ -96,16 +96,6 @@
           "when": "!activeEditorIsDirty && isDevProxyConfigFile && isDevProxyRunning"
         },
         {
-          "command": "dev-proxy-toolkit.config-open",
-          "group": "navigation@3",
-          "when": "!activeEditorIsDirty && isDevProxyConfigFile && !isDevProxyRunning"
-        },
-        {
-          "command": "dev-proxy-toolkit.config-new",
-          "group": "navigation@3",
-          "when": "!activeEditorIsDirty && isDevProxyConfigFile && !isDevProxyRunning"
-        },
-        {
           "command": "dev-proxy-toolkit.raise-mock",
           "group": "navigation@3",
           "when": "!activeEditorIsDirty && isDevProxyConfigFile && isDevProxyRunning"
