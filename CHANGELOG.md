@@ -16,6 +16,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Changed:
 
 - Snippets: Updated all snippets to use `v0.28.0` schema
+- Commands: Removed configuration commands from editor
 
 ### Fixed:
 
