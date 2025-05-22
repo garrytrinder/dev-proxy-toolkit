@@ -7,7 +7,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 > **Note**: odd version numbers, for example, `0.13.0`, are not included in this changelog. They are used to test the new features and fixes before the final release.
 
-## [0.23.2] - Unreleased
+## [0.23.3] - Unreleased
 
 ### Added:
 
@@ -20,6 +20,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Fixed:
 
 - Detection: Fixed issue with version not showing correctly when log level set lower than information
+- Diagnostics: Fixed issue with problems not being removed when file has been deleted
 
 ## [0.22.1] - 2025-05-02
 
