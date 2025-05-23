@@ -54,11 +54,11 @@ export const isDevProxyRunning = async (devProxyExe: string): Promise<boolean> =
         return processId.trim() !== '';
     };
     if (platform === 'darwin') {
-        const processId = await executeCommand(`$SHELL -c "ps -ef | grep ${devProxyExe} | grep -v grep | awk '{print $2}'"`);
+        const processId = await executeCommand(`$SHELL -c "ps -e -o pid=,comm= | awk \'\\$2==\"${devProxyExe}\" {print \\$1}\'"`);
         return processId.trim() !== '';
     };
     if (platform === 'linux') {
-        const processId = await executeCommand(`/bin/bash -c "ps -ef | grep ${devProxyExe} | grep -v grep | awk '{print $2}'"`);
+        const processId = await executeCommand(`/bin/bash -c "ps -e -o pid=,comm= | awk \'\\$2==\"${devProxyExe}\" {print \\$1}\'"`);
         return processId.trim() !== '';
     }
     return false;
