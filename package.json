@@ -76,6 +76,13 @@
         "category": "Dev Proxy Toolkit",
         "icon": "$(file-code)",
         "enablement": "isDevProxyInstalled"
+      },
+      {
+        "command": "dev-proxy-toolkit.discover-urls-to-watch",
+        "title": "Discover URLs to watch",
+        "category": "Dev Proxy Toolkit",
+        "icon": "$(debug-start)",
+        "enablement": "!isDevProxyRunning"
       }
     ],
     "menus": {
