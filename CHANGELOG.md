@@ -7,11 +7,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 > **Note**: odd version numbers, for example, `0.13.0`, are not included in this changelog. They are used to test the new features and fixes before the final release.
 
-## [0.23.3] - Unreleased
+## [0.23.4] - Unreleased
 
 ### Added:
 
 - Support for using Dev Proxy Beta with commands
+- Command: `dev-proxy-toolkit.discover-urls-to-watch` - Start Dev Proxy in discovery mode
 
 ### Changed:
 

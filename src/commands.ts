@@ -302,4 +302,36 @@ export const registerCommands = (context: vscode.ExtensionContext, configuration
                 vscode.window.showErrorMessage('Failed to create new config file');
             }
         }));
+
+    context.subscriptions.push(
+        vscode.commands.registerCommand('dev-proxy-toolkit.discover-urls-to-watch', async () => {
+            const newTerminal = configuration.get('newTerminal') as boolean;
+
+            let terminal: vscode.Terminal;
+
+            if (!newTerminal && vscode.window.activeTerminal) {
+                terminal = vscode.window.activeTerminal;
+            } else {
+                terminal = vscode.window.createTerminal('Dev Proxy');
+
+            }
+
+            const processNames = await vscode.window.showInputBox({
+                prompt: 'Enter the process names (space separated). Leave empty to intercept requests from all processes.',
+                placeHolder: 'msedge pwsh',
+                value: '',
+                title: 'Intercept requests from specific processes',
+                validateInput: (value: string) => {
+                    // can be empty string, but if not, must contain space separated process names
+                    if (value && !/^[a-zA-Z0-9\s]+$/.test(value)) {
+                        return 'Process names can only contain alphanumeric characters and spaces';
+                    }
+                    return undefined; // no error
+                }
+            });
+
+            processNames !== undefined && processNames.trim() !== ''
+                ? terminal.sendText(`${devProxyExe} --discover --watch-process-names ${processNames.trim()}`)
+                : terminal.sendText(`${devProxyExe} --discover`);
+        }));
 };
