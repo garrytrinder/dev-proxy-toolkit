@@ -7,12 +7,16 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 > **Note**: odd version numbers, for example, `0.13.0`, are not included in this changelog. They are used to test the new features and fixes before the final release.
 
-## [0.23.4] - Unreleased
+## [0.23.5] - Unreleased
 
 ### Added:
 
 - Support for using Dev Proxy Beta with commands
 - Command: `dev-proxy-toolkit.discover-urls-to-watch` - Start Dev Proxy in discovery mode
+- Snippets: Added `devproxy-plugin-openai-telemetry` - OpenAITelemetryPlugin instance
+- Snippets: Added `devproxy-plugin-openai-telemetry-config` - OpenAITelemetryPlugin config section
+- Snippets: Added `devproxy-plugin-prices-file` - OpenAITelemetryPlugin telemetry prices file
+- Snippets: Added `devproxy-plugin-price` - OpenAITelemetryPlugin telemetry model price
 
 ### Changed:
 
