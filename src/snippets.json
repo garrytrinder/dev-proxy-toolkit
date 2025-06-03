@@ -71,6 +71,28 @@
     ],
     "description": "Dev Proxy mock"
   },
+  "PricesFile": {
+    "prefix": "devproxy-prices-file",
+    "body": [
+      "{",
+      "\t\"\\$schema\": \"https://raw.githubusercontent.com/dotnet/dev-proxy/main/schemas/v0.28.0/openaitelemetryplugin.pricesfile.schema.json\",",
+      "\t\"prices\": {",
+      "\t\t$1",
+      "\t}",
+      "}"
+    ],
+    "description": "Dev Proxy prices file"
+  },
+  "Price": {
+    "prefix": "devproxy-price",
+    "body": [
+      "\"gpt-4\": {",
+      "\t\"input\": 0.03,",
+      "\t\"output\": 0.06",
+      "}"
+    ],
+    "description": "Dev Proxy price"
+  },
   "Request": {
     "prefix": "devproxy-request",
     "body": [
@@ -854,6 +876,30 @@
       "}"
     ],
     "description": "OpenAIMockResponsePlugin instance"
+  },
+  "OpenAITelemetryPlugin": {
+    "prefix": "devproxy-plugin-openai-telemetry",
+    "body": [
+      "{",
+      "\t\"name\": \"OpenAITelemetryPlugin\",",
+      "\t\"enabled\": true,",
+      "\t\"pluginPath\": \"~appFolder/plugins/dev-proxy-plugins.dll\",",
+      "\t\"configSection\": \"openAITelemetryPlugin\"",
+      "}"
+    ],
+    "description": "OpenAITelemetryPlugin instance"
+  },
+  "OpenAITelemetryPluginConfig": {
+    "prefix": "devproxy-plugin-openai-telemetry-config",
+    "body": [
+      "\"openAITelemetryPlugin\": {",
+      "\t\"\\$schema\": \"https://raw.githubusercontent.com/dotnet/dev-proxy/main/schemas/v0.28.0/openaitelemetryplugin.schema.json\",",
+      "\t\"application\": \"My app\",",
+      "\t\"includeCosts\": true,",
+      "\t\"pricesFile\": \"prices.json\"",
+      "}"
+    ],
+    "description": "OpenAITelemetryPlugin config section"
   },
   "OpenApiSpecGeneratorPlugin": {
     "prefix": "devproxy-plugin-open-api-spec-generator",

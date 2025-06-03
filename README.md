@@ -72,12 +72,16 @@ Shown when the active document is a Dev Proxy configuration file
 
 | Prefix | Description |
 | ------ | ----------- |
+| Prefix | Description |
+| ------ | ----------- |
 | `devproxy-config-file` | Dev Proxy config file |
 | `devproxy-config-file-schema` | Dev Proxy config file schema |
 | `devproxy-error` | Dev Proxy error |
 | `devproxy-mocks-file` | Dev Proxy mocks file |
 | `devproxy-mocks-file-schema` | Dev Proxy mocks file schema |
 | `devproxy-mock` | Dev Proxy mock |
+| `devproxy-prices-file` | Dev Proxy prices file |
+| `devproxy-price` | Dev Proxy price |
 | `devproxy-request` | Dev Proxy request |
 | `devproxy-response` | Dev Proxy response |
 | `devproxy-response-header` | Dev Proxy response header |
@@ -139,6 +143,8 @@ Shown when the active document is a Dev Proxy configuration file
 | `devproxy-plugin-odata-paging-guidance` | ODataPagingGuidancePlugin instance |
 | `devproxy-plugin-graph-odsp-search-guidance` | ODSPSearchGuidancePlugin instance |
 | `devproxy-plugin-openai-mock-response` | OpenAIMockResponsePlugin instance |
+| `devproxy-plugin-openai-telemetry` | OpenAITelemetryPlugin instance |
+| `devproxy-plugin-openai-telemetry-config` | OpenAITelemetryPlugin config section |
 | `devproxy-plugin-open-api-spec-generator` | OpenApiSpecGeneratorPlugin instance |
 | `devproxy-plugin-open-api-spec-generator-config` | OpenApiSpecGeneratorPlugin config section |
 | `devproxy-plugin-rate-limiting` | MockResponsePlugin instance |
