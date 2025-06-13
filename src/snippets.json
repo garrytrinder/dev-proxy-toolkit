@@ -152,7 +152,7 @@
       "{",
       "\t\"name\": \"AuthPlugin\",",
       "\t\"enabled\": true,",
-      "\t\"pluginPath\": \"~appFolder/plugins/dev-proxy-plugins.dll\",",
+      "\t\"pluginPath\": \"~appFolder/plugins/DevProxy.Plugins.dll\",",
       "\t\"configSection\": \"auth\"",
       "}"
     ],
@@ -220,7 +220,7 @@
       "{",
       "\t\"name\": \"ApiCenterOnboardingPlugin\",",
       "\t\"enabled\": true,",
-      "\t\"pluginPath\": \"~appFolder/plugins/dev-proxy-plugins.dll\",",
+      "\t\"pluginPath\": \"~appFolder/plugins/DevProxy.Plugins.dll\",",
       "\t\"configSection\": \"apiCenterMinimalPermissionsPlugin\"",
       "}"
     ],
@@ -245,7 +245,7 @@
       "{",
       "\t\"name\": \"ApiCenterOnboardingPlugin\",",
       "\t\"enabled\": true,",
-      "\t\"pluginPath\": \"~appFolder/plugins/dev-proxy-plugins.dll\",",
+      "\t\"pluginPath\": \"~appFolder/plugins/DevProxy.Plugins.dll\",",
       "\t\"configSection\": \"apiCenterOnboardingPlugin\"",
       "}"
     ],
@@ -271,7 +271,7 @@
       "{",
       "\t\"name\": \"ApiCenterProductionVersionPlugin\",",
       "\t\"enabled\": true,",
-      "\t\"pluginPath\": \"~appFolder/plugins/dev-proxy-plugins.dll\",",
+      "\t\"pluginPath\": \"~appFolder/plugins/DevProxy.Plugins.dll\",",
       "\t\"configSection\": \"apiCenterProductionVersionPlugin\"",
       "}"
     ],
@@ -296,7 +296,7 @@
       "{",
       "\t\"name\": \"CachingGuidancePlugin\",",
       "\t\"enabled\": true,",
-      "\t\"pluginPath\": \"~appFolder/plugins/dev-proxy-plugins.dll\"",
+      "\t\"pluginPath\": \"~appFolder/plugins/DevProxy.Plugins.dll\"",
       "}"
     ],
     "description": "CachingGuidancePlugin instance"
@@ -317,7 +317,7 @@
       "{",
       "\t\"name\": \"CrudApiPlugin\",",
       "\t\"enabled\": true,",
-      "\t\"pluginPath\": \"~appFolder/plugins/dev-proxy-plugins.dll\",",
+      "\t\"pluginPath\": \"~appFolder/plugins/DevProxy.Plugins.dll\",",
       "\t\"configSection\": \"customersApi\"",
       "}"
     ],
@@ -372,7 +372,7 @@
       "{",
       "\t\"name\": \"DevToolsPlugin\",",
       "\t\"enabled\": true,",
-      "\t\"pluginPath\": \"~appFolder/plugins/dev-proxy-plugins.dll\"",
+      "\t\"pluginPath\": \"~appFolder/plugins/DevProxy.Plugins.dll\"",
       "}"
     ],
     "description": "DevToolsPlugin instance"
@@ -393,7 +393,7 @@
       "{",
       "\t\"name\": \"EntraMockResponsePlugin\",",
       "\t\"enabled\": true,",
-      "\t\"pluginPath\": \"~appFolder/plugins/dev-proxy-plugins.dll\",",
+      "\t\"pluginPath\": \"~appFolder/plugins/DevProxy.Plugins.dll\",",
       "\t\"configSection\": \"entraMockResponsePlugin\"",
       "}"
     ],
@@ -415,7 +415,7 @@
       "{",
       "\t\"name\": \"ExecutionSummaryPlugin\",",
       "\t\"enabled\": true,",
-      "\t\"pluginPath\": \"~appFolder/plugins/dev-proxy-plugins.dll\"",
+      "\t\"pluginPath\": \"~appFolder/plugins/DevProxy.Plugins.dll\"",
       "}"
     ],
     "description": "ExecutionSummaryPlugin instance"
@@ -436,7 +436,7 @@
       "{",
       "\t\"name\": \"GenericRandomErrorPlugin\",",
       "\t\"enabled\": true,",
-      "\t\"pluginPath\": \"~appFolder/plugins/dev-proxy-plugins.dll\",",
+      "\t\"pluginPath\": \"~appFolder/plugins/DevProxy.Plugins.dll\",",
       "\t\"configSection\": \"genericRandomErrorPlugin\"",
       "}"
     ],
@@ -478,7 +478,7 @@
       "{",
       "\t\"name\": \"GraphBetaSupportGuidancePlugin\",",
       "\t\"enabled\": true,",
-      "\t\"pluginPath\": \"~appFolder/plugins/dev-proxy-plugins.dll\",",
+      "\t\"pluginPath\": \"~appFolder/plugins/DevProxy.Plugins.dll\",",
       "\t\"urlsToWatch\": [",
       "\t\t\"https://graph.microsoft.com/beta/*\",",
       "\t\t\"https://graph.microsoft.us/beta/*\",",
@@ -495,7 +495,7 @@
       "{",
       "\t\"name\": \"GraphClientRequestIdGuidancePlugin\",",
       "\t\"enabled\": true,",
-      "\t\"pluginPath\": \"~appFolder/plugins/dev-proxy-plugins.dll\",",
+      "\t\"pluginPath\": \"~appFolder/plugins/DevProxy.Plugins.dll\",",
       "\t\"urlsToWatch\": [",
       "\t\t\"https://graph.microsoft.com/v1.0/*\",",
       "\t\t\"https://graph.microsoft.com/beta/*\",",
@@ -516,7 +516,7 @@
       "{",
       "\t\"name\": \"GraphMinimalPermissionsGuidancePlugin\",",
       "\t\"enabled\": true,",
-      "\t\"pluginPath\": \"~appFolder/plugins/dev-proxy-plugins.dll\"",
+      "\t\"pluginPath\": \"~appFolder/plugins/DevProxy.Plugins.dll\"",
       "}"
     ],
     "description": "GraphMinimalPermissionsGuidancePlugin instance"
@@ -542,7 +542,7 @@
       "{",
       "\t\"name\": \"GraphMinimalPermissionsPlugin\",",
       "\t\"enabled\": true,",
-      "\t\"pluginPath\": \"~appFolder/plugins/dev-proxy-plugins.dll\"",
+      "\t\"pluginPath\": \"~appFolder/plugins/DevProxy.Plugins.dll\"",
       "}"
     ],
     "description": "GraphMinimalPermissionsPlugin instance"
@@ -563,7 +563,7 @@
       "{",
       "\t\"name\": \"GraphMockResponsePlugin\",",
       "\t\"enabled\": true,",
-      "\t\"pluginPath\": \"~appFolder/plugins/dev-proxy-plugins.dll\",",
+      "\t\"pluginPath\": \"~appFolder/plugins/DevProxy.Plugins.dll\",",
       "\t\"configSection\": \"graphMockResponsePlugin\",",
       "\t\"urlsToWatch\": [",
       "\t\t\"https://graph.microsoft.com/v1.0/*\",",
@@ -595,7 +595,7 @@
       "{",
       "\t\"name\": \"GraphRandomErrorPlugin\",",
       "\t\"enabled\": true,",
-      "\t\"pluginPath\": \"~appFolder/plugins/dev-proxy-plugins.dll\"",
+      "\t\"pluginPath\": \"~appFolder/plugins/DevProxy.Plugins.dll\"",
       "\t\"urlsToWatch\": [",
       "\t\t\"https://graph.microsoft.com/v1.0/*\",",
       "\t\t\"https://graph.microsoft.com/beta/*\",",
@@ -627,7 +627,7 @@
       "{",
       "\t\"name\": \"GraphSdkGuidancePlugin\",",
       "\t\"enabled\": true,",
-      "\t\"pluginPath\": \"~appFolder/plugins/dev-proxy-plugins.dll\",",
+      "\t\"pluginPath\": \"~appFolder/plugins/DevProxy.Plugins.dll\",",
       "\t\"urlsToWatch\": [",
       "\t\t\"https://graph.microsoft.com/v1.0/*\",",
       "\t\t\"https://graph.microsoft.com/beta/*\",",
@@ -648,7 +648,7 @@
       "{",
       "\t\"name\": \"GraphSelectGuidancePlugin\",",
       "\t\"enabled\": true,",
-      "\t\"pluginPath\": \"~appFolder/plugins/dev-proxy-plugins.dll\",",
+      "\t\"pluginPath\": \"~appFolder/plugins/DevProxy.Plugins.dll\",",
       "\t\"urlsToWatch\": [",
       "\t\t\"https://graph.microsoft.com/v1.0/*\",",
       "\t\t\"https://graph.microsoft.com/beta/*\",",
@@ -669,7 +669,7 @@
       "{",
       "\t\"name\": \"HttpFileGeneratorPlugin\",",
       "\t\"enabled\": true,",
-      "\t\"pluginPath\": \"~appFolder/plugins/dev-proxy-plugins.dll\"",
+      "\t\"pluginPath\": \"~appFolder/plugins/DevProxy.Plugins.dll\"",
       "}"
     ],
     "description": "HttpFileGeneratorPlugin instance"
@@ -690,7 +690,7 @@
       "{",
       "\t\"name\": \"LatencyPlugin\",",
       "\t\"enabled\": true,",
-      "\t\"pluginPath\": \"~appFolder/plugins/dev-proxy-plugins.dll\",",
+      "\t\"pluginPath\": \"~appFolder/plugins/DevProxy.Plugins.dll\",",
       "\t\"configSection\": \"latencyPlugin\"",
       "}"
     ],
@@ -713,7 +713,7 @@
       "{",
       "\t\"name\": \"MinimalCsomPermissionsPlugin\",",
       "\t\"enabled\": true,",
-      "\t\"pluginPath\": \"~appFolder/plugins/dev-proxy-plugins.dll\"",
+      "\t\"pluginPath\": \"~appFolder/plugins/DevProxy.Plugins.dll\"",
       "}"
     ],
     "description": "MinimalCsomPermissionsPlugin instance"
@@ -734,7 +734,7 @@
       "{",
       "\t\"name\": \"MinimalPermissionsPlugin\",",
       "\t\"enabled\": true,",
-      "\t\"pluginPath\": \"~appFolder/plugins/dev-proxy-plugins.dll\",",
+      "\t\"pluginPath\": \"~appFolder/plugins/DevProxy.Plugins.dll\",",
       "\t\"configSection\": \"minimalPermissionsPlugin\"",
       "}"
     ],
@@ -756,7 +756,7 @@
       "{",
       "\t\"name\": \"MinimalPermissionsGuidancePlugin\",",
       "\t\"enabled\": true,",
-      "\t\"pluginPath\": \"~appFolder/plugins/dev-proxy-plugins.dll\",",
+      "\t\"pluginPath\": \"~appFolder/plugins/DevProxy.Plugins.dll\",",
       "\t\"configSection\": \"minimalPermissionsGuidancePlugin\"",
       "}"
     ],
@@ -778,7 +778,7 @@
       "{",
       "\t\"name\": \"MockGeneratorPlugin\",",
       "\t\"enabled\": true,",
-      "\t\"pluginPath\": \"~appFolder/plugins/dev-proxy-plugins.dll\"",
+      "\t\"pluginPath\": \"~appFolder/plugins/DevProxy.Plugins.dll\"",
       "}"
     ],
     "description": "MockGeneratorPlugin instance"
@@ -789,7 +789,7 @@
       "{",
       "\t\"name\": \"MockRequestPlugin\",",
       "\t\"enabled\": true,",
-      "\t\"pluginPath\": \"~appFolder/plugins/dev-proxy-plugins.dll\",",
+      "\t\"pluginPath\": \"~appFolder/plugins/DevProxy.Plugins.dll\",",
       "\t\"configSection\": \"mockRequestPlugin\"",
       "}"
     ],
@@ -811,7 +811,7 @@
       "{",
       "\t\"name\": \"MockResponsePlugin\",",
       "\t\"enabled\": true,",
-      "\t\"pluginPath\": \"~appFolder/plugins/dev-proxy-plugins.dll\",",
+      "\t\"pluginPath\": \"~appFolder/plugins/DevProxy.Plugins.dll\",",
       "\t\"configSection\": \"mockResponsePlugin\"",
       "}"
     ],
@@ -840,7 +840,7 @@
       "{",
       "\t\"name\": \"ODataPagingGuidancePlugin\",",
       "\t\"enabled\": true,",
-      "\t\"pluginPath\": \"~appFolder/plugins/dev-proxy-plugins.dll\"",
+      "\t\"pluginPath\": \"~appFolder/plugins/DevProxy.Plugins.dll\"",
       "}"
     ],
     "description": "ODataPagingGuidancePlugin instance"
@@ -851,7 +851,7 @@
       "{",
       "\t\"name\": \"ODSPSearchGuidancePlugin\",",
       "\t\"enabled\": true,",
-      "\t\"pluginPath\": \"~appFolder/plugins/dev-proxy-plugins.dll\",",
+      "\t\"pluginPath\": \"~appFolder/plugins/DevProxy.Plugins.dll\",",
       "\t\"urlsToWatch\": [",
       "\t\t\"https://graph.microsoft.com/v1.0/*\",",
       "\t\t\"https://graph.microsoft.com/beta/*\",",
@@ -872,7 +872,7 @@
       "{",
       "\t\"name\": \"OpenAIMockResponsePlugin\",",
       "\t\"enabled\": true,",
-      "\t\"pluginPath\": \"~appFolder/plugins/dev-proxy-plugins.dll\"",
+      "\t\"pluginPath\": \"~appFolder/plugins/DevProxy.Plugins.dll\"",
       "}"
     ],
     "description": "OpenAIMockResponsePlugin instance"
@@ -883,7 +883,7 @@
       "{",
       "\t\"name\": \"OpenAITelemetryPlugin\",",
       "\t\"enabled\": true,",
-      "\t\"pluginPath\": \"~appFolder/plugins/dev-proxy-plugins.dll\",",
+      "\t\"pluginPath\": \"~appFolder/plugins/DevProxy.Plugins.dll\",",
       "\t\"configSection\": \"openAITelemetryPlugin\"",
       "}"
     ],
@@ -907,7 +907,7 @@
       "{",
       "\t\"name\": \"OpenApiSpecGeneratorPlugin\",",
       "\t\"enabled\": true,",
-      "\t\"pluginPath\": \"~appFolder/plugins/dev-proxy-plugins.dll\"",
+      "\t\"pluginPath\": \"~appFolder/plugins/DevProxy.Plugins.dll\"",
       "}"
     ],
     "description": "OpenApiSpecGeneratorPlugin instance"
@@ -930,7 +930,7 @@
       "{",
       "\t\"name\": \"RateLimitingPlugin\",",
       "\t\"enabled\": true,",
-      "\t\"pluginPath\": \"~appFolder/plugins/dev-proxy-plugins.dll\"",
+      "\t\"pluginPath\": \"~appFolder/plugins/DevProxy.Plugins.dll\"",
       "}"
     ],
     "description": "MockResponsePlugin instance"
@@ -976,7 +976,7 @@
       "{",
       "\t\"name\": \"RetryAfterPlugin\",",
       "\t\"enabled\": true,",
-      "\t\"pluginPath\": \"~appFolder/plugins/dev-proxy-plugins.dll\"",
+      "\t\"pluginPath\": \"~appFolder/plugins/DevProxy.Plugins.dll\"",
       "}"
     ],
     "description": "RetryAfterPlugin instance"
@@ -987,7 +987,7 @@
       "{",
       "\t\"name\": \"RewritePlugin\",",
       "\t\"enabled\": true,",
-      "\t\"pluginPath\": \"~appFolder/plugins/dev-proxy-plugins.dll\",",
+      "\t\"pluginPath\": \"~appFolder/plugins/DevProxy.Plugins.dll\",",
       "\t\"configSection\": \"rewritePlugin\"",
       "}"
     ],
@@ -1028,7 +1028,7 @@
       "{",
       "\t\"name\": \"TypeSpecGeneratorPlugin\",",
       "\t\"enabled\": true,",
-      "\t\"pluginPath\": \"~appFolder/plugins/dev-proxy-plugins.dll\"",
+      "\t\"pluginPath\": \"~appFolder/plugins/DevProxy.Plugins.dll\"",
       "}"
     ],
     "description": "TypeSpecGeneratorPlugin instance"
@@ -1049,7 +1049,7 @@
       "{",
       "\t\"name\": \"UrlDiscoveryPlugin\",",
       "\t\"enabled\": true,",
-      "\t\"pluginPath\": \"~appFolder/plugins/dev-proxy-plugins.dll\"",
+      "\t\"pluginPath\": \"~appFolder/plugins/DevProxy.Plugins.dll\"",
       "}"
     ],
     "description": "UrlDiscoveryPlugin instance"
@@ -1060,7 +1060,7 @@
       "{",
       "\t\"name\": \"JsonReporter\",",
       "\t\"enabled\": true,",
-      "\t\"pluginPath\": \"~appFolder/plugins/dev-proxy-plugins.dll\"",
+      "\t\"pluginPath\": \"~appFolder/plugins/DevProxy.Plugins.dll\"",
       "}"
     ],
     "description": "JsonReporter instance"
@@ -1071,7 +1071,7 @@
       "{",
       "\t\"name\": \"MarkdownReporter\",",
       "\t\"enabled\": true,",
-      "\t\"pluginPath\": \"~appFolder/plugins/dev-proxy-plugins.dll\"",
+      "\t\"pluginPath\": \"~appFolder/plugins/DevProxy.Plugins.dll\"",
       "}"
     ],
     "description": "MarkdownReporter instance"
@@ -1082,7 +1082,7 @@
       "{",
       "\t\"name\": \"PlainTextReporter\",",
       "\t\"enabled\": true,",
-      "\t\"pluginPath\": \"~appFolder/plugins/dev-proxy-plugins.dll\"",
+      "\t\"pluginPath\": \"~appFolder/plugins/DevProxy.Plugins.dll\"",
       "}"
     ],
     "description": "PlainTextReporter instance"
