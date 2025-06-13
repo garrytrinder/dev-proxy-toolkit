@@ -12,6 +12,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Changed:
 
 - Snippets: Updated all snippets to use `v0.29.0` schema
+- Snippets: Updated all snuppers to use new DLL name, `DevProxy.Plugins.dll`
 
 ## [0.24.0] - 2025-06-04
 
