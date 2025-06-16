@@ -7,7 +7,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 > **Note**: odd version numbers, for example, `0.13.0`, are not included in this changelog. They are used to test the new features and fixes before the final release.
 
-## [0.25.0] - Unreleased
+## [0.25.1] - Unreleased
 
 ### Added:
 
@@ -17,6 +17,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - Snippets: Updated all snippets to use `v0.29.0` schema
 - Snippets: Updated all snuppers to use new DLL name, `DevProxy.Plugins.dll`
+- Notification: Upgrade notification invokes package manager to upgrade Dev Proxy
 
 ## [0.24.0] - 2025-06-04
 

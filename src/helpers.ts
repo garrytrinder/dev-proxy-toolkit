@@ -116,3 +116,55 @@ export const executeCommand = async (cmd: string, options: ExecOptions = {}): Pr
     });
   });
 };
+
+export const upgradeDevProxyWithPackageManager = async (
+  packageManager: string,
+  packageId: string,
+  upgradeCommand: string,
+): Promise<boolean> => {
+  try {
+    // Check if package manager is available
+    await executeCommand(`${packageManager} --version`);
+
+    // Check if Dev Proxy is installed via package manager
+    const listCommand =
+      packageManager === 'winget'
+        ? `winget list ${packageId}`
+        : 'brew list --formula';
+    const listOutput = await executeCommand(listCommand);
+
+    if (!listOutput.includes(packageId)) {
+      return false;
+    }
+
+    // Proceed with upgrade
+    const statusMessage = vscode.window.setStatusBarMessage(
+      'Upgrading Dev Proxy...',
+    );
+
+    try {
+      await executeCommand(upgradeCommand);
+      statusMessage.dispose();
+
+      const result = await vscode.window.showInformationMessage(
+        'Dev Proxy has been successfully upgraded!',
+        'Reload Window',
+      );
+      if (result === 'Reload Window') {
+        await vscode.commands.executeCommand('workbench.action.reloadWindow');
+      }
+      return true;
+    } catch (error) {
+      statusMessage.dispose();
+      vscode.window.showErrorMessage(`Failed to upgrade Dev Proxy: ${error}`);
+      return false;
+    }
+  } catch (error) {
+    return false;
+  }
+};
+
+export const openUpgradeDocumentation = () => {
+  const url = 'https://aka.ms/devproxy/upgrade';
+  vscode.env.openExternal(vscode.Uri.parse(url));
+};

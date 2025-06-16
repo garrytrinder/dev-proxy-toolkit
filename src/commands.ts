@@ -1,7 +1,7 @@
 import * as vscode from 'vscode';
 import { pluginDocs } from './constants';
 import { VersionPreference } from './enums';
-import { executeCommand, isConfigFile } from './helpers';
+import { executeCommand, isConfigFile, openUpgradeDocumentation, upgradeDevProxyWithPackageManager } from './helpers';
 import { isDevProxyRunning, getDevProxyExe } from './detect';
 
 export const registerCommands = (context: vscode.ExtensionContext, configuration: vscode.WorkspaceConfiguration) => {
@@ -80,8 +80,41 @@ export const registerCommands = (context: vscode.ExtensionContext, configuration
 
     context.subscriptions.push(
         vscode.commands.registerCommand('dev-proxy-toolkit.upgrade', async () => {
-            const url = 'https://aka.ms/devproxy/upgrade';
-            vscode.env.openExternal(vscode.Uri.parse(url));
+            const platform = process.platform;
+            const versionPreference = configuration.get('version') as VersionPreference;
+            
+            // Handle Linux early - always redirect to documentation
+            if (platform === 'linux') {
+                openUpgradeDocumentation();
+                return;
+            }
+            
+            // Handle Windows
+            if (platform === 'win32') {
+                const packageId = versionPreference === VersionPreference.Stable ? 'Microsoft.DevProxy' : 'Microsoft.DevProxy.Beta';
+                const upgradeCommand = `winget upgrade ${packageId} --silent`;
+                
+                const upgraded = await upgradeDevProxyWithPackageManager('winget', packageId, upgradeCommand);
+                if (!upgraded) {
+                    openUpgradeDocumentation();
+                }
+                return;
+            }
+            
+            // Handle macOS
+            if (platform === 'darwin') {
+                const packageId = versionPreference === VersionPreference.Stable ? 'dev-proxy' : 'dev-proxy-beta';
+                const upgradeCommand = `brew upgrade ${packageId}`;
+                
+                const upgraded = await upgradeDevProxyWithPackageManager('brew', packageId, upgradeCommand);
+                if (!upgraded) {
+                    openUpgradeDocumentation();
+                }
+                return;
+            }
+            
+            // Unknown platform - redirect to documentation
+            openUpgradeDocumentation();
         }));
 
     context.subscriptions.push(

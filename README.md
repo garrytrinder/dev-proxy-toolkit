@@ -64,6 +64,7 @@ Shown when the active document is a Dev Proxy configuration file
 
 - Not installed
 - New version detection
+- Upgrade Dev Proxy
 
 ### Settings
 
@@ -173,3 +174,4 @@ Shown when the active document is a Dev Proxy configuration file
 - Display tick if Dev Proxy is latest version (check based on `newVersionNotification` config setting in Dev Proxy configuration file)
 - Display radio tower when Dev Proxy is running
 - Display error is Dev Proxy is not installed
+- Upgrade Dev Proxy progress
