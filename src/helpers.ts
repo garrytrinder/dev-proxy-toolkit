@@ -121,6 +121,7 @@ export const upgradeDevProxyWithPackageManager = async (
   packageManager: string,
   packageId: string,
   upgradeCommand: string,
+  isBeta: boolean = false,
 ): Promise<boolean> => {
   try {
     // Check if package manager is available
@@ -137,9 +138,28 @@ export const upgradeDevProxyWithPackageManager = async (
       return false;
     }
 
+    // Refresh package lists before upgrading
+    const updateMessage = vscode.window.setStatusBarMessage(
+      `Updating package lists...`,
+    );
+
+    try {
+      const updateCommand =
+        packageManager === 'winget'
+          ? 'winget source update'
+          : 'brew update';
+      await executeCommand(updateCommand);
+      updateMessage.dispose();
+    } catch (error) {
+      updateMessage.dispose();
+      vscode.window.showWarningMessage(`Failed to update package lists: ${error}`);
+      // Continue with upgrade even if update fails
+    }
+
     // Proceed with upgrade
+    const versionText = isBeta ? 'Dev Proxy Beta' : 'Dev Proxy';
     const statusMessage = vscode.window.setStatusBarMessage(
-      'Upgrading Dev Proxy...',
+      `Upgrading ${versionText}...`,
     );
 
     try {
@@ -147,7 +167,7 @@ export const upgradeDevProxyWithPackageManager = async (
       statusMessage.dispose();
 
       const result = await vscode.window.showInformationMessage(
-        'Dev Proxy has been successfully upgraded!',
+        `${versionText} has been successfully upgraded!`,
         'Reload Window',
       );
       if (result === 'Reload Window') {
@@ -156,7 +176,7 @@ export const upgradeDevProxyWithPackageManager = async (
       return true;
     } catch (error) {
       statusMessage.dispose();
-      vscode.window.showErrorMessage(`Failed to upgrade Dev Proxy: ${error}`);
+      vscode.window.showErrorMessage(`Failed to upgrade ${versionText}: ${error}`);
       return false;
     }
   } catch (error) {
