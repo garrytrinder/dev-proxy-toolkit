@@ -93,8 +93,9 @@ export const registerCommands = (context: vscode.ExtensionContext, configuration
             if (platform === 'win32') {
                 const packageId = versionPreference === VersionPreference.Stable ? 'Microsoft.DevProxy' : 'Microsoft.DevProxy.Beta';
                 const upgradeCommand = `winget upgrade ${packageId} --silent`;
+                const isBeta = versionPreference === VersionPreference.Beta;
                 
-                const upgraded = await upgradeDevProxyWithPackageManager('winget', packageId, upgradeCommand);
+                const upgraded = await upgradeDevProxyWithPackageManager('winget', packageId, upgradeCommand, isBeta);
                 if (!upgraded) {
                     openUpgradeDocumentation();
                 }
@@ -105,8 +106,9 @@ export const registerCommands = (context: vscode.ExtensionContext, configuration
             if (platform === 'darwin') {
                 const packageId = versionPreference === VersionPreference.Stable ? 'dev-proxy' : 'dev-proxy-beta';
                 const upgradeCommand = `brew upgrade ${packageId}`;
+                const isBeta = versionPreference === VersionPreference.Beta;
                 
-                const upgraded = await upgradeDevProxyWithPackageManager('brew', packageId, upgradeCommand);
+                const upgraded = await upgradeDevProxyWithPackageManager('brew', packageId, upgradeCommand, isBeta);
                 if (!upgraded) {
                     openUpgradeDocumentation();
                 }
