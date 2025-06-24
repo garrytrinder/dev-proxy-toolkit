@@ -33,6 +33,7 @@ The following sections describe the features that the extension contributes to V
 - `Dev Proxy Toolkit: Open configuration file`- Only available when Dev Proxy is installed
 - `Dev Proxy Toolkit: Create configuration file`- Only available when Dev Proxy is installed
 - `Dev Proxy Toolkit: Discover URLs to watch` - Only available when Dev Proxy is not running
+- `Dev Proxy Toolkit: Generate JWT` - Only available when Dev Proxy is installed
 
 ### Diagnostics
 

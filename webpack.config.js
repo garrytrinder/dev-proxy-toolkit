@@ -50,7 +50,7 @@ const extensionConfig = {
       patterns: [
         { from: 'src/snippets.json', to: '[name][ext]' },
         { from: 'src/icon.png', to: '[name][ext]' },
-        { from: 'LICENCE', to: '[name][ext]' },
+        { from: 'LICENSE', to: '[name][ext]' },
       ],
     }),
   ],

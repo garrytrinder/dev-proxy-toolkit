@@ -369,4 +369,163 @@ export const registerCommands = (context: vscode.ExtensionContext, configuration
                 ? terminal.sendText(`${devProxyExe} --discover --watch-process-names ${processNames.trim()}`)
                 : terminal.sendText(`${devProxyExe} --discover`);
         }));
+
+    context.subscriptions.push(
+        vscode.commands.registerCommand('dev-proxy-toolkit.jwt-create', async () => {
+            try {
+                // Collect JWT parameters through input dialogs with sensible defaults
+                const name = await vscode.window.showInputBox({
+                    prompt: 'Enter the name of the user to create the token for',
+                    placeHolder: 'Dev Proxy',
+                    value: 'Dev Proxy',
+                    title: 'JWT Generation - User Name'
+                });
+
+                if (name === undefined) {
+                    return; // User cancelled
+                }
+
+                const issuer = await vscode.window.showInputBox({
+                    prompt: 'Enter the issuer of the token',
+                    placeHolder: 'dev-proxy',
+                    value: 'dev-proxy',
+                    title: 'JWT Generation - Issuer'
+                });
+
+                if (issuer === undefined) {
+                    return; // User cancelled
+                }
+
+                const audiences = await vscode.window.showInputBox({
+                    prompt: 'Enter the audiences (comma-separated for multiple)',
+                    placeHolder: 'https://myserver.com',
+                    value: 'https://myserver.com',
+                    title: 'JWT Generation - Audiences'
+                });
+
+                if (audiences === undefined) {
+                    return; // User cancelled
+                }
+
+                const roles = await vscode.window.showInputBox({
+                    prompt: 'Enter roles (comma-separated, leave empty for none)',
+                    placeHolder: 'admin,user',
+                    value: '',
+                    title: 'JWT Generation - Roles (Optional)'
+                });
+
+                if (roles === undefined) {
+                    return; // User cancelled
+                }
+
+                const scopes = await vscode.window.showInputBox({
+                    prompt: 'Enter scopes (comma-separated, leave empty for none)',
+                    placeHolder: 'read,write',
+                    value: '',
+                    title: 'JWT Generation - Scopes (Optional)'
+                });
+
+                if (scopes === undefined) {
+                    return; // User cancelled
+                }
+
+                const claims = await vscode.window.showInputBox({
+                    prompt: 'Enter custom claims in format name:value (comma-separated, leave empty for none)',
+                    placeHolder: 'custom:claim,department:engineering',
+                    value: '',
+                    title: 'JWT Generation - Custom Claims (Optional)'
+                });
+
+                if (claims === undefined) {
+                    return; // User cancelled
+                }
+
+                const validFor = await vscode.window.showInputBox({
+                    prompt: 'Enter token validity duration in minutes',
+                    placeHolder: '60',
+                    value: '60',
+                    title: 'JWT Generation - Validity Duration',
+                    validateInput: (value: string) => {
+                        const num = parseInt(value);
+                        if (isNaN(num) || num <= 0) {
+                            return 'Please enter a positive number';
+                        }
+                        return undefined;
+                    }
+                });
+
+                if (validFor === undefined) {
+                    return; // User cancelled
+                }
+
+                // Build the command with all parameters
+                let command = `${devProxyExe} jwt create --name "${name}" --issuer "${issuer}" --valid-for ${validFor}`;
+
+                // Add audiences (can have multiple)
+                const audienceList = audiences.split(',').map(a => a.trim()).filter(a => a);
+                audienceList.forEach(audience => {
+                    command += ` --audiences "${audience}"`;
+                });
+
+                // Add roles if provided
+                const roleList = roles.split(',').map(r => r.trim()).filter(r => r);
+                roleList.forEach(role => {
+                    command += ` --roles "${role}"`;
+                });
+
+                // Add scopes if provided
+                const scopeList = scopes.split(',').map(s => s.trim()).filter(s => s);
+                scopeList.forEach(scope => {
+                    command += ` --scopes "${scope}"`;
+                });
+
+                // Add custom claims if provided
+                const claimList = claims.split(',').map(c => c.trim()).filter(c => c);
+                claimList.forEach(claim => {
+                    if (claim.includes(':')) {
+                        command += ` --claims "${claim}"`;
+                    }
+                });
+
+                // Show progress and execute the command
+                await vscode.window.withProgress({
+                    location: vscode.ProgressLocation.Notification,
+                    title: 'Generating JWT...',
+                    cancellable: false
+                }, async () => {
+                    try {
+                        const result = await executeCommand(command);
+                        
+                        // Extract the token from the result (it should be on the last non-empty line)
+                        const lines = result.split('\n').filter(line => line.trim());
+                        const token = lines[lines.length - 1].trim();
+                        
+                        // Show the token in a dialog with copy option
+                        const choice = await vscode.window.showInformationMessage(
+                            'JWT generated successfully!',
+                            { modal: true },
+                            'Copy to Clipboard',
+                            'Show Token'
+                        );
+
+                        if (choice === 'Copy to Clipboard') {
+                            await vscode.env.clipboard.writeText(token);
+                            vscode.window.showInformationMessage('JWT copied to clipboard');
+                        } else if (choice === 'Show Token') {
+                            // Create a new untitled document to show the token
+                            const document = await vscode.workspace.openTextDocument({
+                                content: `JWT Generated: ${new Date().toISOString()}\n\nToken: ${token}\n\nCommand used:\n${command}`,
+                                language: 'plaintext'
+                            });
+                            await vscode.window.showTextDocument(document);
+                        }
+                    } catch (error) {
+                        vscode.window.showErrorMessage(`Failed to generate JWT token: ${error}`);
+                    }
+                });
+
+            } catch (error) {
+                vscode.window.showErrorMessage(`Error in JWT generation: ${error}`);
+            }
+        }));
 };
