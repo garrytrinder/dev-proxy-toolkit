@@ -12,12 +12,15 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Added:
 
 - MCP Server: Dev Proxy
+- Diagnostics: Show error if pluginPath in plugin instance is not correctly set to DevProxy.Plugins.dll when using Dev Proxy v0.29.0 or later
+- Code action: Update single or all plugin paths to DevProxy.Plugins.dll
 
 ### Changed:
 
 - Snippets: Updated all snippets to use `v0.29.0` schema
-- Snippets: Updated all snuppers to use new DLL name, `DevProxy.Plugins.dll`
+- Snippets: Updated all snippets to use new DLL name, `DevProxy.Plugins.dll`
 - Notification: Upgrade notification invokes package manager to upgrade Dev Proxy
+- Improved diagnostics range detection to ensure that they only appear againt the relevant code and don't overlap with ending quotes and commas
 
 ## [0.24.0] - 2025-06-04
 
@@ -29,6 +32,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Snippets: Added `devproxy-plugin-openai-telemetry-config` - OpenAITelemetryPlugin config section
 - Snippets: Added `devproxy-plugin-prices-file` - OpenAITelemetryPlugin telemetry prices file
 - Snippets: Added `devproxy-plugin-price` - OpenAITelemetryPlugin telemetry model price
+- Code
 
 ### Changed:
 
