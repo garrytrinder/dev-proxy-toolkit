@@ -47,21 +47,23 @@ export const getOutdatedVersion = async (devProxyExe: string): Promise<string> =
 };
 
 export const isDevProxyRunning = async (devProxyExe: string): Promise<boolean> => {
-    const platform = os.platform();
-
-    if (platform === 'win32') {
-        const processId = await executeCommand(`pwsh.exe -c "(Get-Process ${devProxyExe} -ErrorAction SilentlyContinue).Id"`);
-        return processId.trim() !== '';
-    };
-    if (platform === 'darwin') {
-        const processId = await executeCommand(`$SHELL -c "ps -e -o pid=,comm= | awk \'\\$2==\"${devProxyExe}\" {print \\$1}\'"`);
-        return processId.trim() !== '';
-    };
-    if (platform === 'linux') {
-        const processId = await executeCommand(`/bin/bash -c "ps -e -o pid=,comm= | awk \'\\$2==\"${devProxyExe}\" {print \\$1}\'"`);
-        return processId.trim() !== '';
+    try {
+        // Get the API port from configuration
+        const configuration = vscode.workspace.getConfiguration('dev-proxy-toolkit');
+        const apiPort = configuration.get('apiPort') as number;
+        
+        // Try to connect to the Dev Proxy API on the configured port
+        const response = await fetch(`http://127.0.0.1:${apiPort}/proxy`, {
+            method: 'GET',
+            signal: AbortSignal.timeout(2000), // 2 second timeout
+        });
+        
+        // If we get any response (even an error), Dev Proxy is running
+        return response.status >= 200 && response.status < 500;
+    } catch (error) {
+        // If the request fails (connection refused, timeout, etc.), Dev Proxy is not running
+        return false;
     }
-    return false;
 };
 
 export const getDevProxyExe = (versionPreference: VersionPreference) => {
