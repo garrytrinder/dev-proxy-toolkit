@@ -540,3 +540,11 @@ suite('diagnostic ranges', () => {
     assert.strictEqual(modifiedText, 'value', 'Should extract just the string content without quotes');
   });
 });
+
+suite('Commands', () => {
+  test('JWT create command should be registered', async () => {
+    const commands = await vscode.commands.getCommands();
+    const jwtCreateCommand = commands.find(cmd => cmd === 'dev-proxy-toolkit.jwt-create');
+    assert.ok(jwtCreateCommand, 'JWT create command should be registered');
+  });
+});

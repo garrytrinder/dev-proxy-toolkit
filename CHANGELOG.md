@@ -14,6 +14,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - MCP Server: Dev Proxy
 - Diagnostics: Show error if pluginPath in plugin instance is not correctly set to DevProxy.Plugins.dll when using Dev Proxy v0.29.0 or later
 - Code action: Update single or all plugin paths to DevProxy.Plugins.dll
+- Command: `dev-proxy-toolkit.jwt-create` - Generate JWT with guided input for testing purposes
 
 ### Changed:
 

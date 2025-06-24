@@ -83,6 +83,12 @@
         "category": "Dev Proxy Toolkit",
         "icon": "$(debug-start)",
         "enablement": "!isDevProxyRunning"
+      },
+      {
+        "command": "dev-proxy-toolkit.jwt-create",
+        "title": "Generate JWT",
+        "category": "Dev Proxy Toolkit",
+        "enablement": "isDevProxyInstalled"
       }
     ],
     "mcpServerDefinitionProviders": [
