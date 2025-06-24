@@ -512,5 +512,31 @@ suite('schema', () => {
     });
     assert.deepStrictEqual(actual, expected);
   });
+});
 
+suite('diagnostic ranges', () => {
+  
+  teardown(async () => {
+    await vscode.commands.executeCommand('workbench.action.closeActiveEditor');
+  });
+
+  test('should exclude quotes from string literal ranges', async () => {
+    // Test the core functionality by parsing JSON and checking ranges
+    const parse = require('json-to-ast');
+    const { getRangeFromASTNode } = require('../helpers');
+    
+    const jsonText = '{"key": "value"}';
+    const ast = parse(jsonText);
+    const keyNode = ast.children[0];
+    
+    // Test our modified range
+    const range = getRangeFromASTNode(keyNode.value);
+    const modifiedText = jsonText.substring(
+      range.start.character,
+      range.end.character
+    );
+    
+    // Verify that the range excludes quotes and extracts just the string content
+    assert.strictEqual(modifiedText, 'value', 'Should extract just the string content without quotes');
+  });
 });

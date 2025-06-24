@@ -21,8 +21,23 @@ export const getRangeFromASTNode = (
 ) => {
   const startLine = node?.loc?.start.line || 0;
   const endLine = node?.loc?.end.line || 0;
-  const startColumn = node?.loc?.start.column || 0;
-  const endColumn = node?.loc?.end.column || 0;
+  let startColumn = node?.loc?.start.column || 0;
+  let endColumn = node?.loc?.end.column || 0;
+
+  // For string literals, exclude the surrounding quotes from the range
+  // The json-to-ast library uses 1-based column numbers, but we need 0-based for VS Code
+  // For string literals: column points to the quote, we want to point to the content
+  if (node.type === 'Literal' && typeof (node as parse.LiteralNode).value === 'string') {
+    // Convert to 0-based and adjust for quotes:
+    // Start: column is 1-based pointing to quote, so column-1+1 = column (no change)
+    // End: column is 1-based pointing after quote, so column-1-1 = column-2
+    startColumn = startColumn; // column already points to quote, no change needed for 0-based + skip quote
+    endColumn = endColumn - 2; // convert to 0-based and skip closing quote
+  } else {
+    // For non-string literals, just convert from 1-based to 0-based
+    startColumn = startColumn - 1;
+    endColumn = endColumn - 1;
+  }
 
   // we remove 1 from the line numbers because vscode uses 0 based line numbers
   return new vscode.Range(

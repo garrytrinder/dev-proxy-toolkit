@@ -16,6 +16,7 @@ The following sections describe the features that the extension contributes to V
 ### Code Actions
 
 - Update schema to match installed version of Dev Proxy
+- Update single or all plugin paths to DevProxy.Plugins.dll
 
 ### Code Lenses
 
@@ -44,6 +45,7 @@ The following sections describe the features that the extension contributes to V
 - Check for configSections that are not used in plugins
 - Check for reporter plugin when a summary plugin is used
 - Check that ApiCenterOnboardingPlugin is placed after OpenApiSpecGeneratorPlugin
+- Check that pluginPath in plugin instance is correctly set to DevProxy.Plugins.dll when using Dev Proxy v0.29.0 or later
 
 ### Editor Actions
 
