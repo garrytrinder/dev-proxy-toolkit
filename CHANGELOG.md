@@ -21,6 +21,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Snippets: Updated all snippets to use new DLL name, `DevProxy.Plugins.dll`
 - Notification: Upgrade notification invokes package manager to upgrade Dev Proxy
 - Improved diagnostics range detection to ensure that they only appear againt the relevant code and don't overlap with ending quotes and commas
+- Detection: Changed isDevProxyRunning check to use Dev Proxy API instead of process detection
 
 ## [0.24.0] - 2025-06-04
 
