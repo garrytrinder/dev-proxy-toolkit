@@ -25,7 +25,6 @@ export const detectDevProxyInstall = async (versionPreference: VersionPreference
     const isOutdated = isInstalled && outdatedVersion !== '';
     const isRunning = await isDevProxyRunning(devProxyExe);
     vscode.commands.executeCommand('setContext', 'isDevProxyRunning', isRunning);
-
     return {
         version,
         isInstalled,
@@ -37,10 +36,22 @@ export const detectDevProxyInstall = async (versionPreference: VersionPreference
     };
 };
 
+export const extractVersionFromOutput = (output: string): string => {
+    if (!output) {
+        return '';
+    }
+    
+    // Extract version number using semver pattern
+    // Matches: major.minor.patch[-prerelease][+build] but only captures up to prerelease
+    const semverRegex = /v?(\d+\.\d+\.\d+(?:-[a-zA-Z0-9.-]+)?)(?:\+[a-zA-Z0-9.-]+)?/;
+    const match = output.match(semverRegex);
+    return match ? match[1] : '';
+};
+
 export const getOutdatedVersion = async (devProxyExe: string): Promise<string> => {
     try {
         const outdated = await executeCommand(`${devProxyExe} outdated --short`);
-        return outdated ? outdated.trim() : '';
+        return extractVersionFromOutput(outdated);
     } catch (error) {
         return "";
     }

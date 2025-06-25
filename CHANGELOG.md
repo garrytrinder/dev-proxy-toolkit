@@ -7,7 +7,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 > **Note**: odd version numbers, for example, `0.13.0`, are not included in this changelog. They are used to test the new features and fixes before the final release.
 
-## [0.25.3] - Unreleased
+## [0.25.4] - Unreleased
 
 ### Added:
 
@@ -23,6 +23,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Notification: Upgrade notification invokes package manager to upgrade Dev Proxy
 - Improved diagnostics range detection to ensure that they only appear againt the relevant code and don't overlap with ending quotes and commas
 - Detection: Changed isDevProxyRunning check to use Dev Proxy API instead of process detection
+
+### Fixed:
+
+- Detection: Improved new version detection logic to resolve issue where toast notification would output irrelevant information
 
 ## [0.24.0] - 2025-06-04
 
