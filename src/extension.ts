@@ -8,6 +8,7 @@ import { registerCodeActions } from './codeactions';
 import { updateGlobalState } from './state';
 import { VersionPreference } from './enums';
 import { registerMcpServer } from './mcp';
+import { registerTaskProvider } from './taskprovider';
 
 export const activate = async (context: vscode.ExtensionContext): Promise<vscode.ExtensionContext> => {
 
@@ -24,6 +25,7 @@ export const activate = async (context: vscode.ExtensionContext): Promise<vscode
   registerCodeLens(context);
   registerCommands(context, configuration);
   registerMcpServer(context);
+  registerTaskProvider(context);
 
   const notification = handleStartNotification(context);
   processNotification(notification);

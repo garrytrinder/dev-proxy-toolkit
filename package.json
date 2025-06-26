@@ -131,6 +131,35 @@
         }
       ]
     },
+    "taskDefinitions": [
+      {
+        "type": "devproxy",
+        "required": [
+          "command"
+        ],
+        "properties": {
+          "command": {
+            "type": "string",
+            "enum": [
+              "start",
+              "stop"
+            ],
+            "description": "The Dev Proxy command to execute"
+          },
+          "configFile": {
+            "type": "string",
+            "description": "Path to the Dev Proxy configuration file"
+          },
+          "args": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "description": "Additional command-line arguments"
+          }
+        }
+      }
+    ],
     "snippets": [
       {
         "language": "json",
@@ -173,7 +202,34 @@
           "description": "The port number used to communicate with Dev Proxy API."
         }
       }
-    }
+    },
+    "problemMatchers": [
+      {
+        "name": "devproxy-watch",
+        "label": "Dev Proxy Background Task",
+        "owner": "dev-proxy-toolkit",
+        "source": "Dev Proxy",
+        "fileLocation": "absolute",
+        "pattern": [
+          {
+            "regexp": "^\\[\\d{2}:\\d{2}:\\d{2}\\]\\s+(error|warn)\\s+(.*)$",
+            "severity": 1,
+            "message": 2
+          },
+          {
+            "regexp": "^\\s+at\\s+(.+):(\\d+):(\\d+)$",
+            "file": 1,
+            "line": 2,
+            "column": 3
+          }
+        ],
+        "background": {
+          "activeOnStart": true,
+          "beginsPattern": "^.*Starting Dev Proxy.*$",
+          "endsPattern": "^.*(?:Dev Proxy is ready|Press CTRL\\+C to stop Dev Proxy).*$"
+        }
+      }
+    ]
   },
   "preview": false,
   "pricing": "Free",
