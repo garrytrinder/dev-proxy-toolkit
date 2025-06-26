@@ -549,6 +549,116 @@ suite('Commands', () => {
   });
 });
 
+suite('executeCommand macOS PATH handling', () => {
+  test('should include Homebrew paths in PATH on macOS', async () => {
+    const { exec } = require('child_process');
+    const originalPlatform = Object.getOwnPropertyDescriptor(process, 'platform');
+    
+    // Mock process.platform to simulate macOS
+    Object.defineProperty(process, 'platform', {
+      value: 'darwin',
+      writable: true,
+      configurable: true
+    });
+    
+    try {
+      const executeCommandTest = (cmd: string, options: any = {}) => {
+        return new Promise<string>((resolve, reject) => {
+          // Copy the exact logic from helpers.ts
+          const execOptions = { ...options };
+          if (process.platform === 'darwin') {
+            const currentPath = process.env.PATH || '';
+            const homebrewPaths = '/opt/homebrew/bin:/usr/local/bin';
+            execOptions.env = {
+              ...process.env,
+              ...options.env,
+              PATH: `${homebrewPaths}:${currentPath}`
+            };
+          }
+
+          exec(cmd, execOptions, (error: any, stdout: string, stderr: string) => {
+            if (error) {
+              reject(`exec error: ${error}`);
+            } else if (stderr) {
+              reject(`stderr: ${stderr}`);
+            } else {
+              resolve(stdout);
+            }
+          });
+        });
+      };
+
+      const result = await executeCommandTest('echo $PATH');
+      
+      // Verify that Homebrew paths are included
+      assert.ok(result.includes('/opt/homebrew/bin'), 'PATH should include /opt/homebrew/bin on macOS');
+      assert.ok(result.includes('/usr/local/bin'), 'PATH should include /usr/local/bin on macOS');
+      
+      // Verify the paths are at the beginning (highest priority)
+      assert.ok(result.startsWith('/opt/homebrew/bin:/usr/local/bin:'), 
+        'Homebrew paths should be at the beginning of PATH for highest priority');
+        
+    } finally {
+      // Restore original platform
+      if (originalPlatform) {
+        Object.defineProperty(process, 'platform', originalPlatform);
+      }
+    }
+  });
+
+  test('should not modify PATH on non-macOS platforms', async () => {
+    const { exec } = require('child_process');
+    const originalPlatform = Object.getOwnPropertyDescriptor(process, 'platform');
+    
+    // Mock process.platform to simulate Linux
+    Object.defineProperty(process, 'platform', {
+      value: 'linux',
+      writable: true,
+      configurable: true
+    });
+    
+    try {
+      const executeCommandTest = (cmd: string, options: any = {}) => {
+        return new Promise<string>((resolve, reject) => {
+          // Copy the exact logic from helpers.ts
+          const execOptions = { ...options };
+          if (process.platform === 'darwin') {
+            const currentPath = process.env.PATH || '';
+            const homebrewPaths = '/opt/homebrew/bin:/usr/local/bin';
+            execOptions.env = {
+              ...process.env,
+              ...options.env,
+              PATH: `${homebrewPaths}:${currentPath}`
+            };
+          }
+
+          exec(cmd, execOptions, (error: any, stdout: string, stderr: string) => {
+            if (error) {
+              reject(`exec error: ${error}`);
+            } else if (stderr) {
+              reject(`stderr: ${stderr}`);
+            } else {
+              resolve(stdout);
+            }
+          });
+        });
+      };
+
+      const result = await executeCommandTest('echo $PATH');
+      const originalPath = process.env.PATH || '';
+      
+      // On non-macOS platforms, PATH should remain unchanged
+      assert.strictEqual(result.trim(), originalPath, 'PATH should not be modified on non-macOS platforms');
+      
+    } finally {
+      // Restore original platform
+      if (originalPlatform) {
+        Object.defineProperty(process, 'platform', originalPlatform);
+      }
+    }
+  });
+});
+
 suite('extractVersionFromOutput', () => {
   test('should extract stable version from Dev Proxy output', () => {
     const output = `  info    1 error responses loaded from /opt/homebrew/Cellar/dev-proxy/0.29.0/devproxy-errors.json

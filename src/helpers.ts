@@ -120,7 +120,19 @@ export const sleep = (ms: number): Promise<void> => {
 
 export const executeCommand = async (cmd: string, options: ExecOptions = {}): Promise<string> => {
   return new Promise((resolve, reject) => {
-    exec(cmd, options, (error, stdout, stderr) => {
+    // On macOS, ensure Homebrew paths are included in PATH
+    const execOptions: ExecOptions = { ...options };
+    if (process.platform === 'darwin') {
+      const currentPath = process.env.PATH || '';
+      const homebrewPaths = '/opt/homebrew/bin:/usr/local/bin';
+      execOptions.env = {
+        ...process.env,
+        ...options.env,
+        PATH: `${homebrewPaths}:${currentPath}`
+      };
+    }
+
+    exec(cmd, execOptions, (error, stdout, stderr) => {
       if (error) {
         reject(`exec error: ${error}`);
       } else if (stderr) {
