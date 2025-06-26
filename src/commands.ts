@@ -310,11 +310,23 @@ export const registerCommands = (context: vscode.ExtensionContext, configuration
                 }
             });
 
+            if (!fileName) {
+                return;
+            }
+
+            const workspaceFolder = vscode.workspace.workspaceFolders?.[0].uri.fsPath;
+            if (!workspaceFolder) {
+                vscode.window.showErrorMessage('No workspace folder found');
+                return;
+            }
+
+            const devproxyFolder = `${workspaceFolder}/.devproxy`;
+            const configFilePath = `${devproxyFolder}/${fileName}`;
+
             // check if file exists, if it does show an error message
             // we do this after the user has entered the filename 
             try {
-                const workspaceFolder = vscode.workspace.workspaceFolders?.[0].uri.fsPath;
-                const { type } = await vscode.workspace.fs.stat(vscode.Uri.file(`${workspaceFolder}/${fileName}`));
+                const { type } = await vscode.workspace.fs.stat(vscode.Uri.file(configFilePath));
                 if (type === vscode.FileType.File) {
                     vscode.window.showErrorMessage('A file with that name already exists');
                     return;
@@ -327,10 +339,17 @@ export const registerCommands = (context: vscode.ExtensionContext, configuration
                     location: vscode.ProgressLocation.Notification,
                     title: 'Creating new config file...'
                 }, async () => {
-                    await executeCommand(`${devProxyExe} config new ${fileName}`, { cwd: vscode.workspace.workspaceFolders?.[0].uri.fsPath });
+                    // Create .devproxy folder if it doesn't exist
+                    try {
+                        await vscode.workspace.fs.createDirectory(vscode.Uri.file(devproxyFolder));
+                    } catch (error) {
+                        // Folder might already exist, ignore error
+                    }
+
+                    await executeCommand(`${devProxyExe} config new .devproxy/${fileName}`, { cwd: workspaceFolder });
                 });
 
-                const configUri = vscode.Uri.file(`${vscode.workspace.workspaceFolders?.[0].uri.fsPath}/${fileName}`);
+                const configUri = vscode.Uri.file(configFilePath);
                 const document = await vscode.workspace.openTextDocument(configUri);
                 await vscode.window.showTextDocument(document);
             } catch (error) {

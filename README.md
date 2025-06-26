@@ -31,7 +31,7 @@ The following sections describe the features that the extension contributes to V
 - `Dev Proxy Toolkit: Start recording` - Only available when Dev Proxy is running
 - `Dev Proxy Toolkit: Stop recording`- Only available when Dev Proxy is recording
 - `Dev Proxy Toolkit: Open configuration file`- Only available when Dev Proxy is installed
-- `Dev Proxy Toolkit: Create configuration file`- Only available when Dev Proxy is installed
+- `Dev Proxy Toolkit: Create configuration file` - Only available when Dev Proxy is installed. Creates configuration files in the `.devproxy` folder at the workspace root
 - `Dev Proxy Toolkit: Discover URLs to watch` - Only available when Dev Proxy is not running
 - `Dev Proxy Toolkit: Generate JWT` - Only available when Dev Proxy is installed
 
