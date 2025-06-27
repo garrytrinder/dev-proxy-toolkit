@@ -20,7 +20,7 @@ export const testDevProxyInstall: DevProxyInstall = {
   isRunning: false,
   outdatedVersion: '0.14.1',
   platform: 'win32',
-  version: '0.14.1',
+  version: '0.13.0',
 };
 
 suite('extension', () => {
