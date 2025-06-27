@@ -13,6 +13,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - Notification: Fixed issue where upgrade notification would show when latest version is already installed
 
+## [0.26.2] - 2025-06-27
+
+### Changed:
+
+- Snippets: Updated all snippets to use `v0.29.2` schema
+
 ## [0.26.0] - 2025-06-26
 
 ### Added:
