@@ -122,10 +122,11 @@ export const executeCommand = async (cmd: string, options: ExecOptions = {}): Pr
   return new Promise((resolve, reject) => {
     exec(cmd, options, (error, stdout, stderr) => {
       if (error) {
-        reject(`exec error: ${error}`);
-      } else if (stderr) {
-        reject(`stderr: ${stderr}`);
+        // Command failed with non-zero exit code
+        reject(`exec error: ${error}${stderr ? `\nstderr: ${stderr}` : ''}`);
       } else {
+        // Command succeeded (exit code 0), return stdout
+        // Note: Many tools like brew send informational messages to stderr even on success
         resolve(stdout);
       }
     });
