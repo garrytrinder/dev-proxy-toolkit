@@ -625,4 +625,34 @@ suite('extractVersionFromOutput', () => {
     const result = detect.extractVersionFromOutput(output);
     assert.strictEqual(result, '1.0.0-beta.1');
   });
+
+  test('should not extract version from file paths in error responses (issue #286)', () => {
+    const output = `info    1 error responses loaded from /opt/homebrew/Cellar/dev-proxy/v0.29.1/devproxy-errors.json`;
+    
+    const result = detect.extractVersionFromOutput(output);
+    assert.strictEqual(result, '');
+  });
+
+  test('should extract version from update notification line, ignoring file paths (issue #286)', () => {
+    const output = `info    1 error responses loaded from /opt/homebrew/Cellar/dev-proxy/v0.29.0/devproxy-errors.json
+info    v0.29.1`;
+    
+    const result = detect.extractVersionFromOutput(output);
+    assert.strictEqual(result, '0.29.1');
+  });
+
+  test('should not extract version from Windows file paths', () => {
+    const output = `info    1 error responses loaded from C:\\Program Files\\dev-proxy\\v0.29.1\\devproxy-errors.json`;
+    
+    const result = detect.extractVersionFromOutput(output);
+    assert.strictEqual(result, '');
+  });
+
+  test('should extract version from actual update notification with Windows paths in earlier lines', () => {
+    const output = `info    1 error responses loaded from C:\\Program Files\\dev-proxy\\v0.29.0\\devproxy-errors.json
+info    v0.29.1`;
+    
+    const result = detect.extractVersionFromOutput(output);
+    assert.strictEqual(result, '0.29.1');
+  });
 });

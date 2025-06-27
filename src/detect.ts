@@ -41,11 +41,29 @@ export const extractVersionFromOutput = (output: string): string => {
         return '';
     }
     
-    // Extract version number using semver pattern
-    // Matches: major.minor.patch[-prerelease][+build] but only captures up to prerelease
-    const semverRegex = /v?(\d+\.\d+\.\d+(?:-[a-zA-Z0-9.-]+)?)(?:\+[a-zA-Z0-9.-]+)?/;
-    const match = output.match(semverRegex);
-    return match ? match[1] : '';
+    // Split into lines and look for version information on dedicated lines
+    // This avoids extracting versions from file paths like /opt/homebrew/Cellar/dev-proxy/v0.29.1/devproxy-errors.json
+    const lines = output.split('\n');
+    
+    // Look for lines that contain version information (not file paths)
+    for (const line of lines) {
+        const trimmedLine = line.trim();
+        
+        // Skip lines that contain file paths (indicated by slashes and common path patterns)
+        if (trimmedLine.includes('/') || trimmedLine.includes('\\') || trimmedLine.includes('loaded from')) {
+            continue;
+        }
+        
+        // Look for version pattern on non-filepath lines
+        // Matches: major.minor.patch[-prerelease][+build] but only captures up to prerelease
+        const semverRegex = /v?(\d+\.\d+\.\d+(?:-[a-zA-Z0-9.-]+)?)(?:\+[a-zA-Z0-9.-]+)?/;
+        const match = trimmedLine.match(semverRegex);
+        if (match) {
+            return match[1];
+        }
+    }
+    
+    return '';
 };
 
 export const getOutdatedVersion = async (devProxyExe: string): Promise<string> => {
