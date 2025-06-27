@@ -626,3 +626,80 @@ suite('extractVersionFromOutput', () => {
     assert.strictEqual(result, '1.0.0-beta.1');
   });
 });
+
+suite('detectDevProxyInstall', () => {
+  test('should not mark as outdated when current version equals outdated version', async () => {
+    // Mock getVersion to return 0.29.1
+    const getVersionStub = sinon.stub(detect, 'getVersion').resolves('0.29.1');
+    
+    // Mock getOutdatedVersion to return 0.29.1 (same as current)
+    const getOutdatedVersionStub = sinon.stub(detect, 'getOutdatedVersion').resolves('0.29.1');
+    
+    // Mock isDevProxyRunning to return false
+    const isDevProxyRunningStub = sinon.stub(detect, 'isDevProxyRunning').resolves(false);
+    
+    try {
+      const result = await detect.detectDevProxyInstall(VersionPreference.Stable);
+      
+      // Should be installed but not outdated since versions are the same
+      assert.strictEqual(result.isInstalled, true);
+      assert.strictEqual(result.version, '0.29.1');
+      assert.strictEqual(result.outdatedVersion, '0.29.1');
+      assert.strictEqual(result.isOutdated, false, 'Should not be marked as outdated when current version equals outdated version');
+    } finally {
+      getVersionStub.restore();
+      getOutdatedVersionStub.restore();
+      isDevProxyRunningStub.restore();
+    }
+  });
+
+  test('should mark as outdated when current version is older than outdated version', async () => {
+    // Mock getVersion to return 0.28.0
+    const getVersionStub = sinon.stub(detect, 'getVersion').resolves('0.28.0');
+    
+    // Mock getOutdatedVersion to return 0.29.1 (newer)
+    const getOutdatedVersionStub = sinon.stub(detect, 'getOutdatedVersion').resolves('0.29.1');
+    
+    // Mock isDevProxyRunning to return false
+    const isDevProxyRunningStub = sinon.stub(detect, 'isDevProxyRunning').resolves(false);
+    
+    try {
+      const result = await detect.detectDevProxyInstall(VersionPreference.Stable);
+      
+      // Should be installed and outdated since 0.28.0 < 0.29.1
+      assert.strictEqual(result.isInstalled, true);
+      assert.strictEqual(result.version, '0.28.0');
+      assert.strictEqual(result.outdatedVersion, '0.29.1');
+      assert.strictEqual(result.isOutdated, true, 'Should be marked as outdated when current version is older');
+    } finally {
+      getVersionStub.restore();
+      getOutdatedVersionStub.restore();
+      isDevProxyRunningStub.restore();
+    }
+  });
+
+  test('should not mark as outdated when no outdated version is available', async () => {
+    // Mock getVersion to return 0.29.1
+    const getVersionStub = sinon.stub(detect, 'getVersion').resolves('0.29.1');
+    
+    // Mock getOutdatedVersion to return empty string (no updates available)
+    const getOutdatedVersionStub = sinon.stub(detect, 'getOutdatedVersion').resolves('');
+    
+    // Mock isDevProxyRunning to return false
+    const isDevProxyRunningStub = sinon.stub(detect, 'isDevProxyRunning').resolves(false);
+    
+    try {
+      const result = await detect.detectDevProxyInstall(VersionPreference.Stable);
+      
+      // Should be installed but not outdated since no update is available
+      assert.strictEqual(result.isInstalled, true);
+      assert.strictEqual(result.version, '0.29.1');
+      assert.strictEqual(result.outdatedVersion, '');
+      assert.strictEqual(result.isOutdated, false, 'Should not be marked as outdated when no update is available');
+    } finally {
+      getVersionStub.restore();
+      getOutdatedVersionStub.restore();
+      isDevProxyRunningStub.restore();
+    }
+  });
+});
