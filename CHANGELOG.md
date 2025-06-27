@@ -38,7 +38,6 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Snippets: Added `devproxy-plugin-openai-telemetry-config` - OpenAITelemetryPlugin config section
 - Snippets: Added `devproxy-plugin-prices-file` - OpenAITelemetryPlugin telemetry prices file
 - Snippets: Added `devproxy-plugin-price` - OpenAITelemetryPlugin telemetry model price
-- Code
 
 ### Changed:
 

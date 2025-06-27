@@ -69,6 +69,10 @@ Shown when the active document is a Dev Proxy configuration file
 - New version detection
 - Upgrade Dev Proxy
 
+### Problem Watcher
+
+- `$devproxy-watch` - Used for background tasks to tell VS Code when Dev Proxy has started
+
 ### Settings
 
 - `dev-proxy-toolkit.version` - Determines the version to use when Dev Proxy and Dev Proxy Beta are installed side by side. Can be `stable` (default) or `beta`.
@@ -169,6 +173,8 @@ Shown when the active document is a Dev Proxy configuration file
 | `devproxy-reporter-json` | JsonReporter instance |
 | `devproxy-reporter-markdown` | MarkdownReporter instance |
 | `devproxy-reporter-plain-text` | PlainTextReporter instance |
+| `devproxy-task-start` | Start Dev Proxy VS Code Task |
+| `devproxy-task-stop` | Stop Dev Proxy VS Code Task |
 
 ### Status Bar
 
@@ -178,3 +184,30 @@ Shown when the active document is a Dev Proxy configuration file
 - Display radio tower when Dev Proxy is running
 - Display error is Dev Proxy is not installed
 - Upgrade Dev Proxy progress
+
+### Task Provider
+
+- Start Dev Proxy Task
+- Stop Dev Proxy Task
+
+Example `.vscode/tasks.json`:
+
+```json
+{
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "label": "Start Dev Proxy",
+      "type": "devproxy",
+      "command": "start",
+      "isBackground": true,
+      "problemMatcher": "$devproxy-watch"
+    },
+    {
+      "label": "Stop Dev Proxy",
+      "type": "devproxy",
+      "command": "stop"
+    }
+  ]
+}
+```

@@ -85,12 +85,7 @@
   },
   "Price": {
     "prefix": "devproxy-price",
-    "body": [
-      "\"gpt-4\": {",
-      "\t\"input\": 0.03,",
-      "\t\"output\": 0.06",
-      "}"
-    ],
+    "body": ["\"gpt-4\": {", "\t\"input\": 0.03,", "\t\"output\": 0.06", "}"],
     "description": "Dev Proxy price"
   },
   "Request": {
@@ -124,12 +119,7 @@
   },
   "ResponseHeader": {
     "prefix": "devproxy-response-header",
-    "body": [
-      "{",
-      "\t\"name\": \"$1\",",
-      "\t\"value\": \"$2\"",
-      "}"
-    ],
+    "body": ["{", "\t\"name\": \"$1\",", "\t\"value\": \"$2\"", "}"],
     "description": "Dev Proxy response header"
   },
   "Rewrite": {
@@ -1086,5 +1076,29 @@
       "}"
     ],
     "description": "PlainTextReporter instance"
+  },
+  "StartTask": {
+    "prefix": "devproxy-task-start",
+    "body": [
+      "{",
+      "\t\"label\": \"Start Dev Proxy\",",
+      "\t\"type\": \"devproxy\",",
+      "\t\"command\": \"start\",",
+      "\t\"isBackground\": true,",
+      "\t\"problemMatcher\": \"\\$devproxy-watch\"",
+      "}"
+    ],
+    "description": "Start Dev Proxy VS Code Task"
+  },
+  "StopTask": {
+    "prefix": "devproxy-task-stop",
+    "body": [
+      "{",
+      "\t\"label\": \"Stop Dev Proxy\",",
+      "\t\"type\": \"devproxy\",",
+      "\t\"command\": \"stop\"",
+      "}"
+    ],
+    "description": "Stop Dev Proxy VS Code Task"
   }
 }
