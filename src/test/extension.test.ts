@@ -512,6 +512,31 @@ suite('schema', () => {
     });
     assert.deepStrictEqual(actual, expected);
   });
+
+  test('should not show warning when $schema property matches installed v0.29.2 version', async () => {
+    const context = await vscode.extensions.getExtension('garrytrinder.dev-proxy-toolkit')?.activate() as vscode.ExtensionContext;
+    await context.globalState.update('devProxyInstall', {
+      isBeta: false,
+      isInstalled: true,
+      isOutdated: false,
+      isRunning: false,
+      platform: 'win32',
+      outdatedVersion: '',
+      version: '0.29.2',
+    } as DevProxyInstall);
+
+    const fileName = 'config-schema-v0.29.2.json';
+    const filePath = path.resolve(__dirname, 'examples', fileName);
+    const document = await vscode.workspace.openTextDocument(filePath);
+    await sleep(1000);
+    const diagnostics = vscode.languages.getDiagnostics(document.uri);
+
+    const expected = false;
+    const actual = diagnostics.some((diagnostic) => {
+      return diagnostic.severity === vscode.DiagnosticSeverity.Warning;
+    });
+    assert.deepStrictEqual(actual, expected);
+  });
 });
 
 suite('diagnostic ranges', () => {
