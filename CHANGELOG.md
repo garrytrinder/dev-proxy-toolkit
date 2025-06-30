@@ -7,6 +7,15 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 > **Note**: odd version numbers, for example, `0.13.0`, are not included in this changelog. They are used to test the new features and fixes before the final release.
 
+## [0.27.0] - Unreleased
+
+### Added:
+
+- Task provider: Added `devproxy` task provider to run Dev Proxy commands
+- Problem watcher: Added `$devproxy-watch`
+- Snippets: Added `devproxy-task-start` - Start Dev Proxy VS Code Task
+- Snippets: Added `devproxy-task-stop` - Stop Dev Proxy VS Code Task
+
 ## [0.26.3] - 2025-06-27
 
 ### Fixed:
@@ -56,7 +65,6 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Snippets: Added `devproxy-plugin-openai-telemetry-config` - OpenAITelemetryPlugin config section
 - Snippets: Added `devproxy-plugin-prices-file` - OpenAITelemetryPlugin telemetry prices file
 - Snippets: Added `devproxy-plugin-price` - OpenAITelemetryPlugin telemetry model price
-- Code
 
 ### Changed:
 

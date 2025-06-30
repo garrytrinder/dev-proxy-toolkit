@@ -1086,5 +1086,29 @@
       "}"
     ],
     "description": "PlainTextReporter instance"
+  },
+  "StartTask": {
+    "prefix": "devproxy-task-start",
+    "body": [
+      "{",
+      "\t\"label\": \"Start Dev Proxy\",",
+      "\t\"type\": \"devproxy\",",
+      "\t\"command\": \"start\",",
+      "\t\"isBackground\": true,",
+      "\t\"problemMatcher\": \"\\$devproxy-watch\"",
+      "}"
+    ],
+    "description": "Start Dev Proxy VS Code Task"
+  },
+  "StopTask": {
+    "prefix": "devproxy-task-stop",
+    "body": [
+      "{",
+      "\t\"label\": \"Stop Dev Proxy\",",
+      "\t\"type\": \"devproxy\",",
+      "\t\"command\": \"stop\"",
+      "}"
+    ],
+    "description": "Stop Dev Proxy VS Code Task"
   }
 }
