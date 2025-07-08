@@ -12,6 +12,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Changed:
 
 - Snippets: All snippets that reference schemas updated to use `v1.0.0` schema
+- Winget: Update to use new package identifiers for stable and beta versions
+  - Stable: `DevProxy.DevProxy`
+  - Beta: `DevProxy.DevProxy.Beta`
 
 ## [0.27.0] - 2025-06-30
 

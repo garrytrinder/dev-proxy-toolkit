@@ -1,6 +1,9 @@
 import * as vscode from 'vscode';
 import { pluginDocs } from './constants';
-import { VersionPreference } from './enums';
+import { 
+  VersionPreference, 
+  WingetPackageIdentifier
+ } from './enums';
 import { executeCommand, isConfigFile, openUpgradeDocumentation, upgradeDevProxyWithPackageManager } from './helpers';
 import { isDevProxyRunning, getDevProxyExe } from './detect';
 
@@ -14,7 +17,7 @@ export const registerCommands = (context: vscode.ExtensionContext, configuration
 
             // we are on windows so we can use winget
             if (platform === 'win32') {
-                const id = versionPreference === VersionPreference.Stable ? 'Microsoft.DevProxy' : 'Microsoft.DevProxy.Beta';
+                const id = versionPreference === VersionPreference.Stable ? WingetPackageIdentifier.Stable : WingetPackageIdentifier.Beta;
                 // we first need to check if winget is installed, it is bundled with windows 11 but not windows 10
                 try {
                     await executeCommand('winget --version');
@@ -91,7 +94,7 @@ export const registerCommands = (context: vscode.ExtensionContext, configuration
             
             // Handle Windows
             if (platform === 'win32') {
-                const packageId = versionPreference === VersionPreference.Stable ? 'Microsoft.DevProxy' : 'Microsoft.DevProxy.Beta';
+                const packageId = versionPreference === VersionPreference.Stable ? WingetPackageIdentifier.Stable : WingetPackageIdentifier.Beta;
                 const upgradeCommand = `winget upgrade ${packageId} --silent`;
                 const isBeta = versionPreference === VersionPreference.Beta;
                 
