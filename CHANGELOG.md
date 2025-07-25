@@ -7,11 +7,15 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 > **Note**: odd version numbers, for example, `0.13.0`, are not included in this changelog. They are used to test the new features and fixes before the final release.
 
-## [1.0.0] - Unreleased
+## [1.0.1] - Unreleased
 
 ### Changed:
 
 - Snippets: All snippets that reference schemas updated to use `v1.0.0` schema
+
+### Fixed:
+
+- Runtime error: Fixed issue where the extension would throw an uncaught exception when running
 
 ## [0.27.0] - 2025-06-30
 
