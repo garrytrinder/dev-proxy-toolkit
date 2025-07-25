@@ -10,6 +10,9 @@ import { VersionPreference } from './enums';
 import { registerMcpServer } from './mcp';
 import { registerTaskProvider } from './taskprovider';
 
+// Global variable to track the interval
+let statusBarInterval: NodeJS.Timeout | undefined;
+
 export const activate = async (context: vscode.ExtensionContext): Promise<vscode.ExtensionContext> => {
 
   const configuration = vscode.workspace.getConfiguration('dev-proxy-toolkit');
@@ -19,6 +22,8 @@ export const activate = async (context: vscode.ExtensionContext): Promise<vscode
   await updateGlobalState(context, versionPreference);
   
   const collection = vscode.languages.createDiagnosticCollection('dev-proxy-toolkit');
+  // Add collection to subscriptions for automatic disposal
+  context.subscriptions.push(collection);
   
   registerDocumentListeners(context, collection);
   registerCodeActions(context);
@@ -32,9 +37,33 @@ export const activate = async (context: vscode.ExtensionContext): Promise<vscode
 
   updateStatusBar(context, statusBar);
 
-  setInterval(() => statusBarLoop(context, statusBar, versionPreference), 5000);
+  // Store the interval reference for proper cleanup
+  statusBarInterval = setInterval(() => {
+    // Add error handling to prevent uncaught exceptions
+    try {
+      statusBarLoop(context, statusBar, versionPreference);
+    } catch (error) {
+      console.error('Error in statusBarLoop:', error);
+    }
+  }, 5000);
+
+  // Add the interval to subscriptions for automatic cleanup
+  context.subscriptions.push({
+    dispose: () => {
+      if (statusBarInterval) {
+        clearInterval(statusBarInterval);
+        statusBarInterval = undefined;
+      }
+    }
+  });
 
   return context;
 };
 
-export const deactivate = () => { };
+export const deactivate = () => {
+  // Clean up the interval if it's still running
+  if (statusBarInterval) {
+    clearInterval(statusBarInterval);
+    statusBarInterval = undefined;
+  }
+};

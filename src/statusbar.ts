@@ -46,10 +46,24 @@ export const handleStatusBarUpdate = (context: vscode.ExtensionContext, statusBa
 };
 
 export const statusBarLoop = async (context: vscode.ExtensionContext, statusBar: vscode.StatusBarItem, versionPreference: VersionPreference) => {
-    const devProxyExe = getDevProxyExe(versionPreference);
-    const isRunning = await isDevProxyRunning(devProxyExe);
-    const globalState = context.globalState.get<DevProxyInstall>('devProxyInstall');
-    await context.globalState.update('devProxyInstall', { ...globalState, isRunning });
-    vscode.commands.executeCommand('setContext', 'isDevProxyRunning', isRunning);
-    updateStatusBar(context, statusBar);
+    try {
+        // Check if the context is still valid
+        if (!context || !statusBar) {
+            return;
+        }
+
+        const devProxyExe = getDevProxyExe(versionPreference);
+        const isRunning = await isDevProxyRunning(devProxyExe);
+        const globalState = context.globalState.get<DevProxyInstall>('devProxyInstall');
+        
+        // Only update if context is still valid
+        if (context.globalState) {
+            await context.globalState.update('devProxyInstall', { ...globalState, isRunning });
+            vscode.commands.executeCommand('setContext', 'isDevProxyRunning', isRunning);
+            updateStatusBar(context, statusBar);
+        }
+    } catch (error) {
+        // Log but don't throw to prevent extension crashes
+        console.error('Error in statusBarLoop:', error);
+    }
 };
