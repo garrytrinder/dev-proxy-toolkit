@@ -60,8 +60,7 @@ Shown when the active document is a Dev Proxy configuration file
 
 ### MCP Server
 
-- Tool: Find Dev Proxy documentation
-- Tool: Get the installed Dev Proxy version
+See [Dev Proxy MCP Server](https://github.com/dev-proxy-tools/mcp) for more information on available tools.
 
 ### Notifications
 
