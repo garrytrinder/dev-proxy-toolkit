@@ -9,6 +9,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [1.0.1] - Unreleased
 
+### Added:
+
+- Code actions: Support for JSONC files
+- Code lens: Support for JSONC files
+
 ### Changed:
 
 - Snippets: All snippets that reference schemas updated to use `v1.0.0` schema

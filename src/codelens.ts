@@ -10,6 +10,13 @@ export const registerCodeLens = (context: vscode.ExtensionContext) => {
       pluginLensProvider
     )
   );
+
+  context.subscriptions.push(
+    vscode.languages.registerCodeLensProvider(
+      {scheme: 'file', language: 'jsonc'},
+      pluginLensProvider,
+    ),
+  );
 };
 
 export const pluginLensProvider: vscode.CodeLensProvider = {
