@@ -733,6 +733,32 @@
     ],
     "description": "LanguageModelFailurePlugin config section"
   },
+  "LanguageModelRateLimitingPlugin": {
+    "prefix": "devproxy-plugin-language-model-rate-limiting",
+    "body": [
+      "{",
+      "\t\"name\": \"LanguageModelRateLimitingPlugin\",",
+      "\t\"enabled\": true,",
+      "\t\"pluginPath\": \"~appFolder/plugins/DevProxy.Plugins.dll\",",
+      "\t\"configSection\": \"languageModelRateLimitingPlugin\"",
+      "}"
+    ],
+    "description": "LanguageModelRateLimitingPlugin instance"
+  },
+  "LanguageModelRateLimitingPluginConfig": {
+    "prefix": "devproxy-plugin-language-model-rate-limiting-config",
+    "body": [
+      "\"languageModelRateLimitingPlugin\": {",
+      "\t\"\\$schema\": \"https://raw.githubusercontent.com/dotnet/dev-proxy/main/schemas/v1.0.0/languagemodelratelimitingplugin.schema.json\",",
+      "\t\"promptTokenLimit\": 5000,",
+      "\t\"completionTokenLimit\": 5000,",
+      "\t\"resetTimeWindowSeconds\": 60,",
+      "\t\"whenLimitExceeded\": \"Throttle\",",
+      "\t\"headerRetryAfter\": \"retry-after\"",
+      "}"
+    ],
+    "description": "LanguageModelRateLimitingPlugin config section"
+  },
   "MinimalCsomPermissionsPlugin": {
     "prefix": "devproxy-plugin-minimal-csom-permissions",
     "body": [
