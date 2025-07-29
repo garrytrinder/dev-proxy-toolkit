@@ -314,7 +314,7 @@ export const registerCommands = (context: vscode.ExtensionContext, configuration
             // we do this after the user has entered the filename 
             try {
                 const workspaceFolder = vscode.workspace.workspaceFolders?.[0].uri.fsPath;
-                const { type } = await vscode.workspace.fs.stat(vscode.Uri.file(`${workspaceFolder}/${fileName}`));
+                const { type } = await vscode.workspace.fs.stat(vscode.Uri.file(`${workspaceFolder}/.devproxy/${fileName}`));
                 if (type === vscode.FileType.File) {
                     vscode.window.showErrorMessage('A file with that name already exists');
                     return;
@@ -322,15 +322,26 @@ export const registerCommands = (context: vscode.ExtensionContext, configuration
             } catch { } // file does not exist, continue
 
             try {
+                // ensure .devproxy folder exists
+                const workspaceFolder = vscode.workspace.workspaceFolders?.[0].uri.fsPath;
+                const devProxyFolder = vscode.Uri.file(`${workspaceFolder}/.devproxy`);
+                
+                try {
+                    await vscode.workspace.fs.stat(devProxyFolder);
+                } catch {
+                    // folder doesn't exist, create it
+                    await vscode.workspace.fs.createDirectory(devProxyFolder);
+                }
+
                 // show progress
                 await vscode.window.withProgress({
                     location: vscode.ProgressLocation.Notification,
                     title: 'Creating new config file...'
                 }, async () => {
-                    await executeCommand(`${devProxyExe} config new ${fileName}`, { cwd: vscode.workspace.workspaceFolders?.[0].uri.fsPath });
+                    await executeCommand(`${devProxyExe} config new ${fileName}`, { cwd: `${workspaceFolder}/.devproxy` });
                 });
 
-                const configUri = vscode.Uri.file(`${vscode.workspace.workspaceFolders?.[0].uri.fsPath}/${fileName}`);
+                const configUri = vscode.Uri.file(`${workspaceFolder}/.devproxy/${fileName}`);
                 const document = await vscode.workspace.openTextDocument(configUri);
                 await vscode.window.showTextDocument(document);
             } catch (error) {
