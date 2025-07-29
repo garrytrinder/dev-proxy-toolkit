@@ -1,6 +1,12 @@
 import * as vscode from 'vscode';
 import parse from 'json-to-ast';
-import { exec, ExecOptions } from 'child_process';
+import {exec, ExecOptions} from 'child_process';
+import {
+  HomebrewPackageIdentifier,
+  PackageManager,
+  VersionPreference,
+  WingetPackageIdentifier,
+} from './enums';
 
 export const getASTNode = (
   children: parse.PropertyNode[],
@@ -203,4 +209,21 @@ export const upgradeDevProxyWithPackageManager = async (
 export const openUpgradeDocumentation = () => {
   const url = 'https://aka.ms/devproxy/upgrade';
   vscode.env.openExternal(vscode.Uri.parse(url));
+};
+
+export const getPackageIdentifier = (
+  versionPreference: VersionPreference,
+  packageManager: PackageManager,
+): string | undefined => {
+  if (packageManager === PackageManager.Homebrew) {
+    return versionPreference === VersionPreference.Stable
+      ? HomebrewPackageIdentifier.Stable
+      : HomebrewPackageIdentifier.Beta;
+  }
+
+  if (packageManager === PackageManager.Winget) {
+    return versionPreference === VersionPreference.Stable
+      ? WingetPackageIdentifier.Stable
+      : WingetPackageIdentifier.Beta;
+  }
 };

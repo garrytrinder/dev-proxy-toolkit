@@ -1,13 +1,16 @@
 import * as vscode from 'vscode';
 import { pluginDocs } from './constants';
-import { VersionPreference } from './enums';
-import { executeCommand, isConfigFile, openUpgradeDocumentation, upgradeDevProxyWithPackageManager, getASTNode, getRangeFromASTNode } from './helpers';
+import { 
+  PackageManager,
+  VersionPreference, 
+ } from './enums';
+import { executeCommand, getPackageIdentifier, isConfigFile, openUpgradeDocumentation, upgradeDevProxyWithPackageManager, getASTNode, getRangeFromASTNode } from './helpers';
 import { isDevProxyRunning, getDevProxyExe } from './detect';
 import parse from 'json-to-ast';
 
 export const registerCommands = (context: vscode.ExtensionContext, configuration: vscode.WorkspaceConfiguration) => {
     const versionPreference = configuration.get('version') as VersionPreference;
-    const devProxyExe = getDevProxyExe(configuration.get('version') as VersionPreference);
+    const devProxyExe = getDevProxyExe(versionPreference);
 
     context.subscriptions.push(
         vscode.commands.registerCommand('dev-proxy-toolkit.install', async (platform: NodeJS.Platform) => {
@@ -15,7 +18,7 @@ export const registerCommands = (context: vscode.ExtensionContext, configuration
 
             // we are on windows so we can use winget
             if (platform === 'win32') {
-                const id = versionPreference === VersionPreference.Stable ? 'Microsoft.DevProxy' : 'Microsoft.DevProxy.Beta';
+                const id = getPackageIdentifier(versionPreference, PackageManager.Winget);
                 // we first need to check if winget is installed, it is bundled with windows 11 but not windows 10
                 try {
                     await executeCommand('winget --version');
@@ -38,7 +41,7 @@ export const registerCommands = (context: vscode.ExtensionContext, configuration
 
             // we are on macos so we can use brew
             if (platform === 'darwin') {
-                const id = versionPreference === VersionPreference.Stable ? 'dev-proxy' : 'dev-proxy-beta';
+                const id = getPackageIdentifier(versionPreference, PackageManager.Homebrew);
                 // check if brew is installed
                 try {
                     await executeCommand('brew --version');
@@ -187,7 +190,12 @@ export const registerCommands = (context: vscode.ExtensionContext, configuration
             
             // Handle Windows
             if (platform === 'win32') {
-                const packageId = versionPreference === VersionPreference.Stable ? 'Microsoft.DevProxy' : 'Microsoft.DevProxy.Beta';
+                const packageId = getPackageIdentifier(versionPreference, PackageManager.Winget);
+                if (!packageId) {
+                  openUpgradeDocumentation();
+                  return;
+                }
+                
                 const upgradeCommand = `winget upgrade ${packageId} --silent`;
                 const isBeta = versionPreference === VersionPreference.Beta;
                 
@@ -200,7 +208,12 @@ export const registerCommands = (context: vscode.ExtensionContext, configuration
             
             // Handle macOS
             if (platform === 'darwin') {
-                const packageId = versionPreference === VersionPreference.Stable ? 'dev-proxy' : 'dev-proxy-beta';
+                const packageId = getPackageIdentifier(versionPreference, PackageManager.Homebrew);
+                if (!packageId) {
+                    openUpgradeDocumentation();
+                    return;
+                }
+
                 const upgradeCommand = `brew upgrade ${packageId}`;
                 const isBeta = versionPreference === VersionPreference.Beta;
                 
