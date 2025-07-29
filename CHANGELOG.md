@@ -13,6 +13,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - Code actions: Support for JSONC files
 - Code lens: Support for JSONC files
+- Diagnostics: Added warnings for plugins that require `languageModel.enabled: true` when not configured
+- Code actions: Added quick-fix to automatically add or update `languageModel.enabled: true` configuration
+- Commands: Added `dev-proxy-toolkit.addLanguageModelConfig` command to add language model configuration
+- Plugin constants: Added `requiresLanguageModel` property to identify plugins requiring language model functionality
 - Snippets: Added `devproxy-plugin-language-model-failure` - LanguageModelFailurePlugin instance
 - Snippets: Added `devproxy-plugin-language-model-failure-config` - LanguageModelFailurePlugin config section
 - Snippets: Added `devproxy-plugin-language-model-rate-limiting` - LanguageModelRateLimitingPlugin instance
