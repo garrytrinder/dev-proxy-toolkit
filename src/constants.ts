@@ -111,6 +111,13 @@ export const pluginSnippets: PluginSnippets = {
       required: false,
     }
   },
+  LanguageModelFailurePlugin: {
+    instance: 'devproxy-plugin-language-model-failure',
+    config: {
+      name: 'devproxy-plugin-language-model-failure-config',
+      required: true,
+    }
+  },
   LatencyPlugin: {
     instance: 'devproxy-plugin-latency',
     config: {
@@ -289,6 +296,10 @@ export const pluginDocs: PluginDocs = {
   HttpFileGeneratorPlugin: {
     name: 'HTTP File Generator Plugin',
     url: 'https://learn.microsoft.com/microsoft-cloud/dev/dev-proxy/technical-reference/httpfilegeneratorplugin',
+  },
+  LanguageModelFailurePlugin: {
+    name: 'Language Model Failure Plugin',
+    url: 'https://learn.microsoft.com/microsoft-cloud/dev/dev-proxy/technical-reference/languagemodelfailureplugin',
   },
   LatencyPlugin: {
     name: 'Latency Plugin',
