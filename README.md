@@ -138,6 +138,8 @@ See [Dev Proxy MCP Server](https://github.com/dev-proxy-tools/mcp) for more info
 | `devproxy-plugin-http-file-generator-config` | HttpFileGeneratorPlugin config section |
 | `devproxy-plugin-latency` | LatencyPlugin instance |
 | `devproxy-plugin-latency-config` | LatencyPlugin config section |
+| `devproxy-plugin-language-model-failure` | LanguageModelFailurePlugin instance |
+| `devproxy-plugin-language-model-failure-config` | LanguageModelFailurePlugin config section |
 | `devproxy-plugin-minimal-csom-permissions` | MinimalCsomPermissionsPlugin instance |
 | `devproxy-plugin-minimal-csom-permissions-config` | MinimalCsomPermissionsPlugin config section |
 | `devproxy-plugin-minimal-permissions` | MinimalPermissionsPlugin instance |

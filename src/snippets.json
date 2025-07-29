@@ -707,6 +707,32 @@
     ],
     "description": "LatencyPlugin config section"
   },
+  "LanguageModelFailurePlugin": {
+    "prefix": "devproxy-plugin-language-model-failure",
+    "body": [
+      "{",
+      "\t\"name\": \"LanguageModelFailurePlugin\",",
+      "\t\"enabled\": true,",
+      "\t\"pluginPath\": \"~appFolder/plugins/DevProxy.Plugins.dll\",",
+      "\t\"configSection\": \"languageModelFailurePlugin\"",
+      "}"
+    ],
+    "description": "LanguageModelFailurePlugin instance"
+  },
+  "LanguageModelFailurePluginConfig": {
+    "prefix": "devproxy-plugin-language-model-failure-config",
+    "body": [
+      "\"languageModelFailurePlugin\": {",
+      "\t\"\\$schema\": \"https://raw.githubusercontent.com/dotnet/dev-proxy/main/schemas/v1.0.0/languagemodelfailureplugin.schema.json\",",
+      "\t\"rate\": 20,",
+      "\t\"failures\": [",
+      "\t\t\"rate-limit-reached\",",
+      "\t\t\"quota-exceeded\"",
+      "\t]",
+      "}"
+    ],
+    "description": "LanguageModelFailurePlugin config section"
+  },
   "MinimalCsomPermissionsPlugin": {
     "prefix": "devproxy-plugin-minimal-csom-permissions",
     "body": [

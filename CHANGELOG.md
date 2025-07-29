@@ -13,6 +13,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - Code actions: Support for JSONC files
 - Code lens: Support for JSONC files
+- Snippets: Added `devproxy-plugin-language-model-failure` - LanguageModelFailurePlugin instance
+- Snippets: Added `devproxy-plugin-language-model-failure-config` - LanguageModelFailurePlugin config section
 
 ### Changed:
 
