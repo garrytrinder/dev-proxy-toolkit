@@ -724,7 +724,6 @@
     "body": [
       "\"languageModelFailurePlugin\": {",
       "\t\"\\$schema\": \"https://raw.githubusercontent.com/dotnet/dev-proxy/main/schemas/v1.0.0/languagemodelfailureplugin.schema.json\",",
-      "\t\"rate\": 20,",
       "\t\"failures\": [",
       "\t\t\"rate-limit-reached\",",
       "\t\t\"quota-exceeded\"",
