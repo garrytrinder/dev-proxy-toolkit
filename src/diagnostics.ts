@@ -22,6 +22,7 @@ export const updateConfigFileDiagnostics = (
   checkSchemaCompatibility(documentNode, devProxyInstall, diagnostics);
   checkPlugins(pluginsNode, diagnostics, documentNode, devProxyInstall);
   checkConfigSection(documentNode, diagnostics);
+  checkLanguageModelRequirements(documentNode, diagnostics);
 
   collection.set(document.uri, diagnostics);
 };
@@ -492,6 +493,79 @@ function checkDeprecatedPluginPath(
         diagnostic.code = 'deprecatedPluginPath';
         diagnostics.push(diagnostic);
       }
+    }
+  });
+}
+
+function checkLanguageModelRequirements(
+  documentNode: parse.ObjectNode,
+  diagnostics: vscode.Diagnostic[],
+) {
+  const pluginsNode = getPluginsNode(documentNode);
+  
+  if (!pluginsNode || pluginsNode.value.type !== 'Array') {
+    return;
+  }
+
+  const pluginNodes = (pluginsNode.value as parse.ArrayNode)
+    .children as parse.ObjectNode[];
+
+  // Check if languageModel is enabled
+  const languageModelNode = getASTNode(
+    documentNode.children,
+    'Identifier',
+    'languageModel'
+  );
+  let isLanguageModelEnabled = false;
+  
+  if (languageModelNode && languageModelNode.value.type === 'Object') {
+    const languageModelObjectNode = languageModelNode.value as parse.ObjectNode;
+    const enabledNode = getASTNode(
+      languageModelObjectNode.children,
+      'Identifier',
+      'enabled'
+    );
+    if (enabledNode && enabledNode.value.type === 'Literal') {
+      isLanguageModelEnabled = (enabledNode.value as parse.LiteralNode).value as boolean;
+    }
+  }
+
+  // Check each plugin that requires language model
+  pluginNodes.forEach((pluginNode: parse.ObjectNode) => {
+    const pluginNameNode = getASTNode(
+      pluginNode.children,
+      'Identifier',
+      'name',
+    );
+    
+    if (!pluginNameNode) {
+      return;
+    }
+
+    const pluginName = (pluginNameNode.value as parse.LiteralNode).value as string;
+    const pluginSnippet = pluginSnippets[pluginName];
+    
+    if (!pluginSnippet?.requiresLanguageModel) {
+      return;
+    }
+
+    // Check if plugin is enabled
+    const enabledNode = getASTNode(
+      pluginNode.children,
+      'Identifier',
+      'enabled',
+    );
+    const isPluginEnabled = enabledNode ? 
+      (enabledNode.value as parse.LiteralNode).value as boolean : false;
+
+    if (isPluginEnabled && !isLanguageModelEnabled) {
+      const diagnostic = new vscode.Diagnostic(
+        getRangeFromASTNode(pluginNameNode.value),
+        `${pluginName} requires languageModel.enabled to be set to true.`,
+        vscode.DiagnosticSeverity.Warning,
+      );
+      diagnostic.code = 'missingLanguageModel';
+      diagnostics.push(diagnostic);
     }
   });
 }

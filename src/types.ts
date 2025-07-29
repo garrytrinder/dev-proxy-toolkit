@@ -14,6 +14,7 @@ export type PluginSnippets = {
   [key: string]: {
     instance: string;
     config?: PluginConfig;
+    requiresLanguageModel?: boolean;
   };
 };
 

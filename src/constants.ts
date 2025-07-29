@@ -116,14 +116,16 @@ export const pluginSnippets: PluginSnippets = {
     config: {
       name: 'devproxy-plugin-language-model-failure-config',
       required: true,
-    }
+    },
+    requiresLanguageModel: true,
   },
   LanguageModelRateLimitingPlugin: {
     instance: 'devproxy-plugin-language-model-rate-limiting',
     config: {
       name: 'devproxy-plugin-language-model-rate-limiting-config',
       required: true,
-    }
+    },
+    requiresLanguageModel: true,
   },
   LatencyPlugin: {
     instance: 'devproxy-plugin-latency',

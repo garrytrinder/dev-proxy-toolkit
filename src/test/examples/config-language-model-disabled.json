@@ -1,0 +1,19 @@
+{
+  "$schema": "https://raw.githubusercontent.com/dotnet/dev-proxy/main/schemas/v0.29.0/rc.schema.json",
+  "plugins": [
+    {
+      "name": "LanguageModelFailurePlugin",
+      "enabled": true,
+      "pluginPath": "~appFolder/plugins/DevProxy.Plugins.dll",
+      "configSection": "devproxy-plugin-language-model-failure-config"
+    }
+  ],
+  "urlsToWatch": ["https://api.openai.com/*"],
+  "logLevel": "information",
+  "languageModel": {
+    "enabled": false
+  },
+  "devproxy-plugin-language-model-failure-config": {
+    "failureRate": 10
+  }
+}

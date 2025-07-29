@@ -1,8 +1,9 @@
 import * as vscode from 'vscode';
 import { pluginDocs } from './constants';
 import { VersionPreference } from './enums';
-import { executeCommand, isConfigFile, openUpgradeDocumentation, upgradeDevProxyWithPackageManager } from './helpers';
+import { executeCommand, isConfigFile, openUpgradeDocumentation, upgradeDevProxyWithPackageManager, getASTNode, getRangeFromASTNode } from './helpers';
 import { isDevProxyRunning, getDevProxyExe } from './detect';
+import parse from 'json-to-ast';
 
 export const registerCommands = (context: vscode.ExtensionContext, configuration: vscode.WorkspaceConfiguration) => {
     const versionPreference = configuration.get('version') as VersionPreference;
@@ -74,6 +75,101 @@ export const registerCommands = (context: vscode.ExtensionContext, configuration
             pluginName => {
                 const target = vscode.Uri.parse(pluginDocs[pluginName].url);
                 vscode.env.openExternal(target);
+            }
+        )
+    );
+
+    context.subscriptions.push(
+        vscode.commands.registerCommand(
+            'dev-proxy-toolkit.addLanguageModelConfig',
+            async (uri: vscode.Uri) => {
+                const document = await vscode.workspace.openTextDocument(uri);
+                const edit = new vscode.WorkspaceEdit();
+                
+                try {
+                    // Parse the document using json-to-ast for accurate insertion
+                    const documentNode = parse(document.getText()) as parse.ObjectNode;
+                    
+                    // Check if languageModel already exists
+                    const existingLanguageModel = getASTNode(
+                        documentNode.children,
+                        'Identifier',
+                        'languageModel'
+                    );
+                    
+                    if (existingLanguageModel) {
+                        // languageModel exists but enabled might be false or missing
+                        const languageModelObjectNode = existingLanguageModel.value as parse.ObjectNode;
+                        const enabledNode = getASTNode(
+                            languageModelObjectNode.children,
+                            'Identifier',
+                            'enabled'
+                        );
+                        
+                        if (enabledNode) {
+                            // Replace the enabled value
+                            edit.replace(
+                                uri,
+                                getRangeFromASTNode(enabledNode.value),
+                                'true'
+                            );
+                        } else {
+                            // Add enabled property
+                            const insertPosition = new vscode.Position(
+                                languageModelObjectNode.loc!.end.line - 1,
+                                languageModelObjectNode.loc!.end.column - 1
+                            );
+                            edit.insert(
+                                uri,
+                                insertPosition,
+                                '\n    "enabled": true'
+                            );
+                        }
+                    } else {
+                        // Add new languageModel object
+                        // Find the last property to insert after it
+                        const lastProperty = documentNode.children[documentNode.children.length - 1] as parse.PropertyNode;
+                        const insertPosition = new vscode.Position(
+                            lastProperty.loc!.end.line - 1,
+                            lastProperty.loc!.end.column
+                        );
+                        
+                        edit.insert(
+                            uri,
+                            insertPosition,
+                            ',\n  "languageModel": {\n    "enabled": true\n  }'
+                        );
+                    }
+                } catch (error) {
+                    // Fallback to simple text-based insertion
+                    const documentText = document.getText();
+                    const lines = documentText.split('\n');
+                    
+                    // Find where to insert the languageModel config
+                    let insertLine = lines.length - 1;
+                    for (let i = lines.length - 1; i >= 0; i--) {
+                        if (lines[i].includes('}')) {
+                            insertLine = i;
+                            break;
+                        }
+                    }
+                    
+                    const hasContentBefore = lines.slice(0, insertLine).some(line => 
+                        line.trim() && !line.trim().startsWith('{') && !line.trim().startsWith('/*') && !line.trim().startsWith('*')
+                    );
+                    
+                    const languageModelConfig = hasContentBefore ? 
+                        ',\n  "languageModel": {\n    "enabled": true\n  }' :
+                        '  "languageModel": {\n    "enabled": true\n  }';
+                    
+                    const insertPosition = new vscode.Position(insertLine, 0);
+                    edit.insert(uri, insertPosition, languageModelConfig + '\n');
+                }
+                
+                await vscode.workspace.applyEdit(edit);
+                await document.save();
+                
+                vscode.window.showInformationMessage('Language model configuration added');
             }
         )
     );
