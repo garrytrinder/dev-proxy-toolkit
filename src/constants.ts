@@ -118,6 +118,13 @@ export const pluginSnippets: PluginSnippets = {
       required: true,
     }
   },
+  LanguageModelRateLimitingPlugin: {
+    instance: 'devproxy-plugin-language-model-rate-limiting',
+    config: {
+      name: 'devproxy-plugin-language-model-rate-limiting-config',
+      required: true,
+    }
+  },
   LatencyPlugin: {
     instance: 'devproxy-plugin-latency',
     config: {
@@ -300,6 +307,10 @@ export const pluginDocs: PluginDocs = {
   LanguageModelFailurePlugin: {
     name: 'Language Model Failure Plugin',
     url: 'https://learn.microsoft.com/microsoft-cloud/dev/dev-proxy/technical-reference/languagemodelfailureplugin',
+  },
+  LanguageModelRateLimitingPlugin: {
+    name: 'Language Model Rate Limiting Plugin',
+    url: 'https://learn.microsoft.com/microsoft-cloud/dev/dev-proxy/technical-reference/languagemodelratelimitingplugin',
   },
   LatencyPlugin: {
     name: 'Latency Plugin',

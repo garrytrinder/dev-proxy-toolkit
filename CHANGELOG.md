@@ -15,6 +15,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Code lens: Support for JSONC files
 - Snippets: Added `devproxy-plugin-language-model-failure` - LanguageModelFailurePlugin instance
 - Snippets: Added `devproxy-plugin-language-model-failure-config` - LanguageModelFailurePlugin config section
+- Snippets: Added `devproxy-plugin-language-model-rate-limiting` - LanguageModelRateLimitingPlugin instance
+- Snippets: Added `devproxy-plugin-language-model-rate-limiting-config` - LanguageModelRateLimitingPlugin config section
 
 ### Changed:
 
