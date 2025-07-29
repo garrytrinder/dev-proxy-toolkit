@@ -102,4 +102,6 @@ Maintain plugin relationships in `constants.ts`:
 - Plugin ordering rules (reporters last, ApiCenterOnboarding after OpenApiSpecGenerator)
 - Summary plugins require reporter plugins
 
-When adding new plugins, update both `pluginSnippets` and `pluginDocs` objects with consistent naming.
+When adding new plugins:
+- Update both `pluginSnippets` and `pluginDocs` objects with consistent naming.
+- Update the `README.md` and `CHANGELOG.md` files to reflect new snippets and documentation.
