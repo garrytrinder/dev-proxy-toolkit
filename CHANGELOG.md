@@ -17,6 +17,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Changed:
 
 - Snippets: All snippets that reference schemas updated to use `v1.0.0` schema
+- Commands: `dev-proxy-toolkit.config-new` now creates the configuration file in the `.devproxy` folder and creates the folder if it does not exist
 
 ### Fixed:
 
