@@ -14,8 +14,8 @@ export enum WingetPackageIdentifier {
 }
 
 export enum HomebrewPackageIdentifier {
-  Stable = 'devproxy',
-  Beta = 'devproxy-beta',
+  Stable = 'dev-proxy',
+  Beta = 'dev-proxy-beta',
 }
 
 export enum PackageManager {
